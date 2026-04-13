@@ -1,0 +1,17 @@
+.container {
+  width: min(calc(100% - 2rem), var(--max-width));
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--space-7) 0;
+}
+
+.page-hero {
+  padding: 7rem 0 4rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.page-shell {
+  min-height: calc(100vh - 220px);
+}

@@ -1,0 +1,71 @@
+:root {
+  --color-ink: #171717;
+  --color-muted: #5a5a5a;
+  --color-line: #d9d4cb;
+  --color-surface: #fbf7ef;
+  --color-white: #ffffff;
+  --color-accent: #7a5c37;
+  --max-width: 1120px;
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --radius-md: 18px;
+}
+
+html {
+  color-scheme: light;
+  font-size: 16px;
+}
+
+body {
+  min-width: 320px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+p {
+  color: var(--color-muted);
+}
+
+.eyebrow {
+  margin-bottom: var(--space-2);
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 48rem;
+  font-size: 1.125rem;
+}
