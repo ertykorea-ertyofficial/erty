@@ -1,9 +1,52 @@
 <footer class="site-footer">
-  <div class="container site-footer__inner">
-    <div>
-      <strong>ERTY Official</strong>
-      <p>Static scaffold for the brand, content, and search-facing frontend.</p>
+  <div class="container site-footer__inner site-footer__inner--v12">
+    <div class="site-footer__brand">
+      <p class="site-footer__kicker" data-home-copy="footer.kicker">ERTY Official</p>
+      <img
+        class="site-footer__logo"
+        src="/assets/images/brand/erty-logo-black.png"
+        alt="ERTY Derma Professional"
+        width="164"
+        height="54"
+      />
+      <p class="site-footer__brand-copy" data-home-copy="footer.definition">
+        문제 피부의 회복 순서를 번호로 좁히는 더마 프로페셔널 브랜드.
+      </p>
     </div>
-    <small>Copyright <span data-current-year></span> ERTY Official</small>
+
+    <div class="site-footer__system">
+      <div class="site-footer__artifact" aria-label="에르띠 번호 체계 요약">
+        <p class="site-footer__artifact-kicker" data-home-copy="footer.artifactKicker">번호 서명</p>
+        <p class="site-footer__artifact-copy" data-home-copy="footer.artifactCopy">
+          라인은 문제를 나누고, 번호는 다음 단계를 남깁니다.
+        </p>
+        <div class="site-footer__artifact-rows" data-footer-numbering>
+          <span data-line="professional"><em>Professional</em><strong>01 · 02 · 03</strong><small>프로토콜 마감</small></span>
+          <span data-line="balancing"><em>Balancing</em><strong>11 · 13 · 15</strong><small>균형 시작</small></span>
+          <span data-line="hydrating"><em>Hydrating</em><strong>21 · 23 · 25 · 27</strong><small>수분 확보</small></span>
+          <span data-line="revitalizing"><em>Revitalizing</em><strong>35 · 37</strong><small>회복 고정</small></span>
+          <span data-line="brightening"><em>Brightening</em><strong>50 · 55 · 57</strong><small>톤 정렬</small></span>
+        </div>
+      </div>
+
+      <div class="site-footer__status">
+        <span class="site-footer__locale" data-home-copy="footer.locale">KO-KR</span>
+        <p class="site-footer__note" data-home-copy="footer.disclaimer">
+          공식 스토어 연결은 대표 URL 확정 뒤에 열립니다.
+        </p>
+        <small>Copyright <span data-current-year></span> ERTY Official</small>
+      </div>
+    </div>
+
+    <nav class="site-footer__nav-column" aria-label="하단 주요 경로">
+      <p class="site-footer__nav-kicker" data-home-copy="footer.navKicker">다음 진입</p>
+      <div class="site-footer__links">
+        <a href="/philosophy/">브랜드 관점</a>
+        <a href="/products/">제품 번호</a>
+        <a href="/evidence/">근거 수치</a>
+        <a href="/journal/">프로토콜 글</a>
+        <a href="/skin-concerns/">고민 진입</a>
+      </div>
+    </nav>
   </div>
 </footer>

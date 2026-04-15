@@ -1,13 +1,39 @@
-<header class="site-header">
+<header class="site-header" data-header>
   <div class="container site-header__inner">
-    <a class="site-brand" href="/" data-nav-link>ERTY Official</a>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="/" data-nav-link>Home</a>
-      <a href="/pages/philosophy.html" data-nav-link>Philosophy</a>
-      <a href="/pages/products.html" data-nav-link>Products</a>
-      <a href="/pages/evidence.html" data-nav-link>Evidence</a>
-      <a href="/pages/journal.html" data-nav-link>Journal</a>
-      <a href="/pages/skin-concerns.html" data-nav-link>Skin Concerns</a>
-    </nav>
+    <a class="site-brand" href="/" aria-label="ERTY Home">
+      <img
+        class="site-brand__logo"
+        src="/assets/images/brand/erty-logo-no-slogan-black.png"
+        alt="ERTY"
+        width="120"
+        height="28"
+      />
+      <span class="site-brand__meta">Official Brand Index</span>
+    </a>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-nav-toggle
+    >
+      <span data-nav-toggle-label>Menu</span>
+    </button>
+
+    <div class="site-header__panel" data-nav-panel>
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <a href="/" data-nav-link>Home</a>
+        <a href="/philosophy/" data-nav-link>Philosophy</a>
+        <a href="/products/" data-nav-link>Products</a>
+        <a href="/evidence/" data-nav-link>Evidence</a>
+        <a href="/journal/" data-nav-link>Journal</a>
+        <a href="/skin-concerns/" data-nav-link>Skin Concerns</a>
+      </nav>
+
+      <div class="site-header__meta">
+        <span class="status-chip status-chip--neutral">ko-KR</span>
+      </div>
+    </div>
   </div>
 </header>
