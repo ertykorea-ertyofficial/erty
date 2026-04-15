@@ -97,13 +97,33 @@
 4. 로고와 브랜드 자산을 실제 화면에 적극 반영해야 한다
 5. 현재 다음 착수 대상은 `Home` 단일 페이지다
 6. `Home`은 이제 `section-by-section`으로만 고도화한다
-7. 현재 1순위 활성 섹션은 `Featured SKU`다
+7. 현재 Home 작업은 `V16 section-by-section refinement checkpoint`까지 진행됐다
+8. 다음 1순위 활성 섹션은 사용자가 별도 지시하지 않는 한 `Footer` 최종 polish다
+
+## 2026-04-15 Home V16 체크포인트
+
+- 현재 브랜치: `codex/archive-home-v15-20260415`
+- 현재 로컬 preview: `http://127.0.0.1:4173/`
+- 로컬 `/` 응답: `200`
+- production 변경: 없음
+- 오늘 커밋 대상 HOME 범위:
+  - Hero polish / background image update / metadata strip 정리
+  - SKU Explorer system board refinement / transparent SKU preview image replacement / SKU copy and CTA normalization
+  - Brand Principle copy and rule-row refinement
+  - Evidence primary/secondary proof architecture / CTA `근거 보기` 통일
+  - Numbering System left rail / route copy / Professional row polish
+  - Next Layers + FAQ copy and state polish
+- 현재 authoritative 작업 상태:
+  - `HOME V16 section-by-section refinement in progress`
+- 다음 세션 기본 재개 작업:
+  - `Footer 전용 polish`
+  - 단, 사용자가 다른 section-by-section 프롬프트를 주면 그 섹션을 우선한다
 
 ## 다음 세션에서 가장 먼저 확인할 것
 
-1. 사용자가 제공하는 브랜드 자료 경로
-2. 사용자가 제공하는 추가 제품 / 무드보드 자료 경로
-3. 현재 git status
+1. 현재 git status와 브랜치 `codex/archive-home-v15-20260415`
+2. 로컬 preview `http://127.0.0.1:4173/` 응답 상태
+3. 사용자가 다음에 지시할 section-by-section 수정 대상
 4. `ertyofficial.shop` DNS / SSL / 대표도메인 상태
 5. 추가로 생긴 브랜드 무드보드 / 상세 자료 여부
 
@@ -185,6 +205,19 @@
   - `docs/pages/home/HOME_SECTION_EXECUTION_PLAN.md`
   - `docs/pages/home/HOME_V12_PREP_BRIEF.md`
 - 현재 상태는 `HOME section-by-section refinement in progress`다
+- `HOME V16` section-by-section refinement 체크포인트 완료:
+  - Hero: lock-up / metadata / CTA / background polish 진행
+  - SKU Explorer: selected panel / grouped explorer / protocol band / transparent preview images / state color sync 보정
+  - Brand Principle: operating rule copy and row polish 진행
+  - Evidence: `37 primary + 27/55/57 secondary` proof architecture 보정
+  - Numbering System: left rail / route copy / Professional row polish 진행
+  - Next Layers + FAQ: result-first copy / accordion state polish 진행
+- 다음 기본 활성 섹션:
+  - `Footer`
+- 현재 local preview 기준:
+  - `/` 응답 `200`
+  - `h1` 1개 유지
+  - production 변경 없음
 
 ## `ERTY` 재개 명령 해석 규칙
 

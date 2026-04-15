@@ -408,7 +408,7 @@ function renderFeaturedSystem(data) {
             <div class="home-v12-explorer-group__items">
               ${items
                 .map((item, itemIndex) => {
-                  const scopeLabel = compactScopeLabel(item.scopeLabel);
+                  const scopeLabel = ["27", "55", "57"].includes(item.id) ? "" : compactScopeLabel(item.scopeLabel);
                   return `
                     <button
                       class="home-v12-explorer-item"
@@ -466,8 +466,8 @@ function renderFeaturedSystem(data) {
             <span class="home-v12-protocol-item__meta">
               <span class="home-v12-protocol-item__line">${escapeHtml(item.roleLabel)}</span>
               <strong>${escapeHtml(item.displayName)}</strong>
+              <small class="home-v12-protocol-item__subtitle">${escapeHtml(item.explorerTitle)}</small>
             </span>
-            <small>${escapeHtml(item.explorerTitle)}</small>
           </button>
         `
       )
@@ -595,7 +595,9 @@ function bindHomeStaticEvents() {
     slots.mode.textContent = renderedItem.kind === "protocol" ? "집중 프로토콜" : "핵심 SKU";
     slots.number.textContent = renderedItem.id;
     slots.line.textContent = renderedItem.roleLabel;
-    slots.name.textContent = renderedItem.displayName;
+    if (slots.name) {
+      slots.name.textContent = renderedItem.displayName;
+    }
     slots.signal.textContent = renderedItem.proofMetric || renderedItem.proofLabel;
     slots.proof.textContent = renderedItem.proofLabel;
     slots.caption.textContent = renderedItem.oneLiner;
@@ -609,6 +611,7 @@ function bindHomeStaticEvents() {
     slots.link.setAttribute("href", renderedItem.detailHref);
     slots.link.textContent = renderedItem.actionLabel;
     slots.image.setAttribute("src", slugToImagePath(renderedItem.imageKey));
+    slots.image.setAttribute("alt", renderedItem.displayName);
 
     if (activeLive && !previewSkuId) {
       activeLive.textContent = `${renderedItem.id} ${renderedItem.roleLabel} 선택됨. ${renderedItem.oneLiner}`;
