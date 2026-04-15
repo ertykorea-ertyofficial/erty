@@ -1,2 +1,40 @@
-# -
-자사몰 리빌딩 프로젝트
+# ERTY Official
+
+이 저장소의 기준 문서는 아래 두 파일이다.
+
+- [프로젝트 설명문](./docs/PROJECT_BRIEF.md)
+- [DESIGN.md](./DESIGN.md)
+- [메인 도메인 페이지 설계](./docs/PAGE_DESIGN.md)
+- [Page-by-page implementation checklist](./docs/IMPLEMENTATION_ROUND_CHECKLIST.md)
+- [PDF review audit](./docs/PDF_REVIEW_AUDIT.md)
+- [브랜드 기준 문서](./docs/brand/README.md)
+- [Canonical agent input set](./docs/canonical/README.md)
+- [브랜드 원본 자산 source map](./docs/brand/BRAND_SOURCE_MAP.md)
+- [제품 문서 인덱스](./docs/products/README.md)
+- [제품 원본 source map](./docs/products/PRODUCT_SOURCE_MAP.md)
+- [제품 claim rule](./docs/products/PRODUCT_CLAIM_RULE.md)
+- [제품 mechanism](./docs/products/PRODUCT_MECHANISM.md)
+- [제품 상세페이지 source](./docs/products/PRODUCT_PAGE_SOURCE.md)
+- [CTA source](./docs/products/CTA_SOURCE.md)
+- [FAQ source](./docs/products/FAQ_SOURCE.md)
+- [Evidence source](./docs/products/EVIDENCE_SOURCE.md)
+- [Visual asset map](./docs/products/VISUAL_ASSET_MAP.md)
+- [Image usage guide](./docs/products/IMAGE_USAGE_GUIDE.md)
+- [Product system audit](./docs/products/PRODUCT_SYSTEM_AUDIT.md)
+- [Product library manifest](./docs/products/PRODUCT_LIBRARY_MANIFEST.md)
+- [Product template contract](./docs/products/PRODUCT_TEMPLATE_CONTRACT.md)
+- [Routine matrix](./docs/products/ROUTINE_MATRIX.md)
+- [Concern product map](./docs/products/CONCERN_PRODUCT_MAP.md)
+- [Recommendation matrix](./docs/products/RECOMMENDATION_MATRIX.md)
+- [Product slug / URL map](./docs/products/PRODUCT_SLUG_URL_MAP.md)
+- [Offers / kits document index](./docs/offers/README.md)
+- [Offer page source](./docs/offers/OFFER_PAGE_SOURCE.md)
+- [Offer visual asset map](./docs/offers/OFFER_VISUAL_ASSET_MAP.md)
+- [Workspace and agent overview](./docs/WORKSPACE_AGENT_OVERVIEW.md)
+- [세션 재개 상태 문서](./docs/SESSION_HANDOFF.md)
+- [에이전트 운영 문서](./docs/agents/README.md)
+- [Agent injection map](./docs/agents/AGENT_INJECTION_MAP.md)
+- [Agent reading allocation](./docs/agents/AGENT_READING_ALLOCATION.md)
+- [UI/UX 디자인 레퍼런스 저장본](./references/awesome-design-md-main/README.md)
+
+구현, 페이지 추가, 인프라 의사결정은 기준 문서를 먼저 갱신한 뒤 진행한다.
