@@ -671,7 +671,7 @@ function bindHomeStaticEvents() {
       const isActive = key === activeRoute;
       const isPreview = Boolean(previewRoute) && key === previewRoute && key !== activeRoute;
       const isRelated = renderedItem?.kind === "protocol"
-        ? key === "journal"
+        ? key === "guide"
         : key === (getRouteFor(renderedItem)?.id || "");
 
       entry.classList.toggle("is-active", isActive);

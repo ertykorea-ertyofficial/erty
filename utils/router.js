@@ -9,12 +9,12 @@ window.ERTYRouter = {
 
   sourceToCanonical(pathname) {
     const map = {
-      "/pages/philosophy.html": "/philosophy",
+      "/pages/philosophy.html": "/brand",
       "/pages/products.html": "/products",
       "/pages/product-detail.html": "/products/[product-slug]",
-      "/pages/evidence.html": "/evidence",
-      "/pages/journal.html": "/journal",
-      "/pages/skin-concerns.html": "/skin-concerns"
+      "/pages/evidence.html": "/results",
+      "/pages/journal.html": "/guide",
+      "/pages/skin-concerns.html": "/by-concern"
     };
 
     return map[pathname] || pathname;
