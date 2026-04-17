@@ -7,6 +7,9 @@ dist/
 coverage/
 tmp/
 .wrangler/
+output/
+.playwright-cli/
+test-results/
 
 *.log
 

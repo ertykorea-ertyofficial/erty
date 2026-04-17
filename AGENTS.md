@@ -25,6 +25,37 @@ When that happens, do this in order:
 - Keep secrets, tokens, passwords, API keys, and private operational data out of tracked files and GitHub
 - Production-impact infra work must be verified with persisted state and reported separately from preview/local checks
 
+## /by-concern Page Instructions
+
+Before changing any code for `/by-concern`, read these files in order:
+
+1. `docs/by-concern/BY_CONCERN_MASTER_SPEC.md`
+2. `docs/by-concern/BY_CONCERN_IMPLEMENTATION_SPEC.md`
+3. `docs/by-concern/BY_CONCERN_DATA_CONTRACT.md`
+4. `docs/by-concern/BY_CONCERN_COPY_DECK.md`
+5. `docs/by-concern/BY_CONCERN_QA_CHECKLIST.md`
+
+Non-negotiables:
+
+- Do not change the concern taxonomy without explicit approval.
+- Do not invent new concern categories.
+- Do not write shopping-mall style UI.
+- Keep numbering-first logic.
+- Keep copy aligned with `BY_CONCERN_COPY_DECK.md`.
+- Use only source-visible metrics.
+- Before finalizing, verify all items in `BY_CONCERN_QA_CHECKLIST.md`.
+
+Current recommended build order:
+
+1. Hero
+2. Concern Selector
+3. Active Concern Board
+4. Proof Snapshot
+5. Guide Cluster
+6. FAQ
+7. Shop Bridge
+8. polish / QA
+
 ## Current Working Reality
 
 - Static frontend scaffold exists

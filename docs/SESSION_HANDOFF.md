@@ -95,10 +95,46 @@
 2. 앞으로는 `페이지별 라운드`로만 진행한다
 3. 각 페이지는 멀티 에이전트 PASS 이후에만 사용자 preview를 제공한다
 4. 로고와 브랜드 자산을 실제 화면에 적극 반영해야 한다
-5. 현재 다음 착수 대상은 `Home` 단일 페이지다
-6. `Home`은 이제 `section-by-section`으로만 고도화한다
-7. 현재 Home 작업은 `V16 section-by-section refinement checkpoint`까지 진행됐다
-8. 다음 1순위 활성 섹션은 사용자가 별도 지시하지 않는 한 `Footer` 최종 polish다
+5. Home 주요 section-by-section 고도화는 현재 체크포인트 기준 보관 완료
+6. 현재 다음 착수 대상은 `/by-concern` 단일 페이지다
+7. `/by-concern`은 `Hero -> Concern Selector -> Active Concern Board -> Proof Snapshot -> Guide Cluster -> FAQ -> Shop Bridge` 순서로 section-by-section 구현한다
+8. 다음 1순위 활성 작업은 사용자가 별도 지시하지 않는 한 `/by-concern`의 다음 섹션 설계/구현이다
+
+## 2026-04-18 By Concern 체크포인트
+
+- 현재 브랜치: `codex/archive-home-v15-20260415`
+- 현재 로컬 preview:
+  - Home: `http://127.0.0.1:4173/`
+  - By Concern: `http://127.0.0.1:4173/by-concern/`
+- production 변경: 없음
+- `/by-concern` 관련 문서 추가 완료:
+  - `docs/by-concern/BY_CONCERN_MASTER_SPEC.md`
+  - `docs/by-concern/BY_CONCERN_IMPLEMENTATION_SPEC.md`
+  - `docs/by-concern/BY_CONCERN_DATA_CONTRACT.md`
+  - `docs/by-concern/BY_CONCERN_COPY_DECK.md`
+  - `docs/by-concern/BY_CONCERN_QA_CHECKLIST.md`
+- `/by-concern` 초기 구현 완료 범위:
+  - Hero
+  - Concern Selector
+  - Hero -> Selector 연결 흐름
+  - header navigation label/slug update: `Home / Brand / Products / Results / Guide / By Concern`
+  - `assets/js/by-concern-data.js` source-of-truth 데이터 추가
+  - `assets/js/by-concern.js` selector state engine 추가
+  - AI-generated hero poster/video 및 6개 concern cue asset 적용
+- 현재 검증된 local 상태:
+  - `/by-concern/` 응답 `200`
+  - `h1` 1개 유지
+  - browser console error `0`
+  - Hero CTA `피부 신호 고르기` 클릭 시 `#concern-selector`로 이동
+  - CTA 이동 후 active tab focus: `concern-tab-barrier-redness`
+  - 기본 selected route: `37 -> 35`
+- 중요 판단:
+  - 사용자가 현재 By Concern 이미지 생성 품질은 불만족이나 우선 넘어가기로 결정
+  - 다음 라운드에서 이미지 교체가 요청되기 전까지 현재 asset을 유지
+  - 구현은 계속 `Hero + Selector` 이후 섹션별로 잠그는 방식 유지
+- 다음 세션 기본 재개 작업:
+  - 사용자가 줄 다음 `/by-concern` 섹션별 프롬프트를 우선한다
+  - 명시 지시가 없으면 `Active Concern Board` 상세 구현 준비부터 시작한다
 
 ## 2026-04-15 Home V16 체크포인트
 
