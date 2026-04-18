@@ -11,7 +11,7 @@
     <link
       rel="preload"
       as="image"
-      href="/assets/images/brand/by-concern/hero/concern-hero-signal-scene-v2.png"
+      href="/assets/images/brand/by-concern/hero/concern-hero-signal-scene-v3.png"
     />
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/global.css" />
@@ -23,52 +23,34 @@
 
     <main class="by-concern-main">
       <section class="by-concern-hero" aria-labelledby="by-concern-hero-title">
-        <div class="by-concern-hero__scene" aria-hidden="true">
-          <video
-            class="by-concern-hero__video"
-            autoplay
-            muted
-            loop
-            playsinline
-            poster="/assets/images/brand/by-concern/hero/concern-hero-signal-scene-v2.png"
-          >
-            <source
-              src="/assets/images/brand/by-concern/hero/concern-hero-signal-loop-v2.webm"
-              type="video/webm"
-            />
-          </video>
-        </div>
+        <div class="by-concern-hero__scene" aria-hidden="true"></div>
         <div class="container by-concern-hero__inner">
           <div class="by-concern-hero__copy">
             <div class="by-concern-hero__micro">
               <p class="eyebrow" data-by-concern-copy="hero.eyebrow">BY CONCERN</p>
-              <span data-by-concern-copy="hero.meta">고민에서 시작 번호까지</span>
             </div>
 
             <h1 id="by-concern-hero-title" data-by-concern-copy="hero.title">
-              피부 고민이 겹칠수록
-              시작은 더 단순해야 합니다
+              피부 고민에 따라,
+              먼저 봐야 할 번호가 정해집니다
             </h1>
 
             <p class="by-concern-hero__lead" data-by-concern-copy="hero.subcopy">
-              건조, 붉음, 유분, 톤 저하를 먼저 나누면 내 피부가 봐야 할 시작 번호가 보입니다.
+              붉음, 당김, 유분, 각질 중 지금 가장 먼저 불편한 신호 하나를 골라보세요.
             </p>
 
             <div class="by-concern-hero__actions" aria-label="By Concern 주요 이동">
               <a class="button-link" href="#concern-selector" data-by-concern-cta="primary">
-                <span data-by-concern-copy="hero.primaryCta">피부 신호 고르기</span>
+                <span data-by-concern-copy="hero.primaryCta">고민부터 고르기</span>
               </a>
               <a
                 class="button-link button-link--ghost"
                 href="#concern-selector"
                 data-by-concern-cta="secondary"
               >
-                <span data-by-concern-copy="hero.secondaryCta">시작 번호 보기</span>
+                <span data-by-concern-copy="hero.secondaryCta">번호 체계 보기</span>
               </a>
             </div>
-            <p class="by-concern-hero__handoff" data-by-concern-copy="hero.handoff">
-              아래에서 가장 불편한 신호 하나만 고르세요.
-            </p>
           </div>
         </div>
       </section>
@@ -80,22 +62,24 @@
       >
         <div class="container">
           <div class="by-concern-section-head">
-            <p class="eyebrow" data-by-concern-copy="selector.eyebrow">첫 질문</p>
+            <p class="eyebrow" data-by-concern-copy="selector.eyebrow">신호 선택</p>
             <div>
               <h2 id="concern-selector-title" data-by-concern-copy="selector.title">
-                지금 가장 불편한 신호를 하나 고르세요
+                가장 먼저 신경 쓰이는 신호를 고르세요
               </h2>
-              <p data-by-concern-copy="selector.support">
-                선택하면 먼저 볼 번호와 이어 갈 제품 경로가 바로 정리됩니다.
-              </p>
+              <p data-by-concern-copy="selector.support">하나만 고르면 먼저 볼 번호가 바로 정리됩니다.</p>
             </div>
           </div>
 
           <div class="by-concern-selector" data-concern-selector data-active-concern="barrier-redness">
+            <p class="sr-only" id="concern-selector-help">
+              방향키로 고민을 이동하고, Enter 또는 Space로 선택합니다. hover와 focus는 미리보기만 바뀝니다.
+            </p>
             <div
               class="by-concern-selector__grid"
               role="tablist"
               aria-label="피부 고민 선택"
+              aria-describedby="concern-selector-help"
               data-concern-tablist
             >
               <button
@@ -110,20 +94,11 @@
                 data-line="balancing"
               >
                 <span class="by-concern-selector__signal">
+                  <span class="by-concern-selector__state" data-concern-state-chip hidden aria-hidden="true"></span>
                   <span class="by-concern-selector__title">유분 · 트러블 · 모공</span>
                   <span class="by-concern-selector__keywords">번들거림 · 막힘 · 반복 트러블</span>
                 </span>
-                <span class="by-concern-selector__number"><span>시작 번호</span><strong>13</strong></span>
-                <span class="by-concern-selector__visual" aria-hidden="true">
-                  <img
-                    src="/assets/images/brand/by-concern/concern-cues/concern-cue-oil-breakout-pores-ui.png"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width="720"
-                    height="480"
-                  />
-                </span>
+                <span class="by-concern-selector__number"><span>시작</span><strong>11</strong></span>
               </button>
 
               <button
@@ -138,20 +113,11 @@
                 data-line="hydrating"
               >
                 <span class="by-concern-selector__signal">
+                  <span class="by-concern-selector__state" data-concern-state-chip hidden aria-hidden="true"></span>
                   <span class="by-concern-selector__title">수분 부족 · 속당김</span>
-                  <span class="by-concern-selector__keywords">당김 · 화장 들뜸 · 건조</span>
+                  <span class="by-concern-selector__keywords">당김 · 들뜸 · 건조</span>
                 </span>
-                <span class="by-concern-selector__number"><span>시작 번호</span><strong>23</strong></span>
-                <span class="by-concern-selector__visual" aria-hidden="true">
-                  <img
-                    src="/assets/images/brand/by-concern/concern-cues/concern-cue-dehydration-tightness-ui.png"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width="720"
-                    height="480"
-                  />
-                </span>
+                <span class="by-concern-selector__number"><span>시작</span><strong>23</strong></span>
               </button>
 
               <button
@@ -167,20 +133,11 @@
                 data-state="selected"
               >
                 <span class="by-concern-selector__signal">
-                  <span class="by-concern-selector__title">장벽 약화 · 붉은기</span>
+                  <span class="by-concern-selector__state" data-concern-state-chip aria-hidden="true">선택</span>
+                  <span class="by-concern-selector__title">장벽 약화 · 붉음</span>
                   <span class="by-concern-selector__keywords">예민 · 붉음 · 쉽게 자극됨</span>
                 </span>
-                <span class="by-concern-selector__number"><span>시작 번호</span><strong>37</strong></span>
-                <span class="by-concern-selector__visual" aria-hidden="true">
-                  <img
-                    src="/assets/images/brand/by-concern/concern-cues/concern-cue-barrier-redness-ui.png"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width="720"
-                    height="480"
-                  />
-                </span>
+                <span class="by-concern-selector__number"><span>시작</span><strong>37</strong></span>
               </button>
 
               <button
@@ -195,20 +152,11 @@
                 data-line="brightening"
               >
                 <span class="by-concern-selector__signal">
+                  <span class="by-concern-selector__state" data-concern-state-chip hidden aria-hidden="true"></span>
                   <span class="by-concern-selector__title">칙칙함 · 잡티 · 톤 저하</span>
                   <span class="by-concern-selector__keywords">칙칙함 · 어두움 · 잡티</span>
                 </span>
-                <span class="by-concern-selector__number"><span>시작 번호</span><strong>55</strong></span>
-                <span class="by-concern-selector__visual" aria-hidden="true">
-                  <img
-                    src="/assets/images/brand/by-concern/concern-cues/concern-cue-dullness-dark-spot-ui.png"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width="720"
-                    height="480"
-                  />
-                </span>
+                <span class="by-concern-selector__number"><span>시작</span><strong>55</strong></span>
               </button>
 
               <button
@@ -223,20 +171,11 @@
                 data-line="professional"
               >
                 <span class="by-concern-selector__signal">
+                  <span class="by-concern-selector__state" data-concern-state-chip hidden aria-hidden="true"></span>
                   <span class="by-concern-selector__title">거친 결 · 각질</span>
-                  <span class="by-concern-selector__keywords">밀림 · 각질 · 거친 피부결</span>
+                  <span class="by-concern-selector__keywords">밀림 · 각질 · 거친 결</span>
                 </span>
-                <span class="by-concern-selector__number"><span>시작 번호</span><strong>01</strong></span>
-                <span class="by-concern-selector__visual" aria-hidden="true">
-                  <img
-                    src="/assets/images/brand/by-concern/concern-cues/concern-cue-texture-flaking-ui.png"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width="720"
-                    height="480"
-                  />
-                </span>
+                <span class="by-concern-selector__number"><span>시작</span><strong>01</strong></span>
               </button>
 
               <button
@@ -251,20 +190,11 @@
                 data-line="revitalizing"
               >
                 <span class="by-concern-selector__signal">
-                  <span class="by-concern-selector__title">회복이 느림 · 탄력 저하</span>
-                  <span class="by-concern-selector__keywords">처짐 · 느린 회복 · 탄력 저하</span>
+                  <span class="by-concern-selector__state" data-concern-state-chip hidden aria-hidden="true"></span>
+                  <span class="by-concern-selector__title">회복 지연 · 탄력 저하</span>
+                  <span class="by-concern-selector__keywords">처짐 · 회복 지연 · 탄력 저하</span>
                 </span>
-                <span class="by-concern-selector__number"><span>시작 번호</span><strong>35</strong></span>
-                <span class="by-concern-selector__visual" aria-hidden="true">
-                  <img
-                    src="/assets/images/brand/by-concern/concern-cues/concern-cue-recovery-firmness-ui.png"
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    width="720"
-                    height="480"
-                  />
-                </span>
+                <span class="by-concern-selector__number"><span>시작</span><strong>35</strong></span>
               </button>
             </div>
 
@@ -273,40 +203,34 @@
               id="concern-panel"
               role="tabpanel"
               tabindex="0"
-              aria-live="polite"
               aria-labelledby="concern-tab-barrier-redness"
               data-concern-panel
               data-line="revitalizing"
             >
-              <span class="by-concern-selector__panel-label" data-concern-panel-mode>
+              <span class="by-concern-selector__panel-label" data-concern-panel-mode aria-live="polite">
                 선택한 신호
               </span>
-              <figure class="by-concern-selector__panel-visual" aria-hidden="true">
-                <img
-                  src="/assets/images/brand/by-concern/concern-cues/concern-cue-barrier-redness-ui.png"
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  width="720"
-                  height="480"
-                  data-concern-panel-visual
-                />
-              </figure>
-              <h3 data-concern-panel-title>장벽 약화 · 붉은기</h3>
               <div class="by-concern-selector__decision" aria-label="시작 번호">
                 <span data-by-concern-copy="selector.routeLabel">시작 번호</span>
                 <strong data-concern-panel-route>37 → 35</strong>
               </div>
+              <h3 data-concern-panel-title>장벽 약화 · 붉음</h3>
               <p data-concern-panel-statement>
-                붉음과 예민함은 37로 장벽 회복을 먼저 보고, 35로 피부 컨디션을 이어 봅니다.
+                붉음이 먼저면 37로 장벽 회복부터 봅니다.
               </p>
               <dl class="by-concern-selector__route">
                 <div>
                   <dt data-by-concern-copy="selector.nextLabel">다음 단계</dt>
-                  <dd data-concern-panel-next>장벽을 먼저 회복하고 컨디션을 살핍니다.</dd>
+                  <dd data-concern-panel-next>35로 피부 컨디션을 이어 봅니다.</dd>
                 </div>
               </dl>
-              <a class="by-concern-selector__cta" href="/products/" data-concern-panel-cta>37 제품 보기</a>
+              <a class="by-concern-selector__cta" href="/products/" data-concern-panel-cta>37부터 보기</a>
+              <div class="by-concern-selector__shell" aria-label="다음 연결 레이어">
+                <span class="by-concern-selector__shell-item" data-concern-panel-shell="evidence" data-state="ready">근거</span>
+                <span class="by-concern-selector__shell-item" data-concern-panel-shell="guide" data-state="ready">가이드</span>
+                <span class="by-concern-selector__shell-item" data-concern-panel-shell="products" data-state="ready">제품</span>
+                <span class="by-concern-selector__shell-item" data-concern-panel-shell="protocol" data-state="ready">프로토콜</span>
+              </div>
             </div>
           </div>
         </div>

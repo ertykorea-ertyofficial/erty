@@ -53,7 +53,7 @@
       .map((concern) => {
         const family = getPrimaryFamily(concern);
         const keywords = concern.symptomKeywords.join(" · ");
-        const firstNumber = concern.firstNumberLabel.replace(/^먼저\s*/, "");
+        const firstNumber = concern.firstSkuIds?.[0] || concern.firstNumberLabel.replace(/^먼저\s*/, "");
 
         return `
           <button
@@ -68,20 +68,14 @@
             data-line="${escapeHtml(family)}"
           >
             <span class="by-concern-selector__signal">
+              <span class="by-concern-selector__state" data-concern-state-chip hidden aria-hidden="true"></span>
               <span class="by-concern-selector__title">${escapeHtml(concern.displayName)}</span>
               <span class="by-concern-selector__keywords">${escapeHtml(keywords)}</span>
             </span>
             <span class="by-concern-selector__number">
-              <span>시작 번호</span>
+              <span>시작</span>
               <strong>${escapeHtml(firstNumber)}</strong>
             </span>
-            ${
-              concern.visualSrc
-                ? `<span class="by-concern-selector__visual" aria-hidden="true">
-                    <img src="${escapeHtml(concern.visualSrc)}" alt="" loading="lazy" decoding="async" width="720" height="480" />
-                  </span>`
-                : ""
-            }
           </button>
         `;
       })
@@ -103,9 +97,23 @@
     let activeConcernId = data.defaultConcernId || data.concerns[0]?.id || "";
     let previewConcernId = "";
     let handoffPreviewLockUntil = 0;
+    const canTrackLighting =
+      window.matchMedia("(pointer: fine)").matches &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const getTabs = () => Array.from(tablist.querySelectorAll("[data-concern-id]"));
     const getDisplayConcernId = () => previewConcernId || activeConcernId;
+
+    function updateBoardLighting(event) {
+      if (!canTrackLighting) return;
+      const rect = selector.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+      selector.style.setProperty("--selector-light-x", `${Math.max(0, Math.min(100, x)).toFixed(2)}%`);
+      selector.style.setProperty("--selector-light-y", `${Math.max(0, Math.min(100, y)).toFixed(2)}%`);
+      selector.style.setProperty("--selector-light-opacity", "0.08");
+    }
 
     function syncSelector(mode = "selected") {
       const displayConcern = getConcernById(data, getDisplayConcernId());
@@ -154,7 +162,10 @@
       const routeTarget = panel.querySelector("[data-concern-panel-route]");
       const nextTarget = panel.querySelector("[data-concern-panel-next]");
       const ctaTarget = panel.querySelector("[data-concern-panel-cta]");
-      const visualTarget = panel.querySelector("[data-concern-panel-visual]");
+      const protocolTarget = panel.querySelector('[data-concern-panel-shell="protocol"]');
+      const evidenceTarget = panel.querySelector('[data-concern-panel-shell="evidence"]');
+      const guideTarget = panel.querySelector('[data-concern-panel-shell="guide"]');
+      const productsTarget = panel.querySelector('[data-concern-panel-shell="products"]');
 
       if (modeTarget) {
         modeTarget.textContent = isPreview
@@ -166,14 +177,45 @@
       if (statementTarget) statementTarget.textContent = displayConcern.concernStatement;
       if (routeTarget) routeTarget.textContent = routeNumbers;
       if (nextTarget) nextTarget.textContent = displayConcern.routeLabel;
-      if (visualTarget && displayConcern.visualSrc) {
-        visualTarget.setAttribute("src", displayConcern.visualSrc);
-      }
       if (ctaTarget) {
         const label = displayConcern.ctaLabel || `${displayConcern.firstSkuIds[0]}부터 보기`;
         ctaTarget.textContent = label;
         ctaTarget.setAttribute("aria-label", `${displayConcern.displayName} ${label}`);
       }
+
+      if (evidenceTarget) evidenceTarget.dataset.state = "ready";
+      if (guideTarget) guideTarget.dataset.state = "ready";
+      if (productsTarget) productsTarget.dataset.state = "ready";
+      if (protocolTarget) {
+        const hasProtocolRelation =
+          Array.isArray(displayConcern.relatedProtocolIds) && displayConcern.relatedProtocolIds.length > 0 ||
+          displayConcern.lineFamilies.includes("professional") ||
+          [...(displayConcern.firstSkuIds || []), ...(displayConcern.optionalSkuIds || [])].some((skuId) =>
+            ["01", "02", "03"].includes(skuId)
+          );
+        protocolTarget.dataset.state = hasProtocolRelation ? "ready" : "muted";
+      }
+
+      getTabs().forEach((tab) => {
+        const chip = tab.querySelector("[data-concern-state-chip]");
+
+        if (!chip) return;
+
+        if (tab.classList.contains("is-active")) {
+          chip.hidden = false;
+          chip.textContent = data.copy.selector.activeChip || "선택됨";
+          return;
+        }
+
+        if (tab.classList.contains("is-preview")) {
+          chip.hidden = false;
+          chip.textContent = data.copy.selector.previewChip || "미리보기";
+          return;
+        }
+
+        chip.hidden = true;
+        chip.textContent = "";
+      });
 
       if (mode === "commit") {
         trackByConcernEvent("by_concern_select_commit", {
@@ -219,7 +261,11 @@
       const currentIndex = tabs.indexOf(currentTab);
       if (currentIndex === -1) return;
       const nextIndex = (currentIndex + offset + tabs.length) % tabs.length;
-      tabs[nextIndex].focus();
+      tabs[nextIndex].focus({ preventScroll: true });
+    }
+
+    function getSelectorColumnCount() {
+      return window.matchMedia("(max-width: 1180px)").matches ? 1 : 2;
     }
 
     tablist.addEventListener("mouseover", (event) => {
@@ -259,25 +305,35 @@
       const tab = event.target.closest("[data-concern-id]");
       if (!tab) return;
 
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      if (event.key === "ArrowRight") {
         event.preventDefault();
         focusTabByOffset(tab, 1);
       }
 
-      if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      if (event.key === "ArrowLeft") {
         event.preventDefault();
         focusTabByOffset(tab, -1);
       }
 
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        focusTabByOffset(tab, getSelectorColumnCount());
+      }
+
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        focusTabByOffset(tab, -getSelectorColumnCount());
+      }
+
       if (event.key === "Home") {
         event.preventDefault();
-        getTabs()[0]?.focus();
+        getTabs()[0]?.focus({ preventScroll: true });
       }
 
       if (event.key === "End") {
         event.preventDefault();
         const tabs = getTabs();
-        tabs[tabs.length - 1]?.focus();
+        tabs[tabs.length - 1]?.focus({ preventScroll: true });
       }
 
       if (event.key === "Enter" || event.key === " ") {
@@ -292,6 +348,13 @@
         activeTab?.focus({ preventScroll: true });
       }
     });
+
+    if (canTrackLighting) {
+      selector.addEventListener("pointermove", updateBoardLighting);
+      selector.addEventListener("pointerleave", () => {
+        selector.style.setProperty("--selector-light-opacity", "0");
+      });
+    }
 
     document.querySelectorAll("[data-by-concern-cta]").forEach((link) => {
       link.addEventListener("click", (event) => {
