@@ -120,10 +120,10 @@
 
 ### 4.6 회복 저하 · 탄력 저하 · 컨디션 급락
 - id: `recovery-firmness`
-- first numbers: `35 → 37 → 02 / 03`
+- first numbers: `35 → 37 → 02`
 - 핵심 의미: 회복력 보정 → 장벽 회복 → 톤 리페어·리모델링
 - line family: Revitalizing + Professional
-- 대표 제품 축: 35 / 37 / 02 / 03
+- 대표 제품 축: 35 / 37 / 02
 
 ---
 

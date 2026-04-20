@@ -41,6 +41,22 @@
 
   const concerns = new Map(data.concerns.map((item) => [item.id, item]));
   const concernIds = data.concerns.map((item) => item.id);
+  const routeTokenRgb = {
+    "01": "88,88,88",
+    "02": "88,88,88",
+    "03": "88,88,88",
+    "11": "26,140,90",
+    "13": "26,140,90",
+    "15": "26,140,90",
+    "23": "39,113,188",
+    "25": "39,113,188",
+    "27": "39,113,188",
+    "35": "179,53,64",
+    "37": "179,53,64",
+    "50": "198,151,27",
+    "55": "198,151,27",
+    "57": "198,151,27",
+  };
   let activeConcernId = concerns.has(data.defaultConcernId)
     ? data.defaultConcernId
     : concernIds[0];
@@ -75,6 +91,16 @@
 
   function getDisplayConcernId() {
     return previewConcernId ?? activeConcernId;
+  }
+
+  function renderRouteMarkup(routeText) {
+    return routeText
+      .split(/\s*→\s*/)
+      .map((token) => {
+        const rgb = routeTokenRgb[token] || "17,19,23";
+        return `<span class="bc-stage__route-token" style="--route-rgb:${rgb}">${token}</span>`;
+      })
+      .join('<span class="bc-stage__route-sep" aria-hidden="true">→</span>');
   }
 
   function setPointerOrigin(x = "50%", y = "50%") {
@@ -128,10 +154,11 @@
     }
 
     root.style.setProperty("--accent-rgb", displayConcern.accentRgb);
-    chip.textContent = "선택한 고민";
+    chip.textContent = "지금 신호";
     family.textContent = displayConcern.family;
     concernName.textContent = displayConcern.title;
-    route.textContent = displayConcern.route;
+    route.innerHTML = renderRouteMarkup(displayConcern.route);
+    route.setAttribute("aria-label", displayConcern.route);
     why.textContent = displayConcern.why;
     next.textContent = displayConcern.next;
     ctaText.textContent = displayConcern.cta;
