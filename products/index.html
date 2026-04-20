@@ -12,136 +12,26 @@
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
+    <style>
+      body[data-page="products"] {
+        background: #ffffff;
+      }
+
+      body[data-page="products"]::before {
+        display: none;
+      }
+
+      .products-blank {
+        min-height: 100dvh;
+        padding-top: var(--header-height);
+        background: #ffffff;
+      }
+    </style>
   </head>
   <body data-page="products">
     <div data-component="header"></div>
 
-    <main class="page-main">
-      <section class="page-hero">
-        <div class="container page-hero__grid">
-          <div class="page-hero__content reading-column">
-            <div>
-              <p class="eyebrow">Products</p>
-              <h1>번호로 먼저 읽는 ERTY 제품 구조</h1>
-            </div>
-            <p class="lead">
-              제품 허브는 core SKU만 다룹니다. 키트와 세트는 별도 오퍼 레이어에서
-              다루고, 이 페이지에서는 번호와 라인 체계를 먼저 보여줍니다.
-            </p>
-          </div>
-
-          <aside class="page-hero__aside">
-            <article class="clinical-board">
-              <div class="clinical-board__head">
-                <span class="tag-chip tag-chip--neutral">Core SKU</span>
-              </div>
-              <div class="clinical-board__rows">
-                <div class="clinical-row">
-                  <strong>15 Products</strong>
-                  <p>허브에서는 core SKU만 보여줍니다.</p>
-                </div>
-                <div class="clinical-row">
-                  <strong>Offers Separated</strong>
-                  <p>세트와 키트는 별도 route에서 처리합니다.</p>
-                </div>
-                <div class="clinical-row">
-                  <strong>37 Template</strong>
-                  <p>대표 상세 구조는 37 페이지로 확인합니다.</p>
-                </div>
-              </div>
-            </article>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section section--tight">
-        <div class="container">
-          <div class="section-header reading-column">
-            <p class="eyebrow">Line Taxonomy</p>
-            <h2 class="section-title">허브는 제품 설명보다 제품군 구분을 먼저 보여줍니다</h2>
-          </div>
-
-          <div class="line-legend">
-            <article class="line-card" data-line="balancing">
-              <p class="line-card__numbers">11 · 13 · 15</p>
-              <h3>Balancing</h3>
-              <p>유수분 균형과 트러블 맥락을 다루는 라인.</p>
-            </article>
-            <article class="line-card" data-line="hydrating">
-              <p class="line-card__numbers">21 · 23 · 25 · 27</p>
-              <h3>Hydrating</h3>
-              <p>건조와 장벽 약화에 대한 수분 라인.</p>
-            </article>
-            <article class="line-card" data-line="revitalizing">
-              <p class="line-card__numbers">35 · 37</p>
-              <h3>Revitalizing</h3>
-              <p>회복과 재생의 흐름을 담당하는 라인.</p>
-            </article>
-            <article class="line-card" data-line="brightening">
-              <p class="line-card__numbers">50 · 55 · 57</p>
-              <h3>Brightening</h3>
-              <p>톤과 브라이트닝 마무리를 담당하는 라인.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--tight">
-        <div class="container">
-          <div class="section-header reading-column">
-            <p class="eyebrow">Representative SKU</p>
-            <h2 class="section-title">카드 문법은 조용하게, 식별 구조는 선명하게</h2>
-          </div>
-
-          <div class="info-grid">
-            <article class="shell-card shell-card--accent" data-line="hydrating">
-              <div class="number-board__number">21</div>
-              <h3>Cleansing Milk for Skin Hydrating</h3>
-              <p>하이드레이팅 라인의 입구 역할을 맡는 대표 카드.</p>
-              <p class="micro-note">대표 상세는 37에서 먼저 확인합니다.</p>
-            </article>
-
-            <article class="shell-card shell-card--accent" data-line="revitalizing">
-              <div class="number-board__number">37</div>
-              <h3>Intensive Cellular ER Cream</h3>
-              <p>대표 상세 템플릿 기준으로 먼저 확인할 core SKU.</p>
-              <a class="button-link" href="/products/37-intensive-cellular-er-cream/">대표 상세 보기</a>
-            </article>
-
-            <article class="shell-card shell-card--accent" data-line="brightening">
-              <div class="number-board__number">57</div>
-              <h3>Melaway Brightening Cream</h3>
-              <p>브라이트닝 라인의 마무리 문법을 보여주는 카드.</p>
-              <p class="micro-note">대표 상세는 37에서 먼저 확인합니다.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--tight">
-        <div class="container split-layout">
-          <div class="shell-card">
-            <p class="eyebrow">Connected Routes</p>
-            <h2>제품 허브는 고민과 근거로 분기됩니다</h2>
-            <p>
-              제품 허브 다음 단계에서는 by concern과 results로 분기해,
-              문제와 근거의 연결을 더 분명하게 만듭니다.
-            </p>
-            <div class="link-row">
-              <a class="button-link button-link--ghost" href="/by-concern/">고민별 구조 보기</a>
-              <a class="button-link button-link--subtle" href="/results/">근거 구조 보기</a>
-            </div>
-          </div>
-
-          <aside class="surface-note">
-            <p class="eyebrow">Offer Layer</p>
-            <p>키트와 세트는 `/offers/[slug]`에서 다루며, core SKU 카드 문법과 섞지 않습니다.</p>
-          </aside>
-        </div>
-      </section>
-    </main>
-
-    <div data-component="footer"></div>
+    <main class="products-blank" aria-label="Products blank page"></main>
 
     <script src="/assets/js/components.js" defer></script>
     <script src="/assets/js/main.js" defer></script>

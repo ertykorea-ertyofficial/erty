@@ -96,7 +96,7 @@ body[data-page="by-concern"] .bc-next-actions__item {
   border-left: 1px solid rgba(17, 19, 23, 0.07);
   color: var(--bc-next-text);
   text-decoration: none;
-  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-family: var(--font-sans);
   background: transparent;
   overflow: hidden;
   transition:
@@ -263,6 +263,21 @@ body[data-page="by-concern"] .bc-next-actions__item:focus-visible {
   body[data-page="by-concern"] .bc-next-actions__label {
     font-size: 14px;
     letter-spacing: 0.12em;
+  }
+}
+
+@media (min-width: 2200px) {
+  body[data-page="by-concern"] .bc-next-actions__rail {
+    width: min(1320px, calc(100vw - 144px));
+  }
+
+  body[data-page="by-concern"] .bc-next-actions__item {
+    min-height: 76px;
+    padding: 0 24px;
+  }
+
+  body[data-page="by-concern"] .bc-next-actions__label {
+    font-size: 16px;
   }
 }
 

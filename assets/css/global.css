@@ -1,3 +1,73 @@
+@font-face {
+  font-family: "Gmarket Sans";
+  src: url("/assets/fonts/gmarket-sans/GmarketSansLight.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  unicode-range:
+    U+1100-11FF,
+    U+3130-318F,
+    U+A960-A97F,
+    U+AC00-D7A3,
+    U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: "Gmarket Sans";
+  src: url("/assets/fonts/gmarket-sans/GmarketSansMedium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  unicode-range:
+    U+1100-11FF,
+    U+3130-318F,
+    U+A960-A97F,
+    U+AC00-D7A3,
+    U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: "Gmarket Sans";
+  src: url("/assets/fonts/gmarket-sans/GmarketSansMedium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  unicode-range:
+    U+1100-11FF,
+    U+3130-318F,
+    U+A960-A97F,
+    U+AC00-D7A3,
+    U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: "Gmarket Sans";
+  src: url("/assets/fonts/gmarket-sans/GmarketSansMedium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  unicode-range:
+    U+1100-11FF,
+    U+3130-318F,
+    U+A960-A97F,
+    U+AC00-D7A3,
+    U+D7B0-D7FF;
+}
+
+@font-face {
+  font-family: "Gmarket Sans";
+  src: url("/assets/fonts/gmarket-sans/GmarketSansBold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  unicode-range:
+    U+1100-11FF,
+    U+3130-318F,
+    U+A960-A97F,
+    U+AC00-D7A3,
+    U+D7B0-D7FF;
+}
+
 :root {
   --color-bg: #f7f8f9;
   --color-surface: #ffffff;
@@ -36,6 +106,8 @@
   --shadow-soft: 0 18px 44px var(--color-shadow-soft);
   --shadow-lift: 0 28px 60px var(--color-shadow-lift);
   --font-sans: "Pretendard", "Noto Sans KR", "Inter", system-ui, sans-serif;
+  --font-korean-display: "Gmarket Sans", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  --font-korean-brand: "Gmarket Sans", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
 }
 
 html {
@@ -52,8 +124,12 @@ body {
     radial-gradient(circle at 100% 12%, rgba(12, 105, 52, 0.04), transparent 24%),
     linear-gradient(180deg, #fbfbfc 0%, #f7f8f9 28%, #f4f5f7 100%);
   color: var(--color-text);
-  font-family: var(--font-sans);
+  font-family: var(--font-korean-display);
   line-height: 1.5;
+}
+
+[lang="en"] {
+  font-family: var(--font-sans);
 }
 
 body::before {
@@ -160,4 +236,12 @@ strong {
   color: var(--color-text-muted);
   font-size: 0.875rem;
   line-height: 1.6;
+}
+
+.font-gmarket-sans {
+  font-family: var(--font-korean-display);
+}
+
+.font-gmarket-sans-brand {
+  font-family: var(--font-korean-brand);
 }

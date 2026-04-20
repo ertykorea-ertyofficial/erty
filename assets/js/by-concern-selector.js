@@ -4,6 +4,10 @@
   }
 
   const data = window.ERTY_BY_CONCERN_SELECTOR_DATA;
+  const pageShell = document.querySelector(".by-concern-reset");
+  const heroSection = document.querySelector(".by-concern-reset__hero");
+  const heroCopy = document.querySelector(".by-concern-reset__hero-copy");
+  const heroPlate = document.querySelector(".by-concern-reset__hero-plate");
   const root = document.getElementById("concern-selector");
   const shell = document.getElementById("bc-experience");
   const stage = document.getElementById("bc-stage");
@@ -18,9 +22,14 @@
   const cta = document.getElementById("bc-panel-cta");
   const ctaText = document.getElementById("bc-panel-cta-text");
   const dock = document.getElementById("bc-dock");
+  const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   if (
     !data ||
+    !pageShell ||
+    !heroSection ||
+    !heroCopy ||
+    !heroPlate ||
     !root ||
     !shell ||
     !stage ||
@@ -61,6 +70,80 @@
     ? data.defaultConcernId
     : concernIds[0];
   let previewConcernId = null;
+  let scrollFrame = 0;
+
+  function setScrollHandoffVariables(progress) {
+    const clamped = Math.min(Math.max(progress, 0), 1);
+    const heroShift = `${(-18 * clamped).toFixed(2)}px`;
+    const heroOpacity = (1 - 0.14 * clamped).toFixed(3);
+    const heroPlateShift = `${(-12 * clamped).toFixed(2)}px`;
+    const heroPlateOpacity = (0.5 - 0.14 * clamped).toFixed(3);
+    const introShift = `${(14 * (1 - clamped)).toFixed(2)}px`;
+    const introOpacity = (0.93 + 0.07 * clamped).toFixed(3);
+    const experienceShift = `${(20 * (1 - clamped)).toFixed(2)}px`;
+    const experienceOpacity = (0.95 + 0.05 * clamped).toFixed(3);
+    const selectorWashOpacity = (0.78 + 0.22 * clamped).toFixed(3);
+    const selectorShellOpacity = (0.68 + 0.32 * clamped).toFixed(3);
+
+    pageShell.style.setProperty("--bc-hero-handoff-shift", heroShift);
+    pageShell.style.setProperty("--bc-hero-handoff-opacity", heroOpacity);
+    pageShell.style.setProperty("--bc-hero-plate-handoff-shift", heroPlateShift);
+    pageShell.style.setProperty("--bc-hero-plate-handoff-opacity", heroPlateOpacity);
+    pageShell.style.setProperty("--bc-selector-intro-handoff-shift", introShift);
+    pageShell.style.setProperty("--bc-selector-intro-handoff-opacity", introOpacity);
+    pageShell.style.setProperty("--bc-selector-experience-handoff-shift", experienceShift);
+    pageShell.style.setProperty("--bc-selector-experience-handoff-opacity", experienceOpacity);
+    pageShell.style.setProperty("--bc-selector-wash-opacity", selectorWashOpacity);
+    pageShell.style.setProperty("--bc-selector-shell-opacity", selectorShellOpacity);
+  }
+
+  function computeScrollHandoffProgress() {
+    const headerHeight =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--header-height")
+      ) || 0;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+    const selectorTop = root.getBoundingClientRect().top + window.scrollY;
+    const revealStart = Math.max(0, selectorTop - viewportHeight * 0.78);
+    const revealEnd = Math.max(revealStart + 1, selectorTop - headerHeight - 36);
+    return (window.scrollY - revealStart) / (revealEnd - revealStart);
+  }
+
+  function updateScrollHandoff() {
+    if (reduceMotionQuery.matches) {
+      pageShell.style.removeProperty("--bc-hero-handoff-shift");
+      pageShell.style.removeProperty("--bc-hero-handoff-opacity");
+      pageShell.style.removeProperty("--bc-hero-plate-handoff-shift");
+      pageShell.style.removeProperty("--bc-hero-plate-handoff-opacity");
+      pageShell.style.removeProperty("--bc-selector-intro-handoff-shift");
+      pageShell.style.removeProperty("--bc-selector-intro-handoff-opacity");
+      pageShell.style.removeProperty("--bc-selector-experience-handoff-shift");
+      pageShell.style.removeProperty("--bc-selector-experience-handoff-opacity");
+      pageShell.style.removeProperty("--bc-selector-wash-opacity");
+      pageShell.style.removeProperty("--bc-selector-shell-opacity");
+      return;
+    }
+
+    setScrollHandoffVariables(computeScrollHandoffProgress());
+  }
+
+  function requestScrollHandoffUpdate() {
+    if (scrollFrame) {
+      return;
+    }
+
+    scrollFrame = window.requestAnimationFrame(() => {
+      scrollFrame = 0;
+      updateScrollHandoff();
+    });
+  }
+
+  function renderCueTitle(title) {
+    return title
+      .split(/\s*·\s*/g)
+      .map((line) => `<span class="bc-cue__title-line">${line}</span>`)
+      .join("");
+  }
 
   const cueMarkup = data.concerns
     .map(
@@ -77,9 +160,7 @@
           style="--cue-rgb:${concern.cueRgb || concern.accentRgb}; --cue-ink-rgb:${concern.cueInkRgb || concern.cueRgb || concern.accentRgb};"
         >
           <span class="bc-cue__accent"></span>
-          <span class="bc-cue__number">${concern.cueNumber}</span>
-          <span class="bc-cue__title">${concern.title}</span>
-          <span class="bc-cue__meta">${concern.cueMeta}</span>
+          <span class="bc-cue__title">${renderCueTitle(concern.title)}</span>
         </button>
       `
     )
@@ -279,6 +360,15 @@
     setPointerOrigin();
   });
 
+  window.addEventListener("scroll", requestScrollHandoffUpdate, { passive: true });
+  window.addEventListener("resize", requestScrollHandoffUpdate);
+
+  if (typeof reduceMotionQuery.addEventListener === "function") {
+    reduceMotionQuery.addEventListener("change", requestScrollHandoffUpdate);
+  } else if (typeof reduceMotionQuery.addListener === "function") {
+    reduceMotionQuery.addListener(requestScrollHandoffUpdate);
+  }
+
   const heroCta = document.querySelector('.by-concern-reset__cta[href="#concern-selector"]');
   heroCta?.addEventListener("click", (event) => {
     event.preventDefault();
@@ -299,4 +389,5 @@
 
   applyConcern(activeConcernId, { commit: true });
   emitConcernChange();
+  requestScrollHandoffUpdate();
 })();
