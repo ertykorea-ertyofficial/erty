@@ -108,6 +108,14 @@
     root.style.setProperty("--my", y);
   }
 
+  function emitConcernChange() {
+    document.dispatchEvent(
+      new CustomEvent("bc:concern-change", {
+        detail: { id: activeConcernId },
+      }),
+    );
+  }
+
   function updateVisualState(concernId) {
     stageVisual.classList.add("is-switching");
     stageImage.classList.add("is-switching");
@@ -178,6 +186,7 @@
 
   function commitConcern(concernId) {
     applyConcern(concernId, { commit: true });
+    emitConcernChange();
   }
 
   function previewConcern(concernId) {
@@ -289,4 +298,5 @@
   });
 
   applyConcern(activeConcernId, { commit: true });
+  emitConcernChange();
 })();

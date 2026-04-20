@@ -157,9 +157,6 @@ function initHomePage() {
     return;
   }
 
-  applyCopySlots(data);
-  renderFooterArtifact(data);
-
   if (document.body.dataset.homeInitialized === "true") {
     return;
   }
@@ -173,6 +170,16 @@ function initHomePage() {
   renderFaq(data);
   bindHomeStaticEvents();
   document.body.dataset.homeInitialized = "true";
+}
+
+function initSharedFooter() {
+  const data = window.ERTY_HOME_DATA;
+  if (!data) {
+    return;
+  }
+
+  applyCopySlots(data);
+  renderFooterArtifact(data);
 }
 
 function renderHeroIndex(data) {
@@ -1069,6 +1076,7 @@ function initApp() {
   markCurrentPage();
   updateFooterYear();
   initNavigationToggle();
+  initSharedFooter();
   initHomePage();
 }
 

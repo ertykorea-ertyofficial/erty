@@ -10,8 +10,7 @@ body[data-page="by-concern"] .by-concern-reset {
   position: relative;
   min-height: 100svh;
   min-height: 100dvh;
-  overflow-x: clip;
-  overflow-y: visible;
+  overflow: clip;
   isolation: isolate;
   background: rgb(255 255 255);
 }
