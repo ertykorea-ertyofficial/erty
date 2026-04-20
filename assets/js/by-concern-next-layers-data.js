@@ -152,7 +152,7 @@ window.ERTY_BY_CONCERN_NEXT_LAYERS_DATA = {
       ],
     },
     "recovery-firmness": {
-      accentRgb: "163,74,82",
+      accentRgb: "179,53,64",
       guideDesc: "선택한 고민 기준으로 지금 먼저 읽을 결과, 가이드, 제품 비교 경로를 정리합니다.",
       guides: [
         {

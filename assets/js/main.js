@@ -19,8 +19,10 @@ function markCurrentPage() {
 
     if (linkMatches(targetPath, currentPath)) {
       link.setAttribute("aria-current", "page");
+      link.classList.add("is-active");
     } else {
       link.removeAttribute("aria-current");
+      link.classList.remove("is-active");
     }
   });
 }
