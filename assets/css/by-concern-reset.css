@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap");
+
+body[data-page="by-concern"] {
+  overflow-x: clip;
+  overflow-y: auto;
+  background: rgb(255 255 255);
+}
+
+body[data-page="by-concern"] .by-concern-reset {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow-x: clip;
+  overflow-y: visible;
+  isolation: isolate;
+  background: rgb(255 255 255);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body[data-page="by-concern"] .by-concern-reset__scene {
+  position: absolute;
+  inset: 0;
+}
+
+body[data-page="by-concern"] .by-concern-reset__hero {
+  position: relative;
+  z-index: 1;
+  min-height: max(560px, calc(100svh - var(--header-height) - 64px));
+  min-height: max(560px, calc(100dvh - var(--header-height) - 64px));
+  padding: calc(var(--header-height) + 28px) 0 24px;
+}
+
+body[data-page="by-concern"] .by-concern-reset__hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: inherit;
+}
+
+body[data-page="by-concern"] .by-concern-reset__hero-copy {
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  width: min(100%, 960px);
+  text-align: center;
+}
+
+body[data-page="by-concern"] .by-concern-reset__hero-copy h1 {
+  max-width: 8.6em;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-size: clamp(2.7rem, 4vw, 3.7rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  color: rgb(17 19 23);
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+body[data-page="by-concern"] .by-concern-reset__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
+}
+
+body[data-page="by-concern"] .frosted-glass {
+  backdrop-filter: blur(7px) saturate(100%);
+  -webkit-backdrop-filter: blur(7px) saturate(100%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(to top right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+body[data-page="by-concern"] .glass-button {
+  position: relative;
+  width: min(100%, 292px);
+  min-height: 82px;
+  padding: 0 28px;
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+  backdrop-filter: blur(14px) saturate(112%);
+  -webkit-backdrop-filter: blur(14px) saturate(112%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -10px 24px rgba(255, 255, 255, 0.08),
+    0 22px 48px rgba(17, 19, 23, 0.14);
+  color: rgb(255 255 255);
+  font-family: "Orbitron", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.12);
+}
+
+body[data-page="by-concern"] .glass-button::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.24), transparent 32%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 60%);
+  pointer-events: none;
+  content: "";
+}
+
+body[data-page="by-concern"] .glass-button:hover,
+body[data-page="by-concern"] .glass-button:focus-visible {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -10px 24px rgba(255, 255, 255, 0.1),
+    0 24px 54px rgba(17, 19, 23, 0.18);
+}
+
+body[data-page="by-concern"] .glass-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.78);
+  outline-offset: 5px;
+}
+
+body[data-page="by-concern"] .by-concern-reset__selector-placeholder {
+  position: relative;
+  z-index: 1;
+  min-height: 100svh;
+  min-height: 100dvh;
+}
+
+body[data-page="by-concern"] .by-concern-reset__scene .rainbow {
+  position: absolute;
+  top: 0;
+  right: -25vw;
+  width: 0;
+  height: 100vh;
+  transform: rotate(10deg);
+  transform-origin: top right;
+  box-shadow:
+    -130px 0 80px 40px rgb(255 255 255),
+    -50px 0 50px 25px var(--c1),
+    0 0 50px 25px var(--c2),
+    50px 0 50px 25px var(--c3),
+    130px 0 80px 40px rgb(255 255 255);
+  animation: by-concern-reset-slide var(--duration) linear infinite;
+  animation-delay: var(--delay);
+  will-change: right;
+}
+
+body[data-page="by-concern"] .by-concern-reset__scene .h {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 0;
+  box-shadow: 0 0 50vh 40vh rgb(255 255 255);
+}
+
+body[data-page="by-concern"] .by-concern-reset__scene .v {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 100vh;
+  box-shadow: 0 0 35vw 25vw rgb(255 255 255);
+}
+
+@keyframes by-concern-reset-slide {
+  from {
+    right: -25vw;
+  }
+
+  to {
+    right: 125vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="by-concern"] .by-concern-reset__scene .rainbow {
+    animation: none;
+    right: 32vw;
+  }
+}
+
+@media (max-width: 767px) {
+  body[data-page="by-concern"] .by-concern-reset__hero {
+    min-height: max(420px, calc(100svh - var(--header-height) - 36px));
+    min-height: max(420px, calc(100dvh - var(--header-height) - 36px));
+    padding: calc(var(--header-height) + 16px) 0 18px;
+  }
+
+  body[data-page="by-concern"] .by-concern-reset__hero-copy {
+    gap: 16px;
+    width: min(100%, 560px);
+  }
+
+  body[data-page="by-concern"] .by-concern-reset__hero-copy h1 {
+    max-width: 8.5em;
+    font-size: clamp(2.18rem, 8.4vw, 2.78rem);
+    line-height: 0.92;
+  }
+
+  body[data-page="by-concern"] .glass-button {
+    width: min(100%, 236px);
+    min-height: 68px;
+    padding: 0 22px;
+    border-radius: 22px;
+    font-size: 0.92rem;
+  }
+}
