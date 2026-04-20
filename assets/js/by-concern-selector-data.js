@@ -15,6 +15,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       next: "세정 → 균형 → 모공",
       cta: "11부터 보기",
       href: "/products/11-cleansing-gel-for-skin-balancing",
+      imageSrc: "/assets/images/brand/by-concern/selector-stage/oil-breakout-pores.png",
     },
     {
       id: "dehydration-tightness",
@@ -30,6 +31,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       next: "수분 통로 → 보습 → 장벽",
       cta: "23부터 보기",
       href: "/products/23-tonic-lotion-for-skin-hydrating",
+      imageSrc: "/assets/images/brand/by-concern/selector-stage/dehydration-tightness.png",
     },
     {
       id: "barrier-redness",
@@ -45,6 +47,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       next: "장벽 회복 → 컨디션 보완",
       cta: "37부터 보기",
       href: "/products/37-intensive-cellular-er-cream",
+      imageSrc: "/assets/images/brand/by-concern/selector-stage/barrier-redness.png",
     },
     {
       id: "dullness-dark-spot",
@@ -60,6 +63,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       next: "톤 개선 → 밝기 → 방어",
       cta: "55부터 보기",
       href: "/products/55-concentraed-booster-for-skin-brightening",
+      imageSrc: "/assets/images/brand/by-concern/selector-stage/dullness-dark-spot.png",
     },
     {
       id: "texture-flaking",
@@ -75,6 +79,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       next: "결 정리 → 수분 → 장벽",
       cta: "01부터 보기",
       href: "/products/01-perfect-soothing-solution-1",
+      imageSrc: "/assets/images/brand/by-concern/selector-stage/texture-flaking.png",
     },
     {
       id: "recovery-firmness",
@@ -90,6 +95,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       next: "회복 → 장벽 → 리모델링",
       cta: "35부터 보기",
       href: "/products/35-concentraed-booster-for-skin-revitalizing",
+      imageSrc: "/assets/images/brand/by-concern/selector-stage/recovery-firmness.png",
     },
   ],
 };

@@ -8,6 +8,7 @@
   const shell = document.getElementById("bc-experience");
   const stage = document.getElementById("bc-stage");
   const stageVisual = document.getElementById("bc-stage-visual");
+  const stageImage = document.getElementById("bc-stage-image");
   const chip = document.getElementById("bc-panel-chip");
   const family = document.getElementById("bc-panel-family");
   const concernName = document.getElementById("bc-panel-concern");
@@ -24,6 +25,7 @@
     !shell ||
     !stage ||
     !stageVisual ||
+    !stageImage ||
     !chip ||
     !family ||
     !concernName ||
@@ -82,11 +84,13 @@
 
   function updateVisualState(concernId) {
     stageVisual.classList.add("is-switching");
+    stageImage.classList.add("is-switching");
     stage.dataset.displayConcern = concernId;
     root.dataset.displayConcern = concernId;
     window.requestAnimationFrame(() => {
       window.setTimeout(() => {
         stageVisual.classList.remove("is-switching");
+        stageImage.classList.remove("is-switching");
       }, 100);
     });
   }
@@ -133,6 +137,9 @@
     ctaText.textContent = displayConcern.cta;
     cta.href = displayConcern.href;
     cta.setAttribute("aria-label", `${displayConcern.title} ${displayConcern.cta}`);
+    if (displayConcern.imageSrc) {
+      stageImage.src = displayConcern.imageSrc;
+    }
     document.getElementById("bc-stage-panel")?.setAttribute(
       "aria-labelledby",
       `bc-tab-${displayConcernId}`

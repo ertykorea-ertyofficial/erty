@@ -104,6 +104,7 @@ body[data-page="by-concern"] .bc-stage {
 
 body[data-page="by-concern"] .bc-stage__orb {
   position: relative;
+  z-index: 1;
   width: min(48vw, 560px);
   aspect-ratio: 1 / 1;
   border-radius: 999px;
@@ -164,6 +165,7 @@ body[data-page="by-concern"] .bc-stage__visual {
   width: 82%;
   height: 82%;
   border-radius: 999px;
+  overflow: hidden;
   background:
     radial-gradient(
       42% 42% at 30% 26%,
@@ -193,6 +195,30 @@ body[data-page="by-concern"] .bc-stage__visual {
     opacity var(--bc-duration-base) var(--bc-ease),
     box-shadow var(--bc-duration-base) var(--bc-ease),
     background var(--bc-duration-base) var(--bc-ease);
+}
+
+body[data-page="by-concern"] .bc-stage__image-frame {
+  position: absolute;
+  inset: 3%;
+  z-index: 0;
+  display: grid;
+  place-items: center;
+}
+
+body[data-page="by-concern"] .bc-stage__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  opacity: 0.84;
+  filter: saturate(0.96) contrast(1.02);
+  transform: scale(1.14);
+  transform-origin: 50% 50%;
+  transition:
+    opacity var(--bc-duration-base) var(--bc-ease),
+    transform var(--bc-duration-base) var(--bc-ease),
+    filter var(--bc-duration-base) var(--bc-ease);
 }
 
 body[data-page="by-concern"] .bc-stage__visual::before,
@@ -232,10 +258,16 @@ body[data-page="by-concern"] .bc-stage__visual.is-switching {
     0 16px 30px rgba(17, 19, 23, 0.04);
 }
 
+body[data-page="by-concern"] .bc-stage__image.is-switching {
+  opacity: 0.56;
+  transform: scale(1.09);
+}
+
 body[data-page="by-concern"] .bc-stage__panel {
   position: absolute;
   right: 0;
   bottom: 7%;
+  z-index: 3;
   width: min(402px, 42vw);
   padding: 22px 22px 20px;
   border-radius: var(--bc-radius-xl);
