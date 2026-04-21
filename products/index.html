@@ -8,32 +8,199 @@
       name="description"
       content="ERTY 제품 허브는 core SKU를 번호와 라인 체계 중심으로 정리하는 메인 도메인 페이지입니다."
     />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/brand/products/hero/products-hero-2G8A4188.jpg"
+    />
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
-    <style>
-      body[data-page="products"] {
-        background: #ffffff;
-      }
-
-      body[data-page="products"]::before {
-        display: none;
-      }
-
-      .products-blank {
-        min-height: 100dvh;
-        padding-top: var(--header-height);
-        background: #ffffff;
-      }
-    </style>
+    <link rel="stylesheet" href="/assets/css/products.css" />
   </head>
   <body data-page="products">
     <div data-component="header"></div>
 
-    <main class="products-blank" aria-label="Products blank page"></main>
+    <main class="products-main products-main--v1">
+      <section
+        class="products-hero"
+        aria-labelledby="products-hero-title"
+      >
+        <div class="products-hero__background" aria-hidden="true"></div>
+        <div class="products-hero__wash" aria-hidden="true"></div>
+
+        <div class="container">
+          <div class="products-hero__shell">
+            <div class="products-hero__copy">
+              <p class="products-hero__eyebrow">PRODUCT INDEX</p>
+
+              <h1 id="products-hero-title" class="products-hero__title">
+                <span>번호와 라인으로 읽는 제품</span>
+              </h1>
+
+              <p class="products-hero__desc">
+                제품명보다 넘버링 기준으로 제품을 소개합니다
+              </p>
+
+              <div class="products-hero__actions">
+                <a class="products-hero__primary" href="#product-framework">
+                  제품 구조 먼저 보기
+                </a>
+                <a class="products-hero__secondary" href="/by-concern/">
+                  고민에서 시작하기
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="products-framework"
+        id="product-framework"
+        aria-label="Product framework"
+      >
+        <div class="container">
+          <div class="products-framework__shell">
+            <section
+              class="products-hero__stage"
+              id="products-hero-stage"
+              aria-live="polite"
+            >
+              <div
+                class="products-hero__stage-panel"
+                id="products-hero-panel"
+                role="tabpanel"
+                tabindex="0"
+                aria-labelledby="products-family-tab-revitalizing"
+              >
+                <div class="products-hero__stage-visual">
+                  <span
+                    class="products-hero__stage-number"
+                    id="products-hero-number"
+                    aria-hidden="true"
+                  >
+                    37
+                  </span>
+                  <img
+                    id="products-hero-image"
+                    class="products-hero__stage-image"
+                    src="/assets/images/brand/home/sku-rail/37.png"
+                    alt="REVITALIZING 대표 SKU 37 제품"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </div>
+
+                <div class="products-hero__stage-copy">
+                  <div class="products-hero__stage-meta">
+                    <span
+                      class="products-hero__stage-family"
+                      id="products-hero-family"
+                    >
+                      REVITALIZING
+                    </span>
+                    <span
+                      class="products-hero__stage-range"
+                      id="products-hero-range"
+                    >
+                      35 · 37
+                    </span>
+                  </div>
+
+                  <p
+                    class="products-hero__stage-interpretation"
+                    id="products-hero-interpretation"
+                  >
+                    회복과 장벽, 컨디션 보완의 시작점입니다.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                class="products-hero__rail"
+                role="tablist"
+                aria-label="제품 라인 선택"
+              >
+                <button
+                  class="products-hero__rail-item"
+                  id="products-family-tab-balancing"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="products-hero-panel"
+                  tabindex="-1"
+                  data-family="balancing"
+                >
+                  <span class="products-hero__rail-label">BALANCING</span>
+                  <span class="products-hero__rail-skus">11 · 13 · 15</span>
+                </button>
+
+                <button
+                  class="products-hero__rail-item"
+                  id="products-family-tab-hydrating"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="products-hero-panel"
+                  tabindex="-1"
+                  data-family="hydrating"
+                >
+                  <span class="products-hero__rail-label">HYDRATING</span>
+                  <span class="products-hero__rail-skus">21 · 23 · 25 · 27</span>
+                </button>
+
+                <button
+                  class="products-hero__rail-item is-active"
+                  id="products-family-tab-revitalizing"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="products-hero-panel"
+                  tabindex="0"
+                  data-family="revitalizing"
+                >
+                  <span class="products-hero__rail-label">REVITALIZING</span>
+                  <span class="products-hero__rail-skus">35 · 37</span>
+                </button>
+
+                <button
+                  class="products-hero__rail-item"
+                  id="products-family-tab-brightening"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="products-hero-panel"
+                  tabindex="-1"
+                  data-family="brightening"
+                >
+                  <span class="products-hero__rail-label">BRIGHTENING</span>
+                  <span class="products-hero__rail-skus">50 · 55 · 57</span>
+                </button>
+
+                <button
+                  class="products-hero__rail-item products-hero__rail-item--protocol"
+                  id="products-family-tab-protocol"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="products-hero-panel"
+                  tabindex="-1"
+                  data-family="protocol"
+                >
+                  <span class="products-hero__rail-label">PROTOCOL</span>
+                  <span class="products-hero__rail-skus">01 · 02 · 03</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <script src="/assets/js/components.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/products-hero.js" defer></script>
   </body>
 </html>

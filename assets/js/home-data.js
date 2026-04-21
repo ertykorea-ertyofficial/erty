@@ -2,7 +2,7 @@ window.ERTY_HOME_DATA = {
   defaultSkuId: "37",
   forbiddenPhrases: ["좋은 제품", "피부에 좋다", "완벽한", "100% 효과"],
   phraseMap: {
-    hero: "무너진 피부를 회복의 번호로 잡다",
+    hero: "무너진 피부 번호로 회복하다",
     featured: "피부마다 필요한 번호가 다릅니다",
     numbering: "번호는 피부의 다음 단계입니다",
   },
@@ -10,11 +10,9 @@ window.ERTY_HOME_DATA = {
     hero: {
       eyebrow: "에르띠 인덱스",
       microRule: "장벽 · 수분 · 톤",
-      titleLine1: "무너진 피부를",
-      titleLine2: "회복의 번호로 잡다",
-      subcopy: "장벽, 수분, 톤을 번호로 읽는 더마 프로페셔널 브랜드.",
-      ctaPrimary: "회복 원칙",
-      ctaSecondary: "번호 구조",
+      titleLine1: "무너진 피부 번호로 회복하다",
+      subcopy: "피부고민을 번호로 읽는\n더마 프로페셔널 브랜드",
+      ctaSecondary: "피부 고민",
       indexGroups: [
         { id: "protocol", label: "프로토콜", value: "01 · 02 · 03" },
         { id: "line", label: "피부 축", value: "장벽 · 수분 · 톤" },
