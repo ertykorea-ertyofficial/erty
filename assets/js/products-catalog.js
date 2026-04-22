@@ -17,6 +17,7 @@
   const pxMeta = document.getElementById("px-meta");
   const pxPrimary = document.getElementById("px-primary");
   const pxSecondary = document.getElementById("px-secondary");
+  const pxTertiary = document.getElementById("px-tertiary");
   const pxFamilyTabs = document.getElementById("px-family-tabs");
   const pxNumberRail = document.getElementById("px-number-rail");
   const pxPrev = document.getElementById("px-prev");
@@ -26,6 +27,9 @@
   const catalogTitle = document.getElementById("products-catalog-title");
   const catalogDescription = document.getElementById("products-catalog-description");
   const catalogStatus = document.getElementById("products-catalog-status");
+  const catalogScope = document.getElementById("products-catalog-scope");
+  const catalogRouteButton = document.getElementById("products-catalog-route");
+  const catalogExpandButton = document.getElementById("products-catalog-expand");
   const productGrid = document.getElementById("product-grid");
   const sentinel = document.getElementById("product-grid-sentinel");
 
@@ -42,6 +46,7 @@
     !pxMeta ||
     !pxPrimary ||
     !pxSecondary ||
+    !pxTertiary ||
     !pxFamilyTabs ||
     !pxNumberRail ||
     !pxPrev ||
@@ -50,6 +55,9 @@
     !catalogTitle ||
     !catalogDescription ||
     !catalogStatus ||
+    !catalogScope ||
+    !catalogRouteButton ||
+    !catalogExpandButton ||
     !productGrid ||
     !sentinel
   ) {
@@ -245,36 +253,45 @@
   ];
 
   const pxConcernMap = {
-    oil: {
+    "oil-breakout-pores": {
       title: "유분 · 트러블 · 모공",
       route: ["11", "13", "15"],
       family: "balancing",
     },
-    dehydration: {
+    "dehydration-tightness": {
       title: "수분 부족 · 속당김",
       route: ["23", "25", "27"],
       family: "hydrating",
     },
-    barrier: {
+    "barrier-redness": {
       title: "장벽 약화 · 붉은기",
       route: ["37", "35"],
       family: "revitalizing",
     },
-    tone: {
+    "dullness-dark-spot": {
       title: "칙칙함 · 잡티 · 톤 저하",
       route: ["55", "57", "50"],
       family: "brightening",
     },
-    texture: {
+    "texture-flaking": {
       title: "거친 결 · 각질",
       route: ["01", "23", "37"],
       family: "professional",
     },
-    recovery: {
+    "recovery-firmness": {
       title: "회복이 느림 · 탄력 저하",
       route: ["35", "37", "02"],
       family: "revitalizing",
     },
+  };
+
+  const pxConcernAliases = {
+    oil: "oil-breakout-pores",
+    dehydration: "dehydration-tightness",
+    barrier: "barrier-redness",
+    tone: "dullness-dark-spot",
+    texture: "texture-flaking",
+    recovery: "recovery-firmness",
   };
 
   const pxFamilyOrder = [
@@ -302,7 +319,9 @@
 
   const state = {
     activeConcern: null,
+    activeRouteIds: [],
     activeFamily: "all",
+    catalogScope: "all",
     activeId: "11",
     previewId: null,
     previewFamily: null,
@@ -310,7 +329,9 @@
     isLoadingMore: false,
     observer: null,
     swipeStartX: null,
+    suspendGridHoverPreview: false,
   };
+  let visualSyncFrame = 0;
 
   function getSearchState() {
     const params = new URLSearchParams(window.location.search);
@@ -325,6 +346,18 @@
     return pxProducts.find((product) => product.id === id) || null;
   }
 
+  function normalizeConcernId(concernId) {
+    if (!concernId) {
+      return null;
+    }
+
+    if (pxConcernMap[concernId]) {
+      return concernId;
+    }
+
+    return pxConcernAliases[concernId] || null;
+  }
+
   function getProductsForFamily(family) {
     if (family === "all") {
       return pxProducts;
@@ -333,7 +366,21 @@
     return pxProducts.filter((product) => product.family === family);
   }
 
+  function getRouteProducts(routeIds = state.activeRouteIds) {
+    return routeIds
+      .map((id) => getProductById(id))
+      .filter(Boolean);
+  }
+
   function getVisibleProducts() {
+    if (state.activeConcern && state.catalogScope === "route") {
+      return getRouteProducts();
+    }
+
+    if (state.catalogScope === "all") {
+      return pxProducts;
+    }
+
     return getProductsForFamily(state.activeFamily);
   }
 
@@ -347,6 +394,14 @@
     }
 
     return pxConcernMap[state.activeConcern] || null;
+  }
+
+  function isRouteScope() {
+    return Boolean(state.activeConcern && state.catalogScope === "route");
+  }
+
+  function hasConcernScopeControls() {
+    return Boolean(state.activeConcern && state.activeRouteIds.length);
   }
 
   function getFamilyCounts() {
@@ -379,12 +434,85 @@
     productsCatalog.style.setProperty("--products-accent-rgb", accentRgb);
   }
 
+  function syncStageVisualFrame() {
+    const visualRect = pxVisual.getBoundingClientRect();
+    const imageRect = pxImage.getBoundingClientRect();
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+
+    if (!visualRect.width || !imageRect.height) {
+      return;
+    }
+
+    let maxDiscSize = 392;
+    if (viewportWidth <= 768) {
+      maxDiscSize = 248;
+    } else if (viewportWidth <= 1100) {
+      maxDiscSize = 364;
+    }
+
+    const discSize = Math.min(imageRect.height * 1.08, maxDiscSize, visualRect.width - 24);
+    pxVisual.style.setProperty("--px-stage-disc-size", `${Math.max(discSize, 0).toFixed(2)}px`);
+  }
+
+  function requestStageVisualFrameSync() {
+    if (visualSyncFrame) {
+      return;
+    }
+
+    visualSyncFrame = window.requestAnimationFrame(() => {
+      visualSyncFrame = 0;
+      syncStageVisualFrame();
+    });
+  }
+
   function getPrimaryLabel(product, concernData) {
     if (concernData && concernData.route[0] === product.id) {
       return `${product.id}부터 보기`;
     }
 
     return `${product.id} 제품 보기`;
+  }
+
+  function syncScopeControls() {
+    const shouldShow = hasConcernScopeControls();
+    catalogScope.hidden = !shouldShow;
+
+    if (!shouldShow) {
+      return;
+    }
+
+    const isRouteActive = state.catalogScope === "route";
+    catalogRouteButton.classList.toggle("is-active", isRouteActive);
+    catalogExpandButton.classList.toggle("is-active", !isRouteActive);
+    catalogRouteButton.setAttribute("aria-pressed", isRouteActive ? "true" : "false");
+    catalogExpandButton.setAttribute("aria-pressed", !isRouteActive ? "true" : "false");
+  }
+
+  function applyCatalogScope(scope) {
+    if (scope !== "route" && scope !== "all" && scope !== "family") {
+      return;
+    }
+
+    if (scope === "route" && !state.activeRouteIds.length) {
+      return;
+    }
+
+    state.catalogScope = scope;
+
+    if (scope === "route") {
+      const routeProducts = getRouteProducts();
+      if (!routeProducts.find((product) => product.id === state.activeId)) {
+        state.activeId = routeProducts[0]?.id || state.activeId;
+      }
+    }
+
+    state.previewId = null;
+    state.previewFamily = null;
+    state.suspendGridHoverPreview = true;
+    state.visibleCount = INITIAL_VISIBLE_COUNT;
+    state.isLoadingMore = false;
+    renderAll();
+    dispatchExplorerEvents();
   }
 
   function renderContext(product) {
@@ -440,12 +568,22 @@
     pxPrimary.href = `#product-card-${product.id}`;
 
     if (concernData) {
-      pxSecondary.href = "/by-concern/";
-      pxSecondary.textContent = "고민 다시 보기";
+      pxSecondary.textContent =
+        state.catalogScope === "route" ? "전체 제품 보기" : "route만 보기";
+      pxSecondary.dataset.action =
+        state.catalogScope === "route" ? "expand-all" : "show-route";
+      pxTertiary.href = "/by-concern/";
+      pxTertiary.textContent = "고민 다시 보기";
+      pxTertiary.hidden = false;
     } else {
-      pxSecondary.href = "#products-catalog";
-      pxSecondary.textContent = "전체 제품 보기";
+      pxSecondary.textContent =
+        state.catalogScope === "all" ? "전체 제품 보기" : "전체 제품으로 확장";
+      pxSecondary.dataset.action =
+        state.catalogScope === "all" ? "jump-grid" : "expand-all";
+      pxTertiary.hidden = true;
     }
+
+    requestStageVisualFrameSync();
   }
 
   function renderFamilyTabs() {
@@ -566,8 +704,14 @@
 
     if (concernData) {
       catalogTitle.textContent = concernData.title;
-      catalogDescription.textContent = `${concernData.route.join(" → ")} route와 연결된 제품만 아래에서 이어서 확인합니다.`;
-      catalogStatus.textContent = `${concernData.title} 기준 ${filteredProducts.length}개 제품`;
+      if (state.catalogScope === "route") {
+        catalogDescription.textContent = `${concernData.route.join(" → ")} route만 아래에서 먼저 확인합니다.`;
+        catalogStatus.textContent = `${concernData.title} route ${filteredProducts.length}개 제품`;
+      } else {
+        catalogDescription.textContent = `${concernData.route.join(" → ")} route를 유지한 채 전체 제품으로 확장해 이어서 확인합니다.`;
+        catalogStatus.textContent = `전체 ${filteredProducts.length}개 제품`;
+      }
+      syncScopeControls();
       return;
     }
 
@@ -575,12 +719,14 @@
       catalogTitle.textContent = "전체 제품";
       catalogDescription.textContent = `현재 focus 번호 ${displayed.id} 아래로 전체 제품 구조를 이어서 탐색합니다.`;
       catalogStatus.textContent = `전체 ${filteredProducts.length}개 제품`;
+      syncScopeControls();
       return;
     }
 
     catalogTitle.textContent = familyMeta.countLabel;
     catalogDescription.textContent = `${familyMeta.label} 라인 안에서 먼저 볼 번호를 아래 support grid로 이어서 확인합니다.`;
     catalogStatus.textContent = `${familyMeta.countLabel} ${filteredProducts.length}개 제품`;
+    syncScopeControls();
   }
 
   function renderExplorerOnly() {
@@ -638,9 +784,22 @@
       const y = ((event.clientY - rect.top) / rect.height) * 100;
       article.style.setProperty("--product-mx", `${x}%`);
       article.style.setProperty("--product-my", `${y}%`);
+
+      if (state.suspendGridHoverPreview) {
+        state.suspendGridHoverPreview = false;
+        state.previewId = product.id;
+        renderStage(getDisplayedProduct());
+        syncFilterStates();
+        syncGridStates();
+      }
     };
 
-    const previewCard = () => {
+    const previewCard = (event) => {
+      if (event?.type === "mouseenter" && state.suspendGridHoverPreview) {
+        return;
+      }
+
+      state.suspendGridHoverPreview = false;
       state.previewId = product.id;
       renderStage(getDisplayedProduct());
       syncFilterStates();
@@ -665,6 +824,7 @@
       state.activeId = product.id;
       state.previewId = null;
       state.previewFamily = null;
+      state.suspendGridHoverPreview = false;
       state.visibleCount = Math.max(INITIAL_VISIBLE_COUNT, state.visibleCount);
       renderAll();
       dispatchExplorerEvents();
@@ -810,14 +970,19 @@
     state.activeId = id;
     state.previewId = null;
     state.previewFamily = null;
+    state.suspendGridHoverPreview = false;
     renderAll();
     dispatchExplorerEvents();
   }
 
   function commitFamily(family) {
+    state.activeConcern = null;
+    state.activeRouteIds = [];
     state.activeFamily = family;
+    state.catalogScope = family === "all" ? "all" : "family";
     state.previewFamily = null;
     state.previewId = null;
+    state.suspendGridHoverPreview = false;
 
     const visible = getVisibleProducts();
 
@@ -842,6 +1007,7 @@
     const nextIndex = (index + direction + visible.length) % visible.length;
     state.activeId = visible[nextIndex].id;
     state.previewId = null;
+    state.suspendGridHoverPreview = false;
     renderAll();
     dispatchExplorerEvents();
   }
@@ -910,14 +1076,17 @@
   }
 
   function handleConcernEvent(concernId) {
-    const concernData = pxConcernMap[concernId];
+    const normalizedConcernId = normalizeConcernId(concernId);
+    const concernData = normalizedConcernId ? pxConcernMap[normalizedConcernId] : null;
 
     if (!concernData) {
       return;
     }
 
-    state.activeConcern = concernId;
+    state.activeConcern = normalizedConcernId;
+    state.activeRouteIds = [...concernData.route];
     state.activeFamily = concernData.family;
+    state.catalogScope = "route";
     state.activeId = concernData.route[0];
     state.previewId = null;
     state.previewFamily = null;
@@ -941,6 +1110,45 @@
       renderAll();
       ensureVisibleAndScrollToCard(product.id);
       dispatchExplorerEvents();
+    });
+
+    pxSecondary.addEventListener("click", () => {
+      const action = pxSecondary.dataset.action || "jump-grid";
+
+      if (action === "expand-all") {
+        applyCatalogScope("all");
+        requestAnimationFrame(() => {
+          productsCatalog.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
+        return;
+      }
+
+      if (action === "show-route") {
+        applyCatalogScope("route");
+        requestAnimationFrame(() => {
+          productsCatalog.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
+        return;
+      }
+
+      productsCatalog.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+
+    catalogRouteButton.addEventListener("click", () => {
+      applyCatalogScope("route");
+    });
+
+    catalogExpandButton.addEventListener("click", () => {
+      applyCatalogScope("all");
     });
 
     pxShell.addEventListener("pointermove", (event) => {
@@ -988,30 +1196,40 @@
       const concernId = event.detail?.id;
       handleConcernEvent(concernId);
     });
+
+    pxImage.addEventListener("load", requestStageVisualFrameSync);
+    window.addEventListener("resize", requestStageVisualFrameSync);
   }
 
   function initState() {
     const { concern, start, family } = getSearchState();
-    const concernData = concern ? pxConcernMap[concern] : null;
+    const normalizedConcernId = normalizeConcernId(concern);
+    const concernData = normalizedConcernId ? pxConcernMap[normalizedConcernId] : null;
     const startProduct = start ? getProductById(start) : null;
 
     if (concernData) {
-      state.activeConcern = concern;
+      state.activeConcern = normalizedConcernId;
+      state.activeRouteIds = [...concernData.route];
       state.activeFamily = concernData.family;
+      state.catalogScope = "route";
       state.activeId =
-        startProduct && getProductsForFamily(concernData.family).some((product) => product.id === startProduct.id)
+        startProduct && concernData.route.includes(startProduct.id)
           ? startProduct.id
           : concernData.route[0];
     } else if (family && FAMILY_META[family]) {
       state.activeConcern = null;
+      state.activeRouteIds = [];
       state.activeFamily = family;
+      state.catalogScope = family === "all" ? "all" : "family";
       state.activeId =
         startProduct && getProductsForFamily(family).some((product) => product.id === startProduct.id)
           ? startProduct.id
           : getProductsForFamily(family)[0]?.id || "11";
     } else {
       state.activeConcern = null;
+      state.activeRouteIds = [];
       state.activeFamily = "all";
+      state.catalogScope = "all";
       state.activeId = startProduct ? startProduct.id : "11";
     }
   }

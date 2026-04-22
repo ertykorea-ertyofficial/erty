@@ -1,3 +1,5 @@
+const selectorProductExplorerLinks = window.ERTY_PRODUCTS_EXPLORER_LINKS;
+
 window.ERTY_BY_CONCERN_SELECTOR_DATA = {
   defaultConcernId: "barrier-redness",
   concerns: [
@@ -14,7 +16,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       why: "번들거림이 먼저면 11로 세정 리듬부터 다시 잡습니다.",
       next: "13과 15로 유분 균형과 모공 단계를 이어 봅니다.",
       cta: "11부터 보기",
-      href: "/products/11-cleansing-gel-for-skin-balancing",
+      href: selectorProductExplorerLinks.toExplorerHref("oil-breakout-pores", "11"),
       imageSrc: "/assets/images/brand/by-concern/selector-stage/oil-breakout-pores.png",
     },
     {
@@ -30,7 +32,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       why: "당김이 먼저면 23으로 수분 통로부터 엽니다.",
       next: "25와 27로 수분 공급과 유지력을 이어 봅니다.",
       cta: "23부터 보기",
-      href: "/products/23-tonic-lotion-for-skin-hydrating",
+      href: selectorProductExplorerLinks.toExplorerHref("dehydration-tightness", "23"),
       imageSrc: "/assets/images/brand/by-concern/selector-stage/dehydration-tightness.png",
     },
     {
@@ -46,7 +48,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       why: "붉음이 먼저면 37로 장벽 회복부터 봅니다.",
       next: "35로 피부 컨디션 회복을 이어 봅니다.",
       cta: "37부터 보기",
-      href: "/products/37-intensive-cellular-er-cream",
+      href: selectorProductExplorerLinks.toExplorerHref("barrier-redness", "37"),
       imageSrc: "/assets/images/brand/by-concern/selector-stage/barrier-redness.png",
     },
     {
@@ -62,7 +64,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       why: "칙칙함이 먼저면 55로 밝기 시작점부터 봅니다.",
       next: "57과 50으로 톤과 방어 단계를 이어 봅니다.",
       cta: "55부터 보기",
-      href: "/products/55-concentraed-booster-for-skin-brightening",
+      href: selectorProductExplorerLinks.toExplorerHref("dullness-dark-spot", "55"),
       imageSrc: "/assets/images/brand/by-concern/selector-stage/dullness-dark-spot.png",
     },
     {
@@ -78,7 +80,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       why: "밀림이 먼저면 01로 결 정리부터 시작합니다.",
       next: "23과 37로 수분과 장벽을 함께 이어 봅니다.",
       cta: "01부터 보기",
-      href: "/products/01-perfect-soothing-solution-1",
+      href: selectorProductExplorerLinks.toExplorerHref("texture-flaking", "01"),
       imageSrc: "/assets/images/brand/by-concern/selector-stage/texture-flaking.png",
     },
     {
@@ -94,7 +96,7 @@ window.ERTY_BY_CONCERN_SELECTOR_DATA = {
       why: "회복이 느리면 35로 컨디션부터 끌어올립니다.",
       next: "37과 02로 회복과 밀도를 이어 봅니다.",
       cta: "35부터 보기",
-      href: "/products/35-concentraed-booster-for-skin-revitalizing",
+      href: selectorProductExplorerLinks.toExplorerHref("recovery-firmness", "35"),
       imageSrc: "/assets/images/brand/by-concern/selector-stage/recovery-firmness.png",
     },
   ],

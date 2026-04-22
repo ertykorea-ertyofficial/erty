@@ -26,9 +26,14 @@
   const nextConcerns = nextLayerData.concerns || {};
   const selectorConcerns = Array.isArray(selectorData.concerns) ? selectorData.concerns : [];
   const selectorMetaById = new Map(selectorConcerns.map((concern) => [concern.id, concern]));
+  const productExplorerLinks = window.ERTY_PRODUCTS_EXPLORER_LINKS;
 
   function getFallbackHref(basePath, concernId) {
     const cueNumber = selectorMetaById.get(concernId)?.cueNumber;
+    if (basePath === "/products" && productExplorerLinks && cueNumber) {
+      return productExplorerLinks.toExplorerHref(concernId, cueNumber);
+    }
+
     return cueNumber ? `${basePath}?concern=${cueNumber}` : basePath;
   }
 

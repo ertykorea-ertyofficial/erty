@@ -120,7 +120,8 @@
 
                 <div class="px-stage__actions">
                   <a class="px-stage__primary" id="px-primary" href="#product-card-37">37 제품 보기</a>
-                  <a class="px-stage__secondary" id="px-secondary" href="/by-concern/">고민 다시 보기</a>
+                  <button class="px-stage__secondary" id="px-secondary" type="button">전체 제품 보기</button>
+                  <a class="px-stage__tertiary" id="px-tertiary" href="/by-concern/">고민 다시 보기</a>
                 </div>
               </div>
 
@@ -161,10 +162,10 @@
         <div class="container">
           <div class="products-catalog__intro">
             <p class="products-catalog__eyebrow">ALL PRODUCTS GRID</p>
-            <div class="products-catalog__head">
-              <div class="products-catalog__copy">
-                <h2 class="products-catalog__title" id="products-catalog-title">
-                  전체 제품
+              <div class="products-catalog__head">
+                <div class="products-catalog__copy">
+                  <h2 class="products-catalog__title" id="products-catalog-title">
+                    전체 제품
                 </h2>
                 <p
                   class="products-catalog__desc"
@@ -174,11 +175,33 @@
                 </p>
               </div>
 
-              <div class="products-catalog__status" id="products-catalog-status">
-                전체 15개 제품
+                  <div class="products-catalog__status" id="products-catalog-status">
+                    전체 15개 제품
+                  </div>
+                  <div
+                    class="products-catalog__scope"
+                    id="products-catalog-scope"
+                    role="group"
+                    aria-label="제품 범위 전환"
+                    hidden
+                  >
+                    <button
+                      class="products-catalog__scope-button is-active"
+                      id="products-catalog-route"
+                      type="button"
+                    >
+                      route만 보기
+                    </button>
+                    <button
+                      class="products-catalog__scope-button"
+                      id="products-catalog-expand"
+                      type="button"
+                    >
+                      전체 제품 보기
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
           <section
             class="product-grid"
