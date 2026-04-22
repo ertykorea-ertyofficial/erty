@@ -489,10 +489,11 @@ body[data-page="products"]::before {
 
 .px-stage__disc {
   position: absolute;
-  left: 8%;
-  top: 6%;
+  left: 50%;
+  top: 50%;
   width: min(74%, 420px);
   aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
   border-radius: 999px;
   background:
     radial-gradient(
@@ -511,22 +512,7 @@ body[data-page="products"]::before {
 }
 
 .px-stage__plate {
-  position: absolute;
-  left: 16%;
-  bottom: 11%;
-  width: 56%;
-  height: 15%;
-  border-radius: 999px;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.92),
-      rgba(255, 255, 255, 0.24)
-    );
-  filter: blur(0.4px);
-  opacity: 0.72;
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .px-stage__image {
@@ -691,11 +677,19 @@ body[data-page="products"]::before {
   gap: 14px;
 }
 
+.px-filter[hidden] {
+  display: none !important;
+}
+
 .px-filter__families,
 .px-filter__numbers {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.px-filter__numbers[hidden] {
+  display: none !important;
 }
 
 .px-family-tab,
@@ -1422,7 +1416,8 @@ body[data-page="products"]::before {
   }
 
   .px-stage__disc {
-    left: 6%;
+    left: 50%;
+    top: 50%;
     width: 72%;
   }
 
