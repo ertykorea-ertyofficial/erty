@@ -624,7 +624,7 @@ function bindHomeStaticEvents() {
     slots.image.dataset.skuId = renderedItem.id;
     slots.image.style.setProperty(
       "--home-featured-image-scale",
-      renderedItem.id === "01" ? "0.82" : "1",
+      "1",
     );
     slots.image.style.setProperty(
       "--home-featured-image-offset-y",

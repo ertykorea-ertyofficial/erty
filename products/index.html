@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
-    <link rel="stylesheet" href="/assets/css/products.css" />
+    <link rel="stylesheet" href="/assets/css/products.css?v=20260423-products-desktop-poster-placeholder" />
   </head>
   <body data-page="products">
     <div data-component="header"></div>
@@ -61,13 +61,14 @@
           <div class="px-explorer__intro">
             <p class="px-explorer__eyebrow" id="px-eyebrow">PRODUCT EXPLORER</p>
             <h2 class="px-explorer__title" id="px-title">
-              먼저 봐야 할 번호부터 제품을 보여드립니다
+              <span>더 깊게 알아보는</span>
+              <span>에르띠 제품</span>
             </h2>
             <p class="px-explorer__desc" id="px-desc">
               번호 기준으로 제품을 읽으면 전체를 다 볼 필요는 없습니다.
             </p>
 
-            <div class="px-context" id="px-context">
+            <div class="px-context" id="px-context" hidden>
               <span class="px-chip" id="px-context-concern">ALL PRODUCTS</span>
               <span class="px-chip" id="px-context-route">11 · 13 · 15</span>
               <span class="px-chip" id="px-context-family">BALANCING</span>
@@ -104,6 +105,21 @@
                   <span class="px-stage__number" id="px-number">37</span>
                 </div>
 
+                <div class="px-stage__poster-shell">
+                  <div class="px-stage__poster-placeholder" aria-hidden="true"></div>
+                  <img
+                    id="px-poster"
+                    class="px-stage__poster"
+                    src="/assets/images/brand/products/stage-posters/11.png"
+                    alt="클렌징 젤 포 스킨 밸런싱 제품 포스터"
+                    hidden
+                  />
+                  <div class="px-stage__swipe-hints" aria-hidden="true">
+                    <span class="px-stage__swipe-hint px-stage__swipe-hint--prev">⇠</span>
+                    <span class="px-stage__swipe-hint px-stage__swipe-hint--next">⇢</span>
+                  </div>
+                </div>
+
                 <h3 class="px-stage__name" id="px-name">Intensive Cellular ER Cream</h3>
                 <p class="px-stage__summary" id="px-summary">
                   장벽 약화와 붉은기가 먼저라면 37부터 장벽 회복을 보는 편이 빠릅니다.
@@ -119,7 +135,17 @@
                 </div>
 
                 <div class="px-stage__actions">
-                  <a class="px-stage__primary" id="px-primary" href="#product-card-37">37 제품 보기</a>
+                  <a class="px-stage__primary" id="px-primary" href="#product-card-37">제품 상세 보기</a>
+                  <button
+                    class="px-stage__purchase"
+                    id="px-purchase"
+                    type="button"
+                    aria-disabled="true"
+                    data-pending-reason="shop-url-pending"
+                    hidden
+                  >
+                    제품 구매하기
+                  </button>
                   <button class="px-stage__secondary" id="px-secondary" type="button">전체 제품 보기</button>
                   <a class="px-stage__tertiary" id="px-tertiary" href="/by-concern/">고민 다시 보기</a>
                 </div>
@@ -190,7 +216,7 @@
                       id="products-catalog-route"
                       type="button"
                     >
-                      route만 보기
+                      루틴 제품 보기
                     </button>
                     <button
                       class="products-catalog__scope-button"
@@ -219,9 +245,51 @@
       </section>
     </main>
 
+    <svg
+      aria-hidden="true"
+      width="0"
+      height="0"
+      focusable="false"
+      style="position:absolute; width:0; height:0; overflow:hidden"
+    >
+      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.001 0.005"
+          numOctaves="1"
+          seed="17"
+          result="turbulence"
+        />
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+        <feSpecularLighting
+          in="softMap"
+          surfaceScale="5"
+          specularConstant="1"
+          specularExponent="100"
+          lighting-color="white"
+          result="specLight"
+        >
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+        <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="softMap"
+          scale="200"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
+
     <script src="/assets/js/components.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
     <script src="/assets/js/home-data.js" defer></script>
-    <script src="/assets/js/products-catalog.js" defer></script>
+    <script src="/assets/js/products-catalog.js?v=20260423-products-desktop-poster-placeholder" defer></script>
   </body>
 </html>

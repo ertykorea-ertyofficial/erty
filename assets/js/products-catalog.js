@@ -7,8 +7,11 @@
   const pxConcernChip = document.getElementById("px-context-concern");
   const pxRouteChip = document.getElementById("px-context-route");
   const pxFamilyChip = document.getElementById("px-context-family");
+  const pxStage = pxExplorer?.querySelector(".px-stage");
   const pxImage = document.getElementById("px-image");
   const pxVisual = pxExplorer?.querySelector(".px-stage__visual");
+  const pxPanel = pxExplorer?.querySelector(".px-stage__panel");
+  const pxPoster = document.getElementById("px-poster");
   const pxFamily = document.getElementById("px-family");
   const pxNumber = document.getElementById("px-number");
   const pxName = document.getElementById("px-name");
@@ -16,6 +19,7 @@
   const pxDetail = document.getElementById("px-detail");
   const pxMeta = document.getElementById("px-meta");
   const pxPrimary = document.getElementById("px-primary");
+  const pxPurchase = document.getElementById("px-purchase");
   const pxSecondary = document.getElementById("px-secondary");
   const pxTertiary = document.getElementById("px-tertiary");
   const pxFamilyTabs = document.getElementById("px-family-tabs");
@@ -36,8 +40,11 @@
   if (
     !pxExplorer ||
     !pxShell ||
+    !pxStage ||
     !pxImage ||
     !pxVisual ||
+    !pxPanel ||
+    !pxPoster ||
     !pxFamily ||
     !pxNumber ||
     !pxName ||
@@ -45,6 +52,7 @@
     !pxDetail ||
     !pxMeta ||
     !pxPrimary ||
+    !pxPurchase ||
     !pxSecondary ||
     !pxTertiary ||
     !pxFamilyTabs ||
@@ -83,8 +91,30 @@
     "57": "/assets/images/brand/home/sku-rail/57.png",
   };
 
+  const STAGE_POSTER_IMAGE_MAP = {
+    "01": "/assets/images/brand/products/stage-posters/01.png",
+    "02": "/assets/images/brand/products/stage-posters/02.png",
+    "03": "/assets/images/brand/products/stage-posters/03.png",
+    "11": "/assets/images/brand/products/stage-posters/11.png",
+    "13": "/assets/images/brand/products/stage-posters/13.png",
+    "15": "/assets/images/brand/products/stage-posters/15.png",
+    "21": "/assets/images/brand/products/stage-posters/21.png",
+    "23": "/assets/images/brand/products/stage-posters/23.png",
+    "25": "/assets/images/brand/products/stage-posters/25.png",
+    "27": "/assets/images/brand/products/stage-posters/27.png",
+    "35": "/assets/images/brand/products/stage-posters/35.png",
+    "37": "/assets/images/brand/products/stage-posters/37.png",
+    "50": "/assets/images/brand/products/stage-posters/50.png",
+    "55": "/assets/images/brand/products/stage-posters/55.png",
+    "57": "/assets/images/brand/products/stage-posters/57.png",
+  };
+
+  const HOME_DATA_SKU_MAP = Array.isArray(window.ERTY_HOME_DATA?.skus)
+    ? new Map(window.ERTY_HOME_DATA.skus.map((sku) => [sku.id, sku]))
+    : new Map();
+
   function getProductImageScale(productId) {
-    return productId === "01" ? 0.82 : 1;
+    return 1;
   }
 
   function getStageImageScale(productId) {
@@ -95,12 +125,29 @@
     return productId === "01" ? "-12px" : "0px";
   }
 
+  function getStagePosterSrc(product) {
+    if (MOBILE_GRID_MEDIA.matches) {
+      return STAGE_POSTER_IMAGE_MAP[product.id] || product.stagePoster || "";
+    }
+
+    return "";
+  }
+
+  function getPurchaseHref(productId) {
+    const shopUrl = HOME_DATA_SKU_MAP.get(productId)?.shopUrl;
+    return typeof shopUrl === "string" && shopUrl.trim() ? shopUrl.trim() : null;
+  }
+
   const pxProducts = [
     {
       id: "11",
       family: "balancing",
       familyLabel: "BALANCING",
       name: "Cleansing Gel for Skin Balancing",
+      stageName: "클렌징 젤 포 스킨 밸런싱",
+      stageSummary: "루틴의 시작점",
+      stageDetail: "피부 진정과 유수분 밸런스를 위한\n상쾌한 자일리톨 클렌저",
+      stagePoster: "/assets/images/brand/products/stage-posters/11.png",
       summary: "번들거림과 막힘이 먼저라면 11로 세정 리듬부터 정리합니다.",
       detail:
         "무리한 각질 제거보다 먼저 과한 유분과 잔여 노폐물의 흐름을 부드럽게 정리하는 시작 번호입니다.",
@@ -112,6 +159,9 @@
       family: "balancing",
       familyLabel: "BALANCING",
       name: "Purifying Toner for Skin Balancing",
+      stageName: "퓨리파잉 포 스킨 밸런싱",
+      stageSummary: "피지 · 각질 밸런싱 토너",
+      stageDetail: "피지·모공·산화\n스트레스를 동시에 케어하는\n식물 유래 세범 컨트롤 솔루션",
       summary: "13은 피지와 모공 흐름이 먼저 신경 쓰일 때 보는 번호입니다.",
       detail:
         "막힘과 산화 스트레스를 먼저 다루며 세정 이후의 균형을 이어 주는 정리 단계입니다.",
@@ -123,6 +173,9 @@
       family: "balancing",
       familyLabel: "BALANCING",
       name: "Balancing Booster 15",
+      stageName: "컨센트레이트 부스터 포 스킨 밸런싱",
+      stageSummary: "균형 밀도 부스터",
+      stageDetail: "피지는 잡아주고\n유수분 밸런스를 찾아주며\n문제성 피부를 위한 필수 기초 앰플",
       summary: "15는 유수분 밸런스와 문제성 피부 컨디션을 보완하는 단계입니다.",
       detail:
         "세정과 피지 정리 이후 피부가 무너지지 않도록 밸런스 축을 보완합니다.",
@@ -134,6 +187,9 @@
       family: "hydrating",
       familyLabel: "HYDRATING",
       name: "Cleansing Milk for Skin Hydrating",
+      stageName: "클렌징 밀크 포 스킨 하이드레이팅",
+      stageSummary: "유수분 밸런스 클렌저",
+      stageDetail: "피부 진정과 유수분\n밸런스를 위한\n상쾌한 자일리톨 클렌저",
       summary: "당김과 민감이 함께 있을 때는 자극을 줄인 세정부터 시작합니다.",
       detail:
         "과도한 세정보다 자극을 줄이며 유수분 밸런스를 유지하는 부드러운 클렌징 단계입니다.",
@@ -145,6 +201,9 @@
       family: "hydrating",
       familyLabel: "HYDRATING",
       name: "Tonic Lotion for Skin Hydrating",
+      stageName: "토닉 로션 포 스킨 하이드레이팅",
+      stageSummary: "해조 유래 안티폴루션 기반 피부 정화 · 보호",
+      stageDetail: "피부 수분통로를 열어\n피부 갈증을 해소하는 미네랄 토너",
       summary: "속당김이 먼저라면 23부터 수분 통로를 엽니다.",
       detail:
         "피부가 먼저 받아들일 수 있는 수분 길을 정리해 당김과 들뜸을 줄이는 시작 번호입니다.",
@@ -156,6 +215,9 @@
       family: "hydrating",
       familyLabel: "HYDRATING",
       name: "Concentrated Booster for Skin Hydrating",
+      stageName: "컨센트레이트 부스터 포 스킨 하이드레이팅",
+      stageSummary: "수분 · 장벽 밀도 부스터",
+      stageDetail: "8종 히알루론산과 팹타이드 성분이\n수분 · 탄력 · 생기를\n부여하는 고농축 보습 앰플",
       summary: "25는 당김과 수분 부족을 직접 채우는 단계입니다.",
       detail:
         "수분 공급 축을 두텁게 만들어 속당김과 표면 들뜸을 동시에 보완하는 보습 단계입니다.",
@@ -167,6 +229,9 @@
       family: "hydrating",
       familyLabel: "HYDRATING",
       name: "Derma Hydro-AQUAX Cream",
+      stageName: "더마 하이드로 아쿠아엑스 크림",
+      stageSummary: "촉촉한 보습 액티브",
+      stageDetail: "피부 속부터 깊게 차오르는 수분 에너지",
       summary: "27은 수분과 장벽을 함께 유지하는 핵심 번호입니다.",
       detail:
         "수분이 빠르게 날아가지 않도록 붙잡아 붉음과 민감이 동반된 건조에도 대응합니다.",
@@ -178,6 +243,9 @@
       family: "revitalizing",
       familyLabel: "REVITALIZING",
       name: "Concentrated Booster for Skin Revitalizing",
+      stageName: "컨센트레이트 부스터 포 스킨 리바이탈라이징",
+      stageSummary: "피부 보습 · 컨디션 · 보호막 형성",
+      stageDetail: "피부 탄력과 주름 개선\n미백에 도움을 주는 안티에이징 앰플",
       summary: "35는 회복 리듬과 피부 컨디션을 먼저 끌어올리는 번호입니다.",
       detail:
         "처짐과 회복 저하가 먼저 느껴질 때 흐름을 정돈하고 피부 상태를 다시 세우는 보조 축입니다.",
@@ -189,6 +257,9 @@
       family: "revitalizing",
       familyLabel: "REVITALIZING",
       name: "Intensive Cellular ER Cream",
+      stageName: "인텐시브 셀룰러 ER 크림",
+      stageSummary: "피부 지질의 복제, 세컨드 스킨",
+      stageDetail: "내 피부가 기억하는\n가장 건강한 온도 37도\n피부 수명 연장의 기술",
       summary: "장벽 약화와 붉음이 먼저라면 37부터 보는 편이 빠릅니다.",
       detail:
         "피부 지질 보호막과 세컨드 스킨 개념으로 무너진 장벽 컨디션을 먼저 붙잡는 핵심 번호입니다.",
@@ -200,6 +271,9 @@
       family: "brightening",
       familyLabel: "BRIGHTENING",
       name: "Sun Cream for Brightening 50",
+      stageName: "선크림",
+      stageSummary: "브라이트닝 데이 스텝",
+      stageDetail: "무너진 피부 장벽을\n탄탄하게 채워 수분을\n지켜주는 핵심 지질 케어",
       summary: "50은 밝기 변화를 외부 자극으로부터 지켜 주는 방어 단계입니다.",
       detail:
         "브라이트닝 축 이후 톤 변화를 유지하기 위한 UV 방어와 외부 자극 보호 역할을 합니다.",
@@ -211,6 +285,9 @@
       family: "brightening",
       familyLabel: "BRIGHTENING",
       name: "Brightening Booster 55",
+      stageName: "컨센트레이트 부스터 포 스킨 브라이트닝",
+      stageSummary: "미백 시너지 해결사",
+      stageDetail: "수분과 광채를 동시에 채운\n미백 · 주름개선 · 보습까지\n3 in 1 브라이트닝 케어",
       summary: "칙칙함과 잡티가 먼저라면 55부터 밝기 축을 확인합니다.",
       detail:
         "브라이트닝의 시작 번호로, 기미와 어두운 톤을 먼저 다루는 핵심 단계입니다.",
@@ -222,6 +299,9 @@
       family: "brightening",
       familyLabel: "BRIGHTENING",
       name: "Brightening Cream 57",
+      stageName: "멜라웨이 브라이트닝 크림",
+      stageSummary: "멜라닌 타켓팅 솔루션",
+      stageDetail: "빛을 잃고 지친 피부에게\n필요한 스스로 다시 빛날 힘",
       summary:
         "57은 붉음·노란기·칙칙함을 함께 정리하는 톤 보정 단계입니다.",
       detail:
@@ -234,6 +314,9 @@
       family: "professional",
       familyLabel: "PROFESSIONAL",
       name: "Perfect Soothing Solution 01",
+      stageName: "퍼펙트 수딩 솔루션",
+      stageSummary: "피부결 리셋\n각질 정돈 전문가",
+      stageDetail: "피부 밸런스를 바로 세우는\n저자극 필링 솔루션",
       summary: "거친 결과 각질은 01부터 결을 정리하는 편이 안정적입니다.",
       detail:
         "저자극 필링과 표면 reset에 가까운 시작 번호로, 결 정리와 다음 흡수 단계를 여는 역할을 합니다.",
@@ -245,6 +328,9 @@
       family: "professional",
       familyLabel: "PROFESSIONAL",
       name: "Perfect N.Cell Ampoule 02",
+      stageName: "퍼펙트 엔셀 앰플",
+      stageSummary: "멀티 기능 기반 피부 톤 개선 · 장벽 강화",
+      stageDetail: "나이아신아마이드 10%\n피부를 환하고 맑게\n개선 시켜주는 앰플",
       summary: "02는 톤 리페어와 밀도 축을 보완하는 프로토콜 단계입니다.",
       detail:
         "회복 이후 더 정교한 케어가 필요할 때 톤 리페어와 리모델링 축을 이어 주는 보조 단계입니다.",
@@ -256,6 +342,9 @@
       family: "professional",
       familyLabel: "PROFESSIONAL",
       name: "Perfect Spicule Formulation 03",
+      stageName: "퍼펙트 스피큘 포뮬레이션",
+      stageSummary: "멀티 기능 기반 피부 톤 개선 · 장벽 강화",
+      stageDetail: "피부 탄력과 미백을 위한\n이중 기능성 포뮬레이션 크림",
       summary: "03은 재생 리모델링을 보조하는 프로토콜 단계입니다.",
       detail:
         "회복과 장벽 축 이후 피부 밀도와 리모델링을 이어 보는 프로토콜의 마지막 단계입니다.",
@@ -324,10 +413,8 @@
     professional: { key: "professional", label: "PROFESSIONAL", countLabel: "Professional", accentRgb: "88, 88, 88" },
   };
 
-  const INITIAL_VISIBLE_COUNT = 8;
-  const LOAD_INCREMENT = 4;
-  const LOAD_DELAY_MS = 220;
   const SWIPE_THRESHOLD = 42;
+  const MOBILE_GRID_MEDIA = window.matchMedia("(max-width: 767px)");
 
   const state = {
     activeConcern: null,
@@ -337,13 +424,11 @@
     activeId: "11",
     previewId: null,
     previewFamily: null,
-    visibleCount: INITIAL_VISIBLE_COUNT,
-    isLoadingMore: false,
-    observer: null,
     swipeStartX: null,
     suspendGridHoverPreview: false,
   };
   let visualSyncFrame = 0;
+  let viewportCardSyncFrame = 0;
 
   function getSearchState() {
     const params = new URLSearchParams(window.location.search);
@@ -478,11 +563,7 @@
   }
 
   function getPrimaryLabel(product, concernData) {
-    if (concernData && concernData.route[0] === product.id) {
-      return `${product.id}부터 보기`;
-    }
-
-    return `${product.id} 제품 보기`;
+    return "제품 상세 보기";
   }
 
   function syncScopeControls() {
@@ -521,8 +602,6 @@
     state.previewId = null;
     state.previewFamily = null;
     state.suspendGridHoverPreview = true;
-    state.visibleCount = INITIAL_VISIBLE_COUNT;
-    state.isLoadingMore = false;
     renderAll();
     dispatchExplorerEvents();
   }
@@ -541,7 +620,7 @@
     }
 
     pxEye.textContent = "PRODUCT EXPLORER";
-    pxTitle.textContent = "먼저 봐야 할 번호부터 제품을 보여드립니다";
+    pxTitle.innerHTML = "<span>더 깊게 알아보는</span><span>에르띠 제품</span>";
     pxDesc.textContent = "번호 기준으로 제품을 읽으면 전체를 다 볼 필요는 없습니다.";
     pxConcernChip.textContent = "ALL PRODUCTS";
     pxRouteChip.textContent = product.familyLabel;
@@ -554,6 +633,12 @@
     }
 
     const concernData = getCurrentConcernData();
+    const stagePosterSrc = getStagePosterSrc(product);
+    const hasStagePoster = Boolean(stagePosterSrc);
+    const isDesktopPosterMode = !MOBILE_GRID_MEDIA.matches;
+    const usePosterMode = hasStagePoster || isDesktopPosterMode;
+    const purchaseHref = getPurchaseHref(product.id);
+    const shouldShowPurchase = usePosterMode;
 
     applyExplorerAccent(product.family);
     applyCatalogAccent(state.activeFamily);
@@ -565,11 +650,22 @@
     pxImage.style.setProperty("--px-image-scale", String(getStageImageScale(product.id)));
     pxImage.style.setProperty("--px-image-offset-y", getStageImageOffsetY(product.id));
     pxVisual.dataset.stageNumber = product.id;
+    pxStage.classList.toggle("is-poster-mode", usePosterMode);
+    pxStage.classList.toggle("is-desktop-poster-mode", isDesktopPosterMode);
+    pxPanel.classList.toggle("is-poster-mode", usePosterMode);
+    pxPanel.classList.toggle("is-desktop-poster-mode", isDesktopPosterMode);
+    pxPoster.hidden = !hasStagePoster;
+    if (hasStagePoster) {
+      pxPoster.src = stagePosterSrc;
+      pxPoster.alt = `${product.stageName || product.name} 제품 포스터`;
+    } else {
+      pxPoster.alt = "";
+    }
     pxFamily.textContent = product.familyLabel;
     pxNumber.textContent = product.id;
-    pxName.textContent = product.name;
-    pxSummary.textContent = product.summary;
-    pxDetail.textContent = product.detail;
+    pxName.textContent = product.stageName || product.name;
+    pxSummary.textContent = product.stageSummary || product.summary;
+    pxDetail.textContent = product.stageDetail || product.detail;
 
     const metaItems = concernData
       ? ["선택 route 기준", concernData.route.join(" → ")]
@@ -582,9 +678,15 @@
     pxPrimary.textContent = getPrimaryLabel(product, concernData);
     pxPrimary.href = `#product-card-${product.id}`;
 
+    pxPurchase.hidden = !shouldShowPurchase;
+    pxPurchase.disabled = !purchaseHref;
+    pxPurchase.setAttribute("aria-disabled", purchaseHref ? "false" : "true");
+    pxPurchase.dataset.pendingReason = purchaseHref ? "" : "shop-url-pending";
+    pxPurchase.dataset.productId = product.id;
+
     if (concernData) {
       pxSecondary.textContent =
-        state.catalogScope === "route" ? "전체 제품 보기" : "route만 보기";
+        state.catalogScope === "route" ? "전체 제품 보기" : "루틴 제품 보기";
       pxSecondary.dataset.action =
         state.catalogScope === "route" ? "expand-all" : "show-route";
       pxTertiary.href = "/by-concern/";
@@ -716,14 +818,19 @@
     const concernData = getCurrentConcernData();
     const displayed = getDisplayedProduct();
     const familyMeta = FAMILY_META[state.activeFamily];
+    const isMobile = MOBILE_GRID_MEDIA.matches;
 
     if (concernData) {
       catalogTitle.textContent = concernData.title;
       if (state.catalogScope === "route") {
-        catalogDescription.textContent = `${concernData.route.join(" → ")} route만 아래에서 먼저 확인합니다.`;
+        catalogDescription.textContent = isMobile
+          ? "전체 제품을 스와이프로 선택하기"
+          : `${concernData.route.join(" → ")} route만 아래에서 먼저 확인합니다.`;
         catalogStatus.textContent = `${concernData.title} route ${filteredProducts.length}개 제품`;
       } else {
-        catalogDescription.textContent = `${concernData.route.join(" → ")} route를 유지한 채 전체 제품으로 확장해 이어서 확인합니다.`;
+        catalogDescription.textContent = isMobile
+          ? "전체 제품을 스와이프로 선택하기"
+          : `${concernData.route.join(" → ")} route를 유지한 채 전체 제품으로 확장해 이어서 확인합니다.`;
         catalogStatus.textContent = `전체 ${filteredProducts.length}개 제품`;
       }
       syncScopeControls();
@@ -732,14 +839,18 @@
 
     if (state.activeFamily === "all") {
       catalogTitle.textContent = "전체 제품";
-      catalogDescription.textContent = `현재 focus 번호 ${displayed.id} 아래로 전체 제품 구조를 이어서 탐색합니다.`;
+      catalogDescription.textContent = isMobile
+        ? "전체 제품을 스와이프로 선택하기"
+        : `현재 focus 번호 ${displayed.id} 아래로 전체 제품 구조를 이어서 탐색합니다.`;
       catalogStatus.textContent = `전체 ${filteredProducts.length}개 제품`;
       syncScopeControls();
       return;
     }
 
     catalogTitle.textContent = familyMeta.countLabel;
-    catalogDescription.textContent = `${familyMeta.label} 라인 안에서 먼저 볼 번호를 아래 support grid로 이어서 확인합니다.`;
+    catalogDescription.textContent = isMobile
+      ? "전체 제품을 스와이프로 선택하기"
+      : `${familyMeta.label} 라인 안에서 먼저 볼 번호를 아래 support grid로 이어서 확인합니다.`;
     catalogStatus.textContent = `${familyMeta.countLabel} ${filteredProducts.length}개 제품`;
     syncScopeControls();
   }
@@ -749,22 +860,6 @@
     renderNumberRail();
     renderStage(getDisplayedProduct());
     syncFilterStates();
-  }
-
-  function createSkeletonCard() {
-    const skeleton = document.createElement("article");
-    skeleton.className = "product-card product-card--skeleton";
-    skeleton.innerHTML = `
-      <div class="product-card__media-skeleton"></div>
-      <div class="product-card__body-skeleton">
-        <div class="product-card__line-skeleton product-card__line-skeleton--short"></div>
-        <div class="product-card__line-skeleton product-card__line-skeleton--medium"></div>
-        <div class="product-card__line-skeleton product-card__line-skeleton--long"></div>
-        <div class="product-card__line-skeleton product-card__line-skeleton--medium"></div>
-        <div class="product-card__button-skeleton"></div>
-      </div>
-    `;
-    return skeleton;
   }
 
   function createCard(product) {
@@ -777,6 +872,7 @@
     article.dataset.productId = product.id;
     article.dataset.family = product.family;
     article.tabIndex = 0;
+    article.setAttribute("aria-label", `${product.familyLabel} ${product.id} ${product.name}`);
     article.style.setProperty("--product-accent-rgb", FAMILY_META[product.family].accentRgb);
     article.style.setProperty("--product-image-scale", String(getProductImageScale(product.id)));
     article.innerHTML = `
@@ -784,15 +880,10 @@
         <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" />
       </div>
       <div class="product-card__body">
-        <div class="product-card__meta">
-          <span class="product-card__family">${product.familyLabel}</span>
-          <span class="product-card__number">${product.id}</span>
-        </div>
-        <h3 class="product-card__name">${product.name}</h3>
-        <p class="product-card__desc">${product.summary}</p>
-        <button type="button" class="product-card__cta">이 번호 보기</button>
+        <button type="button" class="product-card__cta liquid-glass" aria-label="${product.name} ${product.id} 선택하기">선택하기</button>
       </div>
     `;
+    const ctaButton = article.querySelector(".product-card__cta");
 
     const updatePointer = (event) => {
       const rect = article.getBoundingClientRect();
@@ -841,19 +932,41 @@
       state.previewId = null;
       state.previewFamily = null;
       state.suspendGridHoverPreview = false;
-      state.visibleCount = Math.max(INITIAL_VISIBLE_COUNT, state.visibleCount);
       renderAll();
       dispatchExplorerEvents();
 
       if (withScroll) {
-        pxExplorer.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
+        const rootStyles = window.getComputedStyle(document.documentElement);
+        const headerHeight = parseFloat(rootStyles.getPropertyValue("--header-height")) || 0;
+        const targetTop = MOBILE_GRID_MEDIA.matches
+          ? Math.max(0, window.scrollY + pxTitle.getBoundingClientRect().top - 96)
+          : Math.max(0, window.scrollY + pxExplorer.getBoundingClientRect().top - headerHeight - 12);
+        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: prefersReducedMotion ? "auto" : "smooth",
         });
+
+        const nextUrl = `${window.location.pathname}${window.location.search}#product-explorer`;
+        if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== nextUrl) {
+          window.history.replaceState(null, "", nextUrl);
+        }
       }
     };
 
+    ctaButton?.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      commitFromCard(true);
+    });
+
     article.addEventListener("click", (event) => {
+      if (MOBILE_GRID_MEDIA.matches) {
+        commitFromCard(true);
+        return;
+      }
+
       if (event.target.closest(".product-card__cta")) {
         commitFromCard(true);
         return;
@@ -888,6 +1001,52 @@
       card.classList.toggle("is-active", id === state.activeId);
       card.classList.toggle("is-preview", id === state.previewId);
     });
+    requestViewportCardSync();
+  }
+
+  function syncViewportCurrentCard() {
+    viewportCardSyncFrame = 0;
+
+    const cards = Array.from(
+      productGrid.querySelectorAll(".product-card:not(.product-card--skeleton)"),
+    );
+
+    cards.forEach((card) => {
+      card.classList.remove("is-viewport-current");
+    });
+
+    if (!MOBILE_GRID_MEDIA.matches || !cards.length) {
+      return;
+    }
+
+    const gridRect = productGrid.getBoundingClientRect();
+    const gridCenter = gridRect.left + (gridRect.width / 2);
+
+    let closestCard = null;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.left + (rect.width / 2);
+      const distance = Math.abs(cardCenter - gridCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    if (closestCard) {
+      closestCard.classList.add("is-viewport-current");
+    }
+  }
+
+  function requestViewportCardSync() {
+    if (viewportCardSyncFrame) {
+      return;
+    }
+
+    viewportCardSyncFrame = window.requestAnimationFrame(syncViewportCurrentCard);
   }
 
   function syncFilterStates() {
@@ -923,25 +1082,16 @@
       return;
     }
 
-    const visibleProducts = filteredProducts.slice(0, state.visibleCount);
     const fragment = document.createDocumentFragment();
 
-    visibleProducts.forEach((product) => {
+    filteredProducts.forEach((product) => {
       fragment.appendChild(createCard(product));
     });
 
-    if (state.isLoadingMore) {
-      const remaining = filteredProducts.length - visibleProducts.length;
-      const skeletonCount = Math.max(1, Math.min(LOAD_INCREMENT, remaining));
-
-      for (let index = 0; index < skeletonCount; index += 1) {
-        fragment.appendChild(createSkeletonCard());
-      }
-    }
-
     productGrid.appendChild(fragment);
-    productGrid.setAttribute("aria-busy", state.isLoadingMore ? "true" : "false");
+    productGrid.setAttribute("aria-busy", "false");
     syncGridStates();
+    requestViewportCardSync();
   }
 
   function renderAll() {
@@ -950,26 +1100,14 @@
   }
 
   function ensureVisibleAndScrollToCard(productId) {
-    const filtered = getVisibleProducts();
-    const index = filtered.findIndex((product) => product.id === productId);
-
-    if (index === -1) {
-      return;
-    }
-
-    if (index >= state.visibleCount) {
-      state.visibleCount =
-        Math.ceil((index + 1) / LOAD_INCREMENT) * LOAD_INCREMENT;
-      renderGrid();
-    }
-
     requestAnimationFrame(() => {
       const target = document.getElementById(`product-card-${productId}`);
 
       if (target) {
         target.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          block: "nearest",
+          inline: "center",
         });
       }
     });
@@ -1006,8 +1144,6 @@
       state.activeId = visible[0]?.id || pxProducts[0].id;
     }
 
-    state.visibleCount = INITIAL_VISIBLE_COUNT;
-    state.isLoadingMore = false;
     renderAll();
     dispatchExplorerEvents();
   }
@@ -1026,45 +1162,6 @@
     state.suspendGridHoverPreview = false;
     renderAll();
     dispatchExplorerEvents();
-  }
-
-  function loadMore() {
-    const visible = getVisibleProducts();
-
-    if (state.isLoadingMore || state.visibleCount >= visible.length) {
-      return;
-    }
-
-    state.isLoadingMore = true;
-    renderGrid();
-
-    window.setTimeout(() => {
-      state.visibleCount = Math.min(state.visibleCount + LOAD_INCREMENT, visible.length);
-      state.isLoadingMore = false;
-      renderGrid();
-    }, LOAD_DELAY_MS);
-  }
-
-  function setupObserver() {
-    if (!("IntersectionObserver" in window)) {
-      return;
-    }
-
-    state.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            loadMore();
-          }
-        });
-      },
-      {
-        rootMargin: "180px 0px 220px",
-        threshold: 0.01,
-      },
-    );
-
-    state.observer.observe(sentinel);
   }
 
   function dispatchExplorerEvents() {
@@ -1106,8 +1203,6 @@
     state.activeId = concernData.route[0];
     state.previewId = null;
     state.previewFamily = null;
-    state.visibleCount = INITIAL_VISIBLE_COUNT;
-    state.isLoadingMore = false;
     renderAll();
     dispatchExplorerEvents();
   }
@@ -1184,7 +1279,7 @@
       pxExplorer.style.setProperty("--px-my", "50%");
     });
 
-    const swipeSurface = pxVisual;
+    const swipeSurface = pxStage;
 
     swipeSurface.addEventListener("touchstart", (event) => {
       state.swipeStartX = event.changedTouches[0]?.clientX ?? null;
@@ -1215,6 +1310,9 @@
 
     pxImage.addEventListener("load", requestStageVisualFrameSync);
     window.addEventListener("resize", requestStageVisualFrameSync);
+    window.addEventListener("resize", requestViewportCardSync);
+    MOBILE_GRID_MEDIA.addEventListener("change", requestViewportCardSync);
+    productGrid.addEventListener("scroll", requestViewportCardSync, { passive: true });
   }
 
   function initState() {
@@ -1254,14 +1352,8 @@
     initState();
     renderAll();
     bindExplorerEvents();
-    setupObserver();
     dispatchExplorerEvents();
   }
 
-  productGrid.setAttribute("aria-busy", "true");
-  for (let index = 0; index < INITIAL_VISIBLE_COUNT; index += 1) {
-    productGrid.appendChild(createSkeletonCard());
-  }
-
-  window.setTimeout(bootstrap, 120);
+  bootstrap();
 })();
