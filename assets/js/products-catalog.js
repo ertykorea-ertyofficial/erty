@@ -83,6 +83,18 @@
     "57": "/assets/images/brand/home/sku-rail/57.png",
   };
 
+  function getProductImageScale(productId) {
+    return productId === "01" ? 0.82 : 1;
+  }
+
+  function getStageImageScale(productId) {
+    return productId === "01" ? 1 : getProductImageScale(productId);
+  }
+
+  function getStageImageOffsetY(productId) {
+    return productId === "01" ? "-12px" : "0px";
+  }
+
   const pxProducts = [
     {
       id: "11",
@@ -549,6 +561,9 @@
 
     pxImage.src = HOME_EXPLORER_IMAGE_MAP[product.id] || product.image;
     pxImage.alt = product.name;
+    pxImage.dataset.productId = product.id;
+    pxImage.style.setProperty("--px-image-scale", String(getStageImageScale(product.id)));
+    pxImage.style.setProperty("--px-image-offset-y", getStageImageOffsetY(product.id));
     pxVisual.dataset.stageNumber = product.id;
     pxFamily.textContent = product.familyLabel;
     pxNumber.textContent = product.id;
@@ -763,6 +778,7 @@
     article.dataset.family = product.family;
     article.tabIndex = 0;
     article.style.setProperty("--product-accent-rgb", FAMILY_META[product.family].accentRgb);
+    article.style.setProperty("--product-image-scale", String(getProductImageScale(product.id)));
     article.innerHTML = `
       <div class="product-card__media">
         <img src="${product.image}" alt="${product.name}" loading="lazy" decoding="async" />

@@ -621,6 +621,15 @@ function bindHomeStaticEvents() {
     slots.link.textContent = renderedItem.actionLabel;
     slots.image.setAttribute("src", slugToImagePath(renderedItem.imageKey));
     slots.image.setAttribute("alt", renderedItem.displayName);
+    slots.image.dataset.skuId = renderedItem.id;
+    slots.image.style.setProperty(
+      "--home-featured-image-scale",
+      renderedItem.id === "01" ? "0.82" : "1",
+    );
+    slots.image.style.setProperty(
+      "--home-featured-image-offset-y",
+      renderedItem.id === "01" ? "-5px" : "0px",
+    );
 
     if (activeLive && !previewSkuId) {
       activeLive.textContent = `${renderedItem.id} ${renderedItem.roleLabel} 선택됨. ${renderedItem.oneLiner}`;
@@ -945,11 +954,9 @@ function bindHomeStaticEvents() {
   });
 
   root.addEventListener("pointerleave", () => {
-    const activeElement = document.activeElement;
-    if (activeElement && root.contains(activeElement) && activeElement.hasAttribute("data-featured-item")) {
-      return;
+    if (previewSkuId) {
+      clearPreview();
     }
-    clearPreview();
   });
 
   proofItems.forEach((item) => {
