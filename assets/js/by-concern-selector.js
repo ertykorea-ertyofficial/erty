@@ -11,6 +11,12 @@
   const root = document.getElementById("concern-selector");
   const shell = document.getElementById("bc-experience");
   const stage = document.getElementById("bc-stage");
+  const stageOrb = stage?.querySelector(".bc-stage__orb");
+  const stagePrev = document.getElementById("bc-stage-prev");
+  const stageNext = document.getElementById("bc-stage-next");
+  const mobileChip = document.getElementById("bc-mobile-chip");
+  const mobileFamily = document.getElementById("bc-mobile-family");
+  const mobileConcern = document.getElementById("bc-mobile-concern");
   const stageVisual = document.getElementById("bc-stage-visual");
   const stageImage = document.getElementById("bc-stage-image");
   const chip = document.getElementById("bc-panel-chip");
@@ -23,6 +29,7 @@
   const ctaText = document.getElementById("bc-panel-cta-text");
   const dock = document.getElementById("bc-dock");
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
 
   if (
     !data ||
@@ -33,6 +40,12 @@
     !root ||
     !shell ||
     !stage ||
+    !stageOrb ||
+    !stagePrev ||
+    !stageNext ||
+    !mobileChip ||
+    !mobileFamily ||
+    !mobileConcern ||
     !stageVisual ||
     !stageImage ||
     !chip ||
@@ -71,6 +84,10 @@
     : concernIds[0];
   let previewConcernId = null;
   let scrollFrame = 0;
+  let swipePointerId = null;
+  let swipeStartX = 0;
+  let swipeStartY = 0;
+  let swipeMoved = false;
 
   function setScrollHandoffVariables(progress) {
     const clamped = Math.min(Math.max(progress, 0), 1);
@@ -175,13 +192,18 @@
   }
 
   function renderRouteMarkup(routeText) {
-    return routeText
-      .split(/\s*→\s*/)
-      .map((token) => {
+    const tokens = routeText.split(/\s*→\s*/);
+    return tokens
+      .map((token, index) => {
         const rgb = routeTokenRgb[token] || "17,19,23";
-        return `<span class="bc-stage__route-token" style="--route-rgb:${rgb}">${token}</span>`;
+        const tokenMarkup = `<span class="bc-stage__route-token" style="--route-rgb:${rgb}">${token}</span>`;
+        if (index === tokens.length - 1) {
+          return tokenMarkup;
+        }
+
+        return `${tokenMarkup}<span class="bc-stage__route-sep" style="--route-rgb:${rgb}" aria-hidden="true">⇢</span>`;
       })
-      .join('<span class="bc-stage__route-sep" aria-hidden="true">→</span>');
+      .join("");
   }
 
   function setPointerOrigin(x = "50%", y = "50%") {
@@ -243,9 +265,16 @@
     }
 
     root.style.setProperty("--accent-rgb", displayConcern.accentRgb);
+    root.style.setProperty(
+      "--cue-ink-rgb",
+      displayConcern.cueInkRgb || displayConcern.cueRgb || displayConcern.accentRgb
+    );
     chip.textContent = "지금 신호";
+    mobileChip.textContent = "지금 신호";
     family.textContent = displayConcern.family;
+    mobileFamily.textContent = displayConcern.family;
     concernName.textContent = displayConcern.title;
+    mobileConcern.textContent = displayConcern.title;
     route.innerHTML = renderRouteMarkup(displayConcern.route);
     route.setAttribute("aria-label", displayConcern.route);
     why.textContent = displayConcern.why;
@@ -253,6 +282,12 @@
     ctaText.textContent = displayConcern.cta;
     cta.href = displayConcern.href;
     cta.setAttribute("aria-label", `${displayConcern.title} ${displayConcern.cta}`);
+    const imageScale = Number(displayConcern.imageScale) || 1;
+    stage.style.setProperty("--bc-stage-image-scale", `${imageScale}`);
+    stage.style.setProperty(
+      "--bc-stage-image-switch-scale",
+      `${Math.max(imageScale * 0.96, 0.88).toFixed(3)}`
+    );
     if (displayConcern.imageSrc) {
       stageImage.src = displayConcern.imageSrc;
     }
@@ -293,6 +328,44 @@
     const nextIndex = (currentIndex + offset + cues.length) % cues.length;
     const nextCue = cues[nextIndex];
     nextCue?.focus({ preventScroll: true });
+  }
+
+  function moveConcern(offset) {
+    const currentIndex = concernIds.indexOf(activeConcernId);
+    if (currentIndex === -1) {
+      return;
+    }
+
+    const nextIndex = (currentIndex + offset + concernIds.length) % concernIds.length;
+    const nextConcernId = concernIds[nextIndex];
+    if (nextConcernId) {
+      commitConcern(nextConcernId);
+    }
+  }
+
+  function isStageSwipeEnabled() {
+    return coarsePointerQuery.matches || window.innerWidth <= 820;
+  }
+
+  function resetSwipeState() {
+    swipePointerId = null;
+    swipeStartX = 0;
+    swipeStartY = 0;
+    swipeMoved = false;
+  }
+
+  function handleSwipeCommit(deltaX, deltaY) {
+    const threshold = Math.max(44, Math.min(84, stageOrb.clientWidth * 0.12));
+    if (Math.abs(deltaX) < threshold || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return;
+    }
+
+    if (deltaX < 0) {
+      moveConcern(1);
+      return;
+    }
+
+    moveConcern(-1);
   }
 
   cues.forEach((cue) => {
@@ -358,6 +431,66 @@
 
   shell.addEventListener("pointerleave", () => {
     setPointerOrigin();
+  });
+
+  stageOrb.addEventListener("pointerdown", (event) => {
+    if (!isStageSwipeEnabled() || event.pointerType === "mouse") {
+      return;
+    }
+
+    swipePointerId = event.pointerId;
+    swipeStartX = event.clientX;
+    swipeStartY = event.clientY;
+    swipeMoved = false;
+
+    if (typeof stageOrb.setPointerCapture === "function") {
+      try {
+        stageOrb.setPointerCapture(event.pointerId);
+      } catch (error) {
+        // Ignore capture failures; swipe still works without exclusive capture.
+      }
+    }
+  });
+
+  stageOrb.addEventListener("pointermove", (event) => {
+    if (swipePointerId !== event.pointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - swipeStartX;
+    const deltaY = event.clientY - swipeStartY;
+    if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      swipeMoved = true;
+      event.preventDefault();
+    }
+  });
+
+  stageOrb.addEventListener("pointerup", (event) => {
+    if (swipePointerId !== event.pointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - swipeStartX;
+    const deltaY = event.clientY - swipeStartY;
+
+    if (swipeMoved) {
+      handleSwipeCommit(deltaX, deltaY);
+    }
+
+    resetSwipeState();
+  });
+
+  stageOrb.addEventListener("pointercancel", resetSwipeState);
+  stageOrb.addEventListener("lostpointercapture", resetSwipeState);
+
+  stagePrev.addEventListener("click", (event) => {
+    event.preventDefault();
+    moveConcern(-1);
+  });
+
+  stageNext.addEventListener("click", (event) => {
+    event.preventDefault();
+    moveConcern(1);
   });
 
   window.addEventListener("scroll", requestScrollHandoffUpdate, { passive: true });
