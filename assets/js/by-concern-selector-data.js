@@ -1,4 +1,21 @@
-const selectorProductExplorerLinks = window.ERTY_PRODUCTS_EXPLORER_LINKS;
+const selectorProductExplorerLinks = window.ERTY_PRODUCTS_EXPLORER_LINKS || {
+  toExplorerHref(concernId, startId) {
+    const params = new URLSearchParams();
+
+    if (concernId) {
+      params.set("concern", concernId);
+    }
+
+    if (startId) {
+      params.set("start", startId);
+    }
+
+    const query = params.toString();
+    return query
+      ? `/products/?${query}#product-explorer`
+      : "/products/#product-explorer";
+  },
+};
 
 window.ERTY_BY_CONCERN_SELECTOR_DATA = {
   defaultConcernId: "barrier-redness",

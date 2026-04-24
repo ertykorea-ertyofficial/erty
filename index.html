@@ -8,11 +8,40 @@
       name="description"
       content="에르띠는 회복과 톤의 문제를 제품 번호로 다루는 더마 프로페셔널 브랜드입니다."
     />
+    <link rel="canonical" href="https://ertyofficial.com/" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ERTY Official" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:url" content="https://ertyofficial.com/" />
+    <meta property="og:title" content="ERTY Official | 문제 피부는 먼저 읽어야 합니다" />
+    <meta
+      property="og:description"
+      content="에르띠는 회복과 톤의 문제를 제품 번호로 다루는 더마 프로페셔널 브랜드입니다."
+    />
+    <meta property="og:image" content="https://ertyofficial.com/assets/images/brand/home/v15/home-hero-2313.jpg" />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="541" />
+    <meta property="og:image:alt" content="ERTY Official derma professional brand index" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ERTY Official | 문제 피부는 먼저 읽어야 합니다" />
+    <meta
+      name="twitter:description"
+      content="에르띠는 회복과 톤의 문제를 제품 번호로 다루는 더마 프로페셔널 브랜드입니다."
+    />
+    <meta name="twitter:image" content="https://ertyofficial.com/assets/images/brand/home/v15/home-hero-2313.jpg" />
     <link
       rel="preload"
       as="image"
       href="/assets/images/brand/home/v15/home-hero-2313.jpg"
       fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="font"
+      href="/assets/fonts/gmarket-sans/GmarketSansBold.otf"
+      type="font/otf"
+      crossorigin
     />
     <link rel="icon" type="image/png" href="/assets/images/brand/erty-logo-no-slogan-black.png" />
     <link rel="stylesheet" href="/assets/css/reset.css" />
@@ -25,47 +54,137 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "ERTY Official",
-        "url": "https://ertyofficial.com",
-        "description": "회복과 톤의 문제를 제품 번호로 다루는 더마 프로페셔널 브랜드."
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
+        "@graph": [
           {
-            "@type": "Question",
-            "name": "여러 고민이 겹치면 어디서 시작하나요?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "가장 불편한 변화부터 잡습니다. 장벽은 37, 수분은 23·27, 톤은 55·57입니다."
+            "@type": "Organization",
+            "@id": "https://ertyofficial.com/#organization",
+            "name": "ERTY Official",
+            "alternateName": "ERTY Derma Professional",
+            "url": "https://ertyofficial.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://ertyofficial.com/assets/images/brand/erty-logo-no-slogan-black.png",
+              "width": 120,
+              "height": 28
+            },
+            "image": "https://ertyofficial.com/assets/images/brand/home/v15/home-hero-2313.jpg",
+            "description": "회복과 톤의 문제를 제품 번호로 다루는 더마 프로페셔널 브랜드."
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://ertyofficial.com/#website",
+            "url": "https://ertyofficial.com/",
+            "name": "ERTY Official",
+            "inLanguage": "ko-KR",
+            "publisher": {
+              "@id": "https://ertyofficial.com/#organization"
             }
           },
           {
-            "@type": "Question",
-            "name": "숫자는 효과를 그대로 뜻하나요?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "아닙니다. 수치는 조건이 붙은 근거입니다. Results에서 시험 조건과 함께 보세요."
-            }
+            "@type": "WebPage",
+            "@id": "https://ertyofficial.com/#webpage",
+            "url": "https://ertyofficial.com/",
+            "name": "ERTY Official | 문제 피부는 먼저 읽어야 합니다",
+            "description": "에르띠는 회복과 톤의 문제를 제품 번호로 다루는 더마 프로페셔널 브랜드입니다.",
+            "isPartOf": {
+              "@id": "https://ertyofficial.com/#website"
+            },
+            "about": {
+              "@id": "https://ertyofficial.com/#organization"
+            },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://ertyofficial.com/assets/images/brand/home/v15/home-hero-2313.jpg",
+              "width": 1000,
+              "height": 541
+            },
+            "inLanguage": "ko-KR"
           },
           {
-            "@type": "Question",
-            "name": "01·02·03은 언제 붙이나요?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "루틴 축을 잡은 뒤 붙입니다. 01은 필링, 02는 톤 리페어, 03은 재생 마감입니다."
-            }
+            "@type": "FAQPage",
+            "@id": "https://ertyofficial.com/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "고민이 여러 개면 무엇부터 봐야 하나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "가장 먼저 거슬리는 피부 신호 하나에서 시작 번호를 정합니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "제품 번호는 어떻게 읽나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "번호는 효과명이 아니라 제품의 위치와 루틴 안의 역할을 읽는 기준입니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "01·02·03은 언제 붙이나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "루틴 축을 잡은 뒤 붙이는 프로토콜 단계입니다. 01은 결, 02는 톤, 03은 재생 마감에 가깝습니다."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "수치와 근거는 어디서 확인하나요?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "제품 번호와 함께 연결된 수치, 기준, 해석을 Results에서 이어서 확인합니다."
+                }
+              }
+            ]
           }
         ]
       }
     </script>
   </head>
   <body data-page="home">
-    <div data-component="header"></div>
+    <div data-component="header">
+      <header class="site-header" data-header>
+        <div class="container site-header__inner">
+          <a class="site-brand" href="/" aria-label="ERTY Home">
+            <img
+              class="site-brand__logo"
+              src="/assets/images/brand/erty-logo-no-slogan-black.png"
+              alt="ERTY"
+              width="120"
+              height="28"
+              decoding="async"
+            />
+            <span class="site-brand__meta" lang="en">Official Brand Index</span>
+          </a>
+
+          <button
+            class="site-header__toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            data-nav-toggle
+          >
+            <span data-nav-toggle-label lang="en">Menu</span>
+          </button>
+
+          <div class="site-header__panel" data-nav-panel>
+            <nav class="global-nav site-nav" id="site-nav" aria-label="Global" lang="en">
+              <a href="/" class="global-nav__link" data-nav-link>Home</a>
+              <a href="/by-concern/" class="global-nav__link" data-nav-link>By Concern</a>
+              <a href="/products/" class="global-nav__link" data-nav-link>Products</a>
+              <a href="/guide/" class="global-nav__link" data-nav-link>Guide</a>
+              <a href="/results/" class="global-nav__link" data-nav-link>Results</a>
+              <a href="/brand/" class="global-nav__link" data-nav-link>Brand</a>
+            </nav>
+
+            <div class="site-header__meta">
+              <span class="status-chip status-chip--neutral" lang="en">ko-KR</span>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
 
     <main class="page-main home-main home-main--v12">
       <section class="home-v7-section home-v7-hero">
@@ -75,6 +194,8 @@
             alt=""
             width="1000"
             height="541"
+            decoding="async"
+            fetchpriority="high"
           />
         </div>
         <div class="container home-v7-hero__inner">
@@ -154,6 +275,8 @@
                     width="420"
                     height="840"
                     loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
                   />
                 </div>
               </div>
@@ -298,9 +421,65 @@
       </section>
     </main>
 
-    <div data-component="footer"></div>
+    <div data-component="footer">
+      <footer class="site-footer">
+        <div class="container site-footer__inner site-footer__inner--v12">
+          <div class="site-footer__brand">
+            <p class="site-footer__kicker" data-home-copy="footer.kicker" lang="en">ERTY Official</p>
+            <img
+              class="site-footer__logo"
+              src="/assets/images/brand/erty-logo-black.png"
+              alt="ERTY Derma Professional"
+              width="164"
+              height="54"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="site-footer__brand-copy" data-home-copy="footer.definition">
+              무너진 피부를 회복의 번호로 다시 붙잡습니다.
+            </p>
+          </div>
 
-    <script src="/assets/js/components.js" defer></script>
+          <div class="site-footer__system">
+            <div class="site-footer__artifact" aria-label="에르띠 번호 체계 요약">
+              <p class="site-footer__artifact-kicker" data-home-copy="footer.artifactKicker">넘버링 서명</p>
+              <p class="site-footer__artifact-copy" data-home-copy="footer.artifactCopy">
+                라인이 문제를 가르고, 번호가 회복의 순서를 남깁니다.
+              </p>
+              <div class="site-footer__artifact-rows" data-footer-numbering>
+                <span data-line="professional"><em lang="en">Professional</em><strong>01 · 02 · 03</strong><small>프로토콜 마감</small></span>
+                <span data-line="balancing"><em lang="en">Balancing</em><strong>11 · 13 · 15</strong><small>균형 시작</small></span>
+                <span data-line="hydrating"><em lang="en">Hydrating</em><strong>21 · 23 · 25 · 27</strong><small>수분 확보</small></span>
+                <span data-line="revitalizing"><em lang="en">Revitalizing</em><strong>35 · 37</strong><small>회복 고정</small></span>
+                <span data-line="brightening"><em lang="en">Brightening</em><strong>50 · 55 · 57</strong><small>톤 정렬</small></span>
+              </div>
+            </div>
+
+            <div class="site-footer__status">
+              <span class="site-footer__locale" data-home-copy="footer.locale" lang="en">KO-KR</span>
+              <p class="site-footer__note" data-home-copy="footer.disclaimer">
+                공식 스토어 연결은 대표 URL 확정 뒤에 열립니다.
+              </p>
+              <small lang="en">Copyright <span data-current-year></span> ERTY Official</small>
+            </div>
+          </div>
+
+          <nav class="site-footer__nav-column" aria-label="하단 주요 경로">
+            <p class="site-footer__nav-kicker" data-home-copy="footer.navKicker">다음 경로</p>
+            <div class="site-footer__links">
+              <a href="/brand/">브랜드</a>
+              <a href="/products/">제품 번호</a>
+              <a href="/results/">근거</a>
+              <a href="/guide/">가이드</a>
+              <a href="/by-concern/">고민별</a>
+            </div>
+          </nav>
+        </div>
+      </footer>
+    </div>
+
+    <script src="/assets/js/components.js?v=20260424-home-seo-round2" defer></script>
+    <script src="/assets/js/product-slugs.js?v=20260424-pdp-slugs-v1" defer></script>
     <script src="/assets/js/home-data.js?v=20260424-home-faq-ledger-v1" defer></script>
     <script src="/assets/js/main.js?v=20260424-home-faq-cards-v1" defer></script>
   </body>

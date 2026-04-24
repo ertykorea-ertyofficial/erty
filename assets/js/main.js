@@ -2,6 +2,12 @@ function normalizePath(pathname) {
   return pathname.replace(/index\.html$/, "").replace(/\/+$/, "") || "/";
 }
 
+const PRODUCT_SLUGS = window.ERTY_PRODUCT_SLUGS || {
+  getHref() {
+    return "/products/";
+  },
+};
+
 function linkMatches(targetPath, currentPath) {
   if (targetPath === "/") {
     return currentPath === "/";
@@ -612,7 +618,10 @@ function bindHomeStaticEvents() {
     const route = getRouteFor(renderedItem);
     slots.routeTag.textContent = route?.shortLabel || renderedItem.routeLabel;
     slots.routeText.textContent = route ? `${route.benefit}` : "다음 경로 확인";
-    slots.link.setAttribute("href", renderedItem.detailHref);
+    slots.link.setAttribute(
+      "href",
+      PRODUCT_SLUGS.getHref(renderedItem.id) || renderedItem.detailHref,
+    );
     slots.link.textContent = renderedItem.actionLabel;
     slots.image.setAttribute("src", slugToImagePath(renderedItem.imageKey));
     slots.image.setAttribute("alt", renderedItem.displayName);

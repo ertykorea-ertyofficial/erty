@@ -2,6 +2,11 @@ async function loadComponent(target) {
   const componentName = target.dataset.component;
   const source = `/components/${componentName}.html`;
 
+  if (target.innerHTML.trim()) {
+    target.dataset.componentLoaded = "inline";
+    return;
+  }
+
   try {
     const response = await fetch(source, { cache: "no-cache" });
 

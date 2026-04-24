@@ -119,6 +119,14 @@
   const HOME_DATA_SKU_MAP = Array.isArray(window.ERTY_HOME_DATA?.skus)
     ? new Map(window.ERTY_HOME_DATA.skus.map((sku) => [sku.id, sku]))
     : new Map();
+  const PRODUCT_SLUGS = window.ERTY_PRODUCT_SLUGS || {
+    getSlug() {
+      return "";
+    },
+    getHref() {
+      return "/products/";
+    },
+  };
 
   function getProductImageScale(productId) {
     return 1;
@@ -359,6 +367,11 @@
       href: "#product-card-03",
     },
   ];
+
+  pxProducts.forEach((product) => {
+    product.slug = PRODUCT_SLUGS.getSlug(product.id);
+    product.href = PRODUCT_SLUGS.getHref(product.id);
+  });
 
   const pxConcernMap = {
     "oil-breakout-pores": {
@@ -721,7 +734,7 @@
       .join("");
 
     pxPrimary.textContent = getPrimaryLabel(product, concernData);
-    pxPrimary.href = `#product-card-${product.id}`;
+    pxPrimary.href = product.href || PRODUCT_SLUGS.getHref(product.id);
 
     pxPurchase.hidden = !shouldShowPurchase;
     pxPurchase.disabled = !purchaseHref;
