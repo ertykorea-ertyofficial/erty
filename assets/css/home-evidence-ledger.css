@@ -1,0 +1,292 @@
+/* HOME Evidence: Clinical Ledger */
+.home-main--v12 .home-v7-proof {
+  background:
+    linear-gradient(180deg, rgba(250, 251, 252, 0.72), rgba(245, 246, 247, 0.46));
+}
+
+.home-main--v12 .home-v7-proof__header {
+  row-gap: clamp(16px, 1.35vw, 22px);
+  column-gap: clamp(24px, 3.6vw, 48px);
+  max-width: none;
+  margin-bottom: clamp(22px, 2.5vw, 30px);
+}
+
+.home-main--v12 .home-v7-proof__header .section-copy {
+  margin: 0;
+}
+
+.home-main--v12 .home-v11-proof__status {
+  width: min(100%, 260px);
+  padding: 12px 0 0 18px;
+}
+
+.home-main--v12 .home-v11-proof-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(206, 214, 223, 0.86);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 249, 250, 0.82));
+  box-shadow: 0 18px 44px rgba(17, 24, 26, 0.034);
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary:last-child,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] {
+  grid-column: auto;
+  grid-row: auto;
+  display: grid;
+  grid-template-columns: minmax(140px, 0.17fr) minmax(226px, 0.24fr) minmax(0, 1fr) minmax(224px, 0.24fr);
+  align-items: center;
+  gap: clamp(16px, 1.7vw, 24px);
+  min-height: 104px;
+  padding: 17px clamp(22px, 2.6vw, 34px);
+  border: 0;
+  border-bottom: 1px solid rgba(220, 226, 232, 0.76);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  transition:
+    background 160ms var(--ease-out),
+    box-shadow 160ms var(--ease-out);
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger:last-child {
+  border-bottom: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger::before {
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: color-mix(in srgb, var(--proof-color) 54%, rgba(26, 26, 26, 0.1));
+  opacity: 0.28;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger::after {
+  display: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__head,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__head,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__head {
+  grid-column: 1;
+  display: grid;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__line {
+  color: rgba(26, 26, 26, 0.72);
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.38;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__type,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__type {
+  display: none;
+  width: fit-content;
+  min-height: 22px;
+  align-items: center;
+  padding: 0 8px;
+  border: 1px solid color-mix(in srgb, var(--proof-color) 12%, rgba(214, 219, 225, 0.84));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.64);
+  color: rgba(26, 26, 26, 0.46);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__metric-lock,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__metric-lock,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__metric-lock {
+  grid-column: 2;
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"] .home-v12-proof-tile__metric {
+  color: color-mix(in srgb, var(--proof-color) 82%, var(--color-text));
+  font-size: clamp(2.18rem, 3.45vw, 3.36rem);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.078em;
+  white-space: nowrap;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__title,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__title,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__title {
+  max-width: none;
+  color: rgba(26, 26, 26, 0.84);
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__copy,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__copy,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__copy {
+  grid-column: 3;
+  max-width: none;
+  padding: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"] .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] .home-v12-proof-tile__body {
+  max-width: 58ch;
+  margin: 0;
+  color: rgba(26, 26, 26, 0.62);
+  font-size: clamp(0.84rem, 0.9vw, 0.92rem);
+  line-height: 1.58;
+  word-break: keep-all;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__footer,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__footer {
+  grid-column: 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  justify-items: end;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__qualifier {
+  justify-self: end;
+  max-width: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(26, 26, 26, 0.46);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.42;
+  text-align: right;
+  word-break: keep-all;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__route {
+  justify-self: end;
+  color: color-mix(in srgb, var(--proof-color) 68%, var(--color-text));
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.is-active,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger:focus-within,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger:focus-visible {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--proof-color) 3.2%, transparent), transparent 50%),
+    rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--proof-color) 7%, transparent);
+  outline: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.is-preview:not(.is-active) {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--proof-color) 2.4%, transparent), transparent 50%),
+    rgba(255, 255, 255, 0.14);
+  transform: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.is-active::before,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.is-preview::before,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger:focus-within::before {
+  opacity: 0.92;
+}
+
+@media (max-width: 1023px) {
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] {
+    grid-template-columns: minmax(104px, 0.2fr) minmax(198px, 0.32fr) minmax(0, 1fr) !important;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__footer {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-items: start;
+    padding-top: 2px;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__qualifier,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__route {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-main--v12 .home-v11-proof-grid {
+    border-radius: 22px;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__head,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__metric-lock,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__copy,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__footer {
+    grid-column: 1 !important;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__metric {
+    font-size: clamp(2.32rem, 12vw, 3.25rem);
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__footer {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+}

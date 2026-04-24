@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
-    <link rel="stylesheet" href="/assets/css/products.css?v=20260423-products-desktop-poster-placeholder" />
+    <link rel="stylesheet" href="/assets/css/products.css?v=20260424-products-cta-center-v1" />
   </head>
   <body data-page="products">
     <div data-component="header"></div>
@@ -61,11 +61,10 @@
           <div class="px-explorer__intro">
             <p class="px-explorer__eyebrow" id="px-eyebrow">PRODUCT EXPLORER</p>
             <h2 class="px-explorer__title" id="px-title">
-              <span>더 깊게 알아보는</span>
-              <span>에르띠 제품</span>
+              더 깊게 알아가는 시간
             </h2>
             <p class="px-explorer__desc" id="px-desc">
-              번호 기준으로 제품을 읽으면 전체를 다 볼 필요는 없습니다.
+              내 피부에 쓸 제품이기에 더 자세히 알아야합니다.
             </p>
 
             <div class="px-context" id="px-context" hidden>
@@ -101,8 +100,8 @@
 
               <div class="px-stage__panel">
                 <div class="px-stage__panel-top">
-                  <span class="px-stage__family" id="px-family">REVITALIZING</span>
-                  <span class="px-stage__number" id="px-number">37</span>
+                  <span class="px-stage__family" id="px-family">BALANCING</span>
+                  <span class="px-stage__number" id="px-number">11</span>
                 </div>
 
                 <div class="px-stage__poster-shell">
@@ -114,28 +113,48 @@
                     alt="클렌징 젤 포 스킨 밸런싱 제품 포스터"
                     hidden
                   />
-                  <div class="px-stage__swipe-hints" aria-hidden="true">
-                    <span class="px-stage__swipe-hint px-stage__swipe-hint--prev">⇠</span>
-                    <span class="px-stage__swipe-hint px-stage__swipe-hint--next">⇢</span>
+                  <img
+                    id="px-poster-outgoing"
+                    class="px-stage__poster px-stage__poster--outgoing"
+                    alt=""
+                    aria-hidden="true"
+                    hidden
+                  />
+                  <div class="px-stage__swipe-hints">
+                    <button
+                      class="px-stage__swipe-hint px-stage__swipe-hint--prev"
+                      type="button"
+                      aria-label="이전 제품 포스터 보기"
+                    >
+                      ⇠
+                    </button>
+                    <button
+                      class="px-stage__swipe-hint px-stage__swipe-hint--next"
+                      type="button"
+                      aria-label="다음 제품 포스터 보기"
+                    >
+                      ⇢
+                    </button>
                   </div>
+                  <div class="px-stage__cta-hotspot" aria-hidden="true"></div>
                 </div>
 
-                <h3 class="px-stage__name" id="px-name">Intensive Cellular ER Cream</h3>
+                <h3 class="px-stage__name" id="px-name">클렌징 젤 포 스킨 밸런싱</h3>
                 <p class="px-stage__summary" id="px-summary">
-                  장벽 약화와 붉은기가 먼저라면 37부터 장벽 회복을 보는 편이 빠릅니다.
+                  루틴의 시작점
                 </p>
 
                 <p class="px-stage__detail" id="px-detail">
-                  피부 지질 보호막과 세컨드 스킨 개념으로 무너진 장벽 컨디션을 먼저 붙잡습니다.
+                  피부 진정과 유수분 밸런스를 위한 상쾌한 자일리톨 클렌저
                 </p>
 
                 <div class="px-stage__meta" id="px-meta">
-                  <span class="px-stage__meta-item">선택 route 기준</span>
-                  <span class="px-stage__meta-item">37 → 35</span>
+                  <span class="px-stage__meta-item">BALANCING</span>
+                  <span class="px-stage__meta-item">11 먼저 보기</span>
                 </div>
 
                 <div class="px-stage__actions">
-                  <a class="px-stage__primary" id="px-primary" href="#product-card-37">제품 상세 보기</a>
+                  <a class="px-stage__primary" id="px-primary" href="#product-card-11">제품 상세 보기</a>
                   <button
                     class="px-stage__purchase"
                     id="px-purchase"
@@ -197,7 +216,7 @@
                   class="products-catalog__desc"
                   id="products-catalog-description"
                 >
-                  선택된 번호 아래로 전체 제품 구조를 이어서 탐색합니다.
+                  전제품 선택하기 쉽게 정리했습니다.
                 </p>
               </div>
 
@@ -290,6 +309,6 @@
     <script src="/assets/js/components.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
     <script src="/assets/js/home-data.js" defer></script>
-    <script src="/assets/js/products-catalog.js?v=20260423-products-desktop-poster-placeholder" defer></script>
+    <script src="/assets/js/products-catalog.js?v=20260424-products-grid-nav-v1" defer></script>
   </body>
 </html>

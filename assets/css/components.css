@@ -11483,6 +11483,176 @@ body[data-page="home"] .site-footer__inner--v12 .site-footer__status small {
   }
 }
 
+/* HOME V18 CLINICAL LEDGER FILE-END OVERRIDE */
+.home-main--v12 .home-v11-proof-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
+  gap: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary:last-child,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] {
+  grid-column: auto;
+  grid-row: auto;
+  grid-template-columns: minmax(128px, 0.16fr) minmax(138px, 0.16fr) minmax(0, 1fr) minmax(220px, 0.26fr);
+  min-height: 112px;
+  padding: 18px clamp(20px, 2.6vw, 32px);
+  border: 0;
+  border-bottom: 1px solid rgba(216, 222, 229, 0.82);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* HOME V18 CLINICAL LEDGER FINAL PRIORITY */
+.home-main--v12 .home-v11-proof-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(202, 210, 219, 0.92);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 249, 250, 0.76)),
+    repeating-linear-gradient(90deg, rgba(26, 26, 26, 0.016) 0 1px, transparent 1px 76px);
+  box-shadow: 0 22px 54px rgba(17, 24, 26, 0.045);
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary:last-child,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] {
+  grid-column: auto;
+  grid-row: auto;
+  display: grid;
+  grid-template-columns: minmax(128px, 0.16fr) minmax(138px, 0.16fr) minmax(0, 1fr) minmax(220px, 0.26fr);
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 28px);
+  min-height: 112px;
+  padding: 18px clamp(20px, 2.6vw, 32px);
+  border: 0;
+  border-bottom: 1px solid rgba(216, 222, 229, 0.82);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger:last-child {
+  border-bottom: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger::before {
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: color-mix(in srgb, var(--proof-color) 62%, rgba(26, 26, 26, 0.14));
+  opacity: 0.34;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger::after {
+  display: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__head,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__head,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__head {
+  grid-column: 1;
+  display: grid;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__type,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__type {
+  display: inline-flex;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__metric-lock,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__metric-lock,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__metric-lock {
+  grid-column: 2;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"] .home-v12-proof-tile__metric {
+  font-size: clamp(2rem, 3.6vw, 3.15rem);
+  line-height: 0.9;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__copy,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__copy,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__copy {
+  grid-column: 3;
+  max-width: none;
+  padding: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__footer,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__footer {
+  grid-column: 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: end;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+@media (max-width: 1023px) {
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] {
+    grid-template-columns: minmax(112px, 0.22fr) minmax(128px, 0.22fr) minmax(0, 1fr);
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary .home-v12-proof-tile__footer {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-items: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--primary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger.home-v12-proof-tile--secondary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="27"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="55"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger[data-proof-key="57"] {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    min-height: 0;
+    padding: 18px;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__head,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__metric-lock,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__copy,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--ledger .home-v12-proof-tile__footer {
+    grid-column: 1;
+  }
+}
+
 /* BY CONCERN V6 SELECTOR NODE LOCK */
 .by-concern-section-head h2 {
   max-width: 19ch;
@@ -15267,6 +15437,287 @@ body[data-page="by-concern"] [data-line="professional"] {
   .home-main--v12 .home-v12-proof-tile[data-proof-key="57"] {
     grid-template-columns: minmax(82px, 0.34fr) minmax(0, 1fr);
     padding: 15px 16px;
+  }
+}
+
+/* HOME V18 CLINICAL LEDGER EVIDENCE */
+.home-main--v12 .home-v7-proof {
+  background:
+    linear-gradient(180deg, rgba(250, 251, 252, 0.72), rgba(245, 246, 247, 0.46));
+}
+
+.home-main--v12 .home-v7-proof__header {
+  max-width: none;
+  margin-bottom: clamp(22px, 3.2vw, 36px);
+}
+
+.home-main--v12 .home-v11-proof__status {
+  width: min(100%, 260px);
+  padding: 12px 0 0 18px;
+}
+
+.home-main--v12 .home-v11-proof-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: none;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid rgba(202, 210, 219, 0.92);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 249, 250, 0.76)),
+    repeating-linear-gradient(90deg, rgba(26, 26, 26, 0.016) 0 1px, transparent 1px 76px);
+  box-shadow: 0 22px 54px rgba(17, 24, 26, 0.045);
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary:last-child,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="27"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="55"],
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="57"] {
+  grid-column: auto;
+  grid-row: auto;
+  display: grid;
+  grid-template-columns: minmax(128px, 0.16fr) minmax(138px, 0.16fr) minmax(0, 1fr) minmax(220px, 0.26fr);
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 28px);
+  min-height: 112px;
+  padding: 18px clamp(20px, 2.6vw, 32px);
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(216, 222, 229, 0.82);
+  background: transparent;
+  box-shadow: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile:last-child {
+  border-bottom: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile::before {
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: color-mix(in srgb, var(--proof-color) 62%, rgba(26, 26, 26, 0.14));
+  opacity: 0.34;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile::after {
+  display: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__head,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__head,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__head {
+  grid-column: 1;
+  display: grid;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__line {
+  color: rgba(26, 26, 26, 0.72);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__type,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__type {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 24px;
+  align-items: center;
+  padding: 0 9px;
+  border: 1px solid color-mix(in srgb, var(--proof-color) 15%, rgba(214, 219, 225, 0.84));
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.64);
+  color: rgba(26, 26, 26, 0.5);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__metric-lock,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__metric-lock,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__metric-lock {
+  grid-column: 2;
+  display: grid;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__metric,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="27"] .home-v12-proof-tile__metric {
+  color: color-mix(in srgb, var(--proof-color) 82%, var(--color-text));
+  font-size: clamp(2rem, 3.6vw, 3.15rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.07em;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__title,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__title,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__title {
+  max-width: none;
+  color: rgba(26, 26, 26, 0.84);
+  font-size: 0.86rem;
+  font-weight: 800;
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__copy,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__copy,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__copy {
+  grid-column: 3;
+  max-width: none;
+  padding: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="55"] .home-v12-proof-tile__body,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="57"] .home-v12-proof-tile__body {
+  max-width: 58ch;
+  margin: 0;
+  color: rgba(26, 26, 26, 0.66);
+  font-size: clamp(0.84rem, 0.92vw, 0.94rem);
+  line-height: 1.62;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__footer,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__footer,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary:last-child .home-v12-proof-tile__footer {
+  grid-column: 4;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  justify-items: end;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__qualifier {
+  justify-self: end;
+  max-width: 24ch;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgba(26, 26, 26, 0.52);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__route {
+  justify-self: end;
+  color: color-mix(in srgb, var(--proof-color) 74%, var(--color-text));
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile.is-active,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile:focus-within {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--proof-color) 6%, transparent), transparent 52%),
+    rgba(255, 255, 255, 0.36);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--proof-color) 12%, transparent);
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile.is-preview:not(.is-active) {
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--proof-color) 4%, transparent), transparent 52%),
+    rgba(255, 255, 255, 0.24);
+  transform: none;
+}
+
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile.is-active::before,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile.is-preview::before,
+.home-main--v12 .home-v11-proof-grid .home-v12-proof-tile:focus-within::before {
+  opacity: 0.92;
+}
+
+@media (max-width: 1023px) {
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary:last-child,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="27"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="55"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="57"] {
+    grid-template-columns: minmax(112px, 0.22fr) minmax(128px, 0.22fr) minmax(0, 1fr);
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__footer {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-items: start;
+    padding-top: 2px;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__qualifier,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__route {
+    justify-self: start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-main--v12 .home-v11-proof-grid {
+    border-radius: 22px;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary:last-child,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="27"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="55"],
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile[data-proof-key="57"] {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    min-height: 0;
+    padding: 18px 18px 20px;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__head,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__metric-lock,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__copy,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__footer {
+    grid-column: 1;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__metric {
+    font-size: clamp(2.42rem, 12vw, 3.45rem);
+  }
+
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--primary .home-v12-proof-tile__footer,
+  .home-main--v12 .home-v11-proof-grid .home-v12-proof-tile--secondary .home-v12-proof-tile__footer {
+    grid-template-columns: 1fr;
+    gap: 9px;
   }
 }
 

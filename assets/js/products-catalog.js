@@ -12,6 +12,7 @@
   const pxVisual = pxExplorer?.querySelector(".px-stage__visual");
   const pxPanel = pxExplorer?.querySelector(".px-stage__panel");
   const pxPoster = document.getElementById("px-poster");
+  const pxPosterOutgoing = document.getElementById("px-poster-outgoing");
   const pxFamily = document.getElementById("px-family");
   const pxNumber = document.getElementById("px-number");
   const pxName = document.getElementById("px-name");
@@ -26,6 +27,8 @@
   const pxNumberRail = document.getElementById("px-number-rail");
   const pxPrev = document.getElementById("px-prev");
   const pxNext = document.getElementById("px-next");
+  const pxPosterPrev = pxExplorer?.querySelector(".px-stage__swipe-hint--prev");
+  const pxPosterNext = pxExplorer?.querySelector(".px-stage__swipe-hint--next");
 
   const productsCatalog = document.getElementById("products-catalog");
   const catalogTitle = document.getElementById("products-catalog-title");
@@ -45,6 +48,7 @@
     !pxVisual ||
     !pxPanel ||
     !pxPoster ||
+    !pxPosterOutgoing ||
     !pxFamily ||
     !pxNumber ||
     !pxName ||
@@ -59,6 +63,8 @@
     !pxNumberRail ||
     !pxPrev ||
     !pxNext ||
+    !pxPosterPrev ||
+    !pxPosterNext ||
     !productsCatalog ||
     !catalogTitle ||
     !catalogDescription ||
@@ -108,6 +114,7 @@
     "55": "/assets/images/brand/products/stage-posters/55.png",
     "57": "/assets/images/brand/products/stage-posters/57.png",
   };
+  const DESKTOP_STAGE_POSTER_BASE_PATH = "/assets/images/brand/products/stage-posters-16x9";
 
   const HOME_DATA_SKU_MAP = Array.isArray(window.ERTY_HOME_DATA?.skus)
     ? new Map(window.ERTY_HOME_DATA.skus.map((sku) => [sku.id, sku]))
@@ -130,7 +137,7 @@
       return STAGE_POSTER_IMAGE_MAP[product.id] || product.stagePoster || "";
     }
 
-    return "";
+    return `${DESKTOP_STAGE_POSTER_BASE_PATH}/${product.id}.png`;
   }
 
   function getPurchaseHref(productId) {
@@ -317,7 +324,7 @@
       stageName: "퍼펙트 수딩 솔루션",
       stageSummary: "피부결 리셋\n각질 정돈 전문가",
       stageDetail: "피부 밸런스를 바로 세우는\n저자극 필링 솔루션",
-      summary: "거친 결과 각질은 01부터 결을 정리하는 편이 안정적입니다.",
+      summary: "거친 피부결과 각질은 01부터 결을 정리하는 편이 안정적입니다.",
       detail:
         "저자극 필링과 표면 reset에 가까운 시작 번호로, 결 정리와 다음 흡수 단계를 여는 역할을 합니다.",
       image: HOME_EXPLORER_IMAGE_MAP["01"],
@@ -356,33 +363,39 @@
   const pxConcernMap = {
     "oil-breakout-pores": {
       title: "유분 · 트러블 · 모공",
+      routineTitle: "유분 · 트러블 · 모공 개선 루틴",
       route: ["11", "13", "15"],
       family: "balancing",
     },
     "dehydration-tightness": {
       title: "수분 부족 · 속당김",
+      routineTitle: "수분 부족 · 속당김 개선 루틴",
       route: ["23", "25", "27"],
       family: "hydrating",
     },
     "barrier-redness": {
       title: "장벽 약화 · 붉은기",
-      route: ["37", "35"],
+      routineTitle: "장벽 약화 · 붉은기 개선 루틴",
+      route: ["35", "37"],
       family: "revitalizing",
     },
     "dullness-dark-spot": {
       title: "칙칙함 · 잡티 · 톤 저하",
+      routineTitle: "칙칙함 · 잡티 · 톤저하 개선 루틴",
       route: ["55", "57", "50"],
       family: "brightening",
     },
     "texture-flaking": {
-      title: "거친 결 · 각질",
-      route: ["01", "23", "37"],
+      title: "거친 피부결 · 각질",
+      routineTitle: "거친 피부결 · 각질 개선 루틴",
+      route: ["01", "25", "37"],
       family: "professional",
     },
     "recovery-firmness": {
-      title: "회복이 느림 · 탄력 저하",
-      route: ["35", "37", "02"],
-      family: "revitalizing",
+      title: "회복 저하 · 탄력 저하",
+      routineTitle: "회복 저하 · 탄력 저하 개선 루틴",
+      route: ["02", "37", "03"],
+      family: "professional",
     },
   };
 
@@ -426,6 +439,7 @@
     previewFamily: null,
     swipeStartX: null,
     suspendGridHoverPreview: false,
+    stageSlideDirection: "",
   };
   let visualSyncFrame = 0;
   let viewportCardSyncFrame = 0;
@@ -610,9 +624,23 @@
     const concernData = getCurrentConcernData();
 
     if (concernData) {
+      const routineTitle = concernData.routineTitle || `${concernData.title} 개선 루틴`;
+      const routineSuffix = "개선 루틴";
+      const routineLead = routineTitle.endsWith(routineSuffix)
+        ? routineTitle.slice(0, -routineSuffix.length).trim()
+        : routineTitle;
+      const leadNode = document.createElement("span");
+      const suffixNode = document.createElement("span");
+
+      leadNode.className = "px-title__lead";
+      leadNode.textContent = routineLead;
+      suffixNode.className = "px-title__suffix";
+      suffixNode.textContent = routineSuffix;
+
       pxEye.textContent = "FROM BY CONCERN";
-      pxTitle.textContent = `${concernData.title}라면, ${concernData.route[0]}부터 보시면 됩니다`;
-      pxDesc.textContent = "선택된 고민 기준으로 먼저 볼 번호와 이어질 제품만 추렸습니다.";
+      pxTitle.classList.add("is-routine-title");
+      pxTitle.replaceChildren(leadNode, suffixNode);
+      pxDesc.textContent = "선택한 피부고민을 개선 시킬 루틴을 소개합니다";
       pxConcernChip.textContent = concernData.title;
       pxRouteChip.textContent = concernData.route.join(" → ");
       pxFamilyChip.textContent = concernData.family.toUpperCase();
@@ -620,8 +648,9 @@
     }
 
     pxEye.textContent = "PRODUCT EXPLORER";
-    pxTitle.innerHTML = "<span>더 깊게 알아보는</span><span>에르띠 제품</span>";
-    pxDesc.textContent = "번호 기준으로 제품을 읽으면 전체를 다 볼 필요는 없습니다.";
+    pxTitle.classList.remove("is-routine-title");
+    pxTitle.textContent = "더 깊게 알아가는 시간";
+    pxDesc.textContent = "내 피부에 쓸 제품이기에 더 자세히 알아야합니다.";
     pxConcernChip.textContent = "ALL PRODUCTS";
     pxRouteChip.textContent = product.familyLabel;
     pxFamilyChip.textContent = product.id;
@@ -639,6 +668,14 @@
     const usePosterMode = hasStagePoster || isDesktopPosterMode;
     const purchaseHref = getPurchaseHref(product.id);
     const shouldShowPurchase = usePosterMode;
+    const previousPosterSrc = pxPoster.getAttribute("src");
+    const shouldAnimateDesktopPoster =
+      isDesktopPosterMode &&
+      hasStagePoster &&
+      Boolean(state.stageSlideDirection) &&
+      Boolean(previousPosterSrc) &&
+      previousPosterSrc !== stagePosterSrc &&
+      !pxPoster.hidden;
 
     applyExplorerAccent(product.family);
     applyCatalogAccent(state.activeFamily);
@@ -652,8 +689,16 @@
     pxVisual.dataset.stageNumber = product.id;
     pxStage.classList.toggle("is-poster-mode", usePosterMode);
     pxStage.classList.toggle("is-desktop-poster-mode", isDesktopPosterMode);
+    pxStage.classList.toggle("has-stage-poster", hasStagePoster);
     pxPanel.classList.toggle("is-poster-mode", usePosterMode);
     pxPanel.classList.toggle("is-desktop-poster-mode", isDesktopPosterMode);
+    pxPanel.classList.toggle("has-stage-poster", hasStagePoster);
+    pxPosterOutgoing.hidden = !shouldAnimateDesktopPoster;
+    if (shouldAnimateDesktopPoster) {
+      pxPosterOutgoing.src = previousPosterSrc;
+    } else {
+      pxPosterOutgoing.removeAttribute("src");
+    }
     pxPoster.hidden = !hasStagePoster;
     if (hasStagePoster) {
       pxPoster.src = stagePosterSrc;
@@ -839,9 +884,7 @@
 
     if (state.activeFamily === "all") {
       catalogTitle.textContent = "전체 제품";
-      catalogDescription.textContent = isMobile
-        ? "전체 제품을 스와이프로 선택하기"
-        : `현재 focus 번호 ${displayed.id} 아래로 전체 제품 구조를 이어서 탐색합니다.`;
+      catalogDescription.textContent = "전제품 선택하기 쉽게 정리했습니다.";
       catalogStatus.textContent = `전체 ${filteredProducts.length}개 제품`;
       syncScopeControls();
       return;
@@ -938,9 +981,10 @@
       if (withScroll) {
         const rootStyles = window.getComputedStyle(document.documentElement);
         const headerHeight = parseFloat(rootStyles.getPropertyValue("--header-height")) || 0;
+        const desktopPosterOffset = headerHeight + 24;
         const targetTop = MOBILE_GRID_MEDIA.matches
           ? Math.max(0, window.scrollY + pxTitle.getBoundingClientRect().top - 96)
-          : Math.max(0, window.scrollY + pxExplorer.getBoundingClientRect().top - headerHeight - 12);
+          : Math.max(0, window.scrollY + pxShell.getBoundingClientRect().top - desktopPosterOffset);
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         window.scrollTo({
@@ -1160,8 +1204,38 @@
     state.activeId = visible[nextIndex].id;
     state.previewId = null;
     state.suspendGridHoverPreview = false;
+    state.stageSlideDirection = direction > 0 ? "next" : "prev";
     renderAll();
+    playPosterSlide();
     dispatchExplorerEvents();
+  }
+
+  function playPosterSlide() {
+    if (!state.stageSlideDirection) {
+      return;
+    }
+
+    pxStage.dataset.slideDirection = state.stageSlideDirection;
+    pxStage.classList.remove("is-stage-sliding");
+    void pxStage.offsetWidth;
+    pxStage.classList.add("is-stage-sliding");
+    window.setTimeout(() => {
+      pxStage.classList.remove("is-stage-sliding");
+      pxPosterOutgoing.hidden = true;
+      pxPosterOutgoing.removeAttribute("src");
+      state.stageSlideDirection = "";
+    }, 500);
+  }
+
+  function preloadDesktopPosters() {
+    if (MOBILE_GRID_MEDIA.matches) {
+      return;
+    }
+
+    pxProducts.forEach((product) => {
+      const image = new Image();
+      image.src = `${DESKTOP_STAGE_POSTER_BASE_PATH}/${product.id}.png`;
+    });
   }
 
   function dispatchExplorerEvents() {
@@ -1210,6 +1284,8 @@
   function bindExplorerEvents() {
     pxPrev.addEventListener("click", () => moveStage(-1));
     pxNext.addEventListener("click", () => moveStage(1));
+    pxPosterPrev.addEventListener("click", () => moveStage(-1));
+    pxPosterNext.addEventListener("click", () => moveStage(1));
 
     pxPrimary.addEventListener("click", (event) => {
       event.preventDefault();
@@ -1350,6 +1426,7 @@
 
   function bootstrap() {
     initState();
+    preloadDesktopPosters();
     renderAll();
     bindExplorerEvents();
     dispatchExplorerEvents();

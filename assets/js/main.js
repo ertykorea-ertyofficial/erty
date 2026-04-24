@@ -240,8 +240,8 @@ function renderEvidenceGrid(data) {
       const route = data.routes[item.nextRouteKey];
       const tileClass =
         item.emphasis === "primary"
-          ? "home-v12-proof-tile home-v12-proof-tile--primary"
-          : "home-v12-proof-tile home-v12-proof-tile--secondary";
+          ? "home-v12-proof-tile home-v12-proof-tile--primary home-v12-proof-tile--ledger"
+          : "home-v12-proof-tile home-v12-proof-tile--secondary home-v12-proof-tile--ledger";
       const lineLabel = `${item.id} · ${data.families[item.family].label}`;
 
       return `
@@ -252,6 +252,7 @@ function renderEvidenceGrid(data) {
           data-proof-emphasis="${escapeHtml(item.emphasis)}"
           data-line="${escapeHtml(item.family)}"
           data-evidence-sku="${escapeHtml(item.skuId)}"
+          tabindex="0"
           aria-label="${escapeHtml(`${lineLabel} ${item.metric} ${item.whatChanged}`)}"
         >
           <div class="home-v12-proof-tile__head">
@@ -337,22 +338,19 @@ function renderFaq(data) {
 
   root.innerHTML = data.faq
     .map((item, index) => {
-      const answerId = `faq-answer-${item.id}`;
-      const isOpen = index === 0;
+      const routeHref = item.routeHref || "#";
+      const routeLabel = item.routeLabel || "NEXT";
+      const routeCta = item.routeCta || "다음 경로 보기";
+      const indexLabel = item.index || `Q${String(index + 1).padStart(2, "0")}`;
       return `
-        <article class="home-v7-faq__item${isOpen ? " is-open" : ""}" data-line="${escapeHtml(item.family)}" data-faq-item>
-          <button
-            class="home-v7-faq__question"
-            type="button"
-            aria-expanded="${isOpen ? "true" : "false"}"
-            aria-controls="${answerId}"
-            data-faq-trigger="${escapeHtml(item.id)}"
-          >
-            ${escapeHtml(item.question)}
-          </button>
-          <p class="home-v7-faq__answer" id="${answerId}"${isOpen ? "" : ' hidden="hidden"'}>
-            ${escapeHtml(item.answer)}
-          </p>
+        <article class="home-v7-faq__item home-v12-faq-card" data-line="${escapeHtml(item.family)}" data-faq-item>
+          <div class="home-v12-faq-card__head">
+            <span class="home-v12-faq-card__index">${escapeHtml(indexLabel)}</span>
+            <span class="home-v12-faq-card__route">${escapeHtml(routeLabel)}</span>
+          </div>
+          <h4 class="home-v12-faq-card__question">${escapeHtml(item.question)}</h4>
+          <p class="home-v12-faq-card__answer">${escapeHtml(item.answer)}</p>
+          <a class="home-v12-faq-card__link" href="${escapeHtml(routeHref)}">${escapeHtml(routeCta)}</a>
         </article>
       `;
     })
@@ -516,8 +514,6 @@ function bindHomeStaticEvents() {
   const proofItems = Array.from(document.querySelectorAll("[data-proof-item]"));
   const numberingRows = Array.from(document.querySelectorAll("[data-numbering-row]"));
   const featuredItems = Array.from(document.querySelectorAll("[data-featured-item]"));
-  const faqItems = Array.from(document.querySelectorAll("[data-faq-item]"));
-  const faqTriggers = Array.from(document.querySelectorAll("[data-faq-trigger]"));
   const protocolToggle = root.querySelector("[data-featured-protocol-toggle]");
   const protocolPanel = root.querySelector("#featured-protocol-panel");
   const proofStatusLabel = document.querySelector('[data-proof-slot="activeLabel"]');
@@ -533,7 +529,6 @@ function bindHomeStaticEvents() {
 
   let activeSkuId = data.defaultSkuId;
   let previewSkuId = "";
-  let openFaqId = data.faq[0]?.id || "";
   let previewStartedAt = 0;
   let previewTrackedId = "";
   let protocolOpen = true;
@@ -718,6 +713,7 @@ function bindHomeStaticEvents() {
       item.classList.toggle("is-preview", isPreview);
       item.classList.toggle("is-related", isRelated && !isActive && !isPreview);
       item.dataset.state = isActive ? "active" : isPreview ? "preview" : isRelated ? "related" : "idle";
+      item.setAttribute("aria-current", isActive ? "true" : "false");
     });
 
     if (!proofStatusLabel || !proofStatusSummary) {
@@ -986,6 +982,24 @@ function bindHomeStaticEvents() {
       }
       clearPreview();
     });
+
+    item.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        return;
+      }
+      commitSelection(targetId, { trigger: "proof" });
+    });
+
+    item.addEventListener("keydown", (event) => {
+      if (event.target.closest("a")) {
+        return;
+      }
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+      event.preventDefault();
+      commitSelection(targetId, { trigger: "proof-keyboard" });
+    });
   });
 
   numberingRows.forEach((row) => {
@@ -1010,36 +1024,6 @@ function bindHomeStaticEvents() {
         skuId: targetId,
         line: row.dataset.line || "",
       });
-    });
-  });
-
-  faqTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", () => {
-      const item = trigger.closest("[data-faq-item]");
-      const answer = item?.querySelector(".home-v7-faq__answer");
-      const isOpen = trigger.getAttribute("aria-expanded") === "true";
-
-      faqItems.forEach((entry) => {
-        const entryTrigger = entry.querySelector("[data-faq-trigger]");
-        const entryAnswer = entry.querySelector(".home-v7-faq__answer");
-        if (entryTrigger && entryAnswer) {
-          entryTrigger.setAttribute("aria-expanded", "false");
-          entry.classList.remove("is-open");
-          entryAnswer.hidden = true;
-        }
-      });
-
-      if (!isOpen && item && answer) {
-        const nextOpenId = trigger.dataset.faqTrigger || "";
-        trigger.setAttribute("aria-expanded", "true");
-        item.classList.add("is-open");
-        answer.hidden = false;
-        openFaqId = nextOpenId;
-        trackHomeEvent("home_faq_open", {
-          faqId: openFaqId,
-          line: item.dataset.line || "",
-        });
-      }
     });
   });
 
@@ -1073,12 +1057,6 @@ function bindHomeStaticEvents() {
   commitSelection(activeSkuId, { trigger: "initial" });
   protocolOpen = !window.matchMedia("(max-width: 767px)").matches;
   syncProtocolCollapse(protocolOpen);
-  if (openFaqId) {
-    const initialTrigger = document.querySelector(`[data-faq-trigger="${openFaqId}"]`);
-    if (initialTrigger) {
-      initialTrigger.setAttribute("aria-expanded", "true");
-    }
-  }
 }
 
 function initApp() {

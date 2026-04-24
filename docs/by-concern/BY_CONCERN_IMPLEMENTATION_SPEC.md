@@ -186,12 +186,12 @@
 - fully repeated template 금지
 
 ### concern별 proof mapping 예시
-- `barrier-redness` → primary 37 / secondary 27, 35
+- `barrier-redness` → primary 35 / secondary 37
 - `dehydration-tightness` → primary 27 / secondary 23, 25
 - `dullness-dark-spot` → primary 55 / secondary 57, 50
 - `oil-breakout-pores` → primary 13 or 15 / secondary 11, 25
-- `texture-flaking` → primary 01 / secondary 23, 37
-- `recovery-firmness` → primary 37 / secondary 35, 02 or 03
+- `texture-flaking` → primary 01 / secondary 25, 37
+- `recovery-firmness` → primary 02 / secondary 37, 03
 
 ---
 

@@ -167,24 +167,24 @@ export interface FAQNode {
 }
 ```
 
-## 6.3 장벽 약화 · 예민 · 붉은기
+## 6.3 장벽 약화 · 붉은기
 ```json
 {
   "id": "barrier-redness",
   "slug": "barrier-redness",
-  "displayName": "장벽 약화 · 예민 · 붉은기",
+  "displayName": "장벽 약화 · 붉은기",
   "symptomKeywords": ["예민", "붉은기", "장벽 약화"],
   "concernStatement": "회복은 장벽을 먼저 세우는 번호에서 시작합니다.",
   "whyItHappens": "반복 자극, 세정 과다, 회복력 저하가 겹치면 장벽은 얇아지고 붉은기는 오래 남습니다.",
   "avoidFirst": "산이 강한 제품, 과도한 레이어링, 즉시 톤업 보정부터 줄여야 합니다.",
-  "firstSkuIds": ["37", "35"],
+  "firstSkuIds": ["35", "37"],
   "optionalSkuIds": ["27"],
   "lineFamilies": ["revitalizing"],
-  "routeLabel": "회복 → 보완",
-  "relatedEvidenceIds": ["e37", "e27", "e35"],
+  "routeLabel": "컨디션 → 장벽 회복",
+  "relatedEvidenceIds": ["e35", "e37"],
   "relatedGuideIds": ["g-results-barrier", "g-guide-barrier", "g-journal-barrier"],
   "relatedProtocolIds": ["01", "02", "03"],
-  "shopSkuIds": ["37", "35", "27"]
+  "shopSkuIds": ["35", "37"]
 }
 ```
 
@@ -209,24 +209,24 @@ export interface FAQNode {
 }
 ```
 
-## 6.5 거친 결 · 각질 · 밀림
+## 6.5 거친 피부결 · 각질 · 밀림
 ```json
 {
   "id": "texture-flaking",
   "slug": "texture-flaking",
-  "displayName": "거친 결 · 각질 · 밀림",
-  "symptomKeywords": ["거친 결", "각질", "밀림"],
-  "concernStatement": "거친 결은 먼저 리셋하고, 그 다음 수분과 장벽을 붙입니다.",
+  "displayName": "거친 피부결 · 각질 · 밀림",
+  "symptomKeywords": ["거친 피부결", "각질", "밀림"],
+  "concernStatement": "거친 피부결과 각질은 먼저 리셋하고, 그 다음 수분 밀도와 장벽을 붙입니다.",
   "whyItHappens": "정돈되지 않은 각질과 건조가 겹치면 결이 거칠어지고 제품 밀림이 생깁니다.",
   "avoidFirst": "강한 스크럽, 잦은 필링, 즉시 커버를 위한 과한 베이스부터 빼야 합니다.",
-  "firstSkuIds": ["01", "23", "37"],
+  "firstSkuIds": ["01", "25", "37"],
   "optionalSkuIds": ["02", "03"],
   "lineFamilies": ["professional", "hydrating", "revitalizing"],
-  "routeLabel": "리셋 → 통로 → 안정",
-  "relatedEvidenceIds": ["e01", "e23", "e37"],
+  "routeLabel": "리셋 → 수분 밀도 → 안정",
+  "relatedEvidenceIds": ["e01", "e25", "e37"],
   "relatedGuideIds": ["g-results-texture", "g-guide-texture", "g-journal-texture"],
   "relatedProtocolIds": ["01", "02", "03"],
-  "shopSkuIds": ["01", "23", "37"]
+  "shopSkuIds": ["01", "25", "37"]
 }
 ```
 
@@ -237,17 +237,17 @@ export interface FAQNode {
   "slug": "recovery-firmness",
   "displayName": "회복 저하 · 탄력 저하 · 컨디션 급락",
   "symptomKeywords": ["회복 저하", "탄력 저하", "컨디션 급락"],
-  "concernStatement": "회복력은 먼저 보완하고, 그 다음 밀도를 올립니다.",
+  "concernStatement": "회복 저하는 02로 톤 리페어와 밀도 축부터 보고, 그 다음 장벽과 리모델링을 잇습니다.",
   "whyItHappens": "장벽 약화와 회복 지연이 겹치면 피부는 쉽게 처지고 쉽게 무너집니다.",
   "avoidFirst": "즉각적인 광채 보정, 자극성 기능 제품 중첩부터 줄여야 합니다.",
-  "firstSkuIds": ["35", "37"],
-  "optionalSkuIds": ["02", "03"],
+  "firstSkuIds": ["02", "37", "03"],
+  "optionalSkuIds": [],
   "lineFamilies": ["revitalizing", "professional"],
   "routeLabel": "보완 → 회복 → 리모델링",
-  "relatedEvidenceIds": ["e35", "e37", "e03"],
+  "relatedEvidenceIds": ["e02", "e37", "e03"],
   "relatedGuideIds": ["g-results-recovery", "g-guide-recovery", "g-journal-recovery"],
   "relatedProtocolIds": ["02", "03"],
-  "shopSkuIds": ["35", "37"]
+  "shopSkuIds": ["02", "37", "03"]
 }
 ```
 

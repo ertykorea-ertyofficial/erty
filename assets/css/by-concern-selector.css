@@ -133,7 +133,7 @@ body[data-page="by-concern"] .bc-selector__experience::before {
 body[data-page="by-concern"] .bc-stage {
   --bc-stage-visual-size: min(48vw, 560px);
   --bc-stage-image-scale: 1;
-  --bc-stage-image-switch-scale: 0.96;
+  --bc-stage-image-switch-scale: 0.985;
   position: relative;
   z-index: 1;
   min-height: calc(var(--bc-stage-visual-size) + 40px);
@@ -256,16 +256,15 @@ body[data-page="by-concern"] .bc-stage__visual::after {
 }
 
 body[data-page="by-concern"] .bc-stage__visual.is-switching {
-  transform: scale(0.97);
-  opacity: 0.76;
+  transform: scale(0.992);
+  opacity: 0.92;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.66),
-    inset 0 -16px 28px rgba(255, 255, 255, 0.04),
-    0 16px 30px rgba(17, 19, 23, 0.04);
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    0 10px 22px rgba(17, 19, 23, 0.025);
 }
 
 body[data-page="by-concern"] .bc-stage__image.is-switching {
-  opacity: 0.56;
+  opacity: 0.84;
   transform: scale(var(--bc-stage-image-switch-scale));
 }
 
@@ -589,18 +588,18 @@ body[data-page="by-concern"] .bc-cue.is-preview {
 body[data-page="by-concern"] .bc-cue:hover::before,
 body[data-page="by-concern"] .bc-cue:focus-visible::before,
 body[data-page="by-concern"] .bc-cue.is-preview::before {
-  opacity: 0.42;
+  opacity: 0.26;
 }
 
 body[data-page="by-concern"] .bc-cue:hover::after,
 body[data-page="by-concern"] .bc-cue:focus-visible::after,
 body[data-page="by-concern"] .bc-cue.is-preview::after {
-  opacity: 0.55;
+  opacity: 0.28;
 }
 
 body[data-page="by-concern"] .bc-cue.is-active,
 body[data-page="by-concern"] .bc-cue[aria-selected="true"] {
-  transform: translateY(-2px);
+  transform: none;
   border-color: rgba(var(--cue-rgb, var(--accent-rgb)), 0.34);
   background:
     linear-gradient(
@@ -615,12 +614,12 @@ body[data-page="by-concern"] .bc-cue[aria-selected="true"] {
 
 body[data-page="by-concern"] .bc-cue.is-active::before,
 body[data-page="by-concern"] .bc-cue[aria-selected="true"]::before {
-  opacity: 0.7;
+  opacity: 0.4;
 }
 
 body[data-page="by-concern"] .bc-cue.is-active::after,
 body[data-page="by-concern"] .bc-cue[aria-selected="true"]::after {
-  opacity: 0.72;
+  opacity: 0.34;
 }
 
 body[data-page="by-concern"] .bc-cue__accent {

@@ -83,6 +83,9 @@
     ? data.defaultConcernId
     : concernIds[0];
   let previewConcernId = null;
+  let displayedConcernId = null;
+  let visualSwitchFrame = 0;
+  let visualSwitchTimer = 0;
   let scrollFrame = 0;
   let swipePointerId = null;
   let swipeStartX = 0;
@@ -219,16 +222,40 @@
     );
   }
 
-  function updateVisualState(concernId) {
-    stageVisual.classList.add("is-switching");
-    stageImage.classList.add("is-switching");
+  function updateVisualState(concernId, options = {}) {
+    const isSameDisplay = concernId === displayedConcernId;
+    const shouldAnimate =
+      options.animate !== false &&
+      !reduceMotionQuery.matches &&
+      !isSameDisplay;
+
+    displayedConcernId = concernId;
     stage.dataset.displayConcern = concernId;
     root.dataset.displayConcern = concernId;
-    window.requestAnimationFrame(() => {
-      window.setTimeout(() => {
+
+    if (isSameDisplay) {
+      return;
+    }
+
+    window.clearTimeout(visualSwitchTimer);
+    window.cancelAnimationFrame(visualSwitchFrame);
+    visualSwitchFrame = 0;
+    stageVisual.classList.remove("is-switching");
+    stageImage.classList.remove("is-switching");
+
+    if (!shouldAnimate) {
+      return;
+    }
+
+    visualSwitchFrame = window.requestAnimationFrame(() => {
+      visualSwitchFrame = 0;
+      stageVisual.classList.add("is-switching");
+      stageImage.classList.add("is-switching");
+      visualSwitchTimer = window.setTimeout(() => {
         stageVisual.classList.remove("is-switching");
         stageImage.classList.remove("is-switching");
-      }, 100);
+        visualSwitchTimer = 0;
+      }, 140);
     });
   }
 
@@ -286,7 +313,7 @@
     stage.style.setProperty("--bc-stage-image-scale", `${imageScale}`);
     stage.style.setProperty(
       "--bc-stage-image-switch-scale",
-      `${Math.max(imageScale * 0.96, 0.88).toFixed(3)}`
+      `${Math.max(imageScale * 0.985, 0.94).toFixed(3)}`
     );
     if (displayConcern.imageSrc) {
       stageImage.src = displayConcern.imageSrc;
@@ -297,7 +324,7 @@
     );
 
     syncCueStates();
-    updateVisualState(displayConcernId);
+    updateVisualState(displayConcernId, { animate: options.animate });
   }
 
   function commitConcern(concernId) {
@@ -307,8 +334,11 @@
 
   function previewConcern(concernId) {
     if (concernId === activeConcernId) {
-      previewConcernId = null;
-      applyConcern(activeConcernId, { commit: true });
+      if (previewConcernId !== null) {
+        applyConcern(activeConcernId, { commit: true });
+      } else {
+        syncCueStates();
+      }
       return;
     }
 
@@ -316,6 +346,11 @@
   }
 
   function restoreActiveConcern() {
+    if (previewConcernId === null) {
+      syncCueStates();
+      return;
+    }
+
     applyConcern(activeConcernId, { commit: true });
   }
 
@@ -520,7 +555,7 @@
     window.history.replaceState(null, "", "#concern-selector");
   });
 
-  applyConcern(activeConcernId, { commit: true });
+  applyConcern(activeConcernId, { commit: true, animate: false });
   emitConcernChange();
   requestScrollHandoffUpdate();
 })();

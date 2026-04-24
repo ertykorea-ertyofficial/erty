@@ -2,10 +2,10 @@
   const defaultStarts = Object.freeze({
     "oil-breakout-pores": "11",
     "dehydration-tightness": "23",
-    "barrier-redness": "37",
+    "barrier-redness": "35",
     "dullness-dark-spot": "55",
     "texture-flaking": "01",
-    "recovery-firmness": "35",
+    "recovery-firmness": "02",
   });
 
   function toExplorerHref(concernId, startId) {

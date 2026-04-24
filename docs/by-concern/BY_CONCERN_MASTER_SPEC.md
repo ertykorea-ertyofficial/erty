@@ -99,10 +99,10 @@
 
 ### 4.3 장벽 약화 · 예민 · 붉은기
 - id: `barrier-redness`
-- first numbers: `37 → 35`
-- 핵심 의미: 장벽 회복 → 회복 보조
+- first numbers: `35 → 37`
+- 핵심 의미: 회복 컨디션 → 장벽 회복
 - line family: Revitalizing
-- 대표 제품 축: 37 / 35
+- 대표 제품 축: 35 / 37
 
 ### 4.4 칙칙함 · 잡티 · 톤 저하
 - id: `dullness-dark-spot`
@@ -111,19 +111,19 @@
 - line family: Brightening
 - 대표 제품 축: 55 / 57 / 50
 
-### 4.5 거친 결 · 각질 · 밀림
+### 4.5 거친 피부결 · 각질 · 밀림
 - id: `texture-flaking`
-- first numbers: `01 → 23 → 37`
-- 핵심 의미: 리셋 → 수분 통로 정리 → 장벽 안정
+- first numbers: `01 → 25 → 37`
+- 핵심 의미: 리셋 → 수분 밀도 보완 → 장벽 안정
 - line family: Professional + Hydrating + Revitalizing
-- 대표 제품 축: 01 / 23 / 37
+- 대표 제품 축: 01 / 25 / 37
 
 ### 4.6 회복 저하 · 탄력 저하 · 컨디션 급락
 - id: `recovery-firmness`
-- first numbers: `35 → 37 → 02`
-- 핵심 의미: 회복력 보정 → 장벽 회복 → 톤 리페어·리모델링
+- first numbers: `02 → 37 → 03`
+- 핵심 의미: 톤 리페어·밀도 보완 → 장벽 회복 → 리모델링
 - line family: Revitalizing + Professional
-- 대표 제품 축: 35 / 37 / 02
+- 대표 제품 축: 02 / 37 / 03
 
 ---
 
