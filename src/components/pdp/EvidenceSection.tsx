@@ -11,10 +11,11 @@ export function EvidenceSection({ evidence }: { evidence?: ProductPdpData["evide
       </div>
       <div className="pdp-split-list">
         {evidence.map((item) => (
-          <article key={`${item.metric}-${item.label}`}>
-            <h3>{item.metric}</h3>
-            <p>{item.label}</p>
-            {item.source && <small>{item.source}</small>}
+          <article key={`${item.metric || item.title}-${item.summary || item.label}`}>
+            <h3>{item.title || item.metric}</h3>
+            {item.metric && item.title && <p className="pdp-lead">{item.metric}</p>}
+            <p>{item.summary || item.label}</p>
+            {(item.sourceNote || item.source) && <small>{item.sourceNote || item.source}</small>}
           </article>
         ))}
       </div>

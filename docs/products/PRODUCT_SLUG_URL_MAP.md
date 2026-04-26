@@ -39,21 +39,21 @@ slug는 `ertyofficial.com`의 정보 구조용 키이며, shop URL은 `ertyoffic
 
 | product_id | slug | main_site_route | shop_domain | shop_url_status | shop_target_url | cta_mode | notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| `01` | `01-perfect-soothing-solution-1` | `/products/01-perfect-soothing-solution-1` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | ER 프로토콜 step 1 |
-| `02` | `02-perfect-ncell-ampoule` | `/products/02-perfect-ncell-ampoule` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | ER 프로토콜 step 2 |
-| `03` | `03-perfect-spicule-formulation` | `/products/03-perfect-spicule-formulation` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | ER 프로토콜 step 3 |
-| `11` | `11-cleansing-gel-for-skin-balancing` | `/products/11-cleansing-gel-for-skin-balancing` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | balancing cleanser |
-| `13` | `13-purifying-for-skin-balancing` | `/products/13-purifying-for-skin-balancing` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | balancing toner |
-| `15` | `15-concentraed-booster-for-skin-balancing` | `/products/15-concentraed-booster-for-skin-balancing` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | balancing booster |
-| `21` | `21-cleansing-milk-for-skin-hydrating` | `/products/21-cleansing-milk-for-skin-hydrating` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating cleanser |
-| `23` | `23-tonic-lotion-for-skin-hydrating` | `/products/23-tonic-lotion-for-skin-hydrating` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating toner |
-| `25` | `25-concentraed-booster-for-skin-hydrating` | `/products/25-concentraed-booster-for-skin-hydrating` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating booster |
-| `27` | `27-derma-hydro-aquax-cream` | `/products/27-derma-hydro-aquax-cream` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating cream |
-| `35` | `35-concentraed-booster-for-skin-revitalizing` | `/products/35-concentraed-booster-for-skin-revitalizing` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | revitalizing booster |
-| `37` | `37-intensive-cellular-er-cream` | `/products/37-intensive-cellular-er-cream` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | revitalizing cream |
-| `50` | `50-sun-cream` | `/products/50-sun-cream` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | sun care |
-| `55` | `55-concentraed-booster-for-skin-brightening` | `/products/55-concentraed-booster-for-skin-brightening` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | brightening booster |
-| `57` | `57-melaway-brightening-cream` | `/products/57-melaway-brightening-cream` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | brightening cream |
+| `01` | `perfect-soothing-solution-1` | `/products/perfect-soothing-solution-1` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | ER 프로토콜 step 1 |
+| `02` | `perfect-n-cell-ampoule-2` | `/products/perfect-n-cell-ampoule-2` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | ER 프로토콜 step 2 |
+| `03` | `perfect-spicule-formulation-3` | `/products/perfect-spicule-formulation-3` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | ER 프로토콜 step 3 |
+| `11` | `cleansing-gel-skin-balancing-11` | `/products/cleansing-gel-skin-balancing-11` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | balancing cleanser |
+| `13` | `purifying-toner-skin-balancing-13` | `/products/purifying-toner-skin-balancing-13` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | balancing toner |
+| `15` | `concentrated-booster-skin-balancing-15` | `/products/concentrated-booster-skin-balancing-15` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | balancing booster |
+| `21` | `cleansing-milk-skin-hydrating-21` | `/products/cleansing-milk-skin-hydrating-21` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating cleanser |
+| `23` | `tonic-lotion-skin-hydrating-23` | `/products/tonic-lotion-skin-hydrating-23` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating toner |
+| `25` | `concentrated-booster-skin-hydrating-25` | `/products/concentrated-booster-skin-hydrating-25` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating booster |
+| `27` | `derma-hydro-aquax-cream-27` | `/products/derma-hydro-aquax-cream-27` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | hydrating cream |
+| `35` | `concentrated-booster-skin-revitalizing-35` | `/products/concentrated-booster-skin-revitalizing-35` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | revitalizing booster |
+| `37` | `intensive-cellular-er-cream-37` | `/products/intensive-cellular-er-cream-37` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | revitalizing cream |
+| `50` | `sun-cream-50` | `/products/sun-cream-50` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | sun care |
+| `55` | `concentrated-booster-skin-brightening-55` | `/products/concentrated-booster-skin-brightening-55` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | brightening booster |
+| `57` | `melaway-brightening-cream-57` | `/products/melaway-brightening-cream-57` | `ertyofficial.shop` | `pending` | none confirmed | `pending_url` | brightening cream |
 
 ## offer / kit route appendix
 

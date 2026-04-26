@@ -29,21 +29,21 @@
 
 | product_id | slug | display_name | object_type | line_id | type_id | primary concern cluster | source_coverage | related_offer_ids | shop_url_status |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `01` | `01-perfect-soothing-solution-1` | Perfect Soothing Solution 1 | `sku` | `protocol-step` | `step-solution` | 각질·피부결 정돈 | `md + pdf + detail + cutout` | `er-toning-treatment-kit` | `pending` |
-| `02` | `02-perfect-ncell-ampoule` | Perfect N.Cell Ampoule | `sku` | `protocol-step` | `step-ampoule` | 톤·컨디션 케어 | `md + pdf + detail + cutout` | `er-toning-treatment-kit` | `pending` |
-| `03` | `03-perfect-spicule-formulation` | Perfect Spicule Formulation | `sku` | `protocol-step` | `step-formulation` | 턴오버·탄력·톤 케어 | `md + pdf + detail + cutout` | `er-toning-treatment-kit` | `pending` |
-| `11` | `11-cleansing-gel-for-skin-balancing` | Cleansing Gel for Skin Balancing | `sku` | `balancing` | `cleanser` | 피지·유수분 밸런스 | `md + pdf + detail + cutout` | none | `pending` |
-| `13` | `13-purifying-for-skin-balancing` | Purifying for Skin Balancing | `sku` | `balancing` | `toner` | 모공·피지 케어 | `md + pdf + detail + cutout` | none | `pending` |
-| `15` | `15-concentraed-booster-for-skin-balancing` | Concentraed Booster for Skin Balancing | `sku` | `balancing` | `booster` | 트러블·민감·밸런스 | `md + pdf + detail + cutout` | `multi-booster-130` | `pending` |
-| `21` | `21-cleansing-milk-for-skin-hydrating` | Cleansing Milk for Skin Hydrating | `sku` | `hydrating` | `cleanser` | 건조·민감 클렌징 | `md + pdf + detail + cutout` | `hydrating-series-set` | `pending` |
-| `23` | `23-tonic-lotion-for-skin-hydrating` | Tonic Lotion for Skin Hydrating | `sku` | `hydrating` | `toner` | 수분 정돈·안티폴루션 | `md + pdf + detail + cutout` | `hydrating-series-set` | `pending` |
-| `25` | `25-concentraed-booster-for-skin-hydrating` | Concentraed Booster for Skin Hydrating | `sku` | `hydrating` | `booster` | 수분 충전·보습 유지 | `md + pdf + detail + cutout` | `hydrating-series-set`, `hydration-25-27-set`, `multi-booster-130` | `pending` |
-| `27` | `27-derma-hydro-aquax-cream` | Derma Hydro-AQUAX Cream | `sku` | `hydrating` | `cream` | 건조·장벽 약화 | `md + pdf + detail + cutout` | `hydrating-series-set`, `hydration-25-27-set` | `pending` |
-| `35` | `35-concentraed-booster-for-skin-revitalizing` | Concentraed Booster for Skin Revitalizing | `sku` | `revitalizing` | `booster` | 재생·탄력 회복 | `md + pdf + detail + cutout` | `revival-35-37-set`, `multi-booster-130` | `pending` |
-| `37` | `37-intensive-cellular-er-cream` | Intensive Cellular ER Cream | `sku` | `revitalizing` | `cream` | 장벽 회복·재생·보습 | `md + pdf + detail + cutout` | `revival-35-37-set`, `37-duo-set` | `pending` |
-| `50` | `50-sun-cream` | Sun Cream | `sku` | `brightening-suncare` | `sun-care` | 자외선 보호 | `md + pdf + detail + cutout` | none | `pending` |
-| `55` | `55-concentraed-booster-for-skin-brightening` | Concentraed Booster for Skin Brightening | `sku` | `brightening` | `booster` | 브라이트닝·안색 개선 | `md + pdf + detail + cutout` | `multi-booster-130` | `pending` |
-| `57` | `57-melaway-brightening-cream` | Melaway Brightening Cream | `sku` | `brightening` | `cream` | 브라이트닝·컨디션 케어 | `md + pdf + detail + cutout` | none | `pending` |
+| `01` | `perfect-soothing-solution-1` | Perfect Soothing Solution 1 | `sku` | `protocol-step` | `step-solution` | 각질·피부결 정돈 | `md + pdf + detail + cutout` | `er-toning-treatment-kit` | `pending` |
+| `02` | `perfect-n-cell-ampoule-2` | Perfect N.Cell Ampoule | `sku` | `protocol-step` | `step-ampoule` | 톤·컨디션 케어 | `md + pdf + detail + cutout` | `er-toning-treatment-kit` | `pending` |
+| `03` | `perfect-spicule-formulation-3` | Perfect Spicule Formulation | `sku` | `protocol-step` | `step-formulation` | 턴오버·탄력·톤 케어 | `md + pdf + detail + cutout` | `er-toning-treatment-kit` | `pending` |
+| `11` | `cleansing-gel-skin-balancing-11` | Cleansing Gel for Skin Balancing | `sku` | `balancing` | `cleanser` | 피지·유수분 밸런스 | `md + pdf + detail + cutout` | none | `pending` |
+| `13` | `purifying-toner-skin-balancing-13` | Purifying Toner for Skin Balancing | `sku` | `balancing` | `toner` | 모공·피지 케어 | `md + pdf + detail + cutout` | none | `pending` |
+| `15` | `concentrated-booster-skin-balancing-15` | Concentrated Booster for Skin Balancing | `sku` | `balancing` | `booster` | 트러블·민감·밸런스 | `md + pdf + detail + cutout` | `multi-booster-130` | `pending` |
+| `21` | `cleansing-milk-skin-hydrating-21` | Cleansing Milk for Skin Hydrating | `sku` | `hydrating` | `cleanser` | 건조·민감 클렌징 | `md + pdf + detail + cutout` | `hydrating-series-set` | `pending` |
+| `23` | `tonic-lotion-skin-hydrating-23` | Tonic Lotion for Skin Hydrating | `sku` | `hydrating` | `toner` | 수분 정돈·안티폴루션 | `md + pdf + detail + cutout` | `hydrating-series-set` | `pending` |
+| `25` | `concentrated-booster-skin-hydrating-25` | Concentrated Booster for Skin Hydrating | `sku` | `hydrating` | `booster` | 수분 충전·보습 유지 | `md + pdf + detail + cutout` | `hydrating-series-set`, `hydration-25-27-set`, `multi-booster-130` | `pending` |
+| `27` | `derma-hydro-aquax-cream-27` | Derma Hydro-AQUAX Cream | `sku` | `hydrating` | `cream` | 건조·장벽 약화 | `md + pdf + detail + cutout` | `hydrating-series-set`, `hydration-25-27-set` | `pending` |
+| `35` | `concentrated-booster-skin-revitalizing-35` | Concentrated Booster for Skin Revitalizing | `sku` | `revitalizing` | `booster` | 재생·탄력 회복 | `md + pdf + detail + cutout` | `revival-35-37-set`, `multi-booster-130` | `pending` |
+| `37` | `intensive-cellular-er-cream-37` | Intensive Cellular ER Cream | `sku` | `revitalizing` | `cream` | 장벽 회복·재생·보습 | `md + pdf + detail + cutout` | `revival-35-37-set`, `37-duo-set` | `pending` |
+| `50` | `sun-cream-50` | Sun Cream | `sku` | `brightening-suncare` | `sun-care` | 자외선 보호 | `md + pdf + detail + cutout` | none | `pending` |
+| `55` | `concentrated-booster-skin-brightening-55` | Concentrated Booster for Skin Brightening | `sku` | `brightening` | `booster` | 브라이트닝·안색 개선 | `md + pdf + detail + cutout` | `multi-booster-130` | `pending` |
+| `57` | `melaway-brightening-cream-57` | Melaway Brightening Cream | `sku` | `brightening` | `cream` | 브라이트닝·컨디션 케어 | `md + pdf + detail + cutout` | none | `pending` |
 
 ## current exclusions
 

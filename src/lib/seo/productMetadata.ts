@@ -11,8 +11,8 @@ function absoluteUrl(path = "/") {
 }
 
 export function buildProductMetadata(product: ProductPdpData) {
-  const canonicalUrl = absoluteUrl(product.seo.canonicalPath || `/products/${product.slug}/`);
-  const imageUrl = absoluteUrl(product.seo.ogImage || product.hero?.image?.src);
+  const canonicalUrl = absoluteUrl(product.seo.canonicalUrl || product.seo.canonicalPath || `/products/${product.slug}/`);
+  const imageUrl = absoluteUrl(product.seo.ogImage || product.hero?.primaryImage || product.hero?.image?.src);
 
   return {
     title: product.seo.title,

@@ -10,7 +10,23 @@ export function FormulaArchitecture({ formula }: { formula?: ProductPdpData["for
         <h2 id="pdp-formula-title">Formula Architecture</h2>
       </div>
       <div className="pdp-section__body">
-        {formula.headline && <p className="pdp-lead">{formula.headline}</p>}
+        {(formula.thesis || formula.headline) && <p className="pdp-lead">{formula.thesis || formula.headline}</p>}
+        {!!formula.axes?.length && (
+          <div className="pdp-split-list">
+            {formula.axes.map((axis) => (
+              <article key={axis.title}>
+                <h3>{axis.title}</h3>
+                <p>{axis.role}</p>
+                <ul className="pdp-tag-list">
+                  {axis.ingredients.map((ingredient) => (
+                    <li key={ingredient}>{ingredient}</li>
+                  ))}
+                </ul>
+                {axis.explanation && <p>{axis.explanation}</p>}
+              </article>
+            ))}
+          </div>
+        )}
         {!!formula.principles?.length && (
           <div className="pdp-split-list">
             {formula.principles.map((item) => (

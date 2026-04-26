@@ -593,6 +593,14 @@
     return "제품 상세 보기";
   }
 
+  function getProductDetailHref(product) {
+    if (!product) {
+      return "/products/";
+    }
+
+    return product.href || PRODUCT_SLUGS.getHref(product.id);
+  }
+
   function syncScopeControls() {
     const shouldShow = hasConcernScopeControls();
     catalogScope.hidden = !shouldShow;
@@ -734,7 +742,7 @@
       .join("");
 
     pxPrimary.textContent = getPrimaryLabel(product, concernData);
-    pxPrimary.href = product.href || PRODUCT_SLUGS.getHref(product.id);
+    pxPrimary.href = getProductDetailHref(product);
 
     pxPurchase.hidden = !shouldShowPurchase;
     pxPurchase.disabled = !purchaseHref;
@@ -1301,15 +1309,21 @@
     pxPosterNext.addEventListener("click", () => moveStage(1));
 
     pxPrimary.addEventListener("click", (event) => {
-      event.preventDefault();
-
       const product = getDisplayedProduct();
-      state.activeId = product.id;
-      state.previewId = null;
-      state.previewFamily = null;
-      renderAll();
-      ensureVisibleAndScrollToCard(product.id);
-      dispatchExplorerEvents();
+      const detailHref = getProductDetailHref(product);
+
+      if (!detailHref || detailHref === "/products/") {
+        event.preventDefault();
+        state.activeId = product.id;
+        state.previewId = null;
+        state.previewFamily = null;
+        renderAll();
+        ensureVisibleAndScrollToCard(product.id);
+        dispatchExplorerEvents();
+        return;
+      }
+
+      pxPrimary.href = detailHref;
     });
 
     pxSecondary.addEventListener("click", () => {

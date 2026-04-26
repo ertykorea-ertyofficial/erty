@@ -20,21 +20,21 @@
 
 | product_id | slug | route |
 | --- | --- | --- |
-| `01` | `01-perfect-soothing-solution-1` | `/products/01-perfect-soothing-solution-1` |
-| `02` | `02-perfect-ncell-ampoule` | `/products/02-perfect-ncell-ampoule` |
-| `03` | `03-perfect-spicule-formulation` | `/products/03-perfect-spicule-formulation` |
-| `11` | `11-cleansing-gel-for-skin-balancing` | `/products/11-cleansing-gel-for-skin-balancing` |
-| `13` | `13-purifying-for-skin-balancing` | `/products/13-purifying-for-skin-balancing` |
-| `15` | `15-concentraed-booster-for-skin-balancing` | `/products/15-concentraed-booster-for-skin-balancing` |
-| `21` | `21-cleansing-milk-for-skin-hydrating` | `/products/21-cleansing-milk-for-skin-hydrating` |
-| `23` | `23-tonic-lotion-for-skin-hydrating` | `/products/23-tonic-lotion-for-skin-hydrating` |
-| `25` | `25-concentraed-booster-for-skin-hydrating` | `/products/25-concentraed-booster-for-skin-hydrating` |
-| `27` | `27-derma-hydro-aquax-cream` | `/products/27-derma-hydro-aquax-cream` |
-| `35` | `35-concentraed-booster-for-skin-revitalizing` | `/products/35-concentraed-booster-for-skin-revitalizing` |
-| `37` | `37-intensive-cellular-er-cream` | `/products/37-intensive-cellular-er-cream` |
-| `50` | `50-sun-cream` | `/products/50-sun-cream` |
-| `55` | `55-concentraed-booster-for-skin-brightening` | `/products/55-concentraed-booster-for-skin-brightening` |
-| `57` | `57-melaway-brightening-cream` | `/products/57-melaway-brightening-cream` |
+| `01` | `perfect-soothing-solution-1` | `/products/perfect-soothing-solution-1` |
+| `02` | `perfect-n-cell-ampoule-2` | `/products/perfect-n-cell-ampoule-2` |
+| `03` | `perfect-spicule-formulation-3` | `/products/perfect-spicule-formulation-3` |
+| `11` | `cleansing-gel-skin-balancing-11` | `/products/cleansing-gel-skin-balancing-11` |
+| `13` | `purifying-toner-skin-balancing-13` | `/products/purifying-toner-skin-balancing-13` |
+| `15` | `concentrated-booster-skin-balancing-15` | `/products/concentrated-booster-skin-balancing-15` |
+| `21` | `cleansing-milk-skin-hydrating-21` | `/products/cleansing-milk-skin-hydrating-21` |
+| `23` | `tonic-lotion-skin-hydrating-23` | `/products/tonic-lotion-skin-hydrating-23` |
+| `25` | `concentrated-booster-skin-hydrating-25` | `/products/concentrated-booster-skin-hydrating-25` |
+| `27` | `derma-hydro-aquax-cream-27` | `/products/derma-hydro-aquax-cream-27` |
+| `35` | `concentrated-booster-skin-revitalizing-35` | `/products/concentrated-booster-skin-revitalizing-35` |
+| `37` | `intensive-cellular-er-cream-37` | `/products/intensive-cellular-er-cream-37` |
+| `50` | `sun-cream-50` | `/products/sun-cream-50` |
+| `55` | `concentrated-booster-skin-brightening-55` | `/products/concentrated-booster-skin-brightening-55` |
+| `57` | `melaway-brightening-cream-57` | `/products/melaway-brightening-cream-57` |
 
 ## offer slugs
 

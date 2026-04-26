@@ -11,7 +11,14 @@ function absoluteUrl(path = "/") {
 }
 
 export function buildProductJsonLd(product: ProductPdpData) {
-  const canonicalUrl = absoluteUrl(product.seo.canonicalPath || `/products/${product.slug}/`);
+  const canonicalUrl = absoluteUrl(product.seo.canonicalUrl || product.seo.canonicalPath || `/products/${product.slug}/`);
+  const productName = product.identity.canonicalName || product.identity.nameKo;
+  const productNumber = product.identity.productNumber || product.identity.sku || product.slug;
+  const productImage = product.hero?.primaryImage || product.hero?.image?.src || product.seo.ogImage;
+  const variants = product.variants || [];
+  const hasProductGroup = variants.length > 1;
+  const variantId = (variant: NonNullable<ProductPdpData["variants"]>[number]) =>
+    String(variant.sku || variant.id || variant.volume || product.slug).replace(/[^a-zA-Z0-9_-]/g, "-");
   const graph: Record<string, unknown>[] = [
     {
       "@type": "BreadcrumbList",
@@ -24,42 +31,48 @@ export function buildProductJsonLd(product: ProductPdpData) {
     },
   ];
 
-  if (product.variants?.length) {
+  if (hasProductGroup) {
     graph.push({
       "@type": "ProductGroup",
       "@id": `${canonicalUrl}#product-group`,
-      name: product.identity.nameKo,
+      name: productName,
       url: canonicalUrl,
       brand: { "@type": "Brand", name: "ERTY" },
-      productGroupID: product.identity.sku,
-      variesBy: ["size"],
-      hasVariant: product.variants.map((variant) => ({ "@id": `${canonicalUrl}#${variant.id}` })),
+      productGroupID: product.slug,
+      variesBy: ["size", "volume"],
+      hasVariant: variants.map((variant) => ({ "@id": `${canonicalUrl}#${variantId(variant)}` })),
     });
   }
 
   graph.push({
     "@type": "Product",
     "@id": `${canonicalUrl}#product`,
-    name: product.identity.nameKo,
+    name: productName,
     alternateName: product.identity.nameEn,
-    sku: product.identity.sku,
+    sku: productNumber,
     category: product.identity.category,
     description: product.identity.shortDefinition,
-    image: absoluteUrl(product.hero?.image?.src || product.seo.ogImage),
+    image: absoluteUrl(productImage),
     brand: { "@type": "Brand", name: "ERTY" },
-    offers: product.variants?.map((variant) => ({ "@id": `${canonicalUrl}#offer-${variant.id}` })),
+    offers: variants.map((variant) => ({ "@id": `${canonicalUrl}#offer-${variantId(variant)}` })),
   });
 
-  if (product.variants?.length) {
+  if (variants.length) {
     graph.push(
-      ...product.variants.map((variant) => ({
+      ...variants.map((variant) => ({
         "@type": "Offer",
-        "@id": `${canonicalUrl}#offer-${variant.id}`,
+        "@id": `${canonicalUrl}#offer-${variantId(variant)}`,
         url: canonicalUrl,
-        itemOffered: { "@id": `${canonicalUrl}#${variant.id}` },
-        priceCurrency: variant.currency || "KRW",
-        price: variant.price || "0",
-        availability: variant.availability || "https://schema.org/PreOrder",
+        itemOffered: { "@id": `${canonicalUrl}#${variantId(variant)}` },
+      })),
+      ...variants.map((variant) => ({
+        "@type": "Product",
+        "@id": `${canonicalUrl}#${variantId(variant)}`,
+        name: variant.name || `${productName} ${variant.volume || variant.size || ""}`.trim(),
+        sku: variant.sku,
+        size: variant.size || variant.volume,
+        image: variant.image ? absoluteUrl(variant.image) : undefined,
+        ...(hasProductGroup ? { isVariantOf: { "@id": `${canonicalUrl}#product-group` } } : {}),
       })),
     );
   }

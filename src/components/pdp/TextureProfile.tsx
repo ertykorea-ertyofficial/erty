@@ -23,7 +23,14 @@ export function TextureProfile({ texture }: { texture?: ProductPdpData["texture"
               <dd>{texture.finish}</dd>
             </div>
           )}
+          {texture.absorption && (
+            <div>
+              <dt>Absorption</dt>
+              <dd>{texture.absorption}</dd>
+            </div>
+          )}
         </dl>
+        {texture.sensoryCopy && <p>{texture.sensoryCopy}</p>}
       </div>
     </section>
   );

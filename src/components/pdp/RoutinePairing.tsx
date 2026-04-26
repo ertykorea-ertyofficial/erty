@@ -13,7 +13,15 @@ export function RoutinePairing({ routines }: { routines?: ProductPdpData["routin
         {routines.map((routine) => (
           <article key={routine.title}>
             <h3>{routine.title}</h3>
-            <p>{routine.steps.join(" → ")}</p>
+            {routine.useCase && <p className="pdp-lead">{routine.useCase}</p>}
+            {(routine.products || routine.steps) && <p>{(routine.products || routine.steps || []).join(" → ")}</p>}
+            {!!routine.recommendedFor?.length && (
+              <ul className="pdp-tag-list">
+                {routine.recommendedFor.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            )}
             {routine.href && <a href={routine.href}>루틴에서 보기</a>}
           </article>
         ))}

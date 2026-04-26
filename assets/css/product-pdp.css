@@ -54,6 +54,7 @@
 
 .pdp-hero__media {
   margin: 0;
+  aspect-ratio: 3 / 4;
   border-radius: 36px;
   border: 1px solid rgba(255, 255, 255, 0.72);
   background: rgba(255, 255, 255, 0.52);
@@ -64,7 +65,7 @@
 .pdp-hero__media img {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -228,6 +229,46 @@
   line-height: 1.75;
 }
 
+.pdp-section__body h3 {
+  margin: 22px 0 12px;
+  color: #1c2024;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+}
+
+.pdp-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border: 1px solid rgba(17, 17, 17, 0.08);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.pdp-table th,
+.pdp-table td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+  color: #34383c;
+  line-height: 1.65;
+  text-align: left;
+  vertical-align: top;
+}
+
+.pdp-table th {
+  color: #1d2125;
+  font-weight: 800;
+}
+
+.pdp-table small {
+  display: block;
+  margin-top: 4px;
+  color: #7a8086;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 .pdp-ordered-list {
   margin: 0;
   padding-left: 1.2em;
@@ -299,5 +340,495 @@
   .pdp-variant dl div {
     grid-template-columns: 1fr;
     gap: 6px;
+  }
+}
+
+/* PDP canonical visual hierarchy. */
+.pdp-page--visual-v2 {
+  --pdp-v2-text: #141619;
+  --pdp-v2-muted: #62686e;
+  --pdp-v2-faint: #8b9298;
+  --pdp-v2-line: rgba(17, 17, 17, 0.1);
+  --pdp-v2-line-strong: rgba(17, 17, 17, 0.16);
+  --pdp-v2-surface: rgba(255, 255, 255, 0.78);
+  --pdp-v2-surface-soft: rgba(255, 255, 255, 0.54);
+  --pdp-v2-shadow: 0 22px 58px rgba(22, 28, 34, 0.06);
+  background:
+    radial-gradient(circle at 78% 8%, rgba(48, 124, 88, 0.08), transparent 30%),
+    linear-gradient(180deg, #f7f7f4 0%, #f2f2ef 100%);
+  color: var(--pdp-v2-text);
+}
+
+.pdp-page--visual-v2 .pdp-layout {
+  width: min(1160px, calc(100vw - 64px));
+  padding: 96px 0 112px;
+}
+
+.pdp-page--visual-v2 .pdp-hero {
+  min-height: auto;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: center;
+  padding: 48px 0 68px;
+  border-bottom: 1px solid var(--pdp-v2-line);
+}
+
+.pdp-page--visual-v2 .pdp-eyebrow,
+.pdp-page--visual-v2 .pdp-section__eyebrow,
+.pdp-page--visual-v2 .pdp-answer__kicker {
+  margin-bottom: 14px;
+  color: var(--pdp-v2-faint);
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 0.18em;
+}
+
+.pdp-page--visual-v2 .pdp-hero h1 {
+  max-width: 9.6em;
+  font-size: clamp(46px, 5.3vw, 78px);
+  line-height: 0.96;
+  letter-spacing: -0.062em;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.pdp-page--visual-v2 .pdp-hero__subtitle {
+  margin-top: 28px;
+  max-width: 18em;
+  font-size: clamp(22px, 2.4vw, 34px);
+  line-height: 1.18;
+  letter-spacing: -0.045em;
+}
+
+.pdp-page--visual-v2 .pdp-hero__desc {
+  max-width: 36rem;
+  margin-top: 18px;
+  font-size: 16px;
+  line-height: 1.74;
+}
+
+.pdp-page--visual-v2 .pdp-hero__media {
+  justify-self: end;
+  width: min(100%, 420px);
+  border-radius: 30px;
+  border-color: rgba(255, 255, 255, 0.82);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.36));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.84),
+    0 24px 64px rgba(20, 28, 34, 0.1);
+}
+
+.pdp-page--visual-v2 .pdp-tag-list {
+  gap: 8px;
+}
+
+.pdp-page--visual-v2 .pdp-tag-list li {
+  min-height: 30px;
+  padding: 6px 11px;
+  border-color: rgba(17, 17, 17, 0.1);
+  background: rgba(255, 255, 255, 0.58);
+  color: #51575c;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.pdp-page--visual-v2 .pdp-answer,
+.pdp-page--visual-v2 .pdp-buy,
+.pdp-page--visual-v2 .pdp-section,
+.pdp-page--visual-v2 .pdp-disclaimer {
+  margin-top: clamp(20px, 2.2vw, 28px);
+  padding: clamp(32px, 3.4vw, 44px);
+  border-color: var(--pdp-v2-line);
+  border-radius: 26px;
+  background:
+    linear-gradient(135deg, var(--pdp-v2-surface), var(--pdp-v2-surface-soft));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.78),
+    var(--pdp-v2-shadow);
+}
+
+.pdp-page--visual-v2 .pdp-answer {
+  grid-template-columns: minmax(180px, 0.28fr) minmax(0, 0.72fr);
+  align-items: start;
+  border-left: 3px solid rgba(34, 116, 75, 0.42);
+}
+
+.pdp-page--visual-v2 .pdp-buy,
+.pdp-page--visual-v2 .pdp-section {
+  grid-template-columns: minmax(210px, 0.28fr) minmax(0, 0.72fr);
+  column-gap: clamp(28px, 4vw, 56px);
+}
+
+.pdp-page--visual-v2 .pdp-section__head h2,
+.pdp-page--visual-v2 .pdp-answer h2,
+.pdp-page--visual-v2 .pdp-buy h2,
+.pdp-page--visual-v2 .pdp-disclaimer h2 {
+  margin: 0;
+  font-size: clamp(24px, 2.1vw, 32px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+.pdp-page--visual-v2 .pdp-section__body {
+  display: grid;
+  gap: 16px;
+}
+
+.pdp-page--visual-v2 .pdp-section__body h3 {
+  margin: 2px 0 0;
+  font-size: 15px;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.pdp-page--visual-v2 .pdp-answer p,
+.pdp-page--visual-v2 .pdp-buy p,
+.pdp-page--visual-v2 .pdp-section__body p,
+.pdp-page--visual-v2 .pdp-disclaimer p {
+  margin: 0;
+}
+
+.pdp-page--visual-v2 .pdp-hero__desc,
+.pdp-page--visual-v2 .pdp-lead,
+.pdp-page--visual-v2 .pdp-answer p,
+.pdp-page--visual-v2 .pdp-section__body p,
+.pdp-page--visual-v2 .pdp-disclaimer p {
+  color: var(--pdp-v2-muted);
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.pdp-page--visual-v2 .pdp-lead {
+  color: #24282c;
+  font-size: 17px;
+  line-height: 1.58;
+  letter-spacing: -0.02em;
+}
+
+.pdp-page--visual-v2 .pdp-definition-list,
+.pdp-page--visual-v2 .pdp-variant-list,
+.pdp-page--visual-v2 .pdp-split-list {
+  gap: 14px;
+}
+
+.pdp-page--visual-v2 .pdp-definition-list div,
+.pdp-page--visual-v2 .pdp-variant,
+.pdp-page--visual-v2 .pdp-split-list article,
+.pdp-page--visual-v2 .pdp-related-link,
+.pdp-page--visual-v2 .pdp-faq-list details {
+  border: 1px solid var(--pdp-v2-line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.pdp-page--visual-v2 .pdp-definition-list div {
+  padding: 15px 16px;
+  grid-template-columns: minmax(96px, 0.25fr) minmax(0, 0.75fr);
+}
+
+.pdp-page--visual-v2 .pdp-definition-list dt,
+.pdp-page--visual-v2 .pdp-variant dt {
+  color: var(--pdp-v2-faint);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pdp-page--visual-v2 .pdp-definition-list dd,
+.pdp-page--visual-v2 .pdp-variant dd {
+  min-width: 0;
+  color: #2c3034;
+  font-size: 14.5px;
+  line-height: 1.58;
+  overflow-wrap: anywhere;
+}
+
+.pdp-page--visual-v2 .pdp-split-list article,
+.pdp-page--visual-v2 .pdp-variant,
+.pdp-page--visual-v2 .pdp-related-link {
+  padding: 18px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.pdp-page--visual-v2 .pdp-split-list article,
+.pdp-page--visual-v2 .pdp-variant {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.pdp-page--visual-v2 .pdp-split-list article h3,
+.pdp-page--visual-v2 .pdp-variant h3,
+.pdp-page--visual-v2 .pdp-related-link strong {
+  font-size: 16px;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.pdp-page--visual-v2 .pdp-split-list article h3,
+.pdp-page--visual-v2 .pdp-variant h3 {
+  margin: 0;
+}
+
+.pdp-page--visual-v2 .pdp-split-list article p,
+.pdp-page--visual-v2 .pdp-variant p {
+  margin: 0;
+}
+
+.pdp-page--visual-v2 .pdp-split-list .pdp-tag-list {
+  margin-top: 2px;
+}
+
+.pdp-page--visual-v2 .pdp-variant dl div {
+  grid-template-columns: minmax(74px, 0.28fr) minmax(0, 0.72fr);
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.pdp-page--visual-v2 .pdp-table {
+  table-layout: fixed;
+  border: 1px solid var(--pdp-v2-line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.56);
+}
+
+.pdp-page--visual-v2 .pdp-table th,
+.pdp-page--visual-v2 .pdp-table td {
+  padding: 15px 16px;
+  font-size: 13.5px;
+  line-height: 1.62;
+  border-color: rgba(17, 17, 17, 0.08);
+  overflow-wrap: anywhere;
+}
+
+.pdp-page--visual-v2 .pdp-table thead th {
+  color: var(--pdp-v2-faint);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pdp-page--visual-v2 .pdp-table small {
+  margin-top: 5px;
+  color: #7a8187;
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.pdp-page--visual-v2 .pdp-ordered-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.pdp-page--visual-v2 .pdp-ordered-list li {
+  padding-left: 4px;
+  color: #4c5257;
+  font-size: 15px;
+  line-height: 1.68;
+}
+
+.pdp-page--visual-v2 .pdp-faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.pdp-page--visual-v2 .pdp-faq-list details {
+  padding: 17px 18px;
+}
+
+.pdp-page--visual-v2 .pdp-faq-list summary {
+  color: #202428;
+  font-size: 15px;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  overflow-wrap: anywhere;
+}
+
+.pdp-page--visual-v2 .pdp-cta-row {
+  gap: 10px;
+}
+
+.pdp-page--visual-v2 .pdp-button {
+  min-height: 46px;
+  padding: 0 17px;
+  font-size: 13px;
+}
+
+.pdp-page--visual-v2 .pdp-answer__bullets {
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .pdp-page--visual-v2 .pdp-layout {
+    width: calc(100vw - 32px);
+    padding: 72px 0 88px;
+  }
+
+  .pdp-page--visual-v2 .pdp-hero {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding: 32px 0 44px;
+  }
+
+  .pdp-page--visual-v2 .pdp-hero h1 {
+    font-size: clamp(38px, 11.5vw, 54px);
+    line-height: 0.98;
+  }
+
+  .pdp-page--visual-v2 .pdp-hero__media {
+    justify-self: center;
+    width: min(100%, 390px);
+    border-radius: 24px;
+  }
+
+  .pdp-page--visual-v2 .pdp-answer,
+  .pdp-page--visual-v2 .pdp-buy,
+  .pdp-page--visual-v2 .pdp-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .pdp-page--visual-v2 .pdp-definition-list div {
+    grid-template-columns: 1fr;
+  }
+
+  .pdp-page--visual-v2 .pdp-table {
+    display: block;
+    border: 0;
+    background: transparent;
+  }
+
+  .pdp-page--visual-v2 .pdp-table thead {
+    display: none;
+  }
+
+  .pdp-page--visual-v2 .pdp-table tbody,
+  .pdp-page--visual-v2 .pdp-table tr,
+  .pdp-page--visual-v2 .pdp-table tbody th,
+  .pdp-page--visual-v2 .pdp-table td {
+    display: block;
+  }
+
+  .pdp-page--visual-v2 .pdp-table tbody {
+    display: grid;
+    gap: 10px;
+  }
+
+  .pdp-page--visual-v2 .pdp-table tr {
+    padding: 15px;
+    border: 1px solid var(--pdp-v2-line);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.62);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .pdp-page--visual-v2 .pdp-table tbody th,
+  .pdp-page--visual-v2 .pdp-table td {
+    padding: 0;
+    border: 0;
+    font-size: 14px;
+    line-height: 1.64;
+  }
+
+  .pdp-page--visual-v2 .pdp-table tbody th + td,
+  .pdp-page--visual-v2 .pdp-table td + td {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(17, 17, 17, 0.08);
+  }
+
+  .pdp-page--visual-v2 .pdp-table tbody th::before,
+  .pdp-page--visual-v2 .pdp-table td::before {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--pdp-v2-faint);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .pdp-page--visual-v2 .pdp-table tbody th::before {
+    content: "INGREDIENT";
+  }
+
+  .pdp-page--visual-v2 .pdp-table td:nth-child(2)::before {
+    content: "ROLE";
+  }
+
+  .pdp-page--visual-v2 .pdp-table td:nth-child(3)::before {
+    content: "CONSUMER BENEFIT";
+  }
+
+  .pdp-page--visual-v2 .pdp-table small {
+    margin-top: 3px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 520px) {
+  .pdp-page--visual-v2 .pdp-layout {
+    width: calc(100vw - 24px);
+    padding: 64px 0 76px;
+  }
+
+  .pdp-page--visual-v2 .pdp-hero {
+    padding-top: 28px;
+  }
+
+  .pdp-page--visual-v2 .pdp-answer,
+  .pdp-page--visual-v2 .pdp-buy,
+  .pdp-page--visual-v2 .pdp-section,
+  .pdp-page--visual-v2 .pdp-disclaimer {
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+
+  .pdp-page--visual-v2 .pdp-section__head h2,
+  .pdp-page--visual-v2 .pdp-answer h2,
+  .pdp-page--visual-v2 .pdp-buy h2,
+  .pdp-page--visual-v2 .pdp-disclaimer h2 {
+    font-size: clamp(24px, 7vw, 30px);
+    line-height: 1.08;
+  }
+
+  .pdp-page--visual-v2 .pdp-section__body {
+    gap: 14px;
+  }
+
+  .pdp-page--visual-v2 .pdp-hero__desc,
+  .pdp-page--visual-v2 .pdp-lead,
+  .pdp-page--visual-v2 .pdp-answer p,
+  .pdp-page--visual-v2 .pdp-section__body p,
+  .pdp-page--visual-v2 .pdp-disclaimer p {
+    font-size: 14.5px;
+    line-height: 1.68;
+  }
+
+  .pdp-page--visual-v2 .pdp-lead {
+    font-size: 15.5px;
+    line-height: 1.58;
+  }
+
+  .pdp-page--visual-v2 .pdp-split-list article,
+  .pdp-page--visual-v2 .pdp-variant,
+  .pdp-page--visual-v2 .pdp-related-link {
+    padding: 16px;
+  }
+
+  .pdp-page--visual-v2 .pdp-faq-list details {
+    padding: 16px;
+  }
+
+  .pdp-page--visual-v2 .pdp-tag-list li {
+    min-height: 28px;
+    padding: 5px 10px;
+    font-size: 11.5px;
   }
 }

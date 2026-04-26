@@ -15,6 +15,14 @@ export function HowToUse({ howToUse }: { howToUse?: ProductPdpData["howToUse"] }
             <li key={step}>{step}</li>
           ))}
         </ol>
+        {howToUse.frequency && <p className="pdp-note">{howToUse.frequency}</p>}
+        {!!howToUse.cautions?.length && (
+          <ul className="pdp-tag-list">
+            {howToUse.cautions.map((caution) => (
+              <li key={caution}>{caution}</li>
+            ))}
+          </ul>
+        )}
         {howToUse.caution && <p className="pdp-note">{howToUse.caution}</p>}
       </div>
     </section>

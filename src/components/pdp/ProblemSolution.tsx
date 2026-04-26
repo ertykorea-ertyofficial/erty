@@ -12,6 +12,26 @@ export function ProblemSolution({ data }: { data?: ProductPdpData["problemSoluti
       <div className="pdp-section__body">
         {data.problem && <p>{data.problem}</p>}
         {data.solution && <p>{data.solution}</p>}
+        {!!data.targetConcerns?.length && (
+          <>
+            <h3>Target Concerns</h3>
+            <ul className="pdp-tag-list">
+              {data.targetConcerns.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {!!data.productApproach?.length && (
+          <>
+            <h3>Product Approach</h3>
+            <ul className="pdp-ordered-list">
+              {data.productApproach.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </>
+        )}
         {!!data.fitFor?.length && (
           <ul className="pdp-tag-list">
             {data.fitFor.map((item) => (

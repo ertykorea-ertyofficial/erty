@@ -105,8 +105,8 @@
 1. front matter가 없고, 전부 markdown heading 기반 자유서술이다.
 2. 오탈자가 파일명에 남아 있다.
    - `concentraed` 반복
-3. slug 표준이 아직 확정되지 않았다.
-   - `01-perfect-soothing-solution-1.md`의 `-1`
+3. slug 표준은 PDP Data Bundle 기준으로 순차 정규화한다.
+   - `01` PDP canonical route는 `perfect-soothing-solution-1`
    - `50-sun-cream.md`와 제목의 `SPF50+ PA++++`
 
 ### 구현 영향
