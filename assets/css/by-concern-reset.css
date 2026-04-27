@@ -184,11 +184,13 @@ body[data-page="by-concern"] .by-concern-reset__hero-copy h1 {
   font-family: var(--font-korean-display);
   font-size: clamp(2.5rem, 3.35vw, 3.22rem);
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 1.06;
   letter-spacing: -0.05em;
   color: rgb(17 19 23);
   text-wrap: pretty;
   word-break: keep-all;
+  overflow: visible;
+  padding-block: 0.03em;
 }
 
 body[data-page="by-concern"] .by-concern-reset__hero-copy h1 span {
@@ -197,7 +199,7 @@ body[data-page="by-concern"] .by-concern-reset__hero-copy h1 span {
 }
 
 body[data-page="by-concern"] .by-concern-reset__hero-copy h1 span + span {
-  margin-top: 0.08em;
+  margin-top: 0.02em;
 }
 
 body[data-page="by-concern"] .by-concern-reset__hero-subcopy {
@@ -402,7 +404,7 @@ body[data-page="by-concern"] .glass-button:focus-visible {
   body[data-page="by-concern"] .by-concern-reset__hero-copy h1 {
     max-width: none;
     font-size: clamp(1.7rem, 6vw, 2.08rem);
-    line-height: 0.96;
+    line-height: 1.06;
   }
 
   body[data-page="by-concern"] .by-concern-reset__hero-copy h1 span {

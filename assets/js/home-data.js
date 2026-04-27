@@ -8,7 +8,7 @@ window.ERTY_HOME_DATA = {
   },
   copy: {
     hero: {
-      eyebrow: "에르띠 인덱스",
+      eyebrow: "HOME",
       titleLine1: "번호로 바로잡는",
       titleLine2: "손상된 피부",
       subcopy: "피부고민을 번호로 읽는\n더마 프로페셔널 브랜드",
