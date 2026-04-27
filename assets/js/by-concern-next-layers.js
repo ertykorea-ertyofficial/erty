@@ -8,8 +8,8 @@
   const section = document.getElementById("bc-next-actions");
   const rail = document.getElementById("bc-next-actions-rail");
   const ctaProduct = document.getElementById("bc-next-actions-products");
-  const ctaResults = document.getElementById("bc-next-actions-results");
-  const ctaGuide = document.getElementById("bc-next-actions-guide");
+  const ctaArchive = document.getElementById("bc-next-actions-archive");
+  const ctaInsight = document.getElementById("bc-next-actions-insight");
 
   if (
     !nextLayerData ||
@@ -17,8 +17,8 @@
     !section ||
     !rail ||
     !ctaProduct ||
-    !ctaResults ||
-    !ctaGuide
+    !ctaArchive ||
+    !ctaInsight
   ) {
     return;
   }
@@ -37,12 +37,12 @@
     return cueNumber ? `${basePath}?concern=${cueNumber}` : basePath;
   }
 
-  function getGuideEntry(concernMeta, label) {
-    if (!concernMeta || !Array.isArray(concernMeta.guides)) {
+  function getRouteEntry(concernMeta, label) {
+    if (!concernMeta || !Array.isArray(concernMeta.routes)) {
       return null;
     }
 
-    return concernMeta.guides.find((entry) => entry.label === label) || null;
+    return concernMeta.routes.find((entry) => entry.label === label) || null;
   }
 
   function syncAccent(concernId, concernMeta) {
@@ -54,12 +54,12 @@
   }
 
   function syncTargets(concernId, concernMeta) {
-    const resultsEntry = getGuideEntry(concernMeta, "RESULTS");
-    const guideEntry = getGuideEntry(concernMeta, "GUIDE");
-    const productsEntry = getGuideEntry(concernMeta, "PRODUCTS");
+    const archiveEntry = getRouteEntry(concernMeta, "ARCHIVE");
+    const insightEntry = getRouteEntry(concernMeta, "INSIGHT");
+    const productsEntry = getRouteEntry(concernMeta, "PRODUCTS");
 
-    ctaResults.href = resultsEntry?.href || getFallbackHref("/results", concernId);
-    ctaGuide.href = guideEntry?.href || getFallbackHref("/guide", concernId);
+    ctaArchive.href = archiveEntry?.href || getFallbackHref("/archive", concernId);
+    ctaInsight.href = insightEntry?.href || getFallbackHref("/insight", concernId);
     ctaProduct.href = productsEntry?.href || getFallbackHref("/products", concernId);
   }
 

@@ -12,8 +12,8 @@ window.ERTYRouter = {
       "/pages/philosophy.html": "/brand",
       "/pages/products.html": "/products",
       "/pages/product-detail.html": "/products/[product-slug]",
-      "/pages/evidence.html": "/results",
-      "/pages/journal.html": "/guide",
+      "/pages/evidence.html": "/archive",
+      "/pages/journal.html": "/insight",
       "/pages/skin-concerns.html": "/by-concern"
     };
 

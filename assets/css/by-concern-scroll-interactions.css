@@ -1,0 +1,143 @@
+body[data-page="by-concern"] {
+  --bc-scroll-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --bc-scroll-motion-delay: 0ms;
+}
+
+body[data-page="by-concern"] .bc-stage__route-token {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.08em;
+}
+
+body[data-page="by-concern"] .bc-stage__route-token::after {
+  content: "";
+  position: absolute;
+  left: 0.02em;
+  right: 0.02em;
+  bottom: -0.08em;
+  height: 0.055em;
+  border-radius: 999px;
+  background: rgba(var(--route-rgb, 17, 19, 23), 0.34);
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 0;
+}
+
+body[data-page="by-concern"] .bc-stage__route.is-route-revealing .bc-stage__route-token::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+body[data-page="by-concern"] .bc-stage__route-sep {
+  display: inline-block;
+}
+
+body[data-page="by-concern"] .bc-stage__swipe-hint {
+  min-width: 44px;
+  min-height: 44px;
+  margin: -14px -10px;
+}
+
+body[data-page="by-concern"] .bc-cue:hover,
+body[data-page="by-concern"] .bc-cue:focus-visible,
+body[data-page="by-concern"] .bc-cue.is-preview,
+body[data-page="by-concern"] .bc-cue.is-active,
+body[data-page="by-concern"] .bc-cue[aria-selected="true"] {
+  transform: none;
+}
+
+body[data-page="by-concern"] .bc-next-actions__item::before {
+  opacity: 0;
+  transform: translateX(-32%);
+}
+
+body[data-page="by-concern"] .bc-next-actions__item:hover::before,
+body[data-page="by-concern"] .bc-next-actions__item:focus-visible::before {
+  opacity: 0.2;
+  transform: translateX(0);
+}
+
+body[data-page="by-concern"] .bc-next-actions__item:hover,
+body[data-page="by-concern"] .bc-next-actions__item:focus-visible {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body[data-bc-motion="ready"] .bc-motion-item {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    transition:
+      opacity 520ms var(--bc-scroll-motion-ease) var(--bc-scroll-motion-delay),
+      transform 520ms var(--bc-scroll-motion-ease) var(--bc-scroll-motion-delay);
+    will-change: opacity, transform;
+  }
+
+  body[data-bc-motion="ready"] .bc-motion-item--quiet {
+    transform: translate3d(0, 8px, 0);
+  }
+
+  body[data-bc-motion="ready"] .bc-motion-item--panel {
+    transform: translate3d(0, 12px, 0);
+  }
+
+  body[data-bc-motion="ready"] .bc-motion-item--ledger {
+    transform: translate3d(0, 6px, 0);
+  }
+
+  body[data-bc-motion="ready"] .bc-motion-item--headline {
+    opacity: 1;
+    transform: translate3d(-8px, 0, 0);
+    clip-path: inset(0 0 0 0);
+    transition:
+      transform 560ms var(--bc-scroll-motion-ease) var(--bc-scroll-motion-delay),
+      opacity 360ms var(--bc-scroll-motion-ease) var(--bc-scroll-motion-delay);
+  }
+
+  body[data-bc-motion="ready"] .bc-motion-item.is-bc-motion-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  body[data-bc-motion="ready"] .bc-motion-item--headline.is-bc-motion-visible {
+    transform: translate3d(0, 0, 0);
+    clip-path: inset(0 0 0 0);
+  }
+
+  body[data-page="by-concern"] .bc-stage__route-token::after {
+    transition:
+      transform 160ms var(--bc-scroll-motion-ease) var(--bc-route-delay, 0ms),
+      opacity 140ms var(--bc-scroll-motion-ease) var(--bc-route-delay, 0ms);
+  }
+
+  body[data-page="by-concern"] .bc-stage__route-sep {
+    opacity: 0;
+    transform: translate3d(-3px, 0, 0);
+    transition:
+      opacity 140ms var(--bc-scroll-motion-ease) var(--bc-route-delay, 0ms),
+      transform 140ms var(--bc-scroll-motion-ease) var(--bc-route-delay, 0ms);
+  }
+
+  body[data-page="by-concern"] .bc-stage__route.is-route-revealing .bc-stage__route-sep {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  body[data-page="by-concern"] .bc-motion-item,
+  body[data-page="by-concern"] .bc-motion-item--headline {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+
+  body[data-page="by-concern"] .bc-stage__route-token::after,
+  body[data-page="by-concern"] .bc-stage__route-sep {
+    transition: none !important;
+  }
+}

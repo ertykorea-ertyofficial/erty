@@ -27,6 +27,7 @@
   const next = document.getElementById("bc-panel-next");
   const cta = document.getElementById("bc-panel-cta");
   const ctaText = document.getElementById("bc-panel-cta-text");
+  const commitLive = document.getElementById("bc-commit-live");
   const dock = document.getElementById("bc-dock");
   const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
@@ -86,6 +87,7 @@
   let displayedConcernId = null;
   let visualSwitchFrame = 0;
   let visualSwitchTimer = 0;
+  let routeAnimationFrame = 0;
   let scrollFrame = 0;
   let swipePointerId = null;
   let swipeStartX = 0;
@@ -194,6 +196,10 @@
     return previewConcernId ?? activeConcernId;
   }
 
+  function getCommittedConcern() {
+    return concerns.get(activeConcernId) || concerns.get(concernIds[0]);
+  }
+
   function renderRouteMarkup(routeText) {
     const tokens = routeText.split(/\s*→\s*/);
     return tokens
@@ -207,6 +213,86 @@
         return `${tokenMarkup}<span class="bc-stage__route-sep" style="--route-rgb:${rgb}" aria-hidden="true">⇢</span>`;
       })
       .join("");
+  }
+
+  function renderRoute(displayConcern) {
+    window.cancelAnimationFrame(routeAnimationFrame);
+    routeAnimationFrame = 0;
+    route.classList.remove("is-route-revealing");
+    route.innerHTML = renderRouteMarkup(displayConcern.route);
+    route.setAttribute("aria-label", displayConcern.route);
+    route
+      .querySelectorAll(".bc-stage__route-token, .bc-stage__route-sep")
+      .forEach((element, index) => {
+        element.style.setProperty("--bc-route-delay", `${Math.min(index * 42, 180)}ms`);
+      });
+
+    if (reduceMotionQuery.matches) {
+      route.classList.add("is-route-revealing");
+      return;
+    }
+
+    routeAnimationFrame = window.requestAnimationFrame(() => {
+      routeAnimationFrame = 0;
+      route.classList.add("is-route-revealing");
+    });
+  }
+
+  function syncCommittedCta() {
+    const committedConcern = getCommittedConcern();
+    if (!committedConcern) {
+      return;
+    }
+
+    ctaText.textContent = committedConcern.cta;
+    cta.href = committedConcern.href;
+    cta.dataset.concernId = committedConcern.id;
+    cta.setAttribute("aria-label", `${committedConcern.title} ${committedConcern.cta}`);
+  }
+
+  function announceCommittedConcern(concernId) {
+    if (!commitLive) {
+      return;
+    }
+
+    const committedConcern = concerns.get(concernId);
+    if (!committedConcern) {
+      return;
+    }
+
+    commitLive.textContent = `${committedConcern.title} 개선 루틴이 선택되었습니다. 먼저 볼 번호 ${committedConcern.route}.`;
+  }
+
+  function preloadConcernImages() {
+    const urls = Array.from(
+      new Set(
+        data.concerns
+          .map((concern) => concern.imageSrc)
+          .filter((src) => typeof src === "string" && src.length > 0)
+      )
+    );
+
+    const loadImages = () => {
+      urls.forEach((url) => {
+        if (url === stageImage.currentSrc || url === stageImage.src) {
+          return;
+        }
+
+        const image = new Image();
+        image.decoding = "async";
+        image.src = url;
+        if (typeof image.decode === "function") {
+          image.decode().catch(() => {});
+        }
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadImages, { timeout: 1800 });
+      return;
+    }
+
+    window.setTimeout(loadImages, 600);
   }
 
   function setPointerOrigin(x = "50%", y = "50%") {
@@ -302,13 +388,12 @@
     mobileFamily.textContent = displayConcern.family;
     concernName.textContent = displayConcern.title;
     mobileConcern.textContent = displayConcern.title;
-    route.innerHTML = renderRouteMarkup(displayConcern.route);
-    route.setAttribute("aria-label", displayConcern.route);
+    renderRoute(displayConcern);
     why.textContent = displayConcern.why;
     next.textContent = displayConcern.next;
-    ctaText.textContent = displayConcern.cta;
-    cta.href = displayConcern.href;
-    cta.setAttribute("aria-label", `${displayConcern.title} ${displayConcern.cta}`);
+    stage.dataset.previewing = previewConcernId ? "true" : "false";
+    root.dataset.previewing = previewConcernId ? "true" : "false";
+    syncCommittedCta();
     const imageScale = Number(displayConcern.imageScale) || 1;
     stage.style.setProperty("--bc-stage-image-scale", `${imageScale}`);
     stage.style.setProperty(
@@ -330,6 +415,7 @@
   function commitConcern(concernId) {
     applyConcern(concernId, { commit: true });
     emitConcernChange();
+    announceCommittedConcern(concernId);
   }
 
   function previewConcern(concernId) {
@@ -401,6 +487,105 @@
     }
 
     moveConcern(-1);
+  }
+
+  function initByConcernScrollInteractions() {
+    if (document.body.dataset.page !== "by-concern") {
+      return;
+    }
+
+    if (reduceMotionQuery.matches || !("IntersectionObserver" in window)) {
+      document.body.dataset.bcScrollBound = "true";
+      document.body.dataset.bcMotion = "reduced";
+      return;
+    }
+
+    const motionState = window.ERTY_BY_CONCERN_SCROLL_MOTION || {};
+    window.ERTY_BY_CONCERN_SCROLL_MOTION = motionState;
+    const motionTargets = [];
+
+    function addMotionTargets(selector, options = {}) {
+      const {
+        variant = "quiet",
+        delayBase = 0,
+        delayStep = 48,
+        maxDelay = 240,
+      } = options;
+
+      document.querySelectorAll(selector).forEach((element, index) => {
+        if (element.dataset.bcMotionTarget === "true") {
+          return;
+        }
+
+        element.dataset.bcMotionTarget = "true";
+        element.classList.add("bc-motion-item", `bc-motion-item--${variant}`);
+        element.style.setProperty("--bc-scroll-motion-delay", `${Math.min(delayBase + index * delayStep, maxDelay)}ms`);
+        motionTargets.push(element);
+      });
+    }
+
+    addMotionTargets(".by-concern-reset__hero-copy", { delayBase: 0, delayStep: 0 });
+    addMotionTargets(".by-concern-reset__hero-eyebrow", { delayBase: 40, delayStep: 0 });
+    addMotionTargets("#by-concern-hero-title", { variant: "headline", delayBase: 70, delayStep: 0 });
+    addMotionTargets(".by-concern-reset__hero-subcopy", { delayBase: 140, delayStep: 0 });
+    addMotionTargets(".by-concern-reset__cta", { delayBase: 190, delayStep: 0 });
+
+    addMotionTargets(".bc-selector__intro", { delayBase: 0, delayStep: 0 });
+    addMotionTargets(".bc-selector__eyebrow", { delayBase: 40, delayStep: 0 });
+    addMotionTargets("#bc-selector-title", { variant: "headline", delayBase: 70, delayStep: 0 });
+    addMotionTargets(".bc-selector__desc", { delayBase: 130, delayStep: 0 });
+    addMotionTargets(".bc-stage", { variant: "panel", delayBase: 80, delayStep: 0 });
+    addMotionTargets(".bc-cue", { variant: "ledger", delayBase: 110, delayStep: 36, maxDelay: 260 });
+
+    addMotionTargets(".bc-next-actions__rail", { variant: "panel", delayBase: 70, delayStep: 0 });
+    addMotionTargets(".bc-next-actions__item", { variant: "ledger", delayBase: 110, delayStep: 44, maxDelay: 220 });
+
+    addMotionTargets(".site-footer__brand", { delayBase: 40, delayStep: 0 });
+    addMotionTargets(".site-footer__artifact", { delayBase: 80, delayStep: 0 });
+    addMotionTargets(".site-footer__artifact-rows span", { variant: "ledger", delayBase: 120, delayStep: 32 });
+    addMotionTargets(".site-footer__status, .site-footer__nav-column", { delayBase: 150, delayStep: 36 });
+
+    function revealMotionTarget(element) {
+      element.classList.add("is-bc-motion-visible");
+      element
+        .querySelectorAll(".bc-motion-item--headline")
+        .forEach((headline) => headline.classList.add("is-bc-motion-visible"));
+    }
+
+    const visibleThreshold = window.innerHeight * 0.94;
+    motionTargets.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      if (rect.top < visibleThreshold && rect.bottom > 0) {
+        revealMotionTarget(element);
+      }
+    });
+
+    if (!motionState.observer) {
+      motionState.observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) {
+              return;
+            }
+
+            revealMotionTarget(entry.target);
+            motionState.observer.unobserve(entry.target);
+          });
+        },
+        {
+          root: null,
+          rootMargin: "0px 0px -12% 0px",
+          threshold: 0.16,
+        }
+      );
+    }
+
+    motionTargets.forEach((element) => {
+      motionState.observer.observe(element);
+    });
+
+    document.body.dataset.bcScrollBound = "true";
+    document.body.dataset.bcMotion = "ready";
   }
 
   cues.forEach((cue) => {
@@ -557,5 +742,9 @@
 
   applyConcern(activeConcernId, { commit: true, animate: false });
   emitConcernChange();
+  preloadConcernImages();
   requestScrollHandoffUpdate();
+  initByConcernScrollInteractions();
+  document.addEventListener("DOMContentLoaded", initByConcernScrollInteractions);
+  document.addEventListener("components:loaded", initByConcernScrollInteractions);
 })();

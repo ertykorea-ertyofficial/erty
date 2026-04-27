@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="/assets/css/by-concern-reset.css" />
     <link rel="stylesheet" href="/assets/css/by-concern-selector.css?v=20260424-selector-calm-interaction" />
     <link rel="stylesheet" href="/assets/css/by-concern-next-layers.css?v=20260424-next-rail-global-order-v1" />
+    <link rel="stylesheet" href="/assets/css/by-concern-scroll-interactions.css?v=20260427-by-concern-motion-v2" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -121,8 +122,8 @@
               <a href="/" class="global-nav__link" data-nav-link>Home</a>
               <a href="/by-concern/" class="global-nav__link" data-nav-link>By Concern</a>
               <a href="/products/" class="global-nav__link" data-nav-link>Products</a>
-              <a href="/guide/" class="global-nav__link" data-nav-link>Guide</a>
-              <a href="/results/" class="global-nav__link" data-nav-link>Results</a>
+              <a href="/insight/" class="global-nav__link" data-nav-link>Insight</a>
+              <a href="/archive/" class="global-nav__link" data-nav-link>Archive</a>
               <a href="/brand/" class="global-nav__link" data-nav-link>Brand</a>
             </nav>
 
@@ -214,7 +215,6 @@
                   id="bc-stage-panel"
                   role="tabpanel"
                   aria-labelledby="bc-tab-barrier-redness"
-                  aria-live="polite"
                 >
                   <div class="bc-stage__panel-top">
                   <span class="bc-chip" id="bc-panel-chip">지금 신호</span>
@@ -246,6 +246,7 @@
                   <span aria-hidden="true">→</span>
                 </a>
               </aside>
+              <p class="sr-only" id="bc-commit-live" aria-live="polite" aria-atomic="true"></p>
             </div>
 
             <div class="bc-dock" id="bc-dock" role="tablist" aria-label="피부 고민 선택">
@@ -357,30 +358,30 @@
 
             <a
               class="bc-next-actions__item"
-              id="bc-next-actions-guide"
-              href="/guide/"
-              data-target="guide"
-              aria-label="GUIDE로 이동"
+              id="bc-next-actions-insight"
+              href="/insight/"
+              data-target="insight"
+              aria-label="INSIGHT로 이동"
             >
               <span class="bc-next-actions__step" aria-hidden="true">02</span>
               <span class="bc-next-actions__copy-wrap">
-                <span class="bc-next-actions__label" lang="en">GUIDE</span>
-                <span class="bc-next-actions__copy">번호 흐름 읽기</span>
+                <span class="bc-next-actions__label" lang="en">INSIGHT</span>
+                <span class="bc-next-actions__copy">루틴 인사이트 보기</span>
               </span>
               <span class="bc-next-actions__arrow" aria-hidden="true">→</span>
             </a>
 
             <a
               class="bc-next-actions__item"
-              id="bc-next-actions-results"
-              href="/results/"
-              data-target="results"
-              aria-label="RESULTS로 이동"
+              id="bc-next-actions-archive"
+              href="/archive/"
+              data-target="archive"
+              aria-label="ARCHIVE로 이동"
             >
               <span class="bc-next-actions__step" aria-hidden="true">03</span>
               <span class="bc-next-actions__copy-wrap">
-                <span class="bc-next-actions__label" lang="en">RESULTS</span>
-                <span class="bc-next-actions__copy">근거 수치 확인</span>
+                <span class="bc-next-actions__label" lang="en">ARCHIVE</span>
+                <span class="bc-next-actions__copy">후기 아카이브 보기</span>
               </span>
               <span class="bc-next-actions__arrow" aria-hidden="true">→</span>
             </a>
@@ -433,11 +434,11 @@
           <nav class="site-footer__nav-column" aria-label="하단 주요 경로">
             <p class="site-footer__nav-kicker" data-home-copy="footer.navKicker">다음 경로</p>
             <div class="site-footer__links">
-              <a href="/brand/">브랜드</a>
-              <a href="/products/">제품 번호</a>
-              <a href="/results/">근거</a>
-              <a href="/guide/">가이드</a>
               <a href="/by-concern/">고민별</a>
+              <a href="/products/">제품 번호</a>
+              <a href="/insight/">인사이트</a>
+              <a href="/archive/">아카이브</a>
+              <a href="/brand/">브랜드</a>
             </div>
           </nav>
         </div>
@@ -449,8 +450,8 @@
     <script src="/assets/js/main.js" defer></script>
     <script src="/assets/js/products-explorer-links.js?v=20260424-concern-routine-v2" defer></script>
     <script src="/assets/js/by-concern-selector-data.js?v=20260424-by-concern-seo-v1" defer></script>
-    <script src="/assets/js/by-concern-selector.js?v=20260424-selector-calm-interaction" defer></script>
-    <script src="/assets/js/by-concern-next-layers-data.js?v=20260424-next-rail-global-order-v1" defer></script>
-    <script src="/assets/js/by-concern-next-layers.js" defer></script>
+    <script src="/assets/js/by-concern-selector.js?v=20260427-by-concern-motion-v2" defer></script>
+    <script src="/assets/js/by-concern-next-layers-data.js?v=20260427-global-nav-rename-v1" defer></script>
+    <script src="/assets/js/by-concern-next-layers.js?v=20260427-global-nav-rename-v1" defer></script>
   </body>
 </html>

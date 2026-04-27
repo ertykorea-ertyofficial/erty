@@ -441,6 +441,7 @@
 
   const SWIPE_THRESHOLD = 42;
   const MOBILE_GRID_MEDIA = window.matchMedia("(max-width: 767px)");
+  const REDUCED_MOTION_MEDIA = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const state = {
     activeConcern: null,
@@ -456,6 +457,17 @@
   };
   let visualSyncFrame = 0;
   let viewportCardSyncFrame = 0;
+  let productsScrollMotionObserver = null;
+  let productsScrollMotionInitialized = false;
+  const productsScrollMotionTargets = new Set();
+
+  function prefersReducedMotion() {
+    return REDUCED_MOTION_MEDIA.matches;
+  }
+
+  function getScrollBehavior() {
+    return prefersReducedMotion() ? "auto" : "smooth";
+  }
 
   function getSearchState() {
     const params = new URLSearchParams(window.location.search);
@@ -1006,11 +1018,9 @@
         const targetTop = MOBILE_GRID_MEDIA.matches
           ? Math.max(0, window.scrollY + pxTitle.getBoundingClientRect().top - 96)
           : Math.max(0, window.scrollY + pxShell.getBoundingClientRect().top - desktopPosterOffset);
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
         window.scrollTo({
           top: targetTop,
-          behavior: prefersReducedMotion ? "auto" : "smooth",
+          behavior: getScrollBehavior(),
         });
 
         const nextUrl = `${window.location.pathname}${window.location.search}#product-explorer`;
@@ -1114,6 +1124,152 @@
     viewportCardSyncFrame = window.requestAnimationFrame(syncViewportCurrentCard);
   }
 
+  function revealProductsScrollTarget(target) {
+    if (!target) {
+      return;
+    }
+
+    target.classList.add("is-products-scroll-visible");
+  }
+
+  function prepareProductsScrollTarget(target, options = {}) {
+    if (!target || target.dataset.productsScrollPrepared === "true") {
+      return;
+    }
+
+    target.dataset.productsScrollPrepared = "true";
+    target.classList.add("products-scroll-reveal");
+
+    if (options.headline) {
+      target.classList.add("products-scroll-headline");
+      target.style.setProperty("--products-scroll-y", "0px");
+    }
+
+    if (options.frame) {
+      target.classList.add("products-scroll-frame");
+    }
+
+    if (options.delay) {
+      target.style.setProperty("--products-scroll-delay", `${options.delay}ms`);
+    }
+
+    productsScrollMotionTargets.add(target);
+  }
+
+  function observeProductsScrollTarget(target, options = {}) {
+    prepareProductsScrollTarget(target, options);
+
+    if (!target) {
+      return;
+    }
+
+    if (prefersReducedMotion() || !productsScrollMotionObserver) {
+      revealProductsScrollTarget(target);
+      return;
+    }
+
+    productsScrollMotionObserver.observe(target);
+  }
+
+  function revealAllProductsScrollTargets() {
+    productsScrollMotionTargets.forEach(revealProductsScrollTarget);
+    document
+      .querySelectorAll("[data-products-scroll-scene='true']")
+      .forEach(revealProductsScrollTarget);
+  }
+
+  function observeGridCardsForScrollMotion() {
+    if (!productsScrollMotionInitialized) {
+      return;
+    }
+
+    const cards = Array.from(
+      productGrid.querySelectorAll(".product-card:not(.product-card--skeleton)"),
+    );
+
+    cards.forEach((card, index) => {
+      const delay = Math.min(index, 8) * 42;
+      observeProductsScrollTarget(card, { delay });
+    });
+  }
+
+  function initProductsScrollInteractions() {
+    if (productsScrollMotionInitialized) {
+      return;
+    }
+
+    productsScrollMotionInitialized = true;
+    document.body.classList.add("products-scroll-motion");
+
+    const hero = document.querySelector(".products-hero");
+    const heroShell = hero?.querySelector(".products-hero__shell");
+    const heroEyebrow = hero?.querySelector(".products-hero__eyebrow");
+    const heroTitle = hero?.querySelector(".products-hero__title");
+    const heroDesc = hero?.querySelector(".products-hero__desc");
+    const heroActions = hero?.querySelector(".products-hero__actions");
+    const posterShell = pxExplorer.querySelector(".px-stage__poster-shell");
+    const catalogEyebrow = productsCatalog.querySelector(".products-catalog__eyebrow");
+    const catalogCopy = productsCatalog.querySelector(".products-catalog__copy");
+    const catalogTitle = productsCatalog.querySelector(".products-catalog__title");
+    const catalogControls = productsCatalog.querySelector(".products-catalog__head > :not(.products-catalog__copy)");
+
+    if (hero) {
+      hero.dataset.productsScrollScene = "true";
+      productsScrollMotionTargets.add(hero);
+    }
+
+    productsScrollMotionObserver =
+      "IntersectionObserver" in window && !prefersReducedMotion()
+        ? new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                  return;
+                }
+
+                revealProductsScrollTarget(entry.target);
+                observer.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.16, rootMargin: "0px 0px -8% 0px" },
+          )
+        : null;
+
+    if (hero && productsScrollMotionObserver) {
+      productsScrollMotionObserver.observe(hero);
+    } else {
+      revealProductsScrollTarget(hero);
+    }
+
+    observeProductsScrollTarget(heroEyebrow, { delay: 20 });
+    observeProductsScrollTarget(heroTitle, { headline: true, delay: 90 });
+    observeProductsScrollTarget(heroDesc, { delay: 170 });
+    observeProductsScrollTarget(heroActions, { delay: 230 });
+    observeProductsScrollTarget(heroShell, { delay: 80 });
+
+    observeProductsScrollTarget(pxEye, { delay: 0 });
+    observeProductsScrollTarget(pxTitle, { headline: true, delay: 70 });
+    observeProductsScrollTarget(pxDesc, { delay: 140 });
+    observeProductsScrollTarget(pxShell, { frame: true, delay: 170 });
+    observeProductsScrollTarget(posterShell, { frame: true, delay: 220 });
+
+    observeProductsScrollTarget(catalogEyebrow, { delay: 0 });
+    observeProductsScrollTarget(catalogTitle, { headline: true, delay: 70 });
+    observeProductsScrollTarget(catalogCopy, { delay: 110 });
+    observeProductsScrollTarget(catalogControls, { delay: 150 });
+    observeProductsScrollTarget(productGrid, { frame: true, delay: 180 });
+    observeGridCardsForScrollMotion();
+
+    REDUCED_MOTION_MEDIA.addEventListener("change", () => {
+      if (!prefersReducedMotion()) {
+        return;
+      }
+
+      productsScrollMotionObserver?.disconnect();
+      revealAllProductsScrollTargets();
+    });
+  }
+
   function syncFilterStates() {
     pxFamilyTabs.querySelectorAll(".px-family-tab").forEach((button) => {
       const family = button.dataset.family;
@@ -1156,6 +1312,7 @@
     productGrid.appendChild(fragment);
     productGrid.setAttribute("aria-busy", "false");
     syncGridStates();
+    observeGridCardsForScrollMotion();
     requestViewportCardSync();
   }
 
@@ -1170,7 +1327,7 @@
 
       if (target) {
         target.scrollIntoView({
-          behavior: "smooth",
+          behavior: getScrollBehavior(),
           block: "nearest",
           inline: "center",
         });
@@ -1333,7 +1490,7 @@
         applyCatalogScope("all");
         requestAnimationFrame(() => {
           productsCatalog.scrollIntoView({
-            behavior: "smooth",
+            behavior: getScrollBehavior(),
             block: "start",
           });
         });
@@ -1344,7 +1501,7 @@
         applyCatalogScope("route");
         requestAnimationFrame(() => {
           productsCatalog.scrollIntoView({
-            behavior: "smooth",
+            behavior: getScrollBehavior(),
             block: "start",
           });
         });
@@ -1352,7 +1509,7 @@
       }
 
       productsCatalog.scrollIntoView({
-        behavior: "smooth",
+        behavior: getScrollBehavior(),
         block: "start",
       });
     });
@@ -1456,6 +1613,7 @@
     preloadDesktopPosters();
     renderAll();
     bindExplorerEvents();
+    initProductsScrollInteractions();
     dispatchExplorerEvents();
   }
 
