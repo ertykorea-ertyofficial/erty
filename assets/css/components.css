@@ -4493,6 +4493,12 @@ body[data-page="home"] .site-footer__locale {
   pointer-events: none;
 }
 
+.home-v7-hero__background picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .home-v7-hero__background img {
   width: 100%;
   height: 100%;
@@ -19345,5 +19351,27 @@ body:is([data-page="home"], [data-page="by-concern"]) .site-footer__inner--v12 .
   body[data-page="home"] .home-main--v12 .home-v7-hero__micro-rule::after {
     content: none !important;
     display: none !important;
+  }
+}
+
+/* HOME HERO GLOBAL IMAGE LOCK */
+@media (min-width: 768px) {
+  body[data-page="home"] .home-main--v12 .home-v7-hero::before {
+    background:
+      radial-gradient(
+        ellipse at 50% 42%,
+        rgba(255, 255, 255, 0.76) 0%,
+        rgba(255, 255, 255, 0.6) 32%,
+        rgba(248, 249, 249, 0.3) 58%,
+        rgba(248, 249, 249, 0.74) 100%
+      ),
+      linear-gradient(180deg, rgba(249, 250, 250, 0.14), rgba(248, 249, 249, 0.48) 58%, rgba(248, 249, 249, 0.88));
+  }
+
+  body[data-page="home"] .home-main--v12 .home-v7-hero__background img {
+    object-position: 50% 50%;
+    opacity: 0.48;
+    filter: grayscale(1) saturate(0.46) contrast(1.12) brightness(1.04);
+    transform: scale(1);
   }
 }
