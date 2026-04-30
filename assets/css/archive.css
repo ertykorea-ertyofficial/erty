@@ -354,7 +354,7 @@ body[data-page="archive"] {
 .archive-section-head--stacked {
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
-  gap: 12px;
+  gap: 8px;
 }
 
 .archive-section-head--stacked .archive-eyebrow,
@@ -369,7 +369,15 @@ body[data-page="archive"] {
 
 .archive-section-head--stacked > p:not(.archive-eyebrow) {
   max-width: 36rem;
-  margin-top: 2px;
+  margin-top: 0;
+}
+
+.archive-social-wall .archive-section-head--stacked {
+  gap: 7px;
+}
+
+.archive-social-wall .archive-section-head--stacked h2 {
+  margin-top: 1px;
 }
 
 .archive-section-head h2,
