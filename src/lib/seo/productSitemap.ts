@@ -1,14 +1,5 @@
 import { products } from "../../data/products";
-
-const SITE_URL = "https://ertyofficial.com";
-
-function absoluteUrl(path = "/") {
-  if (/^https?:\/\//.test(path)) {
-    return path;
-  }
-
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
+import { absoluteUrl } from "./site";
 
 export function getProductSitemapEntries() {
   return products.map((product) => ({

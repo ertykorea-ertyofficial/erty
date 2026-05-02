@@ -6,7 +6,6 @@
     return;
   }
 
-  const SITE_URL = "https://ertyofficial.com";
   const currentSlug = window.location.pathname
     .replace(/\/index\.html$/, "/")
     .split("/")
@@ -16,6 +15,20 @@
   const product = data.products.find(
     (item) => item.slug === currentSlug || item.aliases?.includes(currentSlug),
   );
+
+  function siteUrl() {
+    const canonicalHref = document.querySelector('link[rel="canonical"]')?.href;
+
+    if (canonicalHref) {
+      try {
+        return new URL(canonicalHref).origin;
+      } catch (error) {
+        console.warn("[ERTY PDP] Invalid canonical URL while resolving site origin.", error);
+      }
+    }
+
+    return "https://ertyofficial.com";
+  }
 
   function escapeHtml(value) {
     return String(value ?? "")
@@ -31,7 +44,7 @@
       return path;
     }
 
-    return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+    return `${siteUrl()}${path.startsWith("/") ? path : `/${path}`}`;
   }
 
   function canonicalUrl(product) {
@@ -420,8 +433,8 @@
         "@type": "BreadcrumbList",
         "@id": `${url}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-          { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products/` },
+          { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl()}/` },
+          { "@type": "ListItem", position: 2, name: "Products", item: `${siteUrl()}/products/` },
           { "@type": "ListItem", position: 3, name: product.identity.nameKo, item: url },
         ],
       },

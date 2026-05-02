@@ -1,5 +1,69 @@
 # ERTY Session Handoff
 
+## 2026-05-02 현재 재개 기준
+
+이 문서는 긴 Codex 스레드를 새 스레드로 분리해도 `ERTY` 한 단어로 같은 프로젝트 상태를 복구하기 위한 기준 문서다.
+
+### 현재 브랜치 / 배포 상태
+
+- 현재 브랜치: `codex/archive-home-v15-20260415`
+- 최근 커밋: `35af31c chore: finalize archive page micro copy and spacing polish`
+- 현재 로컬 변경:
+  - `archive/index.html`: 보안 검토 중 YouTube iframe에 `sandbox` 속성 추가
+- 현재 주요 preview 대상:
+  - Home: `http://127.0.0.1:4173/`
+  - By Concern: `http://127.0.0.1:4173/by-concern/`
+  - Products: `http://127.0.0.1:4173/products/`
+  - Archive: `http://127.0.0.1:4173/archive/`
+
+### 현재 완료된 큰 범위
+
+- Home / By Concern / Products 페이지 주요 UI 라운드 완료
+- Products Product Explorer / All Products Grid / PDP 링크 흐름 구축 완료
+- 전제품 PDP 데이터 및 공통 PDP 렌더링 엔진 구축 완료
+- 01, 02, 03, 11, 13, 15, 21, 23, 25, 27, 35, 37, 50, 55, 57 PDP 시각 위계 정리 완료
+- Global Nav rename 완료:
+  - `GUIDE` -> `INSIGHT`
+  - `RESULTS` -> `ARCHIVE`
+- Archive v1 구축 완료:
+  - Hero
+  - YouTube official video iframe
+  - Social Media Wall
+  - Buyer Signal
+  - B2B CTA
+  - footer 비노출
+- 최근 보안 검토 1차 완료:
+  - 로컬 Cloudflare 토큰 파일 탐지: `private/secrets/cloudflare/cloudflare-token.env`
+  - CSP/보안 헤더 미설정 리스크 식별
+  - `archive/index.html` iframe sandbox 조치
+  - `innerHTML` 사용 구간 저감 필요성 식별
+
+### Codex 앱 응답 없음 진단
+
+- Windows 이벤트 로그에 `Codex.exe` `Application Hang`가 실제 기록됨.
+- Codex 로그에서 현재 거대 스레드 재개 비용 확인:
+  - `thread/resume durationMs=83957`
+  - `turnCount=487`
+  - `item_count_total_loaded=17633`
+  - `renderer_process_working_set_kb=648124`
+- 따라서 반복적인 `응답 없음`의 직접 원인은 현재 장기 스레드의 재개/렌더링 부담이다.
+- 새 작업 라운드는 새 Codex 스레드에서 시작하고, 첫 메시지로 `ERTY`를 보내 이 문서 기준으로 복구한다.
+
+### 다음 우선 작업
+
+1. 현재 남은 보안 보완:
+   - Cloudflare 토큰 회수/재발급
+   - Pages/Worker 레벨 CSP, Referrer-Policy, Permissions-Policy 헤더 적용
+   - `innerHTML` 사용 구간 중 URL/query 결합 가능 경로 우선 정리
+2. Archive 이후 페이지별 라운드:
+   - Insight 페이지 본 구축
+   - Brand 페이지 본 구축
+3. 작업 흐름:
+   - 한 요청/한 페이지/한 라운드 단위로 진행
+   - 장기 스레드가 다시 100턴 이상 커지기 전에 새 스레드로 분리
+
+---
+
 ## 목적
 
 이 문서는 다음 Codex 세션에서 `ERTY` 한 단어로 재개할 때 읽는 기준 상태 문서다.

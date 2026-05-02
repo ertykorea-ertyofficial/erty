@@ -1,14 +1,5 @@
 import type { ProductPdpData } from "../../data/products/types";
-
-const SITE_URL = "https://ertyofficial.com";
-
-function absoluteUrl(path = "/") {
-  if (/^https?:\/\//.test(path)) {
-    return path;
-  }
-
-  return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
-}
+import { SITE_URL, absoluteUrl } from "./site";
 
 export function buildProductJsonLd(product: ProductPdpData) {
   const canonicalUrl = absoluteUrl(product.seo.canonicalUrl || product.seo.canonicalPath || `/products/${product.slug}/`);
