@@ -66,20 +66,6 @@ function scheduleArchiveEmbedsocialScript() {
   } else {
     loadOnce();
   }
-
-  window.addEventListener(
-    "load",
-    () => {
-      const scheduleIdle =
-        window.requestIdleCallback ||
-        function fallbackIdle(callback) {
-          return window.setTimeout(callback, 1800);
-        };
-
-      scheduleIdle(loadOnce, { timeout: 5000 });
-    },
-    { once: true }
-  );
 }
 
 document.addEventListener("DOMContentLoaded", initArchiveEmbedsocialSlots);

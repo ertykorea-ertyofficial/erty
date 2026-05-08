@@ -27,12 +27,28 @@
     <link
       rel="preload"
       as="image"
-      href="/assets/images/brand/products/hero/products-hero-2G8A4188.jpg"
+      href="/assets/images/brand/products/hero/products-hero-2G8A4188-1280.avif"
+      type="image/avif"
+      media="(max-width: 767px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/brand/products/hero/products-hero-2G8A4188-1920.avif"
+      type="image/avif"
+      media="(min-width: 768px) and (max-width: 1599px)"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/brand/products/hero/products-hero-2G8A4188-2560.avif"
+      type="image/avif"
+      media="(min-width: 1600px)"
     />
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
-    <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=20260508-components-core-v1" />
     <link rel="stylesheet" href="/assets/css/products.css?v=20260424-products-cta-center-v1" />
     <link rel="stylesheet" href="/assets/css/products-scroll-interactions.css?v=20260427-products-motion-v1" />
     <script type="application/ld+json">
@@ -148,8 +164,9 @@
                 <img
                   id="px-image"
                   class="px-stage__image"
-                  src="/assets/images/brand/home/sku-rail/11.png"
                   alt="Cleansing Gel for Skin Balancing"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -161,20 +178,33 @@
 
                 <div class="px-stage__poster-shell">
                   <div class="px-stage__poster-placeholder" aria-hidden="true"></div>
-                  <img
-                    id="px-poster"
-                    class="px-stage__poster"
-                    src="/assets/images/brand/products/stage-posters/11.png"
-                    alt="클렌징 젤 포 스킨 밸런싱 제품 포스터"
-                    hidden
-                  />
-                  <img
-                    id="px-poster-outgoing"
-                    class="px-stage__poster px-stage__poster--outgoing"
-                    alt=""
+                  <picture id="px-poster-picture" class="px-stage__poster-picture" hidden>
+                    <source id="px-poster-avif" type="image/avif" />
+                    <source id="px-poster-webp" type="image/webp" />
+                    <img
+                      id="px-poster"
+                      class="px-stage__poster"
+                      alt="클렌징 젤 포 스킨 밸런싱 제품 포스터"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                  <picture
+                    id="px-poster-outgoing-picture"
+                    class="px-stage__poster-picture"
                     aria-hidden="true"
                     hidden
-                  />
+                  >
+                    <source id="px-poster-outgoing-avif" type="image/avif" />
+                    <source id="px-poster-outgoing-webp" type="image/webp" />
+                    <img
+                      id="px-poster-outgoing"
+                      class="px-stage__poster px-stage__poster--outgoing"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <div class="px-stage__swipe-hints">
                     <button
                       class="px-stage__swipe-hint px-stage__swipe-hint--prev"

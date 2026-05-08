@@ -93,6 +93,34 @@
   let swipeStartX = 0;
   let swipeStartY = 0;
   let swipeMoved = false;
+  const preloadedConcernImages = new Set();
+  let concernImagePreloadQueue = [];
+  let concernImagePreloadScheduled = false;
+  let concernImagePreloadBound = false;
+
+  function normalizeAssetUrl(src) {
+    if (typeof src !== "string" || !src.trim()) {
+      return "";
+    }
+
+    try {
+      return new URL(src, window.location.href).href;
+    } catch (error) {
+      return src;
+    }
+  }
+
+  function markConcernImageQueued(src) {
+    const normalizedUrl = normalizeAssetUrl(src);
+    if (!normalizedUrl) {
+      return;
+    }
+
+    preloadedConcernImages.add(normalizedUrl);
+    concernImagePreloadQueue = concernImagePreloadQueue.filter(
+      (url) => normalizeAssetUrl(url) !== normalizedUrl,
+    );
+  }
 
   function setScrollHandoffVariables(progress) {
     const clamped = Math.min(Math.max(progress, 0), 1);
@@ -264,35 +292,81 @@
   }
 
   function preloadConcernImages() {
+    markConcernImageQueued(stageImage.currentSrc || stageImage.src);
+
     const urls = Array.from(
       new Set(
         data.concerns
           .map((concern) => concern.imageSrc)
           .filter((src) => typeof src === "string" && src.length > 0)
       )
+    ).filter((url) => !preloadedConcernImages.has(normalizeAssetUrl(url)));
+
+    concernImagePreloadQueue = urls.filter(
+      (url) =>
+        !concernImagePreloadQueue.some(
+          (queuedUrl) => normalizeAssetUrl(queuedUrl) === normalizeAssetUrl(url),
+        ),
     );
 
-    const loadImages = () => {
-      urls.forEach((url) => {
-        if (url === stageImage.currentSrc || url === stageImage.src) {
-          return;
-        }
-
-        const image = new Image();
-        image.decoding = "async";
-        image.src = url;
-        if (typeof image.decode === "function") {
-          image.decode().catch(() => {});
-        }
-      });
-    };
-
-    if ("requestIdleCallback" in window) {
-      window.requestIdleCallback(loadImages, { timeout: 1800 });
+    if (!concernImagePreloadQueue.length || concernImagePreloadBound) {
       return;
     }
 
-    window.setTimeout(loadImages, 600);
+    concernImagePreloadBound = true;
+
+    const startSequentialPreload = () => {
+      scheduleConcernImagePreload();
+    };
+
+    root.addEventListener("pointerenter", startSequentialPreload, { once: true });
+    root.addEventListener("pointerdown", startSequentialPreload, { once: true });
+    root.addEventListener("focusin", startSequentialPreload, { once: true });
+    root.addEventListener("keydown", startSequentialPreload, { once: true });
+    root.addEventListener("touchstart", startSequentialPreload, { once: true, passive: true });
+  }
+
+  function scheduleConcernImagePreload() {
+    if (concernImagePreloadScheduled || !concernImagePreloadQueue.length) {
+      return;
+    }
+
+    concernImagePreloadScheduled = true;
+
+    const scheduleIdle =
+      window.requestIdleCallback ||
+      function fallbackIdle(callback) {
+        return window.setTimeout(callback, 900);
+      };
+
+    scheduleIdle(loadNextConcernImage, { timeout: 2600 });
+  }
+
+  function loadNextConcernImage() {
+    concernImagePreloadScheduled = false;
+
+    const url = concernImagePreloadQueue.shift();
+    if (!url) {
+      return;
+    }
+
+    const normalizedUrl = normalizeAssetUrl(url);
+    if (preloadedConcernImages.has(normalizedUrl)) {
+      scheduleConcernImagePreload();
+      return;
+    }
+
+    const image = new Image();
+    image.decoding = "async";
+    image.src = url;
+    preloadedConcernImages.add(normalizedUrl);
+
+    const continueQueue = () => {
+      window.setTimeout(scheduleConcernImagePreload, 700);
+    };
+
+    image.onload = continueQueue;
+    image.onerror = continueQueue;
   }
 
   function setPointerOrigin(x = "50%", y = "50%") {
@@ -401,6 +475,7 @@
       `${Math.max(imageScale * 0.985, 0.94).toFixed(3)}`
     );
     if (displayConcern.imageSrc) {
+      markConcernImageQueued(displayConcern.imageSrc);
       stageImage.src = displayConcern.imageSrc;
     }
     document.getElementById("bc-stage-panel")?.setAttribute(

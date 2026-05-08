@@ -16,6 +16,11 @@ body[data-page="products"]::before {
 }
 
 .products-hero {
+  --products-hero-bg-image: image-set(
+    url("/assets/images/brand/products/hero/products-hero-2G8A4188-1920.avif") type("image/avif"),
+    url("/assets/images/brand/products/hero/products-hero-2G8A4188-1920.webp") type("image/webp"),
+    url("/assets/images/brand/products/hero/products-hero-2G8A4188.jpg") type("image/jpeg")
+  );
   position: relative;
   min-height: max(420px, calc(100svh - var(--header-height) - 168px));
   min-height: max(420px, calc(100dvh - var(--header-height) - 168px));
@@ -52,7 +57,7 @@ body[data-page="products"]::before {
       rgba(255, 255, 255, 0.48),
       rgba(255, 255, 255, 0) 74%
     ),
-    url("/assets/images/brand/products/hero/products-hero-2G8A4188.jpg");
+    var(--products-hero-bg-image);
   background-repeat: no-repeat;
   background-size: auto, auto, auto, cover;
   background-position: center center, center center, center center, 50% 30%;
@@ -652,6 +657,14 @@ body[data-page="products"]::before {
 
 .px-stage__panel.is-poster-mode .px-stage__poster-placeholder {
   display: none;
+}
+
+.px-stage__poster-picture {
+  display: contents;
+}
+
+.px-stage__poster-picture[hidden] {
+  display: none !important;
 }
 
 .px-stage__panel.is-poster-mode .px-stage__poster {
@@ -1493,6 +1506,14 @@ body[data-page="products"]::before {
 }
 
 @media (min-width: 768px) {
+  .products-hero {
+    --products-hero-bg-image: image-set(
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188-1920.avif") type("image/avif"),
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188-1920.webp") type("image/webp"),
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188.jpg") type("image/jpeg")
+    );
+  }
+
   .products-hero__title span {
     white-space: nowrap;
   }
@@ -1876,12 +1897,27 @@ body[data-page="products"]::before {
   }
 }
 
+@media (min-width: 1600px) {
+  .products-hero {
+    --products-hero-bg-image: image-set(
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188-2560.avif") type("image/avif"),
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188-2560.webp") type("image/webp"),
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188.jpg") type("image/jpeg")
+    );
+  }
+}
+
 @media (max-width: 767px) {
   .px-stage {
     touch-action: pan-y;
   }
 
   .products-hero {
+    --products-hero-bg-image: image-set(
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188-1280.avif") type("image/avif"),
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188-1280.webp") type("image/webp"),
+      url("/assets/images/brand/products/hero/products-hero-2G8A4188.jpg") type("image/jpeg")
+    );
     min-height: max(400px, calc(100svh - var(--header-height) - 54px));
     min-height: max(400px, calc(100dvh - var(--header-height) - 54px));
     padding: calc(var(--header-height) + 12px) 0 14px;
@@ -1906,7 +1942,7 @@ body[data-page="products"]::before {
         rgba(255, 255, 255, 0.78),
         rgba(255, 255, 255, 0) 72%
       ),
-      url("/assets/images/brand/products/hero/products-hero-2G8A4188.jpg");
+      var(--products-hero-bg-image);
     background-position: center center, center center, center center, 52% 56%;
     background-repeat: no-repeat;
     background-size: auto, auto, auto, cover;

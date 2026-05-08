@@ -11,7 +11,13 @@
   const pxImage = document.getElementById("px-image");
   const pxVisual = pxExplorer?.querySelector(".px-stage__visual");
   const pxPanel = pxExplorer?.querySelector(".px-stage__panel");
+  const pxPosterPicture = document.getElementById("px-poster-picture");
+  const pxPosterAvif = document.getElementById("px-poster-avif");
+  const pxPosterWebp = document.getElementById("px-poster-webp");
   const pxPoster = document.getElementById("px-poster");
+  const pxPosterOutgoingPicture = document.getElementById("px-poster-outgoing-picture");
+  const pxPosterOutgoingAvif = document.getElementById("px-poster-outgoing-avif");
+  const pxPosterOutgoingWebp = document.getElementById("px-poster-outgoing-webp");
   const pxPosterOutgoing = document.getElementById("px-poster-outgoing");
   const pxFamily = document.getElementById("px-family");
   const pxNumber = document.getElementById("px-number");
@@ -47,7 +53,13 @@
     !pxImage ||
     !pxVisual ||
     !pxPanel ||
+    !pxPosterPicture ||
+    !pxPosterAvif ||
+    !pxPosterWebp ||
     !pxPoster ||
+    !pxPosterOutgoingPicture ||
+    !pxPosterOutgoingAvif ||
+    !pxPosterOutgoingWebp ||
     !pxPosterOutgoing ||
     !pxFamily ||
     !pxNumber ||
@@ -460,6 +472,78 @@
   let productsScrollMotionObserver = null;
   let productsScrollMotionInitialized = false;
   const productsScrollMotionTargets = new Set();
+  const stagePosterPreloadSeen = new Set();
+  let stagePosterPreloadQueue = [];
+  let stagePosterPreloadScheduled = false;
+  let stagePosterWarmupReady = false;
+
+  function normalizeAssetUrl(src) {
+    if (typeof src !== "string" || !src.trim()) {
+      return "";
+    }
+
+    try {
+      return new URL(src, window.location.href).href;
+    } catch (error) {
+      return src;
+    }
+  }
+
+  function markStagePosterRequested(src) {
+    const normalizedUrl = normalizeAssetUrl(src);
+    if (!normalizedUrl) {
+      return;
+    }
+
+    stagePosterPreloadSeen.add(normalizedUrl);
+    stagePosterPreloadQueue = stagePosterPreloadQueue.filter(
+      (queuedUrl) => normalizeAssetUrl(queuedUrl) !== normalizedUrl,
+    );
+  }
+
+  function getRasterVariantSrc(src, extension) {
+    if (typeof src !== "string" || !src.endsWith(".png")) {
+      return "";
+    }
+
+    return src.replace(/\.png$/i, `.${extension}`);
+  }
+
+  function getStagePosterPreloadSrc(src) {
+    return getRasterVariantSrc(src, "avif") || getRasterVariantSrc(src, "webp") || src;
+  }
+
+  function setPosterPicture({ picture, avifSource, webpSource, image, src, alt = "" }) {
+    if (!src) {
+      picture.hidden = true;
+      avifSource.removeAttribute("srcset");
+      webpSource.removeAttribute("srcset");
+      image.removeAttribute("src");
+      image.alt = alt;
+      delete image.dataset.posterSrc;
+      return;
+    }
+
+    const avifSrc = getRasterVariantSrc(src, "avif");
+    const webpSrc = getRasterVariantSrc(src, "webp");
+
+    if (avifSrc) {
+      avifSource.srcset = avifSrc;
+    } else {
+      avifSource.removeAttribute("srcset");
+    }
+
+    if (webpSrc) {
+      webpSource.srcset = webpSrc;
+    } else {
+      webpSource.removeAttribute("srcset");
+    }
+
+    image.src = src;
+    image.alt = alt;
+    image.dataset.posterSrc = src;
+    picture.hidden = false;
+  }
 
   function prefersReducedMotion() {
     return REDUCED_MOTION_MEDIA.matches;
@@ -522,6 +606,99 @@
 
   function getDisplayedProduct() {
     return getProductById(state.previewId || state.activeId) || getVisibleProducts()[0] || pxProducts[0];
+  }
+
+  function getAdjacentProducts(product) {
+    const visibleProducts = getVisibleProducts();
+    const index = visibleProducts.findIndex((item) => item.id === product?.id);
+
+    if (index === -1) {
+      return [];
+    }
+
+    const adjacentProducts = [];
+    const previousProduct = visibleProducts[index - 1];
+    const nextProduct = visibleProducts[index + 1];
+
+    if (previousProduct) {
+      adjacentProducts.push(previousProduct);
+    }
+
+    if (nextProduct) {
+      adjacentProducts.push(nextProduct);
+    }
+
+    return adjacentProducts;
+  }
+
+  function queueStagePosterPreload(products) {
+    products.forEach((product) => {
+      const posterSrc = getStagePosterSrc(product);
+      const normalizedUrl = normalizeAssetUrl(posterSrc);
+
+      if (
+        !posterSrc ||
+        stagePosterPreloadSeen.has(normalizedUrl) ||
+        stagePosterPreloadQueue.some((queuedUrl) => normalizeAssetUrl(queuedUrl) === normalizedUrl)
+      ) {
+        return;
+      }
+
+      stagePosterPreloadQueue.push(posterSrc);
+    });
+
+    scheduleStagePosterPreload();
+  }
+
+  function scheduleStagePosterPreload() {
+    if (stagePosterPreloadScheduled || !stagePosterPreloadQueue.length) {
+      return;
+    }
+
+    stagePosterPreloadScheduled = true;
+
+    const scheduleIdle =
+      window.requestIdleCallback ||
+      function fallbackIdle(callback) {
+        return window.setTimeout(callback, 900);
+      };
+
+    scheduleIdle(loadNextStagePoster, { timeout: 2400 });
+  }
+
+  function loadNextStagePoster() {
+    stagePosterPreloadScheduled = false;
+
+    const posterSrc = stagePosterPreloadQueue.shift();
+    if (!posterSrc) {
+      return;
+    }
+
+    const normalizedUrl = normalizeAssetUrl(posterSrc);
+    if (stagePosterPreloadSeen.has(normalizedUrl)) {
+      scheduleStagePosterPreload();
+      return;
+    }
+
+    const image = new Image();
+    image.decoding = "async";
+    image.src = getStagePosterPreloadSrc(posterSrc);
+    stagePosterPreloadSeen.add(normalizedUrl);
+
+    const continueQueue = () => {
+      window.setTimeout(scheduleStagePosterPreload, 500);
+    };
+
+    image.onload = continueQueue;
+    image.onerror = continueQueue;
+  }
+
+  function warmAdjacentStagePosters(product = getDisplayedProduct()) {
+    if (!stagePosterWarmupReady) {
+      return;
+    }
+
+    queueStagePosterPreload(getAdjacentProducts(product));
   }
 
   function getCurrentConcernData() {
@@ -701,7 +878,7 @@
     const usePosterMode = hasStagePoster || isDesktopPosterMode;
     const purchaseHref = getPurchaseHref(product.id);
     const shouldShowPurchase = usePosterMode;
-    const previousPosterSrc = pxPoster.getAttribute("src");
+    const previousPosterSrc = pxPoster.dataset.posterSrc || "";
     const shouldAnimateDesktopPoster =
       isDesktopPosterMode &&
       hasStagePoster &&
@@ -714,9 +891,15 @@
     applyCatalogAccent(state.activeFamily);
     renderContext(product);
 
-    pxImage.src = HOME_EXPLORER_IMAGE_MAP[product.id] || product.image;
-    pxImage.alt = product.name;
-    pxImage.dataset.productId = product.id;
+    if (usePosterMode) {
+      pxImage.removeAttribute("src");
+      pxImage.alt = "";
+      delete pxImage.dataset.productId;
+    } else {
+      pxImage.src = HOME_EXPLORER_IMAGE_MAP[product.id] || product.image;
+      pxImage.alt = product.name;
+      pxImage.dataset.productId = product.id;
+    }
     pxImage.style.setProperty("--px-image-scale", String(getStageImageScale(product.id)));
     pxImage.style.setProperty("--px-image-offset-y", getStageImageOffsetY(product.id));
     pxVisual.dataset.stageNumber = product.id;
@@ -726,18 +909,44 @@
     pxPanel.classList.toggle("is-poster-mode", usePosterMode);
     pxPanel.classList.toggle("is-desktop-poster-mode", isDesktopPosterMode);
     pxPanel.classList.toggle("has-stage-poster", hasStagePoster);
-    pxPosterOutgoing.hidden = !shouldAnimateDesktopPoster;
     if (shouldAnimateDesktopPoster) {
-      pxPosterOutgoing.src = previousPosterSrc;
+      setPosterPicture({
+        picture: pxPosterOutgoingPicture,
+        avifSource: pxPosterOutgoingAvif,
+        webpSource: pxPosterOutgoingWebp,
+        image: pxPosterOutgoing,
+        src: previousPosterSrc,
+        alt: "",
+      });
     } else {
-      pxPosterOutgoing.removeAttribute("src");
+      setPosterPicture({
+        picture: pxPosterOutgoingPicture,
+        avifSource: pxPosterOutgoingAvif,
+        webpSource: pxPosterOutgoingWebp,
+        image: pxPosterOutgoing,
+        src: "",
+        alt: "",
+      });
     }
-    pxPoster.hidden = !hasStagePoster;
     if (hasStagePoster) {
-      pxPoster.src = stagePosterSrc;
-      pxPoster.alt = `${product.stageName || product.name} 제품 포스터`;
+      markStagePosterRequested(stagePosterSrc);
+      setPosterPicture({
+        picture: pxPosterPicture,
+        avifSource: pxPosterAvif,
+        webpSource: pxPosterWebp,
+        image: pxPoster,
+        src: stagePosterSrc,
+        alt: `${product.stageName || product.name} 제품 포스터`,
+      });
     } else {
-      pxPoster.alt = "";
+      setPosterPicture({
+        picture: pxPosterPicture,
+        avifSource: pxPosterAvif,
+        webpSource: pxPosterWebp,
+        image: pxPoster,
+        src: "",
+        alt: "",
+      });
     }
     pxFamily.textContent = product.familyLabel;
     pxNumber.textContent = product.id;
@@ -779,6 +988,7 @@
     }
 
     requestStageVisualFrameSync();
+    warmAdjacentStagePosters(product);
   }
 
   function renderFamilyTabs() {
@@ -1399,21 +1609,43 @@
     pxStage.classList.add("is-stage-sliding");
     window.setTimeout(() => {
       pxStage.classList.remove("is-stage-sliding");
-      pxPosterOutgoing.hidden = true;
-      pxPosterOutgoing.removeAttribute("src");
+      setPosterPicture({
+        picture: pxPosterOutgoingPicture,
+        avifSource: pxPosterOutgoingAvif,
+        webpSource: pxPosterOutgoingWebp,
+        image: pxPosterOutgoing,
+        src: "",
+        alt: "",
+      });
       state.stageSlideDirection = "";
     }, 500);
   }
 
-  function preloadDesktopPosters() {
-    if (MOBILE_GRID_MEDIA.matches) {
+  function initStagePosterWarmup() {
+    if (stagePosterWarmupReady) {
       return;
     }
 
-    pxProducts.forEach((product) => {
-      const image = new Image();
-      image.src = `${DESKTOP_STAGE_POSTER_BASE_PATH}/${product.id}.png`;
-    });
+    const enableWarmup = () => {
+      stagePosterWarmupReady = true;
+      warmAdjacentStagePosters();
+    };
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            observer.disconnect();
+            enableWarmup();
+          }
+        },
+        { rootMargin: "700px 0px" },
+      );
+
+      observer.observe(pxExplorer);
+    } else {
+      enableWarmup();
+    }
   }
 
   function dispatchExplorerEvents() {
@@ -1610,8 +1842,8 @@
 
   function bootstrap() {
     initState();
-    preloadDesktopPosters();
     renderAll();
+    initStagePosterWarmup();
     bindExplorerEvents();
     initProductsScrollInteractions();
     dispatchExplorerEvents();
