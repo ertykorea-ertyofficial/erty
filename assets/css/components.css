@@ -8,30 +8,24 @@
 }
 
 .site-header__inner {
-  display: flex;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-4);
   min-height: var(--header-height);
 }
 
 .site-brand {
+  grid-column: 1;
+  justify-self: start;
   display: inline-flex;
   align-items: center;
-  gap: var(--space-3);
 }
 
 .site-brand__logo {
   width: auto;
-  height: 28px;
-}
-
-.site-brand__meta {
-  color: var(--color-text-muted);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  height: 50px;
 }
 
 .site-header__toggle {
@@ -49,12 +43,12 @@
 }
 
 .site-header__panel {
-  display: flex;
-  align-items: center;
-  gap: var(--space-5);
+  display: contents;
 }
 
 .site-header__meta {
+  grid-column: 3;
+  justify-self: end;
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -62,9 +56,16 @@
 
 .site-nav,
 .global-nav {
+  position: fixed;
+  top: calc(var(--header-height) / 2);
+  left: 50vw;
+  grid-column: 2;
+  justify-self: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-3);
+  transform: translate(-50%, -50%);
 }
 
 .site-nav a,
@@ -212,6 +213,19 @@
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.site-locale {
+  text-transform: none;
+}
+
+.site-locale__flag {
+  display: block;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .status-chip--pending {
@@ -859,6 +873,11 @@
 }
 
 @media (max-width: 1023px) {
+  .site-header__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .site-header__toggle {
     display: inline-flex;
   }
@@ -886,8 +905,15 @@
   .site-nav,
   .global-nav,
   .site-header__meta {
+    position: static;
     flex-direction: column;
     align-items: stretch;
+    transform: none;
+  }
+
+  .site-locale__flag {
+    width: 0.82em;
+    height: 0.82em;
   }
 
   .site-footer__inner,
@@ -919,11 +945,11 @@
 
 @media (max-width: 767px) {
   .site-brand {
-    gap: var(--space-2);
+    max-width: 42vw;
   }
 
-  .site-brand__meta {
-    display: none;
+  .site-brand__logo {
+    height: 46px;
   }
 
   .home-hero__copy {

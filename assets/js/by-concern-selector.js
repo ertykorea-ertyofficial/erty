@@ -540,11 +540,6 @@
     addMotionTargets(".bc-next-actions__rail", { variant: "panel", delayBase: 70, delayStep: 0 });
     addMotionTargets(".bc-next-actions__item", { variant: "ledger", delayBase: 110, delayStep: 44, maxDelay: 220 });
 
-    addMotionTargets(".site-footer__brand", { delayBase: 40, delayStep: 0 });
-    addMotionTargets(".site-footer__artifact", { delayBase: 80, delayStep: 0 });
-    addMotionTargets(".site-footer__artifact-rows span", { variant: "ledger", delayBase: 120, delayStep: 32 });
-    addMotionTargets(".site-footer__status, .site-footer__nav-column", { delayBase: 150, delayStep: 36 });
-
     function revealMotionTarget(element) {
       element.classList.add("is-bc-motion-visible");
       element

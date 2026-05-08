@@ -13,57 +13,70 @@
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css" />
+    <link rel="stylesheet" href="/assets/css/renewal.css" />
   </head>
   <body data-page="insight">
     <div data-component="header"></div>
 
-    <main class="page-main">
-      <section class="page-hero">
-        <div class="container page-hero__grid">
-          <div class="page-hero__content reading-column">
-            <div>
-              <p class="eyebrow">Insight</p>
-              <h1>루틴과 피부 해석을 읽는 인사이트 허브</h1>
+    <div class="renewal-page" inert aria-hidden="true">
+      <main class="page-main">
+        <section class="page-hero">
+          <div class="container page-hero__grid">
+            <div class="page-hero__content reading-column">
+              <div>
+                <p class="eyebrow">Insight</p>
+                <h1>루틴과 피부 해석을 읽는 인사이트 허브</h1>
+              </div>
+              <p class="lead">
+                인사이트는 제품을 단순 목록으로 보지 않고, 에르띠가 해석하는
+                피부 신호와 루틴의 맥락을 에디토리얼로 정리하는 공간입니다.
+              </p>
             </div>
-            <p class="lead">
-              인사이트는 제품을 단순 목록으로 보지 않고, 에르띠가 해석하는
-              피부 신호와 루틴의 맥락을 에디토리얼로 정리하는 공간입니다.
-            </p>
+            <aside class="page-hero__aside">
+              <article class="surface-note">
+                <p class="eyebrow">Editorial Role</p>
+                <p>루틴 인사이트와 피부 인사이트를 한곳에 축적하는 콘텐츠 레이어입니다.</p>
+              </article>
+            </aside>
           </div>
-          <aside class="page-hero__aside">
-            <article class="surface-note">
-              <p class="eyebrow">Editorial Role</p>
-              <p>루틴 인사이트와 피부 인사이트를 한곳에 축적하는 콘텐츠 레이어입니다.</p>
-            </article>
-          </aside>
-        </div>
-      </section>
+        </section>
 
-      <section class="section section--tight">
-        <div class="container route-grid">
-          <article class="route-card" data-line="balancing">
-            <p class="route-card__path">Routine Insight</p>
-            <h3>루틴을 읽는 관점</h3>
-            <p>제품 조합과 사용 순서를 피부 신호 기준으로 해석합니다.</p>
-          </article>
-          <article class="route-card" data-line="hydrating">
-            <p class="route-card__path">Skin Insight</p>
-            <h3>피부 신호 해석</h3>
-            <p>수분, 장벽, 톤, 결의 변화를 에르띠의 번호 체계로 풀어냅니다.</p>
-          </article>
-          <article class="route-card" data-line="revitalizing">
-            <p class="route-card__path">By Concern</p>
-            <h3>고민별 맥락</h3>
-            <p>선택한 피부 고민이 어떤 번호와 루틴으로 이어지는지 보강합니다.</p>
-          </article>
-          <article class="route-card" data-line="brightening">
-            <p class="route-card__path">Products</p>
-            <h3>제품 이해도</h3>
-            <p>각 제품이 루틴 안에서 맡는 역할과 이어지는 제품을 설명합니다.</p>
-          </article>
-        </div>
+        <section class="section section--tight">
+          <div class="container route-grid">
+            <article class="route-card" data-line="balancing">
+              <p class="route-card__path">Routine Insight</p>
+              <h3>루틴을 읽는 관점</h3>
+              <p>제품 조합과 사용 순서를 피부 신호 기준으로 해석합니다.</p>
+            </article>
+            <article class="route-card" data-line="hydrating">
+              <p class="route-card__path">Skin Insight</p>
+              <h3>피부 신호 해석</h3>
+              <p>수분, 장벽, 톤, 결의 변화를 에르띠의 번호 체계로 풀어냅니다.</p>
+            </article>
+            <article class="route-card" data-line="revitalizing">
+              <p class="route-card__path">By Concern</p>
+              <h3>고민별 맥락</h3>
+              <p>선택한 피부 고민이 어떤 번호와 루틴으로 이어지는지 보강합니다.</p>
+            </article>
+            <article class="route-card" data-line="brightening">
+              <p class="route-card__path">Products</p>
+              <h3>제품 이해도</h3>
+              <p>각 제품이 루틴 안에서 맡는 역할과 이어지는 제품을 설명합니다.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="renewal-overlay" role="presentation">
+      <section
+        class="renewal-dialog"
+        role="dialog"
+        aria-labelledby="insight-renewal-title"
+      >
+        <h2 id="insight-renewal-title">해당 페이지는 현재 리뉴얼 중입니다</h2>
       </section>
-    </main>
+    </div>
 
     <script src="/assets/js/components.js" defer></script>
     <script src="/assets/js/main.js" defer></script>

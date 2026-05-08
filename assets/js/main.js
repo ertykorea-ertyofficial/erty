@@ -252,11 +252,6 @@ function initHomeScrollInteractions() {
   addMotionTargets(".home-v7-faq__head", { variant: "quiet", delayBase: 80, delayStep: 0 });
   addMotionTargets(".home-v12-faq-card", { variant: "ledger", delayBase: 80, delayStep: 44 });
 
-  addMotionTargets(".site-footer__brand", { variant: "quiet", delayStep: 0 });
-  addMotionTargets(".site-footer__artifact", { variant: "quiet", delayBase: 80, delayStep: 0 });
-  addMotionTargets(".site-footer__artifact-rows span", { variant: "ledger", delayBase: 120, delayStep: 34 });
-  addMotionTargets(".site-footer__status, .site-footer__nav-column", { variant: "quiet", delayBase: 150, delayStep: 40 });
-
   const visibleThreshold = window.innerHeight * 0.94;
 
   function revealMotionTarget(element) {
