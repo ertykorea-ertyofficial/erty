@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="/assets/css/reset.css" />
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
-    <link rel="stylesheet" href="/assets/css/components.css?v=20260508-components-core-v1" />
+    <link rel="stylesheet" href="/assets/css/components.css?v=20260518-footer-mirror-v1" />
     <link rel="stylesheet" href="/assets/css/brand.css?v=20260518-brand-identity-v3" />
     <script type="application/ld+json">
       {
@@ -429,7 +429,62 @@
       </section>
     </main>
 
-    <div data-component="footer"></div>
+    <div data-component="footer">
+      <footer class="site-footer">
+        <div class="container site-footer__inner site-footer__inner--v12">
+          <div class="site-footer__brand">
+            <p class="site-footer__kicker" data-home-copy="footer.kicker" lang="en">ERTY Official</p>
+            <img
+              class="site-footer__logo"
+              src="/assets/images/brand/erty-logo-black.png"
+              alt="ERTY Derma Professional"
+              width="164"
+              height="54"
+              loading="lazy"
+              decoding="async"
+            />
+            <p class="site-footer__brand-copy" data-home-copy="footer.definition">
+              무너진 피부를 회복의 번호로 다시 붙잡습니다.
+            </p>
+          </div>
+
+          <div class="site-footer__system">
+            <div class="site-footer__artifact" aria-label="에르띠 번호 체계 요약">
+              <p class="site-footer__artifact-kicker" data-home-copy="footer.artifactKicker">넘버링 서명</p>
+              <p class="site-footer__artifact-copy" data-home-copy="footer.artifactCopy">
+                라인이 문제를 가르고, 번호가 회복의 순서를 남깁니다.
+              </p>
+              <div class="site-footer__artifact-rows" data-footer-numbering>
+                <span data-line="professional"><em lang="en">Professional</em><strong>01 · 02 · 03</strong><small>프로토콜 마감</small></span>
+                <span data-line="balancing"><em lang="en">Balancing</em><strong>11 · 13 · 15</strong><small>균형 시작</small></span>
+                <span data-line="hydrating"><em lang="en">Hydrating</em><strong>21 · 23 · 25 · 27</strong><small>수분 확보</small></span>
+                <span data-line="revitalizing"><em lang="en">Revitalizing</em><strong>35 · 37</strong><small>회복 고정</small></span>
+                <span data-line="brightening"><em lang="en">Brightening</em><strong>50 · 55 · 57</strong><small>톤 정렬</small></span>
+              </div>
+            </div>
+
+            <div class="site-footer__status">
+              <span class="site-footer__locale" data-home-copy="footer.locale" lang="en">KO-KR</span>
+              <p class="site-footer__note" data-home-copy="footer.disclaimer">
+                공식 스토어 연결은 대표 URL 확정 뒤에 열립니다.
+              </p>
+              <small lang="en">Copyright <span data-current-year></span> ERTY Official</small>
+            </div>
+          </div>
+
+          <nav class="site-footer__nav-column" aria-label="하단 주요 경로">
+            <p class="site-footer__nav-kicker" data-home-copy="footer.navKicker">다음 경로</p>
+            <div class="site-footer__links">
+              <a href="/by-concern/">고민별</a>
+              <a href="/products/">제품 번호</a>
+              <a href="/insight/">인사이트</a>
+              <a href="/archive/">아카이브</a>
+              <a href="/brand/">브랜드</a>
+            </div>
+          </nav>
+        </div>
+      </footer>
+    </div>
 
     <script src="/assets/js/components.js" defer></script>
     <script src="/assets/js/main.js" defer></script>
