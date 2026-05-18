@@ -1,5 +1,95 @@
 # ERTY Session Handoff
 
+## 2026-05-15 현재 재개 기준
+
+이 섹션은 2026-05-15 `erty` 재개 시점에 실제 git 상태와 로컬 산출물을 확인해 갱신한 최신 기준이다.
+
+### 현재 브랜치 / 커밋 / 워크트리
+
+- 현재 브랜치: `codex/archive-home-v15-20260415`
+- 원격 추적 브랜치: `origin/codex/archive-home-v15-20260415`
+- 최근 커밋: `6eff438 Optimize static asset loading and footer polish`
+- `2026-05-15` 재개 확인 직전 워크트리: clean
+- 최근 커밋 흐름:
+  - `6eff438 Optimize static asset loading and footer polish`
+  - `cfcd252 Checkpoint current site updates`
+  - `52c819c Update archive social wall embeds`
+  - `bb74c23 chore: tidy SEO domain signals and handoff notes`
+  - `35af31c chore: finalize archive page micro copy and spacing polish`
+
+### 2026-05-02 이후 확인된 완료 범위
+
+- SEO 도메인 신호 정리:
+  - sitemap-listed 페이지 canonical/metadata 보완
+  - canonical base drift 리스크 정리
+- Archive 페이지 EmbedSocial 연동:
+  - Social Media Wall
+  - Instagram Reels
+  - TikTok Video
+  - YouTube Shorts
+  - Archive EmbedSocial lazy-load 구조 적용
+- Archive 페이지 정리:
+  - YouTube subscribe CTA 연결
+  - Social Media Wall / Buyer Signal 모바일 문구 줄바꿈 및 간격 보정
+  - 기존 임시 live-proof 섹션 제거
+- 공통 UI 정리:
+  - 로고 교체 및 헤더 정렬 보정
+  - 모바일 메뉴 열림 시 레이아웃 밀림 보정
+  - footer locale marker 비노출
+  - footer 스크롤 효과 제거
+  - CTA 페이지 전환 효과를 더 가벼운 전환 방식으로 정리
+- Renewal 상태 페이지:
+  - `/insight/` 진입 시 본문 블러 처리 및 리뉴얼 안내 팝업 표시
+  - `/brand/` 진입 시 본문 블러 처리 및 리뉴얼 안내 팝업 표시
+  - 상단 네비게이션은 유지
+- 성능 최적화:
+  - By Concern 이미지 preload 축소
+  - Products poster/stage 초기 로딩 제한
+  - 이미지 파생 포맷 적용
+  - OTF -> WOFF2 적용
+  - `components.css` 분리
+  - Archive 외부 EmbedSocial 로딩 지연 강화
+- 공유/회의용 구조 산출물 생성:
+  - `output/site-flow/erty-site-flow.pdf`
+  - `output/site-flow/erty-site-flow-overview.png`
+  - `output/site-flow/erty-structure-flow-map-ko.pdf`
+  - `output/site-flow/erty-structure-flow-map-ko.png`
+
+### 현재 남은 보안/운영 보완
+
+- 2026-05-18 Cloudflare 작업 계정은 아래 값으로 재정렬했다.
+  - account id: `6d9acff65b1b117a722367436b05b839`
+  - zone id: `2d542af3ae5d7aab719a6ae171a41be4`
+  - zone: `ertyofficial.com`
+  - Pages project: `ertyofficial-preview`
+  - token 값은 tracked 문서에 기록하지 않는다.
+- Cloudflare token은 Windows User environment와 ignored file `private/secrets/cloudflare/cloudflare-token.env`에 보관했다.
+- 현재 실행 중인 Codex 프로세스는 오래된 process env를 들고 있을 수 있으므로, 이 스레드에서 Wrangler를 실행할 때는 먼저 `private/secrets/cloudflare/cloudflare-token.env`를 로드한다.
+- 레포에서 `Content-Security-Policy`, `Referrer-Policy`, `Permissions-Policy` 적용 파일은 아직 확인되지 않았다.
+- `innerHTML` 사용 구간이 아직 남아 있다:
+  - `assets/js/by-concern-selector.js`
+  - `assets/js/by-concern.js`
+  - `assets/js/main.js`
+  - `assets/js/products-catalog.js`
+  - `assets/js/pdp/product-pdp-engine.js`
+- 단, 대부분은 로컬 정적 데이터 렌더링에 쓰이는 구간이므로, 우선순위는 URL/query/외부 입력과 결합되는 경로부터 검토한다.
+
+### 다음 우선 작업 후보
+
+1. 보안 헤더 적용 방식 확정:
+   - Cloudflare Pages `_headers` 또는 현재 배포 경로에 맞는 헤더 파일 추가
+   - CSP는 EmbedSocial, YouTube, 이미지/폰트 경로를 고려해 preview에서 먼저 검증
+2. `innerHTML` 잔여 사용 구간 중 외부 입력/URL/query 결합 가능 경로 정리
+3. `/insight/` 본 구축
+4. `/brand/` 본 구축
+5. `ertyofficial.shop` Cafe24 메인 쇼핑 도메인 연결 상태 확정 및 문서화
+
+### preview / production 구분
+
+- `2026-05-15` 재개 시점에는 로컬 git 상태만 확인했다.
+- production 반영 상태는 이 문서 갱신 과정에서 새로 검증하지 않았다.
+- Cloudflare preview URL 역시 이 재개 라운드에서 새로 조회하지 않았다.
+
 ## 2026-05-02 현재 재개 기준
 
 이 문서는 긴 Codex 스레드를 새 스레드로 분리해도 `ERTY` 한 단어로 같은 프로젝트 상태를 복구하기 위한 기준 문서다.
