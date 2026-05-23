@@ -7,6 +7,11 @@ export function ProductBuyBox({ product }: { product: ProductPdpData }) {
     ? `${product.identity.routineStep} 루틴 보기`
     : `${product.identity.productNumber || product.identity.sku || ""}번 루틴 보기`.trim();
 
+  const variantImageAlt = (variant: NonNullable<ProductPdpData["variants"]>[number]) => {
+    const volume = variant.volume || variant.size;
+    return variant.imageAlt || `${product.identity.nameKo}${volume ? ` ${volume}` : ""} 제품 누끼컷`;
+  };
+
   return (
     <section className="pdp-buy" aria-labelledby="pdp-buy-title">
       <div>
@@ -18,21 +23,30 @@ export function ProductBuyBox({ product }: { product: ProductPdpData }) {
         <div className="pdp-variant-list">
           {product.variants.map((variant) => (
             <article className="pdp-variant" key={variant.sku || variant.id || variant.volume}>
-              <h3>{variant.name || `${product.identity.nameEn || product.identity.nameKo} ${variant.volume || variant.size || ""}`}</h3>
-              <dl>
-                {variant.sku && (
-                  <div>
-                    <dt>SKU</dt>
-                    <dd>{variant.sku}</dd>
-                  </div>
-                )}
-                {(variant.volume || variant.size) && (
-                  <div>
-                    <dt>Volume</dt>
-                    <dd>{variant.volume || variant.size}</dd>
-                  </div>
-                )}
-              </dl>
+              {variant.image && (
+                <figure className="pdp-variant__media">
+                  <img
+                    className="pdp-variant__image"
+                    src={variant.image}
+                    alt={variantImageAlt(variant)}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              )}
+              <div className="pdp-variant__content">
+                <h3>
+                  {variant.name || `${product.identity.nameEn || product.identity.nameKo} ${variant.volume || variant.size || ""}`}
+                </h3>
+                <dl>
+                  {(variant.volume || variant.size) && (
+                    <div>
+                      <dt>Volume</dt>
+                      <dd>{variant.volume || variant.size}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
             </article>
           ))}
         </div>

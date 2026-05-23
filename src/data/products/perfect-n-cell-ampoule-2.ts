@@ -85,7 +85,7 @@ export const perfectNCellAmpoule2ImageAlt = [
     role: "single-product-image"
   },
   {
-    src: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-open-box.jpg",
+    src: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-product.webp",
     alt: "에르띠 퍼펙트 엔셀 앰플 8ml x 5개입 오픈 박스 구성 이미지",
     role: "variant-product-image"
   },
@@ -100,7 +100,7 @@ export const perfectNCellAmpoule2ImageAlt = [
     role: "detail-page-image"
   },
   {
-    src: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.png",
+    src: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.webp",
     alt: "에르띠 퍼펙트 엔셀 앰플 8ml x 10개입 박스형 제품 이미지",
     role: "variant-product-image"
   },
@@ -195,12 +195,12 @@ export const perfectNCellAmpoule2: ProductPdpData = {
     {
       sku: "ERTY-PNCA2-8ML-5PCS",
       volume: "8ml x 5pcs",
-      image: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-open-box.jpg"
+      image: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-product.webp"
     },
     {
       sku: "ERTY-PNCA2-8ML-10PCS",
       volume: "8ml x 10pcs",
-      image: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.png"
+      image: "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.webp"
     }
   ],
 
@@ -608,7 +608,7 @@ export const perfectNCellAmpoule2MerchantFeedDraft = {
       description:
         "나이아신아마이드 10%, IBR-TCLC, 알파-알부틴을 담은 Professional Step 2 브라이트닝 앰플. 칙칙한 피부 톤과 피부결을 맑고 균일하게 정돈하고 수분·장벽 컨디션을 보조합니다.",
       link: `${SEO_GEO_BASE_URL}/products/perfect-n-cell-ampoule-2/?variant=8ml-x-5pcs`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-open-box.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-product.webp`,
       size: "8ml x 5pcs",
       condition: "new"
     },
@@ -618,7 +618,7 @@ export const perfectNCellAmpoule2MerchantFeedDraft = {
       description:
         "나이아신아마이드 10%, IBR-TCLC, 알파-알부틴을 담은 Professional Step 2 브라이트닝 앰플 10개입 구성. 반복 관리와 전문가용 토닝 루틴에 적합합니다.",
       link: `${SEO_GEO_BASE_URL}/products/perfect-n-cell-ampoule-2/?variant=8ml-x-10pcs`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.png`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.webp`,
       size: "8ml x 10pcs",
       condition: "new"
     }

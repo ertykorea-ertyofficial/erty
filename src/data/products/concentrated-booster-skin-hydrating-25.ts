@@ -93,7 +93,7 @@ export const concentratedBoosterSkinHydrating25SourceAudit = {
 
 export const concentratedBoosterSkinHydrating25ImageAlt = [
   {
-    src: "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-intro.jpg",
+    src: "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-product.webp",
     alt: "에르띠 25 컨센트레이트 부스터 포 스킨 하이드레이팅 30ml 수분 앰플 인트로 이미지",
     role: "intro-detail-image"
   },
@@ -108,7 +108,7 @@ export const concentratedBoosterSkinHydrating25ImageAlt = [
     role: "usage-detail-image"
   },
   {
-    src: "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-intro.jpg",
+    src: "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-product.webp",
     alt: "에르띠 25 컨센트레이트 부스터 포 스킨 하이드레이팅 100ml 수분 앰플 인트로 이미지",
     role: "intro-detail-image"
   },
@@ -216,13 +216,13 @@ export const concentratedBoosterSkinHydrating25: ProductPdpData = {
       sku: "ERTY-CBSH25-30ML",
       volume: "30ml",
       image:
-        "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-intro.jpg"
+        "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-product.webp"
     },
     {
       sku: "ERTY-CBSH25-100ML",
       volume: "100ml",
       image:
-        "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-intro.jpg"
+        "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-product.webp"
     }
   ],
 
@@ -269,7 +269,7 @@ export const concentratedBoosterSkinHydrating25: ProductPdpData = {
       "피부 컨디셔닝"
     ],
     primaryImage:
-      "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-intro.jpg"
+      "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-product.webp"
   },
 
   aiSummary: {
@@ -670,7 +670,7 @@ export const concentratedBoosterSkinHydrating25MerchantFeedDraft = {
       description:
         "Oligo-HA, 8종 히알루론산 콤플렉스, 9종 펩타이드를 중심으로 건조하고 당김이 느껴지는 피부에 수분감을 채우고 탄력 컨디션을 보조하는 하이드레이팅 앰플.",
       link: `${SEO_GEO_BASE_URL}/products/concentrated-booster-skin-hydrating-25/?variant=30ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-intro.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-product.webp`,
       size: "30ml"
     },
     {
@@ -679,7 +679,7 @@ export const concentratedBoosterSkinHydrating25MerchantFeedDraft = {
       description:
         "Oligo-HA, 8종 히알루론산 콤플렉스, 9종 펩타이드를 중심으로 건조하고 당김이 느껴지는 피부에 수분감을 채우고 탄력 컨디션을 보조하는 하이드레이팅 앰플.",
       link: `${SEO_GEO_BASE_URL}/products/concentrated-booster-skin-hydrating-25/?variant=100ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-intro.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-product.webp`,
       size: "100ml"
     }
   ],

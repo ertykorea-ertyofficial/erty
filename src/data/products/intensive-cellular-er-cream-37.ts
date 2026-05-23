@@ -87,7 +87,7 @@ export const intensiveCellularErCream37SourceAudit = {
 
 export const intensiveCellularErCream37ImageAlt = [
   {
-    src: "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-detail-1.jpg",
+    src: "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-product.webp",
     alt: "에르띠 37 인텐시브 셀룰러 ER 크림 20ml 제품과 패키지 상세 이미지",
     role: "intro-detail-image"
   },
@@ -97,7 +97,7 @@ export const intensiveCellularErCream37ImageAlt = [
     role: "ingredient-detail-image"
   },
   {
-    src: "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-renewal-1.jpg",
+    src: "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-product.webp",
     alt: "에르띠 37 인텐시브 셀룰러 ER 크림 45ml 리뉴얼 상세페이지 이미지",
     role: "renewal-detail-image"
   },
@@ -206,13 +206,13 @@ export const intensiveCellularErCream37: ProductPdpData = {
       sku: "ERTY-ICER37-20ML",
       volume: "20ml",
       image:
-        "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-detail-1.jpg"
+        "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-product.webp"
     },
     {
       sku: "ERTY-ICER37-45ML",
       volume: "45ml",
       image:
-        "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-renewal-1.jpg"
+        "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-product.webp"
     }
   ],
 
@@ -261,7 +261,7 @@ export const intensiveCellularErCream37: ProductPdpData = {
       "세컨드 스킨 사용감"
     ],
     primaryImage:
-      "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-renewal-1.jpg"
+      "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-product.webp"
   },
 
   aiSummary: {
@@ -709,7 +709,7 @@ export const intensiveCellularErCream37MerchantFeedDraft = {
       description:
         "SLP Complex, 5종 세라마이드, 피토스핑고신, 콜레스테롤, 95% 마데카소사이드를 중심으로 건조하고 예민해진 피부의 보습감과 장벽 컨디션을 보조하는 리바이탈라이징 크림.",
       link: `${SEO_GEO_BASE_URL}/products/intensive-cellular-er-cream-37/?variant=20ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-detail-1.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-product.webp`,
       size: "20ml"
     },
     {
@@ -718,7 +718,7 @@ export const intensiveCellularErCream37MerchantFeedDraft = {
       description:
         "SLP Complex, 5종 세라마이드, 피토스핑고신, 콜레스테롤, 95% 마데카소사이드를 중심으로 건조하고 예민해진 피부의 보습감과 장벽 컨디션을 보조하는 리바이탈라이징 크림.",
       link: `${SEO_GEO_BASE_URL}/products/intensive-cellular-er-cream-37/?variant=45ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-renewal-1.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-product.webp`,
       size: "45ml"
     }
   ],

@@ -86,8 +86,16 @@
     );
   }
 
+  function variantImageAlt(product, variant) {
+    const volume = variant.volume || variant.size;
+    return (
+      variant.imageAlt ||
+      `${product.identity.nameKo || productName(product)}${volume ? ` ${volume}` : ""} 제품 누끼컷`
+    );
+  }
+
   function variantKey(variant, fallback) {
-    return String(variant.sku || variant.id || variant.volume || variant.size || fallback).replace(/[^a-zA-Z0-9_-]/g, "-");
+    return String(variant.id || variant.volume || variant.size || fallback).replace(/[^a-zA-Z0-9_-]/g, "-");
   }
 
   function ensureMeta(selector, createTag, attributes) {
@@ -197,11 +205,19 @@
                 .map(
                   (variant) => `
                     <article class="pdp-variant">
-                      <h3>${escapeHtml(variant.name || `${product.identity.nameEn || product.identity.nameKo} ${variant.volume || variant.size || ""}`.trim())}</h3>
-                      <dl>
-                        ${variant.sku ? `<div><dt>SKU</dt><dd>${escapeHtml(variant.sku)}</dd></div>` : ""}
-                        ${variant.volume || variant.size ? `<div><dt>Volume</dt><dd>${escapeHtml(variant.volume || variant.size)}</dd></div>` : ""}
-                      </dl>
+                      ${
+                        variant.image
+                          ? `<figure class="pdp-variant__media">
+                              <img class="pdp-variant__image" src="${escapeHtml(variant.image)}" alt="${escapeHtml(variantImageAlt(product, variant))}" loading="lazy" decoding="async" />
+                            </figure>`
+                          : ""
+                      }
+                      <div class="pdp-variant__content">
+                        <h3>${escapeHtml(variant.name || `${product.identity.nameEn || product.identity.nameKo} ${variant.volume || variant.size || ""}`.trim())}</h3>
+                        <dl>
+                          ${variant.volume || variant.size ? `<div><dt>Volume</dt><dd>${escapeHtml(variant.volume || variant.size)}</dd></div>` : ""}
+                        </dl>
+                      </div>
                     </article>
                   `,
                 )
@@ -464,7 +480,6 @@
         "@type": "Product",
         "@id": `${url}#${variantKey(variant, index)}`,
         name: variant.name || `${productName(product)} ${variant.volume || variant.size || ""}`.trim(),
-        sku: variant.sku,
         size: variant.size || variant.volume,
         image: variant.image ? absoluteUrl(variant.image) : undefined,
         ...(hasProductGroup ? { isVariantOf: { "@id": `${url}#product-group` } } : {}),

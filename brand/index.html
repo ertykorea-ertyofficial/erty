@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/assets/css/global.css" />
     <link rel="stylesheet" href="/assets/css/layout.css" />
     <link rel="stylesheet" href="/assets/css/components.css?v=20260518-footer-mirror-v1" />
-    <link rel="stylesheet" href="/assets/css/brand.css?v=20260518-brand-identity-v3" />
+    <link rel="stylesheet" href="/assets/css/brand.css?v=20260523-brand-hero-image-v3" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -149,32 +149,45 @@
     <div data-component="header"></div>
 
     <main class="brand-page" aria-labelledby="brand-title">
-      <section class="brand-hero" aria-labelledby="brand-title" data-brand-reveal>
+      <section class="brand-visual-hero" aria-labelledby="brand-title" data-brand-reveal>
+        <div class="brand-visual-hero__media" aria-hidden="true">
+          <div class="brand-visual-hero__placeholder"></div>
+        </div>
+        <div class="brand-visual-hero__field" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="container brand-visual-hero__inner">
+          <div class="brand-visual-hero__shell">
+            <p class="brand-kicker">BRAND IDENTITY</p>
+            <h1 id="brand-title">문제 피부를 먼저 읽는 더마 에스테틱 브랜드</h1>
+            <p class="brand-visual-hero__lead">
+              신호 · 번호 · 라인
+            </p>
+            <div class="brand-visual-hero__actions" aria-label="Brand hero actions">
+              <a class="brand-button brand-button--primary" href="#brand-definition">브랜드 구조 보기</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="brand-definition" class="brand-section brand-definition" aria-labelledby="brand-definition-title" data-brand-reveal>
         <div class="container brand-hero__grid">
           <div class="brand-hero__content">
             <p class="brand-kicker">BRAND DEFINITION</p>
-            <h1 id="brand-title">ERTY는 피부 신호를 번호로 정리합니다</h1>
+            <h2 id="brand-definition-title">ERTY는 피부 신호를 번호로 정리합니다</h2>
             <p class="brand-hero__lead">
-              반복되는 번들거림, 속당김, 붉은기, 칙칙함을 제품명보다 먼저 봅니다.
-              가장 불편한 피부 신호를 고르면, 시작 번호와 기능 라인이 다음 루틴을 좁혀줍니다.
+              반복되는 피부고민을 제품명보다 먼저 보여주고, 가장 불편한 피부 신호를 고르면,
+              시작 번호와 기능 라인이 다음 루틴으로 좁혀줍니다.
             </p>
             <div class="brand-actions" aria-label="Brand primary actions">
               <a class="brand-button brand-button--primary" href="/by-concern/">내 고민으로 시작하기</a>
               <a class="brand-button brand-button--text" href="/products/">번호로 시작점 찾기</a>
             </div>
           </div>
-
-          <aside class="brand-hero__system" aria-label="ERTY 6 brand axes">
-            <p class="brand-system-label">6 BRAND AXES</p>
-            <ol class="brand-axis-list">
-              <li><span>01</span><strong>정의</strong><em>피부 고민을 먼저 보는 브랜드</em></li>
-              <li><span>02</span><strong>피부 신호</strong><em>번들거림 · 속당김 · 붉은기 · 칙칙함</em></li>
-              <li><span>03</span><strong>번호</strong><em>01 · 02 · 03 / 1x · 2x · 3x · 5x</em></li>
-              <li><span>04</span><strong>라인</strong><em>Balancing · Hydrating · Revitalizing · Brightening</em></li>
-              <li><span>05</span><strong>근거</strong><em>조건과 기준으로 설명</em></li>
-              <li><span>06</span><strong>확장성</strong><em>Archive와 B2B로 이어지는 구조</em></li>
-            </ol>
-          </aside>
         </div>
       </section>
 
@@ -332,10 +345,10 @@
         <div class="container brand-split brand-split--reverse">
           <header class="brand-section__head">
             <p class="brand-kicker">EVIDENCE PRINCIPLE</p>
-            <h2 id="brand-evidence-title">효과를 보장하기보다, 조건과 근거를 함께 설명합니다</h2>
+            <h2 id="brand-evidence-title">기준과 근거를 함께 설명합니다</h2>
             <p>
-              ERTY의 공개 카피는 막연한 효능 표현보다 피부 고민, 제품 번호, 라인 역할,
-              확인 가능한 근거 조건을 함께 보여주는 방식을 따릅니다.
+              ERTY는 막연한 효능 표현보다 피부 고민, 제품 번호, 라인별 역할,
+              확인 가능한 조건을 함께 보여주는 방식을 따릅니다.
             </p>
           </header>
           <div class="brand-proof-list" aria-label="ERTY evidence principles">
@@ -362,7 +375,7 @@
         <div class="container brand-b2b__grid">
           <header class="brand-section__head">
             <p class="brand-kicker">TRUST & EXPANSION</p>
-            <h2 id="brand-trust-title">반응과 유통까지 이어지는 구조입니다</h2>
+            <h2 id="brand-trust-title">반응이 유통까지 이어지는 구조</h2>
             <p>
               소비자의 반응은 브랜드가 어떻게 읽히는지 보여줍니다.
               번호형 라인 구조는 소비자에게는 선택을, 파트너에게는 진열과 상담의 기준을 제공합니다.
@@ -376,11 +389,11 @@
             </div>
             <div>
               <dt>Display</dt>
-              <dd>번호와 라인 기준으로 진열 흐름을 설명하기 쉽습니다.</dd>
+              <dd>번호와 라인 기준으로 진열 흐름을 쉽게 설명합니다.</dd>
             </div>
             <div>
               <dt>Consulting</dt>
-              <dd>상담과 교육에서 피부 신호, 시작 번호, 다음 루틴을 같은 언어로 말할 수 있습니다.</dd>
+              <dd>상담과 교육에서 피부 신호, 시작 번호, 다음 루틴을 일관된 언어로 표현합니다.</dd>
             </div>
             <div>
               <dt>Global</dt>

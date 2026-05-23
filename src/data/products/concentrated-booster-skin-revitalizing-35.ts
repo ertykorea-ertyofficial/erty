@@ -91,7 +91,7 @@ export const concentratedBoosterSkinRevitalizing35SourceAudit = {
 
 export const concentratedBoosterSkinRevitalizing35ImageAlt = [
   {
-    src: "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-intro.jpg",
+    src: "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-product.webp",
     alt: "에르띠 35 컨센트레이트 부스터 포 스킨 리바이탈라이징 30ml 안티에이징 앰플 인트로 이미지",
     role: "intro-detail-image"
   },
@@ -106,7 +106,7 @@ export const concentratedBoosterSkinRevitalizing35ImageAlt = [
     role: "usage-detail-image"
   },
   {
-    src: "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-intro.jpg",
+    src: "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-product.webp",
     alt: "에르띠 35 컨센트레이트 부스터 포 스킨 리바이탈라이징 100ml 인트로 이미지",
     role: "intro-detail-image"
   },
@@ -212,13 +212,13 @@ export const concentratedBoosterSkinRevitalizing35: ProductPdpData = {
       sku: "ERTY-CBSR35-30ML",
       volume: "30ml",
       image:
-        "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-intro.jpg"
+        "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-product.webp"
     },
     {
       sku: "ERTY-CBSR35-100ML",
       volume: "100ml",
       image:
-        "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-intro.jpg"
+        "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-product.webp"
     }
   ],
 
@@ -266,7 +266,7 @@ export const concentratedBoosterSkinRevitalizing35: ProductPdpData = {
       "자극지수 0.00 자료"
     ],
     primaryImage:
-      "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-intro.jpg"
+      "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-product.webp"
   },
 
   aiSummary: {
@@ -656,7 +656,7 @@ export const concentratedBoosterSkinRevitalizing35MerchantFeedDraft = {
       description:
         "슈도알테로모나스발효추출물, Ceracare AC-1, 9종 펩타이드, 아데노신, 나이아신아마이드를 중심으로 보습감, 탄력 컨디션, 장벽 컨디션을 함께 관리하는 리바이탈라이징 앰플.",
       link: `${SEO_GEO_BASE_URL}/products/concentrated-booster-skin-revitalizing-35/?variant=30ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-intro.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-product.webp`,
       size: "30ml"
     },
     {
@@ -665,7 +665,7 @@ export const concentratedBoosterSkinRevitalizing35MerchantFeedDraft = {
       description:
         "슈도알테로모나스발효추출물, Ceracare AC-1, 9종 펩타이드, 아데노신, 나이아신아마이드를 중심으로 보습감, 탄력 컨디션, 장벽 컨디션을 함께 관리하는 리바이탈라이징 앰플.",
       link: `${SEO_GEO_BASE_URL}/products/concentrated-booster-skin-revitalizing-35/?variant=100ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-intro.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-product.webp`,
       size: "100ml"
     }
   ],

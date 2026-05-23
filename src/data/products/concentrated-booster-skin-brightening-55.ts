@@ -93,7 +93,7 @@ export const concentratedBoosterSkinBrightening55SourceAudit = {
 
 export const concentratedBoosterSkinBrightening55ImageAlt = [
   {
-    src: "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-intro.jpg",
+    src: "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-product.webp",
     alt: "에르띠 55 컨센트레이트 부스터 포 스킨 브라이트닝 30ml 미백 앰플 인트로 이미지",
     role: "intro-detail-image"
   },
@@ -108,7 +108,7 @@ export const concentratedBoosterSkinBrightening55ImageAlt = [
     role: "usage-detail-image"
   },
   {
-    src: "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-intro.jpg",
+    src: "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-product.webp",
     alt: "에르띠 55 컨센트레이트 부스터 포 스킨 브라이트닝 100ml 미백 앰플 인트로 이미지",
     role: "intro-detail-image"
   },
@@ -222,13 +222,13 @@ export const concentratedBoosterSkinBrightening55: ProductPdpData = {
       sku: "ERTY-CBSB55-30ML",
       volume: "30ml",
       image:
-        "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-intro.jpg"
+        "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-product.webp"
     },
     {
       sku: "ERTY-CBSB55-100ML",
       volume: "100ml",
       image:
-        "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-intro.jpg"
+        "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-product.webp"
     }
   ],
 
@@ -274,7 +274,7 @@ export const concentratedBoosterSkinBrightening55: ProductPdpData = {
       "탄력 컨디션"
     ],
     primaryImage:
-      "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-intro.jpg"
+      "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-product.webp"
   },
 
   aiSummary: {
@@ -651,7 +651,7 @@ export const concentratedBoosterSkinBrightening55MerchantFeedDraft = {
       description:
         "알파-알부틴, 브라이트 올레오액티프, 나이아신아마이드, 아데노신을 중심으로 칙칙해 보이는 피부 톤을 맑고 균일하게 가꾸고 수분감과 광채감을 함께 보조하는 브라이트닝 앰플.",
       link: `${SEO_GEO_BASE_URL}/products/concentrated-booster-skin-brightening-55/?variant=30ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-intro.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-product.webp`,
       size: "30ml"
     },
     {
@@ -660,7 +660,7 @@ export const concentratedBoosterSkinBrightening55MerchantFeedDraft = {
       description:
         "알파-알부틴, 브라이트 올레오액티프, 나이아신아마이드, 아데노신을 중심으로 칙칙해 보이는 피부 톤을 맑고 균일하게 가꾸고 수분감과 광채감을 함께 보조하는 브라이트닝 앰플.",
       link: `${SEO_GEO_BASE_URL}/products/concentrated-booster-skin-brightening-55/?variant=100ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-intro.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-product.webp`,
       size: "100ml"
     }
   ],

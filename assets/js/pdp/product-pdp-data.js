@@ -17,12 +17,12 @@
       {
         "sku": "ERTY-PSS1-50",
         "volume": "50ml",
-        "image": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.png"
+        "image": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.webp"
       },
       {
         "sku": "ERTY-PSS1-140",
         "volume": "140ml",
-        "image": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.png"
+        "image": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.webp"
       }
     ],
     "seo": {
@@ -59,7 +59,7 @@
         "장벽 컨디션 케어",
         "약산성 pH 4.5-5.5"
       ],
-      "primaryImage": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.png"
+      "primaryImage": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.webp"
     },
     "aiSummary": {
       "oneSentence": "에르띠 1 퍼펙트 수딩 솔루션은 AHA 1.5% 글라이콜릭애씨드와 진정·장벽 성분을 함께 설계한 저자극 밀크 필링 토너입니다.",
@@ -364,7 +364,7 @@
     ],
     "media": [
       {
-        "src": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.png",
+        "src": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.webp",
         "alt": "에르띠 1 퍼펙트 수딩 솔루션 50ml 튜브형 제품 이미지",
         "role": "variant-product-image"
       },
@@ -379,7 +379,7 @@
         "role": "detail-support-image"
       },
       {
-        "src": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.png",
+        "src": "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.webp",
         "alt": "에르띠 1 퍼펙트 수딩 솔루션 140ml 펌프형 제품 이미지",
         "role": "variant-product-image"
       },
@@ -417,12 +417,12 @@
       {
         "sku": "ERTY-PNCA2-8ML-5PCS",
         "volume": "8ml x 5pcs",
-        "image": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-open-box.jpg"
+        "image": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-product.webp"
       },
       {
         "sku": "ERTY-PNCA2-8ML-10PCS",
         "volume": "8ml x 10pcs",
-        "image": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.png"
+        "image": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.webp"
       }
     ],
     "seo": {
@@ -819,7 +819,7 @@
         "role": "single-product-image"
       },
       {
-        "src": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-open-box.jpg",
+        "src": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-5pcs-product.webp",
         "alt": "에르띠 퍼펙트 엔셀 앰플 8ml x 5개입 오픈 박스 구성 이미지",
         "role": "variant-product-image"
       },
@@ -834,7 +834,7 @@
         "role": "detail-page-image"
       },
       {
-        "src": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.png",
+        "src": "/images/products/perfect-n-cell-ampoule-2/perfect-n-cell-ampoule-2-10pcs-product.webp",
         "alt": "에르띠 퍼펙트 엔셀 앰플 8ml x 10개입 박스형 제품 이미지",
         "role": "variant-product-image"
       },
@@ -3635,12 +3635,12 @@
       {
         "sku": "ERTY-CBSH25-30ML",
         "volume": "30ml",
-        "image": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-intro.jpg"
+        "image": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-product.webp"
       },
       {
         "sku": "ERTY-CBSH25-100ML",
         "volume": "100ml",
-        "image": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-intro.jpg"
+        "image": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-product.webp"
       }
     ],
     "seo": {
@@ -3680,7 +3680,7 @@
         "탄력 컨디션",
         "피부 컨디셔닝"
       ],
-      "primaryImage": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-intro.jpg"
+      "primaryImage": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-product.webp"
     },
     "aiSummary": {
       "oneSentence": "에르띠 25 컨센트레이트 부스터 포 스킨 하이드레이팅은 Oligo-HA와 8종 히알루론산, 9종 펩타이드를 중심으로 수분감과 탄력 컨디션을 함께 관리하는 고보습 앰플입니다.",
@@ -4043,7 +4043,7 @@
     ],
     "media": [
       {
-        "src": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-intro.jpg",
+        "src": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-30ml-product.webp",
         "alt": "에르띠 25 컨센트레이트 부스터 포 스킨 하이드레이팅 30ml 수분 앰플 인트로 이미지",
         "role": "intro-detail-image"
       },
@@ -4058,7 +4058,7 @@
         "role": "usage-detail-image"
       },
       {
-        "src": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-intro.jpg",
+        "src": "/images/products/concentrated-booster-skin-hydrating-25/concentrated-booster-skin-hydrating-25-100ml-product.webp",
         "alt": "에르띠 25 컨센트레이트 부스터 포 스킨 하이드레이팅 100ml 수분 앰플 인트로 이미지",
         "role": "intro-detail-image"
       },
@@ -4096,12 +4096,12 @@
       {
         "sku": "ERTY-DHAC27-50ML",
         "volume": "50ml",
-        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-detail.jpg"
+        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg"
       },
       {
         "sku": "ERTY-DHAC27-100ML",
         "volume": "100ml",
-        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-detail.jpg"
+        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg"
       }
     ],
     "seo": {
@@ -4138,7 +4138,7 @@
         "장벽 컨디션 케어",
         "진정 보습"
       ],
-      "primaryImage": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-detail.jpg"
+      "primaryImage": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg"
     },
     "aiSummary": {
       "oneSentence": "에르띠 27 더마 하이드로 아쿠아엑스 크림은 AQUAXYL, CICA PDRN, Blue Complex, 소듐하이알루로네이트를 중심으로 건조하고 예민해진 피부의 보습감과 장벽 컨디션을 보조하는 Hydrating Line 수분 크림입니다.",
@@ -4473,12 +4473,12 @@
     ],
     "media": [
       {
-        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-detail.jpg",
+        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg",
         "alt": "에르띠 27 더마 하이드로 아쿠아엑스 크림 50ml 상세페이지 이미지",
         "role": "detail-page-image"
       },
       {
-        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-detail.jpg",
+        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg",
         "alt": "에르띠 27 더마 하이드로 아쿠아엑스 크림 100ml 상세페이지 이미지",
         "role": "detail-page-image"
       },
@@ -4526,12 +4526,12 @@
       {
         "sku": "ERTY-CBSR35-30ML",
         "volume": "30ml",
-        "image": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-intro.jpg"
+        "image": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-product.webp"
       },
       {
         "sku": "ERTY-CBSR35-100ML",
         "volume": "100ml",
-        "image": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-intro.jpg"
+        "image": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-product.webp"
       }
     ],
     "seo": {
@@ -4571,7 +4571,7 @@
         "나이아신아마이드",
         "자극지수 0.00 자료"
       ],
-      "primaryImage": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-intro.jpg"
+      "primaryImage": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-product.webp"
     },
     "aiSummary": {
       "oneSentence": "에르띠 35 컨센트레이트 부스터 포 스킨 리바이탈라이징은 슈도알테로모나스발효추출물과 Ceracare AC-1, 9종 펩타이드, 아데노신, 나이아신아마이드를 중심으로 탄력감·보습감·장벽 컨디션을 함께 관리하는 리바이탈라이징 앰플입니다.",
@@ -4929,7 +4929,7 @@
     ],
     "media": [
       {
-        "src": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-intro.jpg",
+        "src": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-30ml-product.webp",
         "alt": "에르띠 35 컨센트레이트 부스터 포 스킨 리바이탈라이징 30ml 안티에이징 앰플 인트로 이미지",
         "role": "intro-detail-image"
       },
@@ -4944,7 +4944,7 @@
         "role": "usage-detail-image"
       },
       {
-        "src": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-intro.jpg",
+        "src": "/images/products/concentrated-booster-skin-revitalizing-35/concentrated-booster-skin-revitalizing-35-100ml-product.webp",
         "alt": "에르띠 35 컨센트레이트 부스터 포 스킨 리바이탈라이징 100ml 인트로 이미지",
         "role": "intro-detail-image"
       },
@@ -4982,12 +4982,12 @@
       {
         "sku": "ERTY-ICER37-20ML",
         "volume": "20ml",
-        "image": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-detail-1.jpg"
+        "image": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-product.webp"
       },
       {
         "sku": "ERTY-ICER37-45ML",
         "volume": "45ml",
-        "image": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-renewal-1.jpg"
+        "image": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-product.webp"
       }
     ],
     "seo": {
@@ -5028,7 +5028,7 @@
         "95% 마데카소사이드",
         "세컨드 스킨 사용감"
       ],
-      "primaryImage": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-renewal-1.jpg"
+      "primaryImage": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-product.webp"
     },
     "aiSummary": {
       "oneSentence": "에르띠 37 인텐시브 셀룰러 ER 크림은 SLP Complex, 5종 세라마이드, 피토스핑고신, 콜레스테롤, 95% 마데카소사이드로 피부 장벽 컨디션과 진정·보습감을 함께 설계한 리바이탈라이징 크림입니다.",
@@ -5474,7 +5474,7 @@
     ],
     "media": [
       {
-        "src": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-detail-1.jpg",
+        "src": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-20ml-product.webp",
         "alt": "에르띠 37 인텐시브 셀룰러 ER 크림 20ml 제품과 패키지 상세 이미지",
         "role": "intro-detail-image"
       },
@@ -5484,7 +5484,7 @@
         "role": "ingredient-detail-image"
       },
       {
-        "src": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-renewal-1.jpg",
+        "src": "/images/products/intensive-cellular-er-cream-37/intensive-cellular-er-cream-37-45ml-product.webp",
         "alt": "에르띠 37 인텐시브 셀룰러 ER 크림 45ml 리뉴얼 상세페이지 이미지",
         "role": "renewal-detail-image"
       },
@@ -5999,12 +5999,12 @@
       {
         "sku": "ERTY-CBSB55-30ML",
         "volume": "30ml",
-        "image": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-intro.jpg"
+        "image": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-product.webp"
       },
       {
         "sku": "ERTY-CBSB55-100ML",
         "volume": "100ml",
-        "image": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-intro.jpg"
+        "image": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-product.webp"
       }
     ],
     "seo": {
@@ -6043,7 +6043,7 @@
         "수분 광채",
         "탄력 컨디션"
       ],
-      "primaryImage": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-intro.jpg"
+      "primaryImage": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-product.webp"
     },
     "aiSummary": {
       "oneSentence": "에르띠 55 컨센트레이트 부스터 포 스킨 브라이트닝은 알파-알부틴과 브라이트 올레오액티프를 중심으로 피부 톤 인상과 수분 광채를 함께 관리하는 브라이트닝 앰플입니다.",
@@ -6391,7 +6391,7 @@
     ],
     "media": [
       {
-        "src": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-intro.jpg",
+        "src": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-30ml-product.webp",
         "alt": "에르띠 55 컨센트레이트 부스터 포 스킨 브라이트닝 30ml 미백 앰플 인트로 이미지",
         "role": "intro-detail-image"
       },
@@ -6406,7 +6406,7 @@
         "role": "usage-detail-image"
       },
       {
-        "src": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-intro.jpg",
+        "src": "/images/products/concentrated-booster-skin-brightening-55/concentrated-booster-skin-brightening-55-100ml-product.webp",
         "alt": "에르띠 55 컨센트레이트 부스터 포 스킨 브라이트닝 100ml 미백 앰플 인트로 이미지",
         "role": "intro-detail-image"
       },

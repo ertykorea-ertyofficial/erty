@@ -9,7 +9,7 @@ export function buildProductJsonLd(product: ProductPdpData) {
   const variants = product.variants || [];
   const hasProductGroup = variants.length > 1;
   const variantId = (variant: NonNullable<ProductPdpData["variants"]>[number]) =>
-    String(variant.sku || variant.id || variant.volume || product.slug).replace(/[^a-zA-Z0-9_-]/g, "-");
+    String(variant.id || variant.volume || variant.size || product.slug).replace(/[^a-zA-Z0-9_-]/g, "-");
   const graph: Record<string, unknown>[] = [
     {
       "@type": "BreadcrumbList",
@@ -60,7 +60,6 @@ export function buildProductJsonLd(product: ProductPdpData) {
         "@type": "Product",
         "@id": `${canonicalUrl}#${variantId(variant)}`,
         name: variant.name || `${productName} ${variant.volume || variant.size || ""}`.trim(),
-        sku: variant.sku,
         size: variant.size || variant.volume,
         image: variant.image ? absoluteUrl(variant.image) : undefined,
         ...(hasProductGroup ? { isVariantOf: { "@id": `${canonicalUrl}#product-group` } } : {}),

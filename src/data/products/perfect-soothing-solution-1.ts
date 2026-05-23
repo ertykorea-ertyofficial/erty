@@ -75,7 +75,7 @@ export const perfectSoothingSolution1SourceAudit = {
 
 export const perfectSoothingSolution1ImageAlt = [
   {
-    src: "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.png",
+    src: "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.webp",
     alt: "에르띠 1 퍼펙트 수딩 솔루션 50ml 튜브형 제품 이미지",
     role: "variant-product-image",
   },
@@ -90,7 +90,7 @@ export const perfectSoothingSolution1ImageAlt = [
     role: "detail-support-image",
   },
   {
-    src: "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.png",
+    src: "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.webp",
     alt: "에르띠 1 퍼펙트 수딩 솔루션 140ml 펌프형 제품 이미지",
     role: "variant-product-image",
   },
@@ -173,13 +173,13 @@ export const perfectSoothingSolution1: ProductPdpData = {
       sku: "ERTY-PSS1-50",
       volume: "50ml",
       image:
-        "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.png",
+        "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.webp",
     },
     {
       sku: "ERTY-PSS1-140",
       volume: "140ml",
       image:
-        "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.png",
+        "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.webp",
     },
   ],
 
@@ -224,7 +224,7 @@ export const perfectSoothingSolution1: ProductPdpData = {
       "약산성 pH 4.5-5.5",
     ],
     primaryImage:
-      "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.png",
+      "/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.webp",
   },
 
   aiSummary: {
@@ -550,7 +550,7 @@ export const perfectSoothingSolution1MerchantFeedDraft = {
       title: "에르띠 1 퍼펙트 수딩 솔루션 50ml",
       link: "https://ertyofficial.com/products/perfect-soothing-solution-1?variant=50ml",
       imageLink:
-        "https://ertyofficial.com/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.png",
+        "https://ertyofficial.com/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-50ml-product.webp",
       size: "50ml",
     },
     {
@@ -558,7 +558,7 @@ export const perfectSoothingSolution1MerchantFeedDraft = {
       title: "에르띠 1 퍼펙트 수딩 솔루션 140ml",
       link: "https://ertyofficial.com/products/perfect-soothing-solution-1?variant=140ml",
       imageLink:
-        "https://ertyofficial.com/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.png",
+        "https://ertyofficial.com/images/products/perfect-soothing-solution-1/perfect-soothing-solution-1-140ml-product.webp",
       size: "140ml",
     },
   ],
