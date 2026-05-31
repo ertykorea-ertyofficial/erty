@@ -192,9 +192,6 @@
 
   function renderBuyBox(product) {
     const variants = product.variants || [];
-    const routineCta = product.identity.routineStep
-      ? `${product.identity.routineStep} 루틴 보기`
-      : `${productNumber(product)}번 루틴 보기`;
 
     if (!product.buyBox && !variants.length) {
       return "";
@@ -203,16 +200,16 @@
     return `
       <section class="pdp-buy" aria-labelledby="pdp-buy-title">
         <div>
-          <p class="pdp-section__eyebrow">Purchase / Variant / CTA</p>
+          <p class="pdp-section__eyebrow">Purchase / Variant</p>
           <h2 id="pdp-buy-title">구매와 용량 선택</h2>
           <p>${escapeHtml(product.buyBox?.status || "커머스 가격과 재고 데이터 연결 전입니다.")}</p>
         </div>
         ${
           variants.length
-            ? `<div class="pdp-variant-list">${variants
+            ? `<div class="pdp-variant-list" role="radiogroup" aria-label="제품 용량 선택">${variants
                 .map(
-                  (variant) => `
-                    <article class="pdp-variant">
+                  (variant, index) => `
+                    <article class="pdp-variant${index === 0 ? " is-selected" : ""}" role="radio" aria-checked="${index === 0 ? "true" : "false"}" tabindex="${index === 0 ? "0" : "-1"}" data-variant-index="${index}" data-variant-volume="${escapeHtml(variant.volume || variant.size || "")}">
                       ${
                         variant.image
                           ? `<figure class="pdp-variant__media">
@@ -233,8 +230,7 @@
             : ""
         }
         <div class="pdp-cta-row">
-          <a class="pdp-button pdp-button--primary" href="#how-to-use">${escapeHtml(routineCta)}</a>
-          <a class="pdp-button pdp-button--ghost" href="#formula">성분 구조 확인하기</a>
+          <button class="pdp-button pdp-button--primary pdp-buy-button" type="button" disabled aria-disabled="true">구매하러가기</button>
         </div>
       </section>
     `;
@@ -584,6 +580,71 @@
     jsonLd.textContent = JSON.stringify(buildJsonLd(product));
     root.appendChild(jsonLd);
     setupMobileSections(root);
+    setupMobileTagMarquees(root);
+    setupAnswerDetailMarquees(root);
+    setupVariantSelection(root);
+  }
+
+  function setupVariantSelection(scope) {
+    const groups = Array.from(scope.querySelectorAll('.pdp-variant-list[role="radiogroup"]'));
+
+    groups.forEach((group) => {
+      if (group.dataset.variantSelectionReady === "true") {
+        return;
+      }
+
+      const variants = Array.from(group.querySelectorAll('.pdp-variant[role="radio"]'));
+      const buyButton = group.closest(".pdp-buy")?.querySelector(".pdp-buy-button");
+
+      if (!variants.length) {
+        return;
+      }
+
+      function selectVariant(target, shouldFocus = false) {
+        variants.forEach((variant) => {
+          const isSelected = variant === target;
+          variant.classList.toggle("is-selected", isSelected);
+          variant.setAttribute("aria-checked", String(isSelected));
+          variant.setAttribute("tabindex", isSelected ? "0" : "-1");
+        });
+
+        if (buyButton) {
+          buyButton.dataset.selectedVariantIndex = target.dataset.variantIndex || "";
+          buyButton.dataset.selectedVolume = target.dataset.variantVolume || "";
+        }
+
+        if (shouldFocus) {
+          target.focus({ preventScroll: true });
+        }
+      }
+
+      variants.forEach((variant, index) => {
+        variant.addEventListener("click", () => selectVariant(variant));
+        variant.addEventListener("keydown", (event) => {
+          const keyMap = {
+            ArrowRight: 1,
+            ArrowDown: 1,
+            ArrowLeft: -1,
+            ArrowUp: -1,
+          };
+
+          if (event.key === " " || event.key === "Enter") {
+            event.preventDefault();
+            selectVariant(variant);
+            return;
+          }
+
+          if (Object.prototype.hasOwnProperty.call(keyMap, event.key)) {
+            event.preventDefault();
+            const nextIndex = (index + keyMap[event.key] + variants.length) % variants.length;
+            selectVariant(variants[nextIndex], true);
+          }
+        });
+      });
+
+      group.dataset.variantSelectionReady = "true";
+      selectVariant(variants.find((variant) => variant.getAttribute("aria-checked") === "true") || variants[0]);
+    });
   }
 
   function setupMobileSections(scope) {
@@ -643,7 +704,12 @@
         <span class="pdp-mobile-section-toggle__icon" aria-hidden="true"></span>
       `;
       button.addEventListener("click", () => {
-        setSectionOpen(section, section.dataset.mobileOpen !== "true");
+        const willOpen = section.dataset.mobileOpen !== "true";
+        setSectionOpen(section, willOpen);
+
+        if (willOpen) {
+          window.requestAnimationFrame(() => setupMobileTagMarquees(section));
+        }
       });
       head.after(button);
     });
@@ -662,6 +728,122 @@
     } else if (typeof mediaQuery.addListener === "function") {
       mediaQuery.addListener(syncMobileState);
     }
+  }
+
+  function setupMobileTagMarquees(scope) {
+    const mediaQuery = window.matchMedia("(max-width: 520px)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const lists = Array.from(scope.querySelectorAll(".pdp-tag-list, .pdp-answer__bullets")).filter(
+      (list) => list.children.length > 1,
+    );
+
+    function ensureWrapper(list) {
+      if (list.parentElement?.classList.contains("pdp-tag-marquee")) {
+        return list.parentElement;
+      }
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "pdp-tag-marquee";
+      list.parentNode.insertBefore(wrapper, list);
+      wrapper.appendChild(list);
+
+      return wrapper;
+    }
+
+    function removeClones(list) {
+      list.querySelectorAll(".pdp-tag-list__clone").forEach((item) => item.remove());
+    }
+
+    function deactivate(list) {
+      list.classList.remove("pdp-tag-list--marquee");
+      list.style.removeProperty("--pdp-marquee-distance");
+      list.style.removeProperty("--pdp-marquee-duration");
+      removeClones(list);
+    }
+
+    function activate(list) {
+      if (!mediaQuery.matches) {
+        deactivate(list);
+        return;
+      }
+
+      const wrapper = ensureWrapper(list);
+      const sourceItems = Array.from(list.children).filter((item) => !item.classList.contains("pdp-tag-list__clone"));
+
+      if (motionQuery.matches || sourceItems.length < 2 || wrapper.offsetWidth === 0) {
+        deactivate(list);
+        return;
+      }
+
+      removeClones(list);
+      sourceItems.forEach((item) => {
+        item.classList.add("pdp-tag-list__item");
+      });
+
+      sourceItems.forEach((item) => {
+        const clone = item.cloneNode(true);
+        clone.classList.add("pdp-tag-list__clone");
+        clone.setAttribute("aria-hidden", "true");
+        list.appendChild(clone);
+      });
+
+      list.classList.add("pdp-tag-list--marquee");
+
+      const firstClone = list.querySelector(".pdp-tag-list__clone");
+      const distance = firstClone ? Math.round(firstClone.offsetLeft) : 0;
+
+      if (!distance || distance <= wrapper.offsetWidth) {
+        deactivate(list);
+        return;
+      }
+
+      const duration = Math.max(16, Math.min(42, Math.round(distance / 28)));
+      list.style.setProperty("--pdp-marquee-distance", `${distance}px`);
+      list.style.setProperty("--pdp-marquee-duration", `${duration}s`);
+    }
+
+    function sync() {
+      lists.forEach(activate);
+    }
+
+    sync();
+
+    if (scope.dataset?.tagMarqueeListenerReady === "true") {
+      return;
+    }
+
+    if (scope.dataset) {
+      scope.dataset.tagMarqueeListenerReady = "true";
+    }
+
+    const handleChange = () => window.requestAnimationFrame(sync);
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", handleChange);
+      motionQuery.addEventListener("change", handleChange);
+    } else if (typeof mediaQuery.addListener === "function") {
+      mediaQuery.addListener(handleChange);
+      motionQuery.addListener(handleChange);
+    }
+
+    window.addEventListener("resize", handleChange, { passive: true });
+  }
+
+  function setupAnswerDetailMarquees(scope) {
+    const details = Array.from(scope.querySelectorAll(".pdp-answer__details"));
+
+    details.forEach((detail) => {
+      if (detail.dataset.answerMarqueeReady === "true") {
+        return;
+      }
+
+      detail.dataset.answerMarqueeReady = "true";
+      detail.addEventListener("toggle", () => {
+        if (detail.open) {
+          window.requestAnimationFrame(() => setupMobileTagMarquees(detail));
+        }
+      });
+    });
   }
 
   if (!product) {
