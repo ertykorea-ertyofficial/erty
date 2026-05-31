@@ -14,6 +14,7 @@ import { ProductFAQ } from "../../../components/pdp/ProductFAQ";
 import { RelatedProducts } from "../../../components/pdp/RelatedProducts";
 import { ClaimDisclaimer } from "../../../components/pdp/ClaimDisclaimer";
 import { ProductJsonLd } from "../../../components/pdp/ProductJsonLd";
+import { PdpMobileDisclosure } from "../../../components/pdp/PdpMobileDisclosure";
 import { getProductBySlug, products } from "../../../data/products";
 import { buildProductMetadata } from "../../../lib/seo/productMetadata";
 
@@ -47,22 +48,25 @@ export default function ProductPdpPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main className="pdp-layout">
-      <ProductHero product={product} />
-      <ProductAnswerBox aiSummary={product.aiSummary} />
-      <ProductBuyBox product={product} />
-      <ProductIdentity identity={product.identity} />
-      <ProblemSolution data={product.problemSolution} />
-      <FormulaArchitecture formula={product.formula} />
-      <IngredientIntelligence ingredients={product.ingredients} />
-      <TextureProfile texture={product.texture} />
-      <EvidenceSection evidence={product.evidence} />
-      <HowToUse howToUse={product.howToUse} />
-      <RoutinePairing routines={product.routines} />
-      <ProductFAQ faq={product.faq} />
-      <RelatedProducts relatedProducts={product.relatedProducts} />
-      <ClaimDisclaimer claims={product.claims} />
-      <ProductJsonLd product={product} />
-    </main>
+    <div className="pdp-page pdp-page--visual-v2">
+      <main className="pdp-layout">
+        <ProductHero product={product} />
+        <ProductAnswerBox aiSummary={product.aiSummary} />
+        <ProductBuyBox product={product} />
+        <ProductIdentity identity={product.identity} />
+        <ProblemSolution data={product.problemSolution} />
+        <FormulaArchitecture formula={product.formula} />
+        <IngredientIntelligence ingredients={product.ingredients} />
+        <TextureProfile texture={product.texture} />
+        <EvidenceSection evidence={product.evidence} />
+        <HowToUse howToUse={product.howToUse} />
+        <RoutinePairing routines={product.routines} />
+        <ProductFAQ faq={product.faq} />
+        <RelatedProducts relatedProducts={product.relatedProducts} />
+        <ClaimDisclaimer claims={product.claims} />
+        <ProductJsonLd product={product} />
+        <PdpMobileDisclosure />
+      </main>
+    </div>
   );
 }

@@ -7,24 +7,26 @@ export function RoutinePairing({ routines }: { routines?: ProductPdpData["routin
     <section className="pdp-section" aria-labelledby="pdp-routine-title">
       <div className="pdp-section__head">
         <p className="pdp-section__eyebrow">Routine</p>
-        <h2 id="pdp-routine-title">Routine Pairing</h2>
+        <h2 id="pdp-routine-title">Routine</h2>
       </div>
-      <div className="pdp-split-list">
-        {routines.map((routine) => (
-          <article key={routine.title}>
-            <h3>{routine.title}</h3>
-            {routine.useCase && <p className="pdp-lead">{routine.useCase}</p>}
-            {(routine.products || routine.steps) && <p>{(routine.products || routine.steps || []).join(" → ")}</p>}
-            {!!routine.recommendedFor?.length && (
-              <ul className="pdp-tag-list">
-                {routine.recommendedFor.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            )}
-            {routine.href && <a href={routine.href}>루틴에서 보기</a>}
-          </article>
-        ))}
+      <div className="pdp-section__body">
+        <div className="pdp-split-list">
+          {routines.map((routine) => (
+            <article key={routine.title}>
+              <h3>{routine.title}</h3>
+              {routine.useCase && <p className="pdp-lead">{routine.useCase}</p>}
+              {(routine.products || routine.steps) && <p>{(routine.products || routine.steps || []).join(" → ")}</p>}
+              {!!routine.recommendedFor?.length && (
+                <ul className="pdp-tag-list">
+                  {routine.recommendedFor.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
+              {routine.href && <a href={routine.href}>루틴에서 보기</a>}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

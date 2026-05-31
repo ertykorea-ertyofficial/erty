@@ -88,22 +88,22 @@ export const dermaHydroAquaxCream27SourceAudit = {
 
 export const dermaHydroAquaxCream27ImageAlt = [
   {
-    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg",
+    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png",
     alt: "에르띠 27 더마 하이드로 아쿠아엑스 크림 50ml 상세페이지 이미지",
     role: "detail-page-image"
   },
   {
-    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg",
+    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.png",
     alt: "에르띠 27 더마 하이드로 아쿠아엑스 크림 100ml 상세페이지 이미지",
     role: "detail-page-image"
   },
   {
-    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg",
+    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png",
     alt: "에르띠 27 더마 하이드로 아쿠아엑스 크림 50ml 튜브형 제품 이미지",
     role: "variant-product-image"
   },
   {
-    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg",
+    src: "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.png",
     alt: "에르띠 27 더마 하이드로 아쿠아엑스 크림 100ml 튜브형 제품 이미지",
     role: "variant-product-image"
   },
@@ -220,13 +220,13 @@ export const dermaHydroAquaxCream27: ProductPdpData = {
       sku: "ERTY-DHAC27-50ML",
       volume: "50ml",
       image:
-        "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg"
+        "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png"
     },
     {
       sku: "ERTY-DHAC27-100ML",
       volume: "100ml",
       image:
-        "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg"
+        "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.png"
     }
   ],
 
@@ -270,7 +270,7 @@ export const dermaHydroAquaxCream27: ProductPdpData = {
       "진정 보습"
     ],
     primaryImage:
-      "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg"
+      "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png"
   },
 
   aiSummary: {
@@ -637,7 +637,7 @@ export const dermaHydroAquaxCream27MerchantFeedDraft = {
       description:
         "AQUAXYL, CICA PDRN, Blue Complex, 소듐하이알루로네이트를 중심으로 건조하고 예민해진 피부에 촉촉한 보습감을 채우고 장벽 컨디션을 보조하는 하이드레이팅 크림.",
       link: `${SEO_GEO_BASE_URL}/products/derma-hydro-aquax-cream-27/?variant=50ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png`,
       size: "50ml"
     },
     {
@@ -646,7 +646,7 @@ export const dermaHydroAquaxCream27MerchantFeedDraft = {
       description:
         "AQUAXYL, CICA PDRN, Blue Complex, 소듐하이알루로네이트를 중심으로 건조하고 예민해진 피부에 촉촉한 보습감을 채우고 장벽 컨디션을 보조하는 하이드레이팅 크림.",
       link: `${SEO_GEO_BASE_URL}/products/derma-hydro-aquax-cream-27/?variant=100ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.png`,
       size: "100ml"
     }
   ],

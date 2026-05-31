@@ -218,7 +218,7 @@ export const concentratedBoosterSkinBalancing15: ProductPdpData = {
       sku: "ERTY-CBSB15-100ML",
       volume: "100ml",
       image:
-        "/images/products/concentrated-booster-skin-balancing-15/concentrated-booster-skin-balancing-15-100ml-product.jpg"
+        "/images/products/concentrated-booster-skin-balancing-15/concentrated-booster-skin-balancing-15-100ml-product.png"
     }
   ],
 
@@ -677,7 +677,7 @@ export const concentratedBoosterSkinBalancing15MerchantFeedDraft = {
       description:
         "SUSU-10FERM, Greenol H, 락틱애씨드, 병풀추출물 성분축으로 피지와 수분 밸런스를 산뜻하게 관리하는 Balancing Line 15번 앰플 대용량.",
       link: `${SEO_GEO_BASE_URL}/products/concentrated-booster-skin-balancing-15/?variant=100ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-balancing-15/concentrated-booster-skin-balancing-15-100ml-product.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/concentrated-booster-skin-balancing-15/concentrated-booster-skin-balancing-15-100ml-product.png`,
       size: "100ml",
       price: undefined,
       availability: undefined

@@ -115,7 +115,7 @@ export const sunCream50ImageAlt = [
     role: "review-and-faq-detail-image"
   },
   {
-    src: "/images/products/sun-cream-50/sun-cream-50-50ml-product.jpg",
+    src: "/images/products/sun-cream-50/sun-cream-50-50ml-product.png",
     alt: "에르띠 50 선크림 50ml 튜브형 제품 이미지 SPF50+ PA++++",
     role: "variant-product-image"
   },
@@ -234,7 +234,7 @@ export const sunCream50: ProductPdpData = {
     {
       sku: "ERTY-SC50-50ML",
       volume: "50ml",
-      image: "/images/products/sun-cream-50/sun-cream-50-50ml-product.jpg"
+      image: "/images/products/sun-cream-50/sun-cream-50-50ml-product.png"
     }
   ],
 
@@ -277,7 +277,7 @@ export const sunCream50: ProductPdpData = {
       "세라마이드 케어",
       "8종 히알루론산"
     ],
-    primaryImage: "/images/products/sun-cream-50/sun-cream-50-50ml-product.jpg"
+    primaryImage: "/images/products/sun-cream-50/sun-cream-50-50ml-product.png"
   },
 
   aiSummary: {
@@ -665,7 +665,7 @@ export const sunCream50MerchantFeedDraft = {
   description:
     "SPF50+ PA++++ 표기와 나이아신아마이드, 아데노신, 5가지 복합 세라마이드, 8종 히알루론산 성분축을 담은 촉촉한 톤업 선크림입니다.",
   link: `${SEO_GEO_BASE_URL}/products/sun-cream-50/?variant=50ml`,
-  imageLink: `${SEO_GEO_BASE_URL}/images/products/sun-cream-50/sun-cream-50-50ml-product.jpg`,
+  imageLink: `${SEO_GEO_BASE_URL}/images/products/sun-cream-50/sun-cream-50-50ml-product.png`,
   additionalImageLinks: [
     `${SEO_GEO_BASE_URL}/images/products/sun-cream-50/sun-cream-50-50ml-box-product.jpg`,
     `${SEO_GEO_BASE_URL}/images/products/sun-cream-50/sun-cream-50-detail-01.jpg`,

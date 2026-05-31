@@ -7,7 +7,7 @@ export function FormulaArchitecture({ formula }: { formula?: ProductPdpData["for
     <section className="pdp-section" aria-labelledby="pdp-formula-title">
       <div className="pdp-section__head">
         <p className="pdp-section__eyebrow">Formula</p>
-        <h2 id="pdp-formula-title">Formula Architecture</h2>
+        <h2 id="pdp-formula-title">Formula</h2>
       </div>
       <div className="pdp-section__body">
         {(formula.thesis || formula.headline) && <p className="pdp-lead">{formula.thesis || formula.headline}</p>}

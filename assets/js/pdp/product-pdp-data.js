@@ -1753,7 +1753,7 @@
       {
         "sku": "ERTY-PTSB13-140ML",
         "volume": "140ml",
-        "image": "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.jpg"
+        "image": "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.png"
       },
       {
         "sku": "ERTY-PTSB13-480ML",
@@ -2180,7 +2180,7 @@
     ],
     "media": [
       {
-        "src": "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.jpg",
+        "src": "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.png",
         "alt": "에르띠 13 퓨리파잉 토너 포 스킨 밸런싱 140ml 제품 이미지",
         "role": "variant-product-image"
       },
@@ -2243,7 +2243,7 @@
       {
         "sku": "ERTY-CBSB15-100ML",
         "volume": "100ml",
-        "image": "/images/products/concentrated-booster-skin-balancing-15/concentrated-booster-skin-balancing-15-100ml-product.jpg"
+        "image": "/images/products/concentrated-booster-skin-balancing-15/concentrated-booster-skin-balancing-15-100ml-product.png"
       }
     ],
     "seo": {
@@ -3181,7 +3181,7 @@
       {
         "sku": "ERTY-TLSH23-140ML",
         "volume": "140ml",
-        "image": "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.jpg"
+        "image": "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.png"
       },
       {
         "sku": "ERTY-TLSH23-480ML",
@@ -3225,7 +3225,7 @@
         "다음 단계 흡수 준비",
         "Hydrating Line 23"
       ],
-      "primaryImage": "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.jpg"
+      "primaryImage": "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.png"
     },
     "aiSummary": {
       "oneSentence": "에르띠 23 토닉 로션 포 스킨 하이드레이팅은 Mari Anti Toxin과 해조류 유래 미네랄 성분축을 담은 Hydrating Line 수분 토너입니다.",
@@ -3572,7 +3572,7 @@
     ],
     "media": [
       {
-        "src": "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.jpg",
+        "src": "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.png",
         "alt": "에르띠 23 토닉 로션 포 스킨 하이드레이팅 140ml 제품 이미지",
         "role": "variant-product-image"
       },
@@ -4096,12 +4096,12 @@
       {
         "sku": "ERTY-DHAC27-50ML",
         "volume": "50ml",
-        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg"
+        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png"
       },
       {
         "sku": "ERTY-DHAC27-100ML",
         "volume": "100ml",
-        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg"
+        "image": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.png"
       }
     ],
     "seo": {
@@ -4138,7 +4138,7 @@
         "장벽 컨디션 케어",
         "진정 보습"
       ],
-      "primaryImage": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg"
+      "primaryImage": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png"
     },
     "aiSummary": {
       "oneSentence": "에르띠 27 더마 하이드로 아쿠아엑스 크림은 AQUAXYL, CICA PDRN, Blue Complex, 소듐하이알루로네이트를 중심으로 건조하고 예민해진 피부의 보습감과 장벽 컨디션을 보조하는 Hydrating Line 수분 크림입니다.",
@@ -4473,22 +4473,22 @@
     ],
     "media": [
       {
-        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg",
+        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png",
         "alt": "에르띠 27 더마 하이드로 아쿠아엑스 크림 50ml 상세페이지 이미지",
         "role": "detail-page-image"
       },
       {
-        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg",
+        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.png",
         "alt": "에르띠 27 더마 하이드로 아쿠아엑스 크림 100ml 상세페이지 이미지",
         "role": "detail-page-image"
       },
       {
-        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.jpg",
+        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-50ml-product.png",
         "alt": "에르띠 27 더마 하이드로 아쿠아엑스 크림 50ml 튜브형 제품 이미지",
         "role": "variant-product-image"
       },
       {
-        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.jpg",
+        "src": "/images/products/derma-hydro-aquax-cream-27/derma-hydro-aquax-cream-27-100ml-product.png",
         "alt": "에르띠 27 더마 하이드로 아쿠아엑스 크림 100ml 튜브형 제품 이미지",
         "role": "variant-product-image"
       },
@@ -5517,7 +5517,7 @@
       {
         "sku": "ERTY-SC50-50ML",
         "volume": "50ml",
-        "image": "/images/products/sun-cream-50/sun-cream-50-50ml-product.jpg"
+        "image": "/images/products/sun-cream-50/sun-cream-50-50ml-product.png"
       }
     ],
     "seo": {
@@ -5556,7 +5556,7 @@
         "세라마이드 케어",
         "8종 히알루론산"
       ],
-      "primaryImage": "/images/products/sun-cream-50/sun-cream-50-50ml-product.jpg"
+      "primaryImage": "/images/products/sun-cream-50/sun-cream-50-50ml-product.png"
     },
     "aiSummary": {
       "oneSentence": "에르띠 50 선크림은 SPF50+ PA++++ 자외선 차단 표기와 나이아신아마이드·아데노신·세라마이드·히알루론산 성분축을 결합한 촉촉한 톤업 선크림입니다.",
@@ -5961,7 +5961,7 @@
         "role": "review-and-faq-detail-image"
       },
       {
-        "src": "/images/products/sun-cream-50/sun-cream-50-50ml-product.jpg",
+        "src": "/images/products/sun-cream-50/sun-cream-50-50ml-product.png",
         "alt": "에르띠 50 선크림 50ml 튜브형 제품 이미지 SPF50+ PA++++",
         "role": "variant-product-image"
       },
@@ -6444,7 +6444,7 @@
       {
         "sku": "ERTY-MBC57-50",
         "volume": "50ml",
-        "image": "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.jpg"
+        "image": "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.png"
       }
     ],
     "seo": {
@@ -6483,7 +6483,7 @@
         "Phyto-Amino Acid Complex",
         "50ml"
       ],
-      "primaryImage": "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.jpg"
+      "primaryImage": "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.png"
     },
     "aiSummary": {
       "oneSentence": "에르띠 57 멜라웨이 브라이트닝 크림은 MELAWAY와 나이아신아마이드 5%, 아데노신을 중심으로 칙칙해 보이는 피부 톤과 탄력 컨디션을 함께 관리하는 브라이트닝 크림입니다.",
@@ -6826,7 +6826,7 @@
         "role": "detail-page-image"
       },
       {
-        "src": "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.jpg",
+        "src": "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.png",
         "alt": "에르띠 57 멜라웨이 브라이트닝 크림 50ml 제품 이미지",
         "role": "variant-product-image"
       },

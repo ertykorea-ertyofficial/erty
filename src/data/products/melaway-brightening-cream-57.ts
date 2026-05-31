@@ -96,7 +96,7 @@ export const melawayBrighteningCream57ImageAlt = [
     role: "detail-page-image"
   },
   {
-    src: "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.jpg",
+    src: "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.png",
     alt: "에르띠 57 멜라웨이 브라이트닝 크림 50ml 제품 이미지",
     role: "variant-product-image"
   },
@@ -208,7 +208,7 @@ export const melawayBrighteningCream57: ProductPdpData = {
     {
       sku: "ERTY-MBC57-50",
       volume: "50ml",
-      image: "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.jpg"
+      image: "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.png"
     }
   ],
 
@@ -254,7 +254,7 @@ export const melawayBrighteningCream57: ProductPdpData = {
       "50ml"
     ],
     primaryImage:
-      "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.jpg"
+      "/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.png"
   },
 
   aiSummary: {
@@ -624,7 +624,7 @@ export const melawayBrighteningCream57MerchantFeedDraft = {
       description:
         "MELAWAY, 나이아신아마이드 5%, 아데노신, 센텔라 아시아티카 PDRN을 결합한 Brightening Line 57번 브라이트닝 크림. 칙칙해 보이는 피부 톤과 보습·영양·탄력 컨디션을 함께 관리합니다.",
       link: `${SEO_GEO_BASE_URL}/products/melaway-brightening-cream-57/?variant=50ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/melaway-brightening-cream-57/melaway-brightening-cream-57-50ml-product.png`,
       brand: "ERTY",
       condition: "new",
       productType: "Cosmetics > Skincare > Face Cream > Brightening Cream",

@@ -87,7 +87,7 @@ export const tonicLotionSkinHydrating23SourceAudit = {
 
 export const tonicLotionSkinHydrating23ImageAlt = [
   {
-    src: "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.jpg",
+    src: "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.png",
     alt: "에르띠 23 토닉 로션 포 스킨 하이드레이팅 140ml 제품 이미지",
     role: "variant-product-image"
   },
@@ -220,7 +220,7 @@ export const tonicLotionSkinHydrating23: ProductPdpData = {
       sku: "ERTY-TLSH23-140ML",
       volume: "140ml",
       image:
-        "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.jpg"
+        "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.png"
     },
     {
       sku: "ERTY-TLSH23-480ML",
@@ -271,7 +271,7 @@ export const tonicLotionSkinHydrating23: ProductPdpData = {
       "Hydrating Line 23"
     ],
     primaryImage:
-      "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.jpg"
+      "/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.png"
   },
 
   aiSummary: {
@@ -662,7 +662,7 @@ export const tonicLotionSkinHydrating23MerchantFeedDraft = {
       description:
         "Mari Anti Toxin과 해조류 유래 미네랄 성분축으로 건조하고 당김이 느껴지는 피부에 수분감을 부여하는 Hydrating Line 23번 토너.",
       link: `${SEO_GEO_BASE_URL}/products/tonic-lotion-skin-hydrating-23/?variant=140ml`,
-      imageLink: `${SEO_GEO_BASE_URL}/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.jpg`,
+      imageLink: `${SEO_GEO_BASE_URL}/images/products/tonic-lotion-skin-hydrating-23/tonic-lotion-skin-hydrating-23-140ml-product.png`,
       size: "140ml",
       price: undefined,
       availability: undefined

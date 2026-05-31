@@ -165,19 +165,27 @@
       return "";
     }
 
-    const title = summary.title || "AI Summary";
+    const title = summary.title && summary.title !== "AI Summary" ? summary.title : "제품 요약";
     const body = summary.paragraph || summary.body;
     const bullets = summary.keyFacts || summary.bullets;
 
     return `
-      <section class="pdp-answer" aria-labelledby="pdp-answer-title">
-        <p class="pdp-answer__kicker">Quick Answer / AI Summary</p>
-        <div>
+      <section class="pdp-answer pdp-answer--accordion" aria-labelledby="pdp-answer-title">
+        <div class="pdp-answer__header">
+          <p class="pdp-answer__kicker">Product Brief</p>
           <h2 id="pdp-answer-title">${escapeHtml(title)}</h2>
-          ${summary.oneSentence ? `<p class="pdp-lead">${escapeHtml(summary.oneSentence)}</p>` : ""}
-          ${body ? `<p>${escapeHtml(body)}</p>` : ""}
-          ${renderList(bullets, "pdp-answer__bullets")}
+          ${summary.oneSentence ? `<p class="pdp-answer__preview">${escapeHtml(summary.oneSentence)}</p>` : ""}
         </div>
+        <details class="pdp-answer__details">
+          <summary class="pdp-answer__summary">
+            <span class="pdp-answer__summary-label">제품 요약 자세히 보기</span>
+            <span class="pdp-answer__summary-icon" aria-hidden="true"></span>
+          </summary>
+          <div class="pdp-answer__content">
+            ${body ? `<p>${escapeHtml(body)}</p>` : ""}
+            ${renderList(bullets, "pdp-answer__bullets")}
+          </div>
+        </details>
       </section>
     `;
   }
@@ -251,7 +259,7 @@
     return renderSection(
       "identity",
       "Identity",
-      "Product Identity",
+      "Identity",
       `<dl class="pdp-definition-list">${rows
         .map(([term, value]) => `<div><dt>${escapeHtml(term)}</dt><dd>${escapeHtml(value)}</dd></div>`)
         .join("")}</dl>`,
@@ -266,7 +274,7 @@
     return renderSection(
       "problem-solution",
       "Problem Fit",
-      "Problem-Solution Fit",
+      "Problem Fit",
       `
         ${problemSolution.problem ? `<article><h3>Problem</h3><p>${escapeHtml(problemSolution.problem)}</p></article>` : ""}
         ${problemSolution.solution ? `<article><h3>Solution</h3><p>${escapeHtml(problemSolution.solution)}</p></article>` : ""}
@@ -285,7 +293,7 @@
     return renderSection(
       "formula",
       "Formula",
-      "Formula Architecture",
+      "Formula",
       `
         ${formula.thesis || formula.headline ? `<p class="pdp-lead">${escapeHtml(formula.thesis || formula.headline)}</p>` : ""}
         ${formula.axes?.length ? `<div class="pdp-split-list">${formula.axes
@@ -314,7 +322,7 @@
     return renderSection(
       "ingredients",
       "Ingredients",
-      "Ingredient Intelligence",
+      "Ingredients",
       `
         ${headline ? `<p class="pdp-lead">${escapeHtml(headline)}</p>` : ""}
         ${note ? `<p>${escapeHtml(note)}</p>` : ""}
@@ -333,7 +341,7 @@
     return renderSection(
       "texture",
       "Texture",
-      "Texture Profile",
+      "Texture",
       `<dl class="pdp-definition-list">
         ${texture.type ? `<div><dt>Type</dt><dd>${escapeHtml(texture.type)}</dd></div>` : ""}
         ${texture.finish ? `<div><dt>Finish</dt><dd>${escapeHtml(texture.finish)}</dd></div>` : ""}
@@ -350,7 +358,7 @@
     return renderSection(
       "evidence",
       "Evidence",
-      "Evidence / Clinical Data",
+      "Evidence",
       `<div class="pdp-split-list">${evidence
         .map((item) => `<article><h3>${escapeHtml(item.title || item.metric)}</h3>${item.metric && item.title ? `<p class="pdp-lead">${escapeHtml(item.metric)}</p>` : ""}<p>${escapeHtml(item.summary || item.label || "")}</p><small>${escapeHtml(item.sourceNote || item.source || "")}</small></article>`)
         .join("")}</div>`,
@@ -382,7 +390,7 @@
     return renderSection(
       "routine",
       "Routine",
-      "Routine Pairing",
+      "Routine",
       `<div class="pdp-split-list">${routines
         .map((routine) => `<article><h3>${escapeHtml(routine.title)}</h3>${routine.useCase ? `<p class="pdp-lead">${escapeHtml(routine.useCase)}</p>` : ""}${routine.products || routine.steps ? `<p>${escapeHtml((routine.products || routine.steps).join(" → "))}</p>` : ""}${renderList(routine.recommendedFor, "pdp-tag-list")}${routine.href ? `<a href="${escapeHtml(routine.href)}">루틴에서 보기</a>` : ""}</article>`)
         .join("")}</div>`,
@@ -399,7 +407,7 @@
       "FAQ",
       "FAQ",
       `<div class="pdp-faq-list">${faq
-        .map((item) => `<details open><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`)
+        .map((item) => `<details><summary>${escapeHtml(item.question)}</summary><p>${escapeHtml(item.answer)}</p></details>`)
         .join("")}</div>`,
     );
   }
@@ -409,16 +417,28 @@
       return "";
     }
 
+    function fallbackRelatedLabel(slug) {
+      if (slug === "er-perfection-toning-treatment-kit") {
+        return "ER Perfection Toning Treatment Kit";
+      }
+
+      return slug
+        .split("-")
+        .map((word) => (word.length <= 2 ? word.toUpperCase() : `${word.charAt(0).toUpperCase()}${word.slice(1)}`))
+        .join(" ");
+    }
+
     return renderSection(
       "related",
       "Related",
-      "Related Products",
+      "Related",
       `<div class="pdp-split-list">${relatedProducts
         .map((item) => {
           const href = typeof item === "string" ? `/products/${item}/` : item.href;
           const slug = typeof item === "string" ? item : href.replace(/^\/products\//, "").replace(/\/$/, "");
-          const sku = typeof item === "string" ? slug.split("-").pop() || slug : item.sku;
-          const label = typeof item === "string" ? item : item.name;
+          const relatedProduct = data.products.find((product) => product.slug === slug || product.aliases?.includes(slug));
+          const sku = typeof item === "string" ? relatedProduct?.identity.productNumber || "KIT" : item.sku;
+          const label = typeof item === "string" ? relatedProduct?.identity.nameKo || fallbackRelatedLabel(slug) : item.name;
           return `<a class="pdp-related-link" href="${escapeHtml(href)}"><span>${escapeHtml(sku)}</span><strong>${escapeHtml(label)}</strong></a>`;
         })
         .join("")}</div>`,
@@ -563,6 +583,85 @@
     jsonLd.id = "product-json-ld";
     jsonLd.textContent = JSON.stringify(buildJsonLd(product));
     root.appendChild(jsonLd);
+    setupMobileSections(root);
+  }
+
+  function setupMobileSections(scope) {
+    const mediaQuery = window.matchMedia("(max-width: 520px)");
+    const sections = Array.from(scope.querySelectorAll(".pdp-section"));
+
+    function sectionLabel(section) {
+      const eyebrow = section.querySelector(".pdp-section__eyebrow")?.textContent?.trim() || "Detail";
+      const title = section.querySelector("h2")?.textContent?.trim() || eyebrow;
+
+      return { eyebrow, title };
+    }
+
+    function setSectionOpen(section, isOpen) {
+      const content = section.querySelector(".pdp-section__body");
+      const button = section.querySelector(".pdp-mobile-section-toggle");
+
+      section.dataset.mobileOpen = isOpen ? "true" : "false";
+
+      if (button) {
+        button.setAttribute("aria-expanded", String(isOpen));
+      }
+
+      if (content) {
+        content.hidden = mediaQuery.matches && !isOpen;
+      }
+    }
+
+    sections.forEach((section, index) => {
+      if (section.dataset.mobileDisclosureReady === "true") {
+        return;
+      }
+
+      const head = section.querySelector(".pdp-section__head");
+      const content = section.querySelector(".pdp-section__body");
+
+      if (!head || !content) {
+        return;
+      }
+
+      const contentId = content.id || `${section.id || `pdp-detail-${index}`}-mobile-content`;
+      const { eyebrow, title } = sectionLabel(section);
+      const button = document.createElement("button");
+
+      content.id = contentId;
+      section.classList.add("pdp-mobile-collapsible");
+      section.dataset.mobileDisclosureReady = "true";
+      button.type = "button";
+      button.className = "pdp-mobile-section-toggle";
+      button.setAttribute("aria-controls", contentId);
+      button.setAttribute("aria-expanded", "false");
+      button.innerHTML = `
+        <span class="pdp-mobile-section-toggle__copy">
+          <span class="pdp-mobile-section-toggle__eyebrow">${escapeHtml(eyebrow)}</span>
+          <span class="pdp-mobile-section-toggle__title">${escapeHtml(title)}</span>
+        </span>
+        <span class="pdp-mobile-section-toggle__icon" aria-hidden="true"></span>
+      `;
+      button.addEventListener("click", () => {
+        setSectionOpen(section, section.dataset.mobileOpen !== "true");
+      });
+      head.after(button);
+    });
+
+    function syncMobileState() {
+      document.body.classList.toggle("pdp-mobile-compact-enabled", mediaQuery.matches);
+      sections.forEach((section) => {
+        setSectionOpen(section, section.dataset.mobileOpen === "true");
+      });
+    }
+
+    syncMobileState();
+
+    if (typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener("change", syncMobileState);
+    } else if (typeof mediaQuery.addListener === "function") {
+      mediaQuery.addListener(syncMobileState);
+    }
   }
 
   if (!product) {

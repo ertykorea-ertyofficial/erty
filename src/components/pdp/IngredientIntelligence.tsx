@@ -13,7 +13,7 @@ export function IngredientIntelligence({ ingredients }: { ingredients?: ProductP
     <section className="pdp-section" aria-labelledby="pdp-ingredients-title">
       <div className="pdp-section__head">
         <p className="pdp-section__eyebrow">Ingredients</p>
-        <h2 id="pdp-ingredients-title">Ingredient Intelligence</h2>
+        <h2 id="pdp-ingredients-title">Ingredients</h2>
       </div>
       <div className="pdp-section__body">
         {headline && <p className="pdp-lead">{headline}</p>}

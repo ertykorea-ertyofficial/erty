@@ -88,7 +88,7 @@ export const purifyingTonerSkinBalancing13SourceAudit = {
 
 export const purifyingTonerSkinBalancing13ImageAlt = [
   {
-    src: "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.jpg",
+    src: "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.png",
     alt: "에르띠 13 퓨리파잉 토너 포 스킨 밸런싱 140ml 제품 이미지",
     role: "variant-product-image"
   },
@@ -217,7 +217,7 @@ export const purifyingTonerSkinBalancing13: ProductPdpData = {
     {
       sku: "ERTY-PTSB13-140ML",
       volume: "140ml",
-      image: "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.jpg"
+      image: "/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.png"
     },
     {
       sku: "ERTY-PTSB13-480ML",
@@ -678,7 +678,7 @@ export const purifyingTonerSkinBalancing13MerchantFeedDraft = {
       description:
         "Anti Sebum P, 티트리잎오일, 황, 스타아니스추출물 성분축으로 과잉 피지와 번들거림, 모공 주변 컨디션을 산뜻하게 정돈하는 Balancing Line 13번 토너입니다.",
       link: `${SEO_GEO_BASE_URL}/products/purifying-toner-skin-balancing-13/?variant=140ml`,
-      image_link: `${SEO_GEO_BASE_URL}/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.jpg`,
+      image_link: `${SEO_GEO_BASE_URL}/images/products/purifying-toner-skin-balancing-13/purifying-toner-skin-balancing-13-140ml-product.png`,
       brand: "ERTY",
       condition: "new",
       product_type: "Cosmetics > Skincare > Toners > Sebum Control Toner",

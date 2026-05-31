@@ -16,16 +16,18 @@ export function ProductIdentity({ identity }: { identity: ProductPdpData["identi
     <section className="pdp-section" aria-labelledby="pdp-identity-title">
       <div className="pdp-section__head">
         <p className="pdp-section__eyebrow">Identity</p>
-        <h2 id="pdp-identity-title">Product Identity</h2>
+        <h2 id="pdp-identity-title">Identity</h2>
       </div>
-      <dl className="pdp-definition-list">
-        {rows.map(([term, value]) => (
-          <div key={term}>
-            <dt>{term}</dt>
-            <dd>{value}</dd>
-          </div>
-        ))}
-      </dl>
+      <div className="pdp-section__body">
+        <dl className="pdp-definition-list">
+          {rows.map(([term, value]) => (
+            <div key={term}>
+              <dt>{term}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   );
 }

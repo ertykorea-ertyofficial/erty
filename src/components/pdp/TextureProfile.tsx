@@ -7,7 +7,7 @@ export function TextureProfile({ texture }: { texture?: ProductPdpData["texture"
     <section className="pdp-section" aria-labelledby="pdp-texture-title">
       <div className="pdp-section__head">
         <p className="pdp-section__eyebrow">Texture</p>
-        <h2 id="pdp-texture-title">Texture Profile</h2>
+        <h2 id="pdp-texture-title">Texture</h2>
       </div>
       <div className="pdp-section__body">
         <dl className="pdp-definition-list">

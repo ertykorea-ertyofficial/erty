@@ -9,13 +9,15 @@ export function ProductFAQ({ faq }: { faq?: ProductPdpData["faq"] }) {
         <p className="pdp-section__eyebrow">FAQ</p>
         <h2 id="pdp-faq-title">FAQ</h2>
       </div>
-      <div className="pdp-faq-list">
-        {faq.map((item) => (
-          <details key={item.question} open>
-            <summary>{item.question}</summary>
-            <p>{item.answer}</p>
-          </details>
-        ))}
+      <div className="pdp-section__body">
+        <div className="pdp-faq-list">
+          {faq.map((item) => (
+            <details key={item.question}>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   );
