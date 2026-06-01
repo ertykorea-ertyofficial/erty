@@ -192,21 +192,28 @@
 
   function renderBuyBox(product) {
     const variants = product.variants || [];
+    const firstVariant = variants[0];
+    const firstVolume = firstVariant?.volume || firstVariant?.size || "";
 
     if (!product.buyBox && !variants.length) {
       return "";
     }
 
     return `
-      <section class="pdp-buy" aria-labelledby="pdp-buy-title">
-        <div>
+      <section class="pdp-buy" aria-labelledby="pdp-buy-title" data-commerce-state="pending">
+        <div class="pdp-buy__intro">
           <p class="pdp-section__eyebrow">Purchase / Variant</p>
           <h2 id="pdp-buy-title">구매와 용량 선택</h2>
           <p>${escapeHtml(product.buyBox?.status || "커머스 가격과 재고 데이터 연결 전입니다.")}</p>
         </div>
         ${
           variants.length
-            ? `<div class="pdp-variant-list" role="radiogroup" aria-label="제품 용량 선택">${variants
+            ? `<div class="pdp-buy__checkout-panel">
+                <div class="pdp-buy__panel-head">
+                  <span>Volume option</span>
+                  <strong class="pdp-buy__selected-volume">${firstVolume ? `선택됨 ${escapeHtml(firstVolume)}` : "용량 선택"}</strong>
+                </div>
+                <div class="pdp-variant-list" role="radiogroup" aria-label="제품 용량 선택">${variants
                 .map(
                   (variant, index) => `
                     <article class="pdp-variant${index === 0 ? " is-selected" : ""}" role="radio" aria-checked="${index === 0 ? "true" : "false"}" tabindex="${index === 0 ? "0" : "-1"}" data-variant-index="${index}" data-variant-volume="${escapeHtml(variant.volume || variant.size || "")}">
@@ -226,12 +233,17 @@
                     </article>
                   `,
                 )
-                .join("")}</div>`
+                .join("")}</div>
+                <div class="pdp-cta-row pdp-buy__checkout">
+                  <button class="pdp-button pdp-button--primary pdp-buy-button" type="button" disabled aria-disabled="true" data-selected-volume="${escapeHtml(firstVolume)}">
+                    <span class="pdp-buy-button__label">구매하러가기</span>
+                    <span class="pdp-buy-button__meta">${firstVolume ? `선택한 용량 ${escapeHtml(firstVolume)}` : "용량 선택 후 공식몰 연결"}</span>
+                  </button>
+                  <p class="pdp-buy__notice">공식몰 제품 링크 연결 전입니다.</p>
+                </div>
+              </div>`
             : ""
         }
-        <div class="pdp-cta-row">
-          <button class="pdp-button pdp-button--primary pdp-buy-button" type="button" disabled aria-disabled="true">구매하러가기</button>
-        </div>
       </section>
     `;
   }
@@ -594,7 +606,10 @@
       }
 
       const variants = Array.from(group.querySelectorAll('.pdp-variant[role="radio"]'));
-      const buyButton = group.closest(".pdp-buy")?.querySelector(".pdp-buy-button");
+      const buySection = group.closest(".pdp-buy");
+      const buyButton = buySection?.querySelector(".pdp-buy-button");
+      const selectedVolumeLabel = buySection?.querySelector(".pdp-buy__selected-volume");
+      const buyButtonMeta = buySection?.querySelector(".pdp-buy-button__meta");
 
       if (!variants.length) {
         return;
@@ -608,9 +623,19 @@
           variant.setAttribute("tabindex", isSelected ? "0" : "-1");
         });
 
+        const selectedVolume = target.dataset.variantVolume || "";
+
         if (buyButton) {
           buyButton.dataset.selectedVariantIndex = target.dataset.variantIndex || "";
-          buyButton.dataset.selectedVolume = target.dataset.variantVolume || "";
+          buyButton.dataset.selectedVolume = selectedVolume;
+        }
+
+        if (selectedVolumeLabel) {
+          selectedVolumeLabel.textContent = selectedVolume ? `선택됨 ${selectedVolume}` : "용량 선택됨";
+        }
+
+        if (buyButtonMeta) {
+          buyButtonMeta.textContent = selectedVolume ? `선택한 용량 ${selectedVolume}` : "용량 선택 후 공식몰 연결";
         }
 
         if (shouldFocus) {

@@ -94,7 +94,10 @@ export function PdpMobileDisclosure() {
         if (group.dataset.variantSelectionReady === "true") return;
 
         const variants = Array.from(group.querySelectorAll<HTMLElement>('.pdp-variant[role="radio"]'));
-        const buyButton = group.closest(".pdp-buy")?.querySelector<HTMLButtonElement>(".pdp-buy-button");
+        const buySection = group.closest(".pdp-buy");
+        const buyButton = buySection?.querySelector<HTMLButtonElement>(".pdp-buy-button");
+        const selectedVolumeLabel = buySection?.querySelector<HTMLElement>(".pdp-buy__selected-volume");
+        const buyButtonMeta = buySection?.querySelector<HTMLElement>(".pdp-buy-button__meta");
 
         if (!variants.length) return;
 
@@ -106,9 +109,19 @@ export function PdpMobileDisclosure() {
             variant.setAttribute("tabindex", isSelected ? "0" : "-1");
           });
 
+          const selectedVolume = target.dataset.variantVolume || "";
+
           if (buyButton) {
             buyButton.dataset.selectedVariantIndex = target.dataset.variantIndex || "";
-            buyButton.dataset.selectedVolume = target.dataset.variantVolume || "";
+            buyButton.dataset.selectedVolume = selectedVolume;
+          }
+
+          if (selectedVolumeLabel) {
+            selectedVolumeLabel.textContent = selectedVolume ? `선택됨 ${selectedVolume}` : "용량 선택됨";
+          }
+
+          if (buyButtonMeta) {
+            buyButtonMeta.textContent = selectedVolume ? `선택한 용량 ${selectedVolume}` : "용량 선택 후 공식몰 연결";
           }
 
           if (shouldFocus) {
