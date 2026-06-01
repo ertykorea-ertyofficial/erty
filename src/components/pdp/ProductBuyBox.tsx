@@ -15,7 +15,6 @@ export function ProductBuyBox({ product }: { product: ProductPdpData }) {
       <div className="pdp-buy__intro">
         <p className="pdp-section__eyebrow">Purchase / Variant</p>
         <h2 id="pdp-buy-title">구매와 용량 선택</h2>
-        {product.buyBox?.status && <p>{product.buyBox.status}</p>}
       </div>
       {!!product.variants?.length && (
         <div className="pdp-buy__checkout-panel">
